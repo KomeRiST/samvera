@@ -1,0 +1,26 @@
+﻿[
+  {
+    "outputFile": "app/static/app/content/css/site.css",
+    "inputFile": "app/static/app/content/css/site.scss"
+  },
+  {
+    "outputFile": "app/static/app/content/css/variables.css",
+    "inputFile": "app/static/app/content/css/variables.scss"
+  },
+  {
+    "outputFile": "app/static/app/content/css/site.css",
+    "inputFile": "app/static/app/content/css/site.scss"
+  },
+  {
+    "outputFile": "app/static/app/content/css/thing.css",
+    "inputFile": "app/static/app/content/css/thing.scss"
+  },
+  {
+    "outputFile": "app/static/app/content/css/site2.css",
+    "inputFile": "app/static/app/content/css/site2.scss"
+  },
+  {
+    "outputFile": "app/static/app/content/css/site3.css",
+    "inputFile": "app/static/app/content/css/site3.scss"
+  }
+]

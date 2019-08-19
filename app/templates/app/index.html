@@ -1,0 +1,121 @@
+{% extends "app/layout.html" %}
+{% load staticfiles %}
+{% block css %}
+<script src="{% static 'app/scripts/jquery.video.js' %}"></script>
+{% endblock %}
+{% block content %}
+<div class="bg"></div>
+<!--
+    <nav class="nav">
+        <ul class="navi">
+            <li>
+            {% if kollections %}
+                <a href="#">Колелекции</a>
+                <ul>
+                    {% for koll in kollections.rows %}
+                    <li><a href="#">{{koll.name}}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            </li>
+            <li>
+                <a href="#">samvera</a>
+                <ul>
+                    <li><a href="#">Контакты</a></li>
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">Оставить отзыв</a></li>
+                </ul>
+            </li>
+            <li>
+                {% if tovarfolder %}
+                <a href="#">Магазин</a>
+                <ul>
+                    {% for tovar in tovarfolder.rows %}
+                    <li><a href="#">{{tovar.name}}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </li>
+        </ul>
+    </nav>
+    -->
+<div class="content">
+    <div class="block-one">
+        <div class="overlay">
+            <div class="maintext">
+                <!--<img src="/media/logo.png" height="auto" />-->
+                <p class="centaur">SAMVERA</p>
+            </div>
+        </div>
+        <div class="video" data-vvvv-bg="/media/video/main.mp4">
+        </div>
+    </div>
+    <div class="block-two">
+        <div class="drag_slider">
+            {% include "app/slider.html" %}
+        </div>
+    </div>
+    <!--
+    <div class="block-tree">
+        <div class="gallery">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+        <div class="descr"><p>Оставьте свой отзыв или предложение</p></div>
+        <div class="b-container">
+            Sample Text
+            <a href="javascript:PopUpShow()">Show popup</a>
+        </div>
+    </div>
+-->
+</div>
+
+
+<div class="b-popup" id="popup1">
+    <div class="popupClose" onclick="PopUpHide()"></div>
+    <div class="form">
+        <form action="/post/addPClient/" method="post">
+        <a class="formClose" href="javascript:PopUpHide()">X</a>
+            {% csrf_token %}
+            {{ Form_PotentialClient.as_p }}
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+$(document).ready(function(){
+    PopUpHide();
+});
+    function parallax(){
+		  var scrolled = $(window).scrollTop();
+        $('.block-one .overlay .maintext').css('top', -(scrolled * 0.5) + 'px');
+        //$('.bg').css('top', -(scrolled * 0.5) + 'px');
+        if (scrolled > 170) {
+            $(".nav").css("background-color", "black");
+        } else {
+            $(".nav").css("background-color", "transparent");
+        }
+    }
+    $(window).scroll(function () {
+        parallax();
+    });
+    function PopUpShow() {
+        $("#popup1").css("top", $(".navi").height())
+    $("#popup1").delay(200).fadeIn();
+}
+function PopUpHide(){
+    $("#popup1").delay(200).fadeOut();
+        }
+    
+</script>
+{% endblock %}

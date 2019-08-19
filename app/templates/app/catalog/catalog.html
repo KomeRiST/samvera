@@ -1,0 +1,68 @@
+{% extends "app/layout.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="catalog-screen">
+    <div class="catalog-conteiner">
+        <div class="catalog-title">{{title}}</div>
+        <br />
+        <div class="catalog-title_descr">{{message}}</div>
+        <br />
+        {{year}}
+    </div>
+</div>
+<div class="catalog-content">
+    {% for item in things %}
+    <div class="container-item" style="background-image: url('/media/{{item.random_image}}')">
+
+        <div class="cover">
+            <p class="title">{{ item.title }}</p>
+            <p class="cost">{{ item.cost }}</p>
+            <p class="article">{{ item.article }}</p>
+            <div class="btn-base btn-add-korz" data-article="{{item.article}}" data-size="{{item.size}}" data-color="{{item.color}}" data-cost="{{item.cost}}" data-id="{{item.id}}" data-img="{{item.random_image}}" date-name="{{item.title}}" onclick="add(this)">
+                <p>В корзину</p>
+            </div>
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function add(e) {
+        K = JSON.parse(localStorage.getItem("korzina"));
+        if (K == null) {
+            var K = {}
+            K.list = [];
+        }
+        var tovar = {
+                id: e.getAttribute("data-id"),
+                img: e.getAttribute("data-img"),
+                name: e.getAttribute("data-name"),
+                cost: e.getAttribute("data-cost"),
+                color: e.getAttribute("data-color"),
+                size: e.getAttribute("data-size"),
+                article: e.getAttribute("data-article"),
+                count: 1,
+        }
+        if (K.list.length > 0) {
+            for (var i = 0; i < K.list.length; i++) {
+                if (K.list[i].id == tovar.id && K.list[i].name == tovar.name) {
+                   K.list[i].count = parseInt(K.list[i].count) + parseInt(tovar.count);
+                } else {
+                    K.list.push(tovar);
+                }
+            }
+        } else {
+            K.list.push(tovar);
+        }
+        localStorage.setItem("korzina", JSON.stringify(K));
+        loadkorzina(false);
+    }
+    //$(document).load(function() {
+
+    //});
+</script>
+{% endblock %}

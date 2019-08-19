@@ -1,0 +1,46 @@
+{% extends "app/layout.html" %}
+{% load staticfiles %}
+
+
+{% block css %}<link rel="stylesheet" type="text/css" href="{% static 'app/content/css/thing.css' %}" />{% endblock %}
+{% block content %}
+
+<div class="slider">
+<div class="slide">
+</div>
+<div class="slide">
+</div>
+<div class="slide">
+</div>
+<div class="slide">
+</div>
+<div class="slide">
+</div>
+</div>
+
+
+
+{% endblock %}
+{% block scripts %} 
+<script src="{% static '/app/slick/slick.min.js' %}"></script>
+<script>
+$(document).ready(function () {
+        var settings = {
+            autoplay: false,
+            autoplaySpeed: 7000,
+            slidesToShow: 3,
+            centerMode: true,
+            centerPadding: '0px',
+            arrows: false,
+            dots: false,
+            infinite: true,
+            speed: 300,
+            fade: false,
+            cssEase: 'linear',
+            
+        }
+
+        $('.slider').slick(settings);
+});
+</script>
+{% endblock %}

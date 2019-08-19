@@ -1,0 +1,59 @@
+/*
+    COLOR -- FONTS
+*/
+
+$fcDefault: #b0b0b0;
+$fcDefaultContur: #ff6f3a;
+$fcMenuHover: #ff6f3a;
+$fcShadowHover: rgba(255, 111, 58, 0.5);
+
+/*
+    COLOR -- BLOCKS
+*/
+
+$bgColor: black;
+$menu-hover: $fcDefaultContur;
+$cMaterial: #151515;
+$cBurtik: rgb(13, 13, 13);
+$cShov: #444;
+
+
+/*
+    FONTS SIZE
+        phone: 300px
+        phone-wide: 480px
+        phablet: 560px
+
+        tablet-small: 640px
+        tablet: 768px
+        tablet-wide: 1024px
+
+        desktop: 1248px
+        desktop-wide: 1440px
+
+*/
+$fontsize: (
+    "text_phone": 16px,
+    "text_phone-wide": 16px,
+    "text_phablet": 16px,
+    "text_tablet-small": 18px,
+    "text_tablet": 18px,
+    "text_tablet-wide": 18px,
+    "text_desktop": 20px,
+    "text_desktop-wide": 20px,
+    "title_phone": 30px,
+    "title_phone-wide": 30px,
+    "title_phablet": 32px,
+    "title_tablet-small": 32px,
+    "title_tablet": 68px,
+    "title_tablet-wide": 68px,
+    "title_desktop": 72px,
+    "title_desktop-wide": 72px,
+    "title-descr_phone": 14px,
+    "title-descr_phone-wide": 14px,
+    "title-descr_phablet": 14px,
+    "title-descr_tablet-small": 22px,
+    "title-descr_tablet": 22px,
+    "title-descr_tablet-wide": 22px,
+    "title-descr_desktop": 24px,
+    "title-descr_desktop-wide": 24px)

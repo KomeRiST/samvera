@@ -1,0 +1,20 @@
+{% extends "app/layout.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="catalog-screen">
+    <div class="catalog-conteiner">
+        <div class="catalog-title">{{title}}</div>
+        <br />
+        <div class="catalog-title_descr">{{message}}</div>
+        <br />
+        {{year}}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+</script>
+{% endblock %}

@@ -1,0 +1,70 @@
+﻿@import "variables.scss";
+
+@mixin text-shadow__contur($border-size, $blur, $color) {
+    text-shadow: $border-size $border-size $blur $color, (-$border-size) (-$border-size) $blur $color, ($border-size) (-$border-size) $blur $color, -$border-size $border-size $blur $color, $border-size 0px $blur $color, 0px $border-size $blur $color, -$border-size 0px $blur $color, 0px -$border-size $blur $color
+}
+
+@mixin box-shadow__burtik($add: '',$blur: 2px, $spred: 4px, $color: $cBurtik) {
+    @if $add=='' {
+        box-shadow: 0 0 $blur $spred $color, inset 0 0 $blur $spred $color;
+    }
+    @else {
+        box-shadow: 0 0 $blur $spred $color, inset 0 0 $blur $spred $color, $add;
+    }
+}
+
+@mixin border_shov($add: '',$color: $cShov, $size: 2px) {
+    @if $add=='-' {
+        border: $size dashed $color;
+    }
+    @else {
+        @include box-shadow__burtik($add);
+        border: $size dashed $color;
+    }
+}
+
+@function lighter($color, $tone) {
+    $adjust: $tone;
+    @return adjust-color($color, $red: 8*$adjust, $green: 16*$adjust, $blue: $adjust/16);
+}
+
+@mixin slide($count) {
+    @for $i from 1 through $count {
+        .slide-#{$i} {
+            $c: 16*$i;
+            background-color: lighter(black, $i);
+            /*background-image: url("/media/foto/("+$i+").jpg");*/
+            height: 600px;
+            width: 400px;
+        }
+    }
+}
+
+$breakpoints: ( "phone": 300px, "phone-wide": 480px, "phablet": 560px, "tablet-small": 640px, "tablet": 768px, "tablet-wide": 1024px, "desktop": 1248px, "desktop-wide": 1440px );
+
+@mixin mq($width, $type: min) {
+    @if map_has_key($breakpoints, $width) {
+        $width: map_get($breakpoints, $width);
+
+        @if $type == max {
+            $width: $width - 1px;
+        }
+
+        @media only screen and (#{$type}-width: $width) {
+            @content;
+        }
+    }
+}
+
+@mixin fontsize($name) {
+    $type: min;
+
+    @each $key, $value in $breakpoints {
+        $fs: map_get($fontsize, #{$name}_#{$key});
+
+        @media only screen and (#{$type}-width: $value) {
+            font-size: $fs;
+            @content;
+        }
+    }
+}

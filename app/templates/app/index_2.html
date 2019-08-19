@@ -1,0 +1,164 @@
+{% extends "app/layout.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<!--<div class="topSlide">
+    <div class="main-text">samvera</div>
+</div>-->
+
+    <hav class="nav">
+        <ul class="navi">
+            <li>
+                <a href="#">Колелекции</a>
+                <ul>
+                    {% for koll in kollections.rows %}
+                    <li><a href="#">{{koll.name}}</a></li>
+                    {% endfor %}
+                    <!--<li class="itemnewcollection"><a href="#">Новая коллекция</a></li>
+                    <li><a href="#">Первая коллекция</a></li>
+                    <li><a href="#">Вторая коллекция</a></li>
+                    <li><a href="#">Третья коллекция</a></li>-->
+                </ul>
+            </li>
+            <li>
+                <a href="#">samvera</a>
+                <ul>
+                    <li><a href="#">Контакты</a></li>
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">Оставить отзыв</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Магазин</a>
+                <ul>
+                    {% for tovar in tovarfolder.rows %}
+                    <li><a href="#">{{tovar.name}}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </hav>
+
+<div class="content">
+    <div class="video">
+        <video controls loop height="auto" width="100%" muted src="/media/video/main.mp4"></video>
+    </div>
+    <div class="drag_slider">
+    {% include "app/slider.html" %}
+    </div>
+        <!--<div class="tovar"><img src="media/tovar/platiya/1.png" alt="" /></div>
+        <div class="tovar"><img src="media/tovar/platiya/2.png" alt="" /></div>
+        <div class="tovar"><img src="media/tovar/platiya/3.png" alt="" /></div>
+        <div class="tovar"><img src="media/tovar/platiya/4.png" alt="" /></div>
+        <div class="tovar"><img src="media/tovar/platiya/5.png" alt="" /></div>
+        <div class="collection"><h2>Новая коллекция</h2></div>
+    <div class="allthings"><h2><a href="/things/">Весь ассортимент</a></h2></div>-->
+</div>
+<div class="capsulform">
+    <div class="descr"><p>Оставьте свой отзыв или предложение</p></div>
+    <div class="form">
+        <form action="/post/addPClient/" method="post">
+            {% csrf_token %}
+            {{ Form_PotentialClient.as_p }}
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+</div>
+
+<footer>
+<ul class="bottom-menu__list">
+    <li class="bottom-menu__item">
+        <span class="bottom-menu__link">О компании</span>
+        <ul class="bottom-menu__sub">
+            <li class="bottom-menu__sub-item">
+                <a href="/about/otzyvy" class="bottom-menu__sub-link">Отзывы</a>
+            </li>
+            <li class="bottom-menu__sub-item">
+                <a href="/about/brend" class="bottom-menu__sub-link">О нас</a>
+            </li>
+            <li class="bottom-menu__sub-item">
+                <a href="/about/press" class="bottom-menu__sub-link">Пресса о нас</a>
+            </li>
+            <li class="bottom-menu__sub-item">
+                <a href="/about/shops" class="bottom-menu__sub-link">Магазины</a>
+            </li>
+            <li class="bottom-menu__sub-item">
+                <a href="/about/contacts" class="bottom-menu__sub-link">Контакты</a>
+            </li>
+            <li class="bottom-menu__sub-item">
+                <a href="/about/rabota-u-nas" class="bottom-menu__sub-link">Работа у нас</a>
+            </li>
+            <li class="bottom-menu__sub-item">
+                <a href="/about/office" class="bottom-menu__sub-link">Офис</a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="bottom-menu__item">
+        <a href="/user/cabinet" class="bottom-menu__link">Мой кабинет</a>
+        <ul class="bottom-menu__sub">
+            <li class="bottom-menu__sub-item">
+                <a href="/user/cabinet" class="bottom-menu__sub-link">Профиль</a>
+            </li>
+            <li class="bottom-menu__sub-item">
+                <a href="/user/orders" class="bottom-menu__sub-link">Мои заказы</a>
+            </li>
+            <li class="bottom-menu__sub-item">
+                <a href="/user/subscribe" class="bottom-menu__sub-link">Мои подписки</a>
+            </li>
+            <li class="bottom-menu__sub-item">
+                <a href="/user/wishlist" class="bottom-menu__sub-link">Wishlist</a>
+            </li>
+        </ul>
+    </li>
+
+    <li class="bottom-menu__item">
+        <span class="bottom-menu__link">Покупателям</span>
+        <ul class="bottom-menu__sub">
+            <li class="bottom-menu__sub-item">
+                <a href="/info/samovyvoz" class="bottom-menu__sub-link">Самовывоз</a>
+            </li>
+            <li class="bottom-menu__sub-item">
+                <a href="/info/vozvrattovar" class="bottom-menu__sub-link">Возврат</a>
+            </li>
+            <li class="bottom-menu__sub-item">
+                <a href="/info/politika-konfidencialnosti" class="bottom-menu__sub-link">Политика конфиденциальности</a>
+            </li>
+            <li class="bottom-menu__sub-item">
+                <a href="/info/rukovodstvo-po-pokupke" class="bottom-menu__sub-link">Руководство по покупке</a>
+            </li>
+            <li class="bottom-menu__sub-item">
+                <a href="/info/oplata" class="bottom-menu__sub-link">Оплата</a>
+            </li>
+            <li class="bottom-menu__sub-item">
+                <a href="/info/preorder" class="bottom-menu__sub-link">Предзаказ</a>
+            </li>
+            <li class="bottom-menu__sub-item">
+                <a href="/info/dostavka" class="bottom-menu__sub-link">Доставка</a>
+            </li>
+            <li class="bottom-menu__sub-item">
+                <a href="/info/faq" class="bottom-menu__sub-link">Часто задаваемые вопросы (F.A.Q.)</a>
+            </li>
+            <li class="bottom-menu__sub-item">
+                <a href="/info/kacestvo" class="bottom-menu__sub-link">Качество обслуживания</a>
+            </li>
+            <li class="bottom-menu__sub-item">
+                <a href="/info/oferta" class="bottom-menu__sub-link">Оферта</a>
+            </li>
+            <li class="bottom-menu__sub-item">
+                <a href="/info/bonus" class="bottom-menu__sub-link">Бонусная программа</a>
+            </li>
+            <li class="bottom-menu__sub-item">
+                <a href="/info/idei" class="bottom-menu__sub-link">Идеи и предложения</a>
+            </li>
+        </ul>
+    </li>
+    <li class="bottom-menu__item bottom-menu__item_subscribe">
+        <div class="bottom-menu__title">узнайте первыми о&nbsp;новинках и&nbsp;скидках</div>
+    </li>
+</ul>
+</footer>
+
+{% endblock %}
+
