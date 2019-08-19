@@ -7,6 +7,7 @@ from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse, Http404
 from app import forms, models, base_auth
 from django.core.mail import send_mail
+from django.db.models import Sum
 
 ABOUT_PAGE = ("brend", "contacts", "rabota-u-nas")
 INFO_PAGE = ("dostavka", "faq", "idei", "oferta", "oplata", "politika-konfidencialnosti", "preorder", "rukovodstvo-po-pokupke", "samovyvoz", "vozvrattovar")
@@ -210,6 +211,40 @@ def korzina(request):
         {
             'title':'Корзина',
             'message':'бла бла бла',
+            'year':datetime.now().year,
+        }
+    )
+
+def korzina_get(request):
+    """Renders the contact page."""
+    itog = 16000
+    arr=[]
+    print(request.GET)
+    c = int(request.GET.get('c', 0))
+    ids = request.GET.get('ids[]')
+    print(ids)
+    cts = request.GET.get('cts[]')
+    print(c)
+    x=0
+    #korz = models.Variaciya.objects.filter(id__in=map(float, arr.split(',')))
+    #tovary = models.Variaciya.objects.filter(id__in=map(int, arr.split(','))).agregate('total') #.aggregate(total=Sum('count', field="count*cost"))['total']
+
+    while x<c:
+        print(ids[x])
+        t=models.Variaciya.objects.get(id=int(ids[x]))
+        #print(t.gallery)
+        t.total=t.tovar.cost*cts[x]
+        x+=1
+    tovary = models.Variaciya.objects.filter(id__in=ids)
+    #print(tovary)
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/api/korzina_get.html',
+        {
+            'title':'Корзина',
+            'message':'бла бла бла',
+            'korz': tovary,
             'year':datetime.now().year,
         }
     )

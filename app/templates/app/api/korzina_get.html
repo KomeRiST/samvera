@@ -1,0 +1,12 @@
+﻿<div class="row head"></div>
+{% for item in korz %}
+    <div class="row">
+        <div class="image"><img src="/media/{{ item.random_image }}" alt="{{item.tovar.title}}" /></div>
+        <div class="name">{{item.tovar.title}}</div>
+        <div class="cost">{{item.tovar.cost}}</div>
+        <div class="count">{{item.tovar.count}}</div>
+        <div class="summ">{{item.sum}}</div>
+        <div class="del">X</div>
+    </div>
+{% endfor %}
+<div class="itog">{{itog}}</div>

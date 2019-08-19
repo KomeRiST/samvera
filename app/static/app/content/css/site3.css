@@ -633,12 +633,17 @@ footer {
     -ms-flex-direction: row;
     -webkit-flex-direction: row;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    padding: 1rem;
-    text-align: center; }
+    padding: 1rem 0;
+    text-align: center;
+    color: black; }
     .korz-table .row .image {
       height: 100px;
       width: 70px; }
+      .korz-table .row .image img {
+        height: 100%; }
     .korz-table .row .name {
       text-align: left; }
     .korz-table .row .cost {
@@ -649,6 +654,11 @@ footer {
       /*width: 150px;*/ }
     .korz-table .row .del {
       width: 50px; }
+    .korz-table .row .itog {
+      min-height: 30px; }
+  .korz-table .itog {
+    background-color: grey;
+    color: black; }
 
 .korzcount {
   background-color: transparent;
@@ -1087,22 +1097,51 @@ footer {
 /*
     PAGES ABOUT
 */
-.about-screen {
+.about-screen, .about-screen_korz {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center; }
-  .about-screen:before {
+  .about-screen:before, .about-screen_korz:before {
     content: "";
-    background-image: url("/media/about.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed; }
 
+@media only screen and (max-width: 559px) {
+  .about-screen_korz {
+    min-height: 10vh !important;
+    padding: 2rem 0; } }
+
+@media only screen and (min-width: 560px) {
+  .about-screen_korz {
+    min-height: 30vh !important;
+    padding: 4rem 0; } }
+
+@media only screen and (min-width: 1440px) {
+  .about-screen_korz {
+    min-height: 50vh !important;
+    padding: 6rem 0; } }
+
+.about-screen_korz:before {
+  background-image: url("/media/about.png"); }
+
 .about-content {
   background-color: white; }
+
+.about-content_korz {
+  padding: 5rem; }
+  @media only screen and (max-width: 559px) {
+    .about-content_korz {
+      padding: 1rem; } }
+  @media only screen and (min-width: 560px) {
+    .about-content_korz {
+      padding: 3rem; } }
+  @media only screen and (min-width: 1440px) {
+    .about-content_korz {
+      padding: 5rem; } }
 
 .about-conteiner {
   width: 80%;

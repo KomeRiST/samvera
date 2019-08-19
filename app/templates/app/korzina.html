@@ -1,41 +1,53 @@
-﻿{% extends "app/layout.html" %}
+{% extends "app/layout.html" %}
 {% load staticfiles %}
 
 {% block content %}
-<div class="about-content">
+<div class="about-screen about-screen_korz">
+    <div class="about-title">{{ title }}</div>
+    <div class="about-title_descr">{{ message }}</div>
+</div>
+<div class="about-content about-content_korz">
     <div class="korz-table">
-<div class="row head"></div>
-<div class="row">
-<div class="image"></div>
-<div class="name"></div>
-<div class="cost"></div>
-<div class="count"></div>
-<div class="summ"></div>
-<div class="del"></div>
-</div>
-<div class="row">
-<div class="image"></div>
-<div class="name"></div>
-<div class="cost"></div>
-<div class="count"></div>
-<div class="summ"></div>
-<div class="del"></div>
-</div>
-<div class="row">
-<div class="image"></div>
-<div class="name"></div>
-<div class="cost"></div>
-<div class="count"></div>
-<div class="summ"></div>
-<div class="del"></div>
-</div>
-        <div class="itog"></div>
-</div>
+        <div class="korz-preload">Пожалуйста подаждите!</div>
+    </div>
 </div>
 {% endblock %}
 
 {% block scripts %}
 <script>
-
+    $(document).ready(function () {
+        $(".korz-preload").fadeIn();
+        K = JSON.parse(localStorage.getItem("korzina"));
+        if (K != null) {
+            var c = K.list.length;
+            if (c > 0) {
+                var ttt = [];
+                var cts = [];
+                var ids = [];
+                for (var i = 0; i < c; i++) {
+                    ids.push(K.list[i].id);
+                    cts.push(K.list[i].count);
+                }
+            }
+        }
+        var request = $.ajax({
+            url: "/korzinaget/",
+            method: "get",
+            data: {
+                'ids': ids,
+                'cts': cts,
+                'c': c,
+            },
+        });
+ 
+        request.done(function( msg ) {
+            $( ".korz-table" ).html( msg );
+        });
+ 
+        request.fail(function( jqXHR, textStatus ) {
+            alert( "Request failed: " + textStatus );
+        });
+        $(".korz-preload").fadeOut();
+    });
 </script>
 {% endblock %}

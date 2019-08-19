@@ -94,7 +94,7 @@ class Tovar(models.Model):
         verbose_name_plural = "Изделия"
 
 class Variaciya(models.Model):
-    tovar = models.ForeignKey(Tovar, on_delete=models.CASCADE)
+    tovar = models.ForeignKey(Tovar, on_delete=models.CASCADE, related_name='tovar')
     article = models.UUIDField(default=uuid.uuid4)
     color = {
         ColorField: {'widget': forms.TextInput(attrs={'type': 'color'})}
@@ -106,6 +106,13 @@ class Variaciya(models.Model):
 
     def __str__(self):
         return f'{self.tovar.title} [{str(self.color)} | {str(self.size)}]'
+    
+    @property
+    def random_image(self):
+        v = Variaciya.objects.filter(tovar=self.id).order_by('?')[:1]
+        print (v[0].id)
+        g = Gallery.objects.filter(product=v[0].id).order_by('?')[:1]
+        return g[0].image
 
     class Meta:
         verbose_name = "Вариация товара"
@@ -113,5 +120,5 @@ class Variaciya(models.Model):
 
 class Gallery(models.Model):
     image = models.ImageField(upload_to='gallery/')
-    product = models.ForeignKey(Variaciya, on_delete=models.CASCADE)
+    product = models.ForeignKey(Variaciya, on_delete=models.CASCADE, related_name="gallery")
 

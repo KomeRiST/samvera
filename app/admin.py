@@ -14,10 +14,12 @@ admin.site.register(OrderTovaryVariaciya)
 
 class ImageInline(admin.TabularInline):
     model = Gallery
+    extra = 1
+
 
 #@admin.register(Variaciya)
 class VariaciyaAdm(admin.ModelAdmin):
-    inline = [ImageInline]
+    inlines = [ImageInline,]
 
 admin.site.register(Variaciya, VariaciyaAdm)
 

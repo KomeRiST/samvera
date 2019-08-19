@@ -22,6 +22,7 @@ urlpatterns = [
     path('catalog/', views.catalog, name='catalog'),
     path('catalog/<str:page>', views.catalog),
     path('korzina/', views.korzina, name='korzina'),
+    path('korzinaget/', views.korzina_get, name='korzinaget'),
     path('login/',
          LoginView.as_view
          (
