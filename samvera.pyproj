@@ -4,7 +4,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>samvera</Name>
     <RootNamespace>samvera</RootNamespace>
-    <InterpreterId>MSBuild|samvera|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|samvera-env|$(MSBuildProjectFullPath)</InterpreterId>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <InterpreterArguments>
@@ -225,6 +225,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Interpreter Include="..\..\env\samvera-env\">
+      <Id>samvera-env</Id>
+      <Version>3.7</Version>
+      <Description>samvera-env (Python 3.7 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
     <Interpreter Include="samvera_env\samvera\">
       <Id>samvera</Id>
       <Version>3.6</Version>

@@ -1,7 +1,7 @@
 ﻿from django.contrib import admin
 from django import forms
 from app.models import *
-from nested_inline.admin import NestedModelAdmin, NestedStackedInline, NestedTabularInline
+#from nested_inline.admin import NestedModelAdmin, NestedStackedInline, NestedTabularInline
 
 admin.site.register(StatusOrder)
 admin.site.register(PotentialClient)
