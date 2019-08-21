@@ -4,7 +4,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>samvera</Name>
     <RootNamespace>samvera</RootNamespace>
-    <InterpreterId>MSBuild|samvera-env|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|samvera|$(MSBuildProjectFullPath)</InterpreterId>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <InterpreterArguments>
