@@ -19,7 +19,7 @@
             <p class="title">{{ item.title }}</p>
             <p class="cost">{{ item.cost }}</p>
             <p class="article">{{ item.article }}</p>
-            <div class="btn-base btn-add-korz" data-article="{{item.article}}" data-size="{{item.size}}" data-color="{{item.color}}" data-cost="{{item.cost}}" data-id="{{item.id}}" data-img="{{item.random_image}}" date-name="{{item.title}}" onclick="add(this)">
+            <div class="btn-base btn-add-korz" data-article="{{item.article}}" data-size="{{item.size}}" data-color="{{item.color}}" data-cost="{{item.cost}}" data-id="{{item.id}}" data-img="{{item.random_image}}" data-name="{{item.title}}" onclick="add(this)">
                 <p>В корзину</p>
             </div>
         </div>
@@ -47,20 +47,25 @@
                 article: e.getAttribute("data-article"),
                 count: 1,
         }
-        if (K.list.length > 0) {
-            for (var i = 0; i < K.list.length; i++) {
+        var len = K.list.length;
+        var hasTovat = false;
+        if (len > 0) {
+            for (var i = 0; i < len; i++) {
                 if (K.list[i].id == tovar.id && K.list[i].name == tovar.name) {
-                   K.list[i].count = parseInt(K.list[i].count) + parseInt(tovar.count);
-                } else {
-                    K.list.push(tovar);
+                    hasTovat = true;
+                    K.list[i].count = parseInt(K.list[i].count) + parseInt(tovar.count);
+                    break;
+                //} else {
+                //    K.list.push(tovar);
                 }
             }
-        } else {
+        };
+        if (hasTovat === false) {
             K.list.push(tovar);
         }
         localStorage.setItem("korzina", JSON.stringify(K));
         loadkorzina(false);
-    }
+        }
     //$(document).load(function() {
 
     //});

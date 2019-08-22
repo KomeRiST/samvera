@@ -584,12 +584,6 @@ footer {
     }
 
     .head {
-        font-weight: bold;
-        color: white;
-        background-color: black;
-    }
-
-    .row {
         display: flex;
         -ms-flex-direction: row;
         -webkit-flex-direction: row;
@@ -599,38 +593,56 @@ footer {
         width: 100%;
         padding: 1rem 0;
         text-align: center;
-        color: black;
+        font-weight: bold;
+        color: white;
+        background-color: black;
+    }
 
-        .image {
-            height: 100px;
-            width: 70px;
-            img {
-                height: 100%;
+    .rows {
+        .row {
+            display: flex;
+            -ms-flex-direction: row;
+            -webkit-flex-direction: row;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 1rem 0;
+            text-align: center;
+            color: black;
+
+            .image {
+                height: 100px;
+                width: 70px;
+
+                img {
+                    height: 100%;
+                }
             }
-        }
 
-        .name {
-            text-align: left;
-        }
+            .name {
+                text-align: left;
+            }
 
-        .cost {
-            /*width: 150px;*/
-        }
+            .cost {
+                /*width: 150px;*/
+            }
 
-        .count {
-            /*width: 150px;*/
-        }
+            .count {
+                /*width: 150px;*/
+            }
 
-        .summ {
-            /*width: 150px;*/
-        }
+            .summ {
+                /*width: 150px;*/
+            }
 
-        .del {
-            width: 50px;
-        }
+            .del {
+                width: 50px;
+            }
 
-        .itog {
-            min-height: 30px;
+            .itog {
+                min-height: 30px;
+            }
         }
     }
 

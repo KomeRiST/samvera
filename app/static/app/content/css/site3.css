@@ -625,10 +625,19 @@ footer {
     .korz-table {
       width: 1200px; } }
   .korz-table .head {
+    display: flex;
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 0;
+    text-align: center;
     font-weight: bold;
     color: white;
     background-color: black; }
-  .korz-table .row {
+  .korz-table .rows .row {
     display: flex;
     -ms-flex-direction: row;
     -webkit-flex-direction: row;
@@ -639,22 +648,22 @@ footer {
     padding: 1rem 0;
     text-align: center;
     color: black; }
-    .korz-table .row .image {
+    .korz-table .rows .row .image {
       height: 100px;
       width: 70px; }
-      .korz-table .row .image img {
+      .korz-table .rows .row .image img {
         height: 100%; }
-    .korz-table .row .name {
+    .korz-table .rows .row .name {
       text-align: left; }
-    .korz-table .row .cost {
+    .korz-table .rows .row .cost {
       /*width: 150px;*/ }
-    .korz-table .row .count {
+    .korz-table .rows .row .count {
       /*width: 150px;*/ }
-    .korz-table .row .summ {
+    .korz-table .rows .row .summ {
       /*width: 150px;*/ }
-    .korz-table .row .del {
+    .korz-table .rows .row .del {
       width: 50px; }
-    .korz-table .row .itog {
+    .korz-table .rows .row .itog {
       min-height: 30px; }
   .korz-table .itog {
     background-color: grey;

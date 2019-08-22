@@ -8,6 +8,8 @@ from django.http import HttpRequest, HttpResponse, Http404
 from app import forms, models, base_auth
 from django.core.mail import send_mail
 from django.db.models import Sum
+from django.forms import formset_factory
+import json
 
 ABOUT_PAGE = ("brend", "contacts", "rabota-u-nas")
 INFO_PAGE = ("dostavka", "faq", "idei", "oferta", "oplata", "politika-konfidencialnosti", "preorder", "rukovodstvo-po-pokupke", "samovyvoz", "vozvrattovar")
@@ -204,39 +206,53 @@ def catalog(request, page="catalog"):
 
 def korzina(request):
     """Renders the contact page."""
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'app/korzina.html',
-        {
-            'title':'Корзина',
-            'message':'бла бла бла',
-            'year':datetime.now().year,
-        }
-    )
+    if request.POST:
+        pass
+    else:
+        assert isinstance(request, HttpRequest)
+        return render(
+            request,
+            'app/korzina.html',
+            {
+                'title':'Корзина',
+                'message':'бла бла бла',
+                'year':datetime.now().year,
+            }
+        )
+
+def dictfetchall(cursor):
+    columns = [col[0] for col in cursor]
+    return [
+        dict(zip(columns, row))
+        for row in cursor.fetchall()
+    ]
 
 def korzina_get(request):
     """Renders the contact page."""
     itog = 16000
     arr=[]
-    print(request.GET)
-    c = int(request.GET.get('c', 0))
-    ids = request.GET.get('ids[]')
+    print ("body^ ", request.GET)
+    gt = request.GET.get('korzina')
+    print(gt)
+    spl = gt.split('|')
+    ids = spl[0]
     print(ids)
-    cts = request.GET.get('cts[]')
-    print(c)
+    cts = spl[1]
+    print(cts)
+    cts=cts.split(',')
+    ids=ids.split(',')
+    c=len(cts)
     x=0
     #korz = models.Variaciya.objects.filter(id__in=map(float, arr.split(',')))
     #tovary = models.Variaciya.objects.filter(id__in=map(int, arr.split(','))).agregate('total') #.aggregate(total=Sum('count', field="count*cost"))['total']
 
     while x<c:
-        print(ids[x])
+        print("цикл: ", ids[x])
         t=models.Variaciya.objects.get(id=int(ids[x]))
-        #print(t.gallery)
+        print(t.gallery)
         t.total=t.tovar.cost*cts[x]
         x+=1
-    tovary = models.Variaciya.objects.filter(id__in=ids)
-    #print(tovary)
+
     assert isinstance(request, HttpRequest)
     return render(
         request,
@@ -244,7 +260,7 @@ def korzina_get(request):
         {
             'title':'Корзина',
             'message':'бла бла бла',
-            'korz': tovary,
+            #'korz': var,
             'year':datetime.now().year,
         }
     )

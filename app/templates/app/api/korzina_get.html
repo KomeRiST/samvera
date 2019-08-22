@@ -9,4 +9,11 @@
         <div class="del">X</div>
     </div>
 {% endfor %}
+<div class="form">
+    <form action="." method="post">
+        {% csrf_token %}
+        {{ forms.as_p }}
+        <input type="submit" value="Submit" />
+    </form>
+</div>
 <div class="itog">{{itog}}</div>

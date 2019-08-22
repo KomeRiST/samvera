@@ -2,6 +2,7 @@
 Definition of models.
 """
 
+from django.core import validators
 from django.db import models
 import datetime
 import uuid
@@ -96,17 +97,28 @@ class Tovar(models.Model):
 class Variaciya(models.Model):
     tovar = models.ForeignKey(Tovar, on_delete=models.CASCADE, related_name='tovar')
     article = models.UUIDField(default=uuid.uuid4)
-    color = {
-        ColorField: {'widget': forms.TextInput(attrs={'type': 'color'})}
-    }
+    #color = models.CharField("Цвет", max_length=7)
+    #color = {
+    #    ColorField: {'widget': forms.TextInput(attrs={'type': 'color'})}
+    #}
+    color = ColorField('Цвет материала', default='#FF0000')
+    color_text = models.CharField("Название цвета", max_length=25, default='Красный')
     size = models.TextField("Размер", default="S")
     obmer = models.TextField("Обмеры")
     model = models.TextField("Параметры модели")
     #image = models.ForeignKey(Gallery, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.tovar.title} [{str(self.color)} | {str(self.size)}]'
+        return f'{self.tovar.title} [{str(self.color_text)} | {str(self.size)}]'
     
+    def colortile(self):
+        if self.color:
+            from django.utils.safestring import mark_safe
+            return mark_safe(u'<div style="background-color: {0}; \
+                height: 25px; width: 100px"></div>'.format(self.color))
+        return 'пусто'
+
+
     @property
     def random_image(self):
         v = Variaciya.objects.filter(tovar=self.id).order_by('?')[:1]
@@ -121,4 +133,13 @@ class Variaciya(models.Model):
 class Gallery(models.Model):
     image = models.ImageField(upload_to='gallery/')
     product = models.ForeignKey(Variaciya, on_delete=models.CASCADE, related_name="gallery")
+    # Вывод картинок в админке!
+    def image_img(self):
+        if self.image:
+            from django.utils.safestring import mark_safe
+            return mark_safe(u'<a href="{0}" target="_blank"><img src="{0}" width="100"/></a>'.format(self.image.url))
+        else:
+            return '(Нет изображения)'
+    image_img.short_description = 'Картинка'
+    image_img.allow_tags = True
 

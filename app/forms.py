@@ -27,3 +27,11 @@ class FormGallery(forms.ModelForm):
     class Meta:
         model = models.Gallery
         fields = "__all__"
+
+class FormKorzina(forms.ModelForm):
+    count = forms.NumberInput()
+    image = forms.ImageField()
+
+    class Meta:
+        model = models.Variaciya
+        fields = ['tovar', 'size', 'color']
