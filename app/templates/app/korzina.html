@@ -8,45 +8,66 @@
 </div>
 <div class="about-content about-content_korz">
     <div class="korz-table">
-        <div class="korz-preload">Пожалуйста подаждите!</div>
-    <div class="row head"></div>
+        <div class="korz-preload">Ваша корзина пуста</div>
+    <!--<div class="row head"></div>
         <div class="rows"></div>
-    <div class="itog"></div>
+    <div class="itog"></div>-->
     </div>
 </div>
 {% endblock %}
 
 {% block scripts %}
 <script>
-    $(document).ready(function () {
-        $(".korz-preload").fadeIn();
+    function get_korzina() {
+        $(".korz-preload").delay(500).fadeIn();
         K = JSON.parse(localStorage.getItem("korzina"));
         if (K != null) {
             var c = K.list.length;
             var t = "";
             if (c > 0) {
                 for (var i = 0; i < c; i++) {
-                    t = t + `<div class="row" data-id="${K.list[i].id}" data-article="${K.list[i].article}">\
-                    <div class="image"><img src="/media/${K.list[i].img}" alt="" /></div>\
-                    <div class="name">${K.list[i].name}</div>\
-                    <div class="cost">${K.list[i].cost}</div>\
-                    <div class="count">${K.list[i].count}</div>\
-                    <div class="summ">${parseInt(K.list[i].cost) * parseInt(K.list[i].count)}</div>\
-                    <div class="del" data-id="${i}" onclick="del(this)">X</div>\
-                </div>`
+                    //    t = t + `<div class="row" data-id="${K.list[i].id}" data-article="${K.list[i].article}">\
+                    //    <div class="image"><img src="/media/${K.list[i].img}" alt="" /></div>\
+                    //    <div class="name">${K.list[i].name} [${msg[i]}]</div>\
+                    //    <div class="cost">${K.list[i].cost}</div>\
+                    //    <div class="count">${K.list[i].count}</div>\
+                    //    <div class="summ">${parseInt(K.list[i].cost) * parseInt(K.list[i].count)}</div>\
+                    //    <div class="del" data-id="${i}" onclick="del(this)">X</div>\
+                    //</div>`
+                    //var ttt = [];
+                    cts = [];
+                    ids = [];
+                    for (var i = 0; i < c; i++) {
+                        ids.push(K.list[i].id);
+                        cts.push(K.list[i].count);
+                    }
                 }
-                //var ttt = [];
-                //var cts = [];
-                //var ids = [];
-                //for (var i = 0; i < c; i++) {
-                //    ids.push(K.list[i].id);
-                //    cts.push(K.list[i].count);
             }
             $(".rows").html(t)
         }
-        $(".korz-preload").fadeOut();
-    });
-    
+
+
+        var stroka = ids + '|' + cts
+        var request = $.ajax({
+            url: "/korzinaget/",
+            method: "get",
+            //contentType: 'application/json; charset=utf-8',
+            data: { korzina: stroka },
+            dataType: 'text',
+        });
+
+        request.done(function (msg) {
+            $(".korz-table").html(msg);
+            ids = null;
+            cts = null;
+            $(".korz-preload").delay(500).fadeOut();
+        });
+
+        request.fail(function (jqXHR, textStatus) {
+            alert("Request failed: " + textStatus);
+            $(".korz-preload").delay(500).fadeOut();
+        });
+    }
 
     function del(e) {
         var id = e.getAttribute("data-id");
@@ -56,23 +77,9 @@
         localStorage.setItem("korzina", JSON.stringify(K));
         loadkorzina(false);
         e.parentElement.remove();
+    get_korzina();
     }
 
-        //var stroka = ids + '|' + cts
-        //var request = $.ajax({
-        //    url: "/korzinaget/",
-        //    method: "get",
-        //    //contentType: 'application/json; charset=utf-8',
-        //    data: { korzina: stroka },
-        //    dataType: 'text',
-        //});
- 
-        //request.done(function( msg ) {
-        //    $( ".korz-table" ).html( msg );
-        //});
- 
-        //request.fail(function( jqXHR, textStatus ) {
-        //    alert( "Request failed: " + textStatus );
-        //});
+    get_korzina();
 </script>
 {% endblock %}

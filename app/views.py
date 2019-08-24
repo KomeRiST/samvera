@@ -10,6 +10,7 @@ from django.core.mail import send_mail
 from django.db.models import Sum
 from django.forms import formset_factory
 import json
+from django.core import serializers
 
 ABOUT_PAGE = ("brend", "contacts", "rabota-u-nas")
 INFO_PAGE = ("dostavka", "faq", "idei", "oferta", "oplata", "politika-konfidencialnosti", "preorder", "rukovodstvo-po-pokupke", "samovyvoz", "vozvrattovar")
@@ -243,16 +244,27 @@ def korzina_get(request):
     ids=ids.split(',')
     c=len(cts)
     x=0
+    itog=0
+    msg = []
     #korz = models.Variaciya.objects.filter(id__in=map(float, arr.split(',')))
     #tovary = models.Variaciya.objects.filter(id__in=map(int, arr.split(','))).agregate('total') #.aggregate(total=Sum('count', field="count*cost"))['total']
+    var = []
 
     while x<c:
         print("цикл: ", ids[x])
         t=models.Variaciya.objects.get(id=int(ids[x]))
+        #msg.append(f'{t.size} | {t.color}')
         print(t.gallery)
-        t.total=t.tovar.cost*cts[x]
+        #t.total=t.tovar.cost*cts[x]
+        #k = models.Korzina()
+        k = json.dumps(t)
+        print ("t = ", [k, ])
+        k.count=cts[x]
+        k.summ=int(k.count) * int(t.tovar.cost)
+        var.append(k)
+        itog = itog + k.summ
         x+=1
-
+    print("VAR: ", var)
     assert isinstance(request, HttpRequest)
     return render(
         request,
@@ -260,7 +272,8 @@ def korzina_get(request):
         {
             'title':'Корзина',
             'message':'бла бла бла',
-            #'korz': var,
+            'korz': var,
+            'itog': itog,
             'year':datetime.now().year,
         }
     )

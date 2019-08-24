@@ -662,9 +662,18 @@ footer {
     .korz-table .rows .row .summ {
       /*width: 150px;*/ }
     .korz-table .rows .row .del {
-      width: 50px; }
+      width: 50px;
+      cursor: pointer;
+      color: red; }
+      .korz-table .rows .row .del:hover {
+        color: black; }
     .korz-table .rows .row .itog {
       min-height: 30px; }
+    .korz-table .rows .row .color {
+      height: 1rem;
+      width: 1rem;
+      border: 1px solid #b0b0b0;
+      display: inline-block; }
   .korz-table .itog {
     background-color: grey;
     color: black; }

@@ -106,6 +106,7 @@ class Variaciya(models.Model):
     size = models.TextField("Размер", default="S")
     obmer = models.TextField("Обмеры")
     model = models.TextField("Параметры модели")
+    kolvo = models.SmallIntegerField("Количество на складах", default=0)
     #image = models.ForeignKey(Gallery, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -117,7 +118,12 @@ class Variaciya(models.Model):
             return mark_safe(u'<div style="background-color: {0}; \
                 height: 25px; width: 100px"></div>'.format(self.color))
         return 'пусто'
-
+    
+    def colortile_korz(self):
+        if self.color:
+            from django.utils.safestring import mark_safe
+            return mark_safe(u'<div style="background-color: {0};" class="color"></div> <small>({1})</small>'.format(self.color, self.color_text))
+        return 'пусто'
 
     @property
     def random_image(self):
@@ -129,6 +135,25 @@ class Variaciya(models.Model):
     class Meta:
         verbose_name = "Вариация товара"
         verbose_name_plural = "Вариации товаров"
+
+class Korzina(Variaciya):
+    #def __init__(self):
+    #    # Необходимо вызвать метод инициализации родителя.
+    #    # В Python 3.x это делается при помощи функции super()
+    #    super().__init__()
+
+    #v = models.ForeignKey(Variaciya, on_delete=models.DO_NOTHING)
+
+    count = models.SmallIntegerField("Количество")
+    summ = models.SmallIntegerField("Сумма")
+
+    #@property
+    #def summ(self):
+    #    s = self.count * self.tovar.cost
+    #    return str(s)
+
+    class Meta:
+        managed = False
 
 class Gallery(models.Model):
     image = models.ImageField(upload_to='gallery/')
