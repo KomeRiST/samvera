@@ -4,7 +4,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>samvera</Name>
     <RootNamespace>samvera</RootNamespace>
-    <InterpreterId>MSBuild|samvera-env|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|samvera|$(MSBuildProjectFullPath)</InterpreterId>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <InterpreterArguments>
@@ -46,17 +46,6 @@
     <Compile Include="app\migrations\0002_auto_20190817_1613.py" />
     <Compile Include="app\migrations\0003_auto_20190817_1703.py" />
     <Compile Include="app\migrations\0004_auto_20190817_1733.py" />
-    <Compile Include="app\migrations\0005_auto_20190817_1924.py" />
-    <Compile Include="app\migrations\0006_auto_20190817_2014.py" />
-    <Compile Include="app\migrations\0007_auto_20190817_2051.py" />
-    <Compile Include="app\migrations\0008_auto_20190817_2055.py" />
-    <Compile Include="app\migrations\0009_auto_20190817_2107.py" />
-    <Compile Include="app\migrations\0010_auto_20190817_2253.py" />
-    <Compile Include="app\migrations\0011_auto_20190817_2312.py" />
-    <Compile Include="app\migrations\0012_auto_20190820_0034.py" />
-    <Compile Include="app\migrations\0013_auto_20190821_2210.py" />
-    <Compile Include="app\migrations\0014_auto_20190821_2217.py" />
-    <Compile Include="app\migrations\0015_auto_20190822_2320.py" />
     <Compile Include="app\models.py" />
     <Compile Include="app\tests.py" />
     <Compile Include="app\views.py" />
@@ -179,6 +168,8 @@
     <Content Include="app\templates\app\catalog\catalog.html" />
     <Content Include="app\templates\app\catalog\sale.html" />
     <Content Include="app\templates\app\catalog\new.html" />
+    <Content Include="app\templates\app\email-order_template.html" />
+    <Content Include="app\templates\app\good_order.html" />
     <Content Include="app\templates\app\index.html" />
     <Content Include="app\templates\app\info\dostavka.html" />
     <Content Include="app\templates\app\info\faq.html" />
@@ -191,6 +182,7 @@
     <Content Include="app\templates\app\info\samovyvoz.html" />
     <Content Include="app\templates\app\info\vozvrattovar.html" />
     <Content Include="app\templates\app\korzina.html" />
+    <Content Include="app\templates\app\new_order.html" />
     <Content Include="app\templates\app\slider.html" />
     <Content Include="app\templates\app\thing.html" />
     <Content Include="compilerconfig.json.defaults">

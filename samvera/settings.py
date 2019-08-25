@@ -28,11 +28,11 @@ DEBUG = True
 ALLOWED_HOSTS = ['0.0.0.0', '192.168.0.11', '192.168.0.12', '127.0.0.1', 'local.site.my', '192.168.0.99']
 
 # EMAIL settings
-DEFAULT_FROM_EMAIL = 'komerist@bk.ru'
+DEFAULT_FROM_EMAIL = 'komerist1993-93@mail.ru'
 EMAIL_HOST = "smtp.mail.ru"
 EMAIL_PORT = 2525
-EMAIL_HOST_USER = "komerist@bk.ru"
-EMAIL_HOST_PASSWORD = "KrMkh993z9n"
+EMAIL_HOST_USER = "komerist1993-93@mail.ru"
+EMAIL_HOST_PASSWORD = "KrMkh999z9n"
 EMAIL_USE_TLS = True
 
 

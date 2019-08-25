@@ -1,0 +1,69 @@
+{% extends "app/layout.html" %}
+{% load staticfiles %}
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<div class="neworder-screen">
+    <div class="neworder-conteiner">
+        <div class="neworder-title">{{title}}</div>
+        <br />
+        <div class="neworder-title_descr">{{message}}</div>
+        <br />
+        {{year}}<br />
+        {{ korzina }}
+    </div>
+</div>
+<div class="neworder-content">
+    <form action="." method="post">
+        {% csrf_token %}
+        <input name="korzina" type="hidden" value="{{korzina}}">
+        {{ form.non_field_errors }}
+        <div class="field_title">
+            <p>Как к Вам обращаться?</p>
+        </div>
+        <div class="fieldWrapper">
+            {{ form.last_name.errors }}
+            <!--<label for="{{ form.last_name.id_for_label }}">Фамилия</label>-->
+            {{ form.last_name }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.first_name.errors }}
+            <!--<label for="{{ form.first_name.id_for_label }}">Имя Отчество</label>-->
+            {{ form.first_name }}
+        </div>
+        <div class="field_title">
+            <p>Укажите Ваш телефон</p>
+        </div>
+        <div class="fieldWrapper">
+            {{ form.phone.errors }}
+            <!--<label for="{{ form.phone.id_for_label }}">Мобильный телефон</label>-->
+            {{ form.phone }}
+            <div class="field_descr">
+                <p>Необходим для связи с Вами и подтверждения заказа</p>
+            </div>
+        </div>
+        <div class="field_title">
+            <p>Ваш email (электронный адрес)</p>
+        </div>
+        <div class="fieldWrapper">
+            {{ form.email.errors }}
+            <!--<label for="{{ form.email.id_for_label }}">Электронный адрес (email)</label>-->
+            {{ form.email }}
+            <div class="field_descr">
+                <p>Необходим для отправки уведомлений о статусе заказа</p>
+            </div>
+        </div>
+        <button type="submit" class="btn-base btn-submit"><p>Подтвердить заказ товара</p></button>
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'app/scripts/jquery.maskedinput.js' %}"></script>
+<script>
+    $(function () {
+        $("#id_phone").mask("8 (999) 999-9999");
+    });
+</script>
+{% endblock %}

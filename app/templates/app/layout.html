@@ -250,9 +250,9 @@ nav.addEventListener('keydown', e => {
         var count = 0;
         K = JSON.parse(localStorage.getItem("korzina"));
         if (K != null)  {
-            if (K.list.length > 0) {
-                for (var i = 0; i < K.list.length; i++) {
-                    count = count + parseInt(K.list[i].count);
+            if (K.l.length > 0) {
+                for (var i = 0; i < K.l.length; i++) {
+                    count = count + parseInt(K.l[i].count);
                 }
             }
         }
@@ -265,9 +265,10 @@ nav.addEventListener('keydown', e => {
         }
     }
     $(window).on('load', function () {
-        loadkorzina();
         var $preloader = $('#p_prldr');
-        $preloader.delay(500).fadeOut('slow');
+        $preloader.delay(500).fadeOut(1000);
+
+        loadkorzina();
 
         var $preloader = $('.slide .main-text');
         $preloader.delay(500).fadeIn(1000);

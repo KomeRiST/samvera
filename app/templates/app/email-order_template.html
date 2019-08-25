@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/css/site3.css' %}" />
+<div class="catalog-content">
+    <br />
+    {% for t in order.tovary.all %}
+    <br />
+        <div class="title">
+            {{ t.tovar.title }}
+        </div>
+        {% for v in t.variacii.all %}
+        <br />
+        <div class="container-item" style="background-image: url('/media/{{v.variaciya.random_image}}')"></div>
+        <div class="">
+            <div class="cost">Размер: {{ v.variaciya.size }}</div>
+            <div class="cost">  Цвет: {{ v.variaciya.colortile_korz }}</div>
+            <div class="cost"><small>{{ t.tovar.cost }} р. * {{ v.count }} шт. = {{ v.summ }}</small></div>
+        </div>
+        {% endfor %}
+    {% endfor %}
+</div>
