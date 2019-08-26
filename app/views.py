@@ -4,7 +4,7 @@ Definition of views.
 from django.core.exceptions import ObjectDoesNotExist
 
 from datetime import datetime
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpRequest, HttpResponse, Http404
 from app import forms, models, base_auth
 from django.contrib.auth.models import User
@@ -122,14 +122,16 @@ def contact(request):
         }
     )
 
-def things(request):
+def thing(request, id):
     """Renders the contact page."""
+    t = get_object_or_404(models.Tovar, pk=id)
     assert isinstance(request, HttpRequest)
     return render(
         request,
         'app/thing.html',
         {
-            'title':'Contact',
+            'title':t.title,
+            'thing': t,
             'message':'Your contact page.',
             'year':datetime.now().year,
         }

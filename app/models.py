@@ -93,6 +93,13 @@ class Tovar(models.Model):
         g = Gallery.objects.filter(product=v[0].id).order_by('?')[:1]
         return g[0].image
 
+    
+    def sizes(self):
+        s = ""
+        for i in self.variacii.all():
+            s=s+i.size_tag()
+        return s
+
     class Meta:
         verbose_name = "Изделие"
         verbose_name_plural = "Изделия"
@@ -127,6 +134,10 @@ class Variaciya(models.Model):
             from django.utils.safestring import mark_safe
             return mark_safe(u'<div style="background-color: {0};" class="color"></div> <small>({1})</small>'.format(self.color, self.color_text))
         return 'пусто'
+
+    def size_tag(self):
+        from django.utils.safestring import mark_safe
+        return mark_safe(f'<div style="padding: .5rem; background: 1px solid gray; border-radius: .5rem;">{self.size}</div>')
 
     @property
     def random_image(self):

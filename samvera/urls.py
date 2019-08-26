@@ -15,7 +15,7 @@ from django.conf.urls import include
 urlpatterns = [
     path('', views.home, name='home'),
     path('contact/', views.contact, name='contact'),
-    path('things/', views.things, name='things'),
+    path('thing/<int:id>', views.thing, name='thing'),
     path('post/<str:code>/', views.post, name='post'),
     path('about/<str:page>', views.about, name='about'),
     path('info/<str:page>', views.info, name='info'),
