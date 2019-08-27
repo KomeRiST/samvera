@@ -1,0 +1,24 @@
+﻿{% extends "app/layout.html" %}
+{% load staticfiles %}
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<div class="neworder-screen">
+    <div class="neworder-conteiner">
+        <div class="neworder-title">{{title}}</div>
+        <br />
+        <div class="neworder-title_descr">{{message}}</div>
+        <br />
+        {{year}}
+    </div>
+</div>
+<div class="neworder-content">
+    {{mess}}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+</script>
+{% endblock %}
