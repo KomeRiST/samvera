@@ -1290,6 +1290,13 @@ footer {
           font-size: 72px; } }
     .thing-content .info .content {
       display: flex; }
+      .thing-content .info .content .sizes {
+        display: flex;
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+        flex-direction: row;
+        -webkit-justify-content: space-around;
+        justify-content: space-around; }
       @media only screen and (max-width: 767px) {
         .thing-content .info .content {
           -ms-flex-direction: column;

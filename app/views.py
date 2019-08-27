@@ -137,6 +137,18 @@ def thing(request, id):
         }
     )
 
+def getthingcolors(request, tovar, size):
+    """Renders the contact page."""
+    t = get_object_or_404(models.Tovar, pk=tovar)
+    print("tovar = ", t)
+    r = t.variacii.filter(size=size, kolvo__gt=0)
+    print("FILTER SIZE = ", r)
+    st = ""
+    for v in r:
+        st = st + v.colortile_korz()
+    assert isinstance(request, HttpRequest)
+    return HttpResponse(st)
+
 def post(request, code):
     if request.method == 'POST':
         form = forms.Form_PotentialClient(request.POST)

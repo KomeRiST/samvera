@@ -164,6 +164,7 @@
     <Content Include="app\templates\app\about\brend.html" />
     <Content Include="app\templates\app\about\contacts.html" />
     <Content Include="app\templates\app\about\rabota-u-nas.html" />
+    <Content Include="app\templates\app\api\getthingcolors.html" />
     <Content Include="app\templates\app\api\korzina_get.html" />
     <Content Include="app\templates\app\catalog\catalog.html" />
     <Content Include="app\templates\app\catalog\sale.html" />

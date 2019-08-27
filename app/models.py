@@ -4,6 +4,7 @@ Definition of models.
 
 from django.core import validators
 from django.db import models
+from django.db.models import Count
 import datetime
 import uuid
 from django import forms
@@ -96,8 +97,12 @@ class Tovar(models.Model):
     
     def sizes(self):
         s = ""
-        for i in self.variacii.all():
-            s=s+i.size_tag()
+        vs = self.variacii.values('size').annotate(Count('id')).order_by()
+        print("vs = ", vs)
+        for i in vs:
+            print("I = ", i)
+            sz = i['size']
+            s=s+f'<div id="size-{sz}" data-tovar="{self.id}" data-size="{sz}" style="padding: .5rem; background: 1px solid gray; border-radius: .5rem;">{sz}</div>'
         return s
 
     class Meta:
@@ -137,7 +142,7 @@ class Variaciya(models.Model):
 
     def size_tag(self):
         from django.utils.safestring import mark_safe
-        return mark_safe(f'<div style="padding: .5rem; background: 1px solid gray; border-radius: .5rem;">{self.size}</div>')
+        return mark_safe(f'<div id="size-{self.size}" data-tovar="{self.tovar.id}" data-size="{self.size}" style="padding: .5rem; background: 1px solid gray; border-radius: .5rem;">{self.size}</div>')
 
     @property
     def random_image(self):

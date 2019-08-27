@@ -1172,6 +1172,15 @@ footer {
         .content {
             display: flex;
 
+            .sizes {
+                display: flex;
+                -ms-flex-direction: row;
+                -webkit-flex-direction: row;
+                flex-direction: row;
+                -webkit-justify-content: space-around;
+                justify-content: space-around;
+            }
+
             @include mq("tablet", max) {
                 -ms-flex-direction: column;
                 -webkit-flex-direction: column;

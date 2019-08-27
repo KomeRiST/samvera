@@ -26,7 +26,7 @@
                 <p>Размеры</p>
                 <div class="sizes">{{thing.sizes|safe}}</div>
                 <p>Цвета</p>
-                <div class="colors">{{thing.colortile_korz}}</div>
+                <div class="colors">{{thing.colortile_korz|safe}}</div>
                 <div class="cost">
                     <p>Цена: {{thing.cost}}</p>
                 </div>
@@ -39,6 +39,27 @@
 
 {% block scripts %} 
     <script>
+    function getcolors(t, s) {
+        var request = $.ajax({
+            url: `/getthingcolors/${t}/${s}/`,
+            method: "get",
+            // contentType: 'application/json; charset=utf-8',
+            // data: { korzina: stroka },
+            // dataType: 'text',
+        });
+
+        request.done(function (msg) {
+            $(".colors").html(msg);
+        });
+
+        request.fail(function (jqXHR, textStatus) {
+            $(".colors").html(`Извините, произошла ошибка ${jqXHR}\n${textStatus}`);
+        });
+    }
+    $('div[id^="size-"]').click(function () {
+        getcolors(this.getAttribute("data-tovar"), this.getAttribute("data-size"));
+    });
+
     function add(e) {
         K = JSON.parse(localStorage.getItem("korzina"));
         if (K == null) {
