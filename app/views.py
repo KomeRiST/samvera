@@ -1,16 +1,19 @@
 """
 Definition of views.
 """
+from django.core.exceptions import ObjectDoesNotExist
 
 from datetime import datetime
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpRequest, HttpResponse, Http404
 from app import forms, models, base_auth
+from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.db.models import Sum
 from django.forms import formset_factory
 import json
 from django.core import serializers
+from django.template.loader import render_to_string
 
 ABOUT_PAGE = ("brend", "contacts", "rabota-u-nas")
 INFO_PAGE = ("dostavka", "faq", "idei", "oferta", "oplata", "politika-konfidencialnosti", "preorder", "rukovodstvo-po-pokupke", "samovyvoz", "vozvrattovar")
@@ -119,14 +122,16 @@ def contact(request):
         }
     )
 
-def things(request):
+def thing(request, id):
     """Renders the contact page."""
+    t = get_object_or_404(models.Tovar, pk=id)
     assert isinstance(request, HttpRequest)
     return render(
         request,
         'app/thing.html',
         {
-            'title':'Contact',
+            'title':t.title,
+            'thing': t,
             'message':'Your contact page.',
             'year':datetime.now().year,
         }
@@ -221,17 +226,132 @@ def korzina(request):
             }
         )
 
-def dictfetchall(cursor):
-    columns = [col[0] for col in cursor]
-    return [
-        dict(zip(columns, row))
-        for row in cursor.fetchall()
-    ]
+def new_order(request):
+    """ Рендер страницы подтверждения заказа """
+    if request.POST:
+
+        first_name = request.POST.get("first_name")
+        last_name = request.POST.get("last_name")
+        email = request.POST.get("email")
+        phone = request.POST.get("phone")
+
+
+        assert isinstance(request, HttpRequest)
+        return render(
+            request,
+            'app/good_order.html',
+            {
+                'title':'Спасибо за оформление заказа<br/>Номер Вашего заказа: {{number_order}}',
+                'message':f'В ближайшее время с Вами свяжутся для подтверждения заказа {email}',
+                'year':datetime.now().year,
+            }
+        )
+    else:
+        assert isinstance(request, HttpRequest)
+        return render(
+            request,
+            'app/new_order.html',
+            {
+                'title':'Оформление заказа',
+                'message':'Проверте состав заказа, введите реквизиты и подтвердите оформление заказа',
+                'form': forms.OrderForm,
+                'korzina': request.GET.get("korzina"),
+                'year':datetime.now().year,
+            }
+        )
+    
+def get_order(request):
+    """ Рендер страницы подтверждения заказа """
+    if request.method == 'POST':
+        try:
+            # Проверить пользователя по его телефону
+            user = User.objects.get(username = request.POST['phone'], email = request.POST['email'])
+        except ObjectDoesNotExist:
+            # Создать пользователя
+            password =  User.objects.make_random_password()
+            user = User.objects.create_user(request.POST['phone'], request.POST['email'], password)
+            user.first_name = request.POST['first_name']
+            user.last_name = request.POST['last_name']
+            user.save()
+        # Создать заказ
+        order = models.Orders()
+        order.client = user
+        order.status = models.StatusOrder.objects.get(id=2) # Принят в обработку
+        order.save()
+        korz = request.POST['korzina']
+
+        # korz = {"l": [{"id": 1, "count": "1"}, {"id": 2, "count": "2"}]}
+        korz = json.loads(korz)
+        for item in korz['l']:
+            pass
+            #print("цикл: ", ids[x])
+            try:
+                if item['id'] != '':
+                    t=models.Variaciya.objects.get(id=int(item['id']))
+
+                    ordertovar = models.OrderTovary()
+                    ordertovar.order = order
+                    ordertovar.tovar = t.tovar
+                    ordertovar.save()
+
+                    ordertovarvariaciya = models.OrderTovaryVariaciya()
+                    ordertovarvariaciya.ordertovar = ordertovar
+                    ordertovarvariaciya.variaciya = t
+                    ordertovarvariaciya.count = int(item['count'])
+                    ordertovarvariaciya.save()
+
+                else:
+                    ids.pop(x)
+
+            except ObjectDoesNotExist:
+                print("Either the entry or blog doesn't exist.")
+                ids.pop(x)
+
+        # Отправить на почту оператора состав заказа с реквизитами клиента для связи с ним и пдт заказа. , 'viktoleon@bk.ru'
+        html_message = render_to_string(
+            'app/email-order_template.html',
+            {
+                'order': order,
+            }
+        )
+        print("html_message = \n")
+        print(html_message)
+        send_mail("Новая заявка!!!", f"ФИО {user.last_name} {user.first_name}\n\
+                Email {user.email}\n\
+                Тел. {user.username}\n\
+                \n\
+                ", 'komerist1993-93@mail.ru', ['komerist1993-93@mail.ru'], html_message=html_message)
+
+        # Отправить на почту клиенту уведомление о формировании заказа.
+        
+        assert isinstance(request, HttpRequest)
+        return render(
+            request,
+            'app/good_order.html',
+            {
+                'title':'Заказ принят на обработку',
+                'message':'Спасибо за оформление заказа. С Вами скоро свяжутся.',
+                'mess': html_message,
+                'year':datetime.now().year,
+            }
+        )
+    else:
+        assert isinstance(request, HttpRequest)
+        return render(
+            request,
+            'app/new_order.html',
+            {
+                'title':'Оформление заказа',
+                'message':'Проверте состав заказа, введите реквизиты и подтвердите оформление заказа',
+                'form': forms.OrderForm,
+                'korzina': request.GET.get("korzina"),
+                'year':datetime.now().year,
+            }
+        )
+
 
 def korzina_get(request):
     """Renders the contact page."""
-    itog = 16000
-    arr=[]
     print ("body^ ", request.GET)
     gt = request.GET.get('korzina')
     print(gt)
@@ -242,28 +362,37 @@ def korzina_get(request):
     print(cts)
     cts=cts.split(',')
     ids=ids.split(',')
-    c=len(cts)
-    x=0
+    x=len(cts)-1
     itog=0
     msg = []
     #korz = models.Variaciya.objects.filter(id__in=map(float, arr.split(',')))
     #tovary = models.Variaciya.objects.filter(id__in=map(int, arr.split(','))).agregate('total') #.aggregate(total=Sum('count', field="count*cost"))['total']
     var = []
-
-    while x<c:
+    #{"list":[{"id":"2","count":1}]}
+    kor = {}
+    kor['l'] = list()
+    while x>=0:
         print("цикл: ", ids[x])
-        t=models.Variaciya.objects.get(id=int(ids[x]))
-        #msg.append(f'{t.size} | {t.color}')
-        print(t.gallery)
-        #t.total=t.tovar.cost*cts[x]
-        #k = models.Korzina()
-        k = json.dumps(t)
-        print ("t = ", [k, ])
-        k.count=cts[x]
-        k.summ=int(k.count) * int(t.tovar.cost)
-        var.append(k)
-        itog = itog + k.summ
-        x+=1
+        try:
+            i = ids[x]
+            if len(i) > 0:
+                t=models.Variaciya.objects.get(id=int(i))
+                print(t.gallery)
+                k = models.Korzina()
+                k = t
+                k.count=cts[x]
+                k.summ=int(k.count) * int(t.tovar.cost)
+                var.append(k)
+                itog = itog + k.summ
+                kor['l'].append({'id':t.id, 'count': cts[x]})
+            else:
+                ids.pop(x)
+
+        except ObjectDoesNotExist:
+            print("Either the entry or blog doesn't exist.")
+            ids.pop(x)
+        x-=1
+
     print("VAR: ", var)
     assert isinstance(request, HttpRequest)
     return render(
@@ -272,6 +401,7 @@ def korzina_get(request):
         {
             'title':'Корзина',
             'message':'бла бла бла',
+            'kor': json.dumps(kor),
             'korz': var,
             'itog': itog,
             'year':datetime.now().year,

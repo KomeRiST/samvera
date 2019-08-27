@@ -62,13 +62,21 @@
   background-color: black; }
 
 .btn-base {
-  border: 1px solid white;
-  background-color: black;
-  color: white;
-  cursor: pointer; }
+  border: 1px solid black;
+  background-color: transparent;
+  color: gray;
+  cursor: pointer;
+  display: inline-block; }
   .btn-base:hover * {
     background-color: white;
     color: black; }
+
+.btn-submit {
+  margin-top: 2rem;
+  background-color: #000000;
+  color: #b0b0b0; }
+  .btn-submit p {
+    padding: .5rem 1rem; }
 
 body {
   margin: 0;
@@ -478,6 +486,72 @@ body {
         list-style: none;
         margin-top: 5px; }
 
+.neworder-content form {
+  padding: 2rem;
+  border: 1px solid black; }
+  @media only screen and (max-width: 767px) {
+    .neworder-content form {
+      border: none; } }
+  .neworder-content form .field_title {
+    margin-top: 1rem; }
+    @media only screen and (min-width: 300px) {
+      .neworder-content form .field_title {
+        font-size: 20px; } }
+    @media only screen and (min-width: 480px) {
+      .neworder-content form .field_title {
+        font-size: 20px; } }
+    @media only screen and (min-width: 560px) {
+      .neworder-content form .field_title {
+        font-size: 22px; } }
+    @media only screen and (min-width: 640px) {
+      .neworder-content form .field_title {
+        font-size: 24px; } }
+    @media only screen and (min-width: 768px) {
+      .neworder-content form .field_title {
+        font-size: 26px; } }
+    @media only screen and (min-width: 1024px) {
+      .neworder-content form .field_title {
+        font-size: 26px; } }
+    @media only screen and (min-width: 1248px) {
+      .neworder-content form .field_title {
+        font-size: 28px; } }
+    @media only screen and (min-width: 1440px) {
+      .neworder-content form .field_title {
+        font-size: 28px; } }
+    .neworder-content form .field_title p {
+      color: black; }
+  .neworder-content form .fieldWrapper {
+    padding: .5rem 0px; }
+    .neworder-content form .fieldWrapper input {
+      padding: 0.3rem 0.75rem;
+      border: 1px solid gray;
+      background-color: transparent;
+      border-radius: .25rem; }
+      @media only screen and (min-width: 300px) {
+        .neworder-content form .fieldWrapper input {
+          font-size: 16px; } }
+      @media only screen and (min-width: 480px) {
+        .neworder-content form .fieldWrapper input {
+          font-size: 16px; } }
+      @media only screen and (min-width: 560px) {
+        .neworder-content form .fieldWrapper input {
+          font-size: 16px; } }
+      @media only screen and (min-width: 640px) {
+        .neworder-content form .fieldWrapper input {
+          font-size: 18px; } }
+      @media only screen and (min-width: 768px) {
+        .neworder-content form .fieldWrapper input {
+          font-size: 18px; } }
+      @media only screen and (min-width: 1024px) {
+        .neworder-content form .fieldWrapper input {
+          font-size: 18px; } }
+      @media only screen and (min-width: 1248px) {
+        .neworder-content form .fieldWrapper input {
+          font-size: 20px; } }
+      @media only screen and (min-width: 1440px) {
+        .neworder-content form .fieldWrapper input {
+          font-size: 20px; } }
+
 /*
     FORM
     форма на главной
@@ -669,14 +743,15 @@ footer {
         color: black; }
     .korz-table .rows .row .itog {
       min-height: 30px; }
-    .korz-table .rows .row .color {
-      height: 1rem;
-      width: 1rem;
-      border: 1px solid #b0b0b0;
-      display: inline-block; }
   .korz-table .itog {
     background-color: grey;
     color: black; }
+
+.color {
+  height: 1rem;
+  width: 1rem;
+  border: 1px solid #b0b0b0;
+  display: inline-block; }
 
 .korzcount {
   background-color: transparent;
@@ -940,16 +1015,16 @@ footer {
       color: white; } }
   @media only screen and (min-width: 300px) {
     .info-screen .info-title_descr {
-      font-size: 14px; } }
+      font-size: 16px; } }
   @media only screen and (min-width: 480px) {
     .info-screen .info-title_descr {
-      font-size: 14px; } }
+      font-size: 16px; } }
   @media only screen and (min-width: 560px) {
     .info-screen .info-title_descr {
-      font-size: 14px; } }
+      font-size: 18px; } }
   @media only screen and (min-width: 640px) {
     .info-screen .info-title_descr {
-      font-size: 22px; } }
+      font-size: 20px; } }
   @media only screen and (min-width: 768px) {
     .info-screen .info-title_descr {
       font-size: 22px; } }
@@ -966,7 +1041,7 @@ footer {
 /*
     PAGES CATALOG
 */
-.catalog-screen {
+.catalog-screen, .neworder-screen, .thing-screen {
   height: 100vh;
   background-image: url("/media/catalog.png");
   background-position: center;
@@ -977,10 +1052,66 @@ footer {
   flex-direction: column;
   justify-content: center; }
 
-.catalog-conteiner {
+.catalog-conteiner, .neworder-conteiner, .thing-conteiner {
   background-color: rgba(0, 0, 0, 0.75); }
+  @media only screen and (min-width: 300px) {
+    .catalog-conteiner .thing-title, .neworder-conteiner .thing-title, .thing-conteiner .thing-title {
+      font-size: 30px;
+      color: white; } }
+  @media only screen and (min-width: 480px) {
+    .catalog-conteiner .thing-title, .neworder-conteiner .thing-title, .thing-conteiner .thing-title {
+      font-size: 30px;
+      color: white; } }
+  @media only screen and (min-width: 560px) {
+    .catalog-conteiner .thing-title, .neworder-conteiner .thing-title, .thing-conteiner .thing-title {
+      font-size: 32px;
+      color: white; } }
+  @media only screen and (min-width: 640px) {
+    .catalog-conteiner .thing-title, .neworder-conteiner .thing-title, .thing-conteiner .thing-title {
+      font-size: 32px;
+      color: white; } }
+  @media only screen and (min-width: 768px) {
+    .catalog-conteiner .thing-title, .neworder-conteiner .thing-title, .thing-conteiner .thing-title {
+      font-size: 68px;
+      color: white; } }
+  @media only screen and (min-width: 1024px) {
+    .catalog-conteiner .thing-title, .neworder-conteiner .thing-title, .thing-conteiner .thing-title {
+      font-size: 68px;
+      color: white; } }
+  @media only screen and (min-width: 1248px) {
+    .catalog-conteiner .thing-title, .neworder-conteiner .thing-title, .thing-conteiner .thing-title {
+      font-size: 72px;
+      color: white; } }
+  @media only screen and (min-width: 1440px) {
+    .catalog-conteiner .thing-title, .neworder-conteiner .thing-title, .thing-conteiner .thing-title {
+      font-size: 72px;
+      color: white; } }
+  @media only screen and (min-width: 300px) {
+    .catalog-conteiner .thing-title_descr, .neworder-conteiner .thing-title_descr, .thing-conteiner .thing-title_descr {
+      font-size: 16px; } }
+  @media only screen and (min-width: 480px) {
+    .catalog-conteiner .thing-title_descr, .neworder-conteiner .thing-title_descr, .thing-conteiner .thing-title_descr {
+      font-size: 16px; } }
+  @media only screen and (min-width: 560px) {
+    .catalog-conteiner .thing-title_descr, .neworder-conteiner .thing-title_descr, .thing-conteiner .thing-title_descr {
+      font-size: 18px; } }
+  @media only screen and (min-width: 640px) {
+    .catalog-conteiner .thing-title_descr, .neworder-conteiner .thing-title_descr, .thing-conteiner .thing-title_descr {
+      font-size: 20px; } }
+  @media only screen and (min-width: 768px) {
+    .catalog-conteiner .thing-title_descr, .neworder-conteiner .thing-title_descr, .thing-conteiner .thing-title_descr {
+      font-size: 22px; } }
+  @media only screen and (min-width: 1024px) {
+    .catalog-conteiner .thing-title_descr, .neworder-conteiner .thing-title_descr, .thing-conteiner .thing-title_descr {
+      font-size: 22px; } }
+  @media only screen and (min-width: 1248px) {
+    .catalog-conteiner .thing-title_descr, .neworder-conteiner .thing-title_descr, .thing-conteiner .thing-title_descr {
+      font-size: 24px; } }
+  @media only screen and (min-width: 1440px) {
+    .catalog-conteiner .thing-title_descr, .neworder-conteiner .thing-title_descr, .thing-conteiner .thing-title_descr {
+      font-size: 24px; } }
 
-.catalog-content {
+.catalog-content, .neworder-content, .thing-content {
   background-color: whitesmoke;
   min-height: 100vh;
   display: flex;
@@ -991,7 +1122,7 @@ footer {
   flex-wrap: wrap;
   align-content: center;
   justify-content: center; }
-  .catalog-content .container-item {
+  .catalog-content .container-item, .catalog-content .neworder-item, .neworder-content .container-item, .neworder-content .neworder-item, .thing-content .container-item, .thing-content .neworder-item {
     height: 400px;
     width: 280px;
     margin: 2rem;
@@ -1000,11 +1131,11 @@ footer {
     background-repeat: no-repeat;
     background-size: cover;
     border: 1px solid #151515; }
-    .catalog-content .container-item:hover .cover {
+    .catalog-content .container-item:hover .cover, .catalog-content .neworder-item:hover .cover, .neworder-content .container-item:hover .cover, .neworder-content .neworder-item:hover .cover, .thing-content .container-item:hover .cover, .thing-content .neworder-item:hover .cover {
       /*display: block;*/
       visibility: visible;
       background-color: rgba(0, 0, 0, 0.5); }
-    .catalog-content .container-item .cover {
+    .catalog-content .container-item .cover, .catalog-content .neworder-item .cover, .neworder-content .container-item .cover, .neworder-content .neworder-item .cover, .thing-content .container-item .cover, .thing-content .neworder-item .cover {
       position: absolute;
       height: 100%;
       width: 100%;
@@ -1020,97 +1151,184 @@ footer {
                 text-align: center;
                 color: darkgray;
             }*/ }
-      .catalog-content .container-item .cover .title {
+      .catalog-content .container-item .cover .title, .catalog-content .neworder-item .cover .title, .neworder-content .container-item .cover .title, .neworder-content .neworder-item .cover .title, .thing-content .container-item .cover .title, .thing-content .neworder-item .cover .title {
         font-weight: bold;
         color: white; }
-      .catalog-content .container-item .cover .cost {
+      .catalog-content .container-item .cover .cost, .catalog-content .neworder-item .cover .cost, .neworder-content .container-item .cover .cost, .neworder-content .neworder-item .cover .cost, .thing-content .container-item .cover .cost, .thing-content .neworder-item .cover .cost {
         color: darkgreen;
         text-align: right; }
-      .catalog-content .container-item .cover .btn-add-korz {
+
+@media only screen and (min-width: 300px) {
+  .catalog-title, .neworder-title {
+    font-size: 30px;
+    color: white; } }
+
+@media only screen and (min-width: 480px) {
+  .catalog-title, .neworder-title {
+    font-size: 30px;
+    color: white; } }
+
+@media only screen and (min-width: 560px) {
+  .catalog-title, .neworder-title {
+    font-size: 32px;
+    color: white; } }
+
+@media only screen and (min-width: 640px) {
+  .catalog-title, .neworder-title {
+    font-size: 32px;
+    color: white; } }
+
+@media only screen and (min-width: 768px) {
+  .catalog-title, .neworder-title {
+    font-size: 68px;
+    color: white; } }
+
+@media only screen and (min-width: 1024px) {
+  .catalog-title, .neworder-title {
+    font-size: 68px;
+    color: white; } }
+
+@media only screen and (min-width: 1248px) {
+  .catalog-title, .neworder-title {
+    font-size: 72px;
+    color: white; } }
+
+@media only screen and (min-width: 1440px) {
+  .catalog-title, .neworder-title {
+    font-size: 72px;
+    color: white; } }
+
+@media only screen and (min-width: 300px) {
+  .catalog-title_descr, .neworder-title_descr {
+    font-size: 16px;
+    color: darkgray; } }
+
+@media only screen and (min-width: 480px) {
+  .catalog-title_descr, .neworder-title_descr {
+    font-size: 16px;
+    color: darkgray; } }
+
+@media only screen and (min-width: 560px) {
+  .catalog-title_descr, .neworder-title_descr {
+    font-size: 18px;
+    color: darkgray; } }
+
+@media only screen and (min-width: 640px) {
+  .catalog-title_descr, .neworder-title_descr {
+    font-size: 20px;
+    color: darkgray; } }
+
+@media only screen and (min-width: 768px) {
+  .catalog-title_descr, .neworder-title_descr {
+    font-size: 22px;
+    color: darkgray; } }
+
+@media only screen and (min-width: 1024px) {
+  .catalog-title_descr, .neworder-title_descr {
+    font-size: 22px;
+    color: darkgray; } }
+
+@media only screen and (min-width: 1248px) {
+  .catalog-title_descr, .neworder-title_descr {
+    font-size: 24px;
+    color: darkgray; } }
+
+@media only screen and (min-width: 1440px) {
+  .catalog-title_descr, .neworder-title_descr {
+    font-size: 24px;
+    color: darkgray; } }
+
+.thing-content {
+  display: flex;
+  color: black; }
+  @media only screen and (max-width: 767px) {
+    .thing-content {
+      padding: .5rem;
+      -ms-flex-direction: column;
+      -webkit-flex-direction: column;
+      flex-direction: column; } }
+  @media only screen and (min-width: 768px) {
+    .thing-content {
+      padding: 1rem;
+      -ms-flex-direction: row;
+      -webkit-flex-direction: row;
+      flex-direction: row; } }
+  .thing-content .foto_cost {
+    height: inherit;
+    width: 33%; }
+    .thing-content .foto_cost .foto {
+      border: 1px solid black;
+      background-size: contain;
+      background-repeat: no-repeat; }
+  .thing-content .info {
+    min-height: 70vh; }
+    .thing-content .info .title {
+      color: black; }
+      @media only screen and (min-width: 300px) {
+        .thing-content .info .title {
+          font-size: 30px; } }
+      @media only screen and (min-width: 480px) {
+        .thing-content .info .title {
+          font-size: 30px; } }
+      @media only screen and (min-width: 560px) {
+        .thing-content .info .title {
+          font-size: 32px; } }
+      @media only screen and (min-width: 640px) {
+        .thing-content .info .title {
+          font-size: 32px; } }
+      @media only screen and (min-width: 768px) {
+        .thing-content .info .title {
+          font-size: 68px; } }
+      @media only screen and (min-width: 1024px) {
+        .thing-content .info .title {
+          font-size: 68px; } }
+      @media only screen and (min-width: 1248px) {
+        .thing-content .info .title {
+          font-size: 72px; } }
+      @media only screen and (min-width: 1440px) {
+        .thing-content .info .title {
+          font-size: 72px; } }
+    .thing-content .info .content {
+      display: flex; }
+      @media only screen and (max-width: 767px) {
+        .thing-content .info .content {
+          -ms-flex-direction: column;
+          -webkit-flex-direction: column;
+          flex-direction: column; }
+          .thing-content .info .content .descr {
+            color: black;
+            width: 100%;
+            padding-right: 1rem; }
+          .thing-content .info .content .variacii {
+            width: 100%;
+            position: sticky;
+            top: 0; }
+            .thing-content .info .content .variacii .sizes {
+              color: black; } }
+      @media only screen and (min-width: 768px) {
+        .thing-content .info .content {
+          -ms-flex-direction: row;
+          -webkit-flex-direction: row;
+          flex-direction: row; }
+          .thing-content .info .content .descr {
+            color: black;
+            width: 66%;
+            padding-right: 1rem; }
+          .thing-content .info .content .variacii {
+            width: 33%;
+            position: sticky;
+            top: 0; }
+            .thing-content .info .content .variacii .sizes {
+              color: black; } }
+      .thing-content .info .content .cost {
+        margin-top: 1rem; }
+      .thing-content .info .content .btn-add-korz {
         display: inline-block;
-        margin: auto; }
-        .catalog-content .container-item .cover .btn-add-korz p {
+        margin: auto;
+        background-color: black;
+        border-color: white; }
+        .thing-content .info .content .btn-add-korz p {
           padding: .5rem 1.5rem; }
-
-@media only screen and (min-width: 300px) {
-  .catalog-title {
-    font-size: 30px;
-    color: white; } }
-
-@media only screen and (min-width: 480px) {
-  .catalog-title {
-    font-size: 30px;
-    color: white; } }
-
-@media only screen and (min-width: 560px) {
-  .catalog-title {
-    font-size: 32px;
-    color: white; } }
-
-@media only screen and (min-width: 640px) {
-  .catalog-title {
-    font-size: 32px;
-    color: white; } }
-
-@media only screen and (min-width: 768px) {
-  .catalog-title {
-    font-size: 68px;
-    color: white; } }
-
-@media only screen and (min-width: 1024px) {
-  .catalog-title {
-    font-size: 68px;
-    color: white; } }
-
-@media only screen and (min-width: 1248px) {
-  .catalog-title {
-    font-size: 72px;
-    color: white; } }
-
-@media only screen and (min-width: 1440px) {
-  .catalog-title {
-    font-size: 72px;
-    color: white; } }
-
-@media only screen and (min-width: 300px) {
-  .catalog-title_descr {
-    font-size: 14px;
-    color: darkgray; } }
-
-@media only screen and (min-width: 480px) {
-  .catalog-title_descr {
-    font-size: 14px;
-    color: darkgray; } }
-
-@media only screen and (min-width: 560px) {
-  .catalog-title_descr {
-    font-size: 14px;
-    color: darkgray; } }
-
-@media only screen and (min-width: 640px) {
-  .catalog-title_descr {
-    font-size: 22px;
-    color: darkgray; } }
-
-@media only screen and (min-width: 768px) {
-  .catalog-title_descr {
-    font-size: 22px;
-    color: darkgray; } }
-
-@media only screen and (min-width: 1024px) {
-  .catalog-title_descr {
-    font-size: 22px;
-    color: darkgray; } }
-
-@media only screen and (min-width: 1248px) {
-  .catalog-title_descr {
-    font-size: 24px;
-    color: darkgray; } }
-
-@media only screen and (min-width: 1440px) {
-  .catalog-title_descr {
-    font-size: 24px;
-    color: darkgray; } }
 
 /*
     PAGES ABOUT
@@ -1215,22 +1433,22 @@ footer {
 
 @media only screen and (min-width: 300px) {
   .about-title_descr {
-    font-size: 14px;
+    font-size: 16px;
     color: darkgray; } }
 
 @media only screen and (min-width: 480px) {
   .about-title_descr {
-    font-size: 14px;
+    font-size: 16px;
     color: darkgray; } }
 
 @media only screen and (min-width: 560px) {
   .about-title_descr {
-    font-size: 14px;
+    font-size: 18px;
     color: darkgray; } }
 
 @media only screen and (min-width: 640px) {
   .about-title_descr {
-    font-size: 22px;
+    font-size: 20px;
     color: darkgray; } }
 
 @media only screen and (min-width: 768px) {

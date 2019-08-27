@@ -41,7 +41,7 @@ class PotentialClient(models.Model):
 
 class Orders(models.Model):
     ''' Таблица заказов. Запись создается после подтверждения заказа в корзине '''
-    client = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    client = models.ForeignKey(User, on_delete=models.CASCADE)
     status = models.ForeignKey(StatusOrder, on_delete=models.DO_NOTHING)
     namber = models.UUIDField(default=uuid.uuid4)
     date_create = models.DateField("Дата создания заявки", auto_now_add=True)
@@ -52,8 +52,8 @@ class Orders(models.Model):
 
 class OrderTovary(models.Model):
     ''' Таблица товаров из заказа '''
-    order = models.ForeignKey(Orders, on_delete=models.CASCADE)
-    tovar = models.ForeignKey('Tovar', on_delete=models.DO_NOTHING)
+    order = models.ForeignKey(Orders, on_delete=models.CASCADE, related_name="tovary")
+    tovar = models.ForeignKey('Tovar', on_delete=models.DO_NOTHING, related_name="in_orders")
     #count = models.PositiveIntegerField("Количество товара")
 
     class Meta:
@@ -62,9 +62,12 @@ class OrderTovary(models.Model):
         
 class OrderTovaryVariaciya(models.Model):
     ''' Таблица вариаций для товара из заказа '''
-    ordertovar = models.ForeignKey(OrderTovary, on_delete=models.CASCADE)
-    variaciya = models.ForeignKey('Variaciya', on_delete=models.DO_NOTHING)
+    ordertovar = models.ForeignKey(OrderTovary, on_delete=models.CASCADE, related_name="variacii")
+    variaciya = models.ForeignKey('Variaciya', on_delete=models.DO_NOTHING, related_name="in_orders")
     count = models.PositiveIntegerField("Количество товара")
+
+    def summ(self):
+        return str(self.count * self.variaciya.tovar.cost)+' р.'
 
     class Meta:
         verbose_name = "Вариация товара"
@@ -90,12 +93,19 @@ class Tovar(models.Model):
         g = Gallery.objects.filter(product=v[0].id).order_by('?')[:1]
         return g[0].image
 
+    
+    def sizes(self):
+        s = ""
+        for i in self.variacii.all():
+            s=s+i.size_tag()
+        return s
+
     class Meta:
         verbose_name = "Изделие"
         verbose_name_plural = "Изделия"
 
 class Variaciya(models.Model):
-    tovar = models.ForeignKey(Tovar, on_delete=models.CASCADE, related_name='tovar')
+    tovar = models.ForeignKey(Tovar, on_delete=models.CASCADE, related_name='variacii')
     article = models.UUIDField(default=uuid.uuid4)
     #color = models.CharField("Цвет", max_length=7)
     #color = {
@@ -125,11 +135,15 @@ class Variaciya(models.Model):
             return mark_safe(u'<div style="background-color: {0};" class="color"></div> <small>({1})</small>'.format(self.color, self.color_text))
         return 'пусто'
 
+    def size_tag(self):
+        from django.utils.safestring import mark_safe
+        return mark_safe(f'<div style="padding: .5rem; background: 1px solid gray; border-radius: .5rem;">{self.size}</div>')
+
     @property
     def random_image(self):
-        v = Variaciya.objects.filter(tovar=self.id).order_by('?')[:1]
+        v = Variaciya.objects.filter(tovar=self.id)[:1]
         print (v[0].id)
-        g = Gallery.objects.filter(product=v[0].id).order_by('?')[:1]
+        g = Gallery.objects.filter(product=v[0].id)[:1]
         return g[0].image
 
     class Meta:
@@ -137,11 +151,11 @@ class Variaciya(models.Model):
         verbose_name_plural = "Вариации товаров"
 
 class Korzina(Variaciya):
-    #def __init__(self):
-    #    # Необходимо вызвать метод инициализации родителя.
-    #    # В Python 3.x это делается при помощи функции super()
-    #    super().__init__()
-
+    def __init__(self):
+        # Необходимо вызвать метод инициализации родителя.
+        # В Python 3.x это делается при помощи функции super()
+        super().__init__()
+        
     #v = models.ForeignKey(Variaciya, on_delete=models.DO_NOTHING)
 
     count = models.SmallIntegerField("Количество")
@@ -154,6 +168,7 @@ class Korzina(Variaciya):
 
     class Meta:
         managed = False
+
 
 class Gallery(models.Model):
     image = models.ImageField(upload_to='gallery/')

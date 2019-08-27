@@ -19,9 +19,9 @@
             <p class="title">{{ item.title }}</p>
             <p class="cost">{{ item.cost }}</p>
             <p class="article">{{ item.article }}</p>
-            <div class="btn-base btn-add-korz" data-article="{{item.article}}" data-size="{{item.size}}" data-color="{{item.color}}" data-cost="{{item.cost}}" data-id="{{item.id}}" data-img="{{item.random_image}}" data-name="{{item.title}}" onclick="add(this)">
+            <a href="/thing/{{item.id}}" class="btn-base btn-add-korz">
                 <p>В корзину</p>
-            </div>
+            </a>
         </div>
 
     </div>
@@ -35,33 +35,33 @@
         K = JSON.parse(localStorage.getItem("korzina"));
         if (K == null) {
             var K = {}
-            K.list = [];
+            K.l = [];
         }
         var tovar = {
                 id: e.getAttribute("data-id"),
-                img: e.getAttribute("data-img"),
-                name: e.getAttribute("data-name"),
-                cost: e.getAttribute("data-cost"),
-                color: e.getAttribute("data-color"),
-                size: e.getAttribute("data-size"),
-                article: e.getAttribute("data-article"),
+                //img: e.getAttribute("data-img"),
+                //name: e.getAttribute("data-name"),
+                //cost: e.getAttribute("data-cost"),
+                //color: e.getAttribute("data-color"),
+                //size: e.getAttribute("data-size"),
+                //article: e.getAttribute("data-article"),
                 count: 1,
         }
-        var len = K.list.length;
+        var len = K.l.length;
         var hasTovat = false;
         if (len > 0) {
             for (var i = 0; i < len; i++) {
-                if (K.list[i].id == tovar.id && K.list[i].name == tovar.name) {
+                if (K.l[i].id == tovar.id && K.l[i].name == tovar.name) {
                     hasTovat = true;
-                    K.list[i].count = parseInt(K.list[i].count) + parseInt(tovar.count);
+                    K.l[i].count = parseInt(K.l[i].count) + parseInt(tovar.count);
                     break;
                 //} else {
-                //    K.list.push(tovar);
+                //    K.l.push(tovar);
                 }
             }
         };
         if (hasTovat === false) {
-            K.list.push(tovar);
+            K.l.push(tovar);
         }
         localStorage.setItem("korzina", JSON.stringify(K));
         loadkorzina(false);

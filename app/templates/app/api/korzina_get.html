@@ -1,14 +1,22 @@
-﻿<div class="rows">
+﻿<div id="kor">{{ kor }}</div>
+<div class="rows">
 {% for item in korz %}
     <div class="row">
-        <div class="image"><img src="/media/{{ item.gallery }}" alt="{{item.tovar.title}}" /></div>
-        <div class="name">{{item.tovar.title}}<br />Размер: {{item.size}}<br />Цвет: {{item.colortile_korz}}</div>
-        <div class="cost">{{item.tovar.cost}} р.</div>
+        <div class="image"><img src="/media/{{ item.random_image }}" alt="{{item.tovar.title}}" /></div>
+        <div class="name">{{item.tovar.title}}<br />Размер: {{item.size}}<br />Цвет: {{item.colortile_korz}}<br />Цена: {{item.tovar.cost}} р.</div>
+        {#<div class="cost">{{item.tovar.cost}} р.</div>#}
         <div class="count">{{item.count}} шт.</div>
         <div class="summ">{{item.summ}} р.</div>
         <div class="del" onclick="del(this)">X</div>
     </div>
 {% endfor %}
+    <div class="itog">{{itog}}</div>
+    <form action="{% url 'get_order' %}" method="get">
+        {% csrf_token %}
+        <input name="korzina" type="hidden" value="{{kor}}">
+        {{ form.as_p }}
+        <input type="submit" class="btn-base" value="Оформить заказ" />
+    </form>
 </div>
 <!--<div class="form">
     <form action="." method="post">
@@ -17,4 +25,3 @@
         <input type="submit" value="Submit" />
     </form>
 </div>-->
-<div class="itog">{{itog}}</div>

@@ -1,46 +1,81 @@
 {% extends "app/layout.html" %}
 {% load staticfiles %}
 
-
-{% block css %}<link rel="stylesheet" type="text/css" href="{% static 'app/content/css/thing.css' %}" />{% endblock %}
-{% block content %}
-
-<div class="slider">
-<div class="slide">
-</div>
-<div class="slide">
-</div>
-<div class="slide">
-</div>
-<div class="slide">
-</div>
-<div class="slide">
-</div>
-</div>
-
-
-
+{% block css %}
 {% endblock %}
-{% block scripts %} 
-<script src="{% static '/app/slick/slick.min.js' %}"></script>
-<script>
-$(document).ready(function () {
-        var settings = {
-            autoplay: false,
-            autoplaySpeed: 7000,
-            slidesToShow: 3,
-            centerMode: true,
-            centerPadding: '0px',
-            arrows: false,
-            dots: false,
-            infinite: true,
-            speed: 300,
-            fade: false,
-            cssEase: 'linear',
-            
-        }
 
-        $('.slider').slick(settings);
-});
+{% block content %}
+<div class="thing-screen">
+    <div class="thing-conteiner">
+        <div class="thing-title">{{title}}</div>
+        <br />
+        <div class="thing-title_descr">{{message}}</div>
+        <br />
+        {{year}}
+    </div>
+</div>
+
+<div class="thing-content">
+    <div class="foto_cost" style="background-image: url('/media/{{thing.random_image}}');">
+    </div>
+    <div class="info">
+        <div class="title">{{thing.title}}</div>
+        <div class="content">
+            <div class="descr">{{thing.descr}}</div>
+            <div class="variacii">
+                <p>Размеры</p>
+                <div class="sizes">{{thing.sizes|safe}}</div>
+                <p>Цвета</p>
+                <div class="colors">{{thing.colortile_korz}}</div>
+                <div class="cost">
+                    <p>Цена: {{thing.cost}}</p>
+                </div>
+                <div class="btn-base btn-add-korz" data-id="{{thing.id}}" onclick="add(this)"><p>В корзину</p></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %} 
+    <script>
+    function add(e) {
+        K = JSON.parse(localStorage.getItem("korzina"));
+        if (K == null) {
+            var K = {}
+            K.l = [];
+        }
+        var tovar = {
+                id: e.getAttribute("data-id"),
+                //img: e.getAttribute("data-img"),
+                //name: e.getAttribute("data-name"),
+                //cost: e.getAttribute("data-cost"),
+                //color: e.getAttribute("data-color"),
+                //size: e.getAttribute("data-size"),
+                //article: e.getAttribute("data-article"),
+                count: 1,
+        }
+        var len = K.l.length;
+        var hasTovat = false;
+        if (len > 0) {
+            for (var i = 0; i < len; i++) {
+                if (K.l[i].id == tovar.id && K.l[i].name == tovar.name) {
+                    hasTovat = true;
+                    K.l[i].count = parseInt(K.l[i].count) + parseInt(tovar.count);
+                    break;
+                //} else {
+                //    K.l.push(tovar);
+                }
+            }
+        };
+        if (hasTovat === false) {
+            K.l.push(tovar);
+        }
+        localStorage.setItem("korzina", JSON.stringify(K));
+        loadkorzina(false);
+        }
+    //$(document).load(function() {
+
+    //});
 </script>
 {% endblock %}
