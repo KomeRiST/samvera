@@ -137,7 +137,7 @@ class Variaciya(models.Model):
     def colortile_korz(self):
         if self.color:
             from django.utils.safestring import mark_safe
-            return mark_safe(u'<div style="background-color: {0};" class="color"></div> <small>({1})</small>'.format(self.color, self.color_text))
+            return mark_safe(u'<div id="color-{2}" data-var="{2}"><div style="background-color: {0};" class="color"></div> <small>({1})</small></div>'.format(self.color, self.color_text, self.id))
         return 'пусто'
 
     def size_tag(self):

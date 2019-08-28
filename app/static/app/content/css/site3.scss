@@ -1152,7 +1152,17 @@ footer {
 
     .foto_cost {
         height: inherit;
-        width: 33%;
+        max-width: 450px;
+        min-width: 300px;
+        width: 300px;
+
+        @include mq("tablet", max) {
+            margin: auto;
+        }
+
+        img {
+            width: 300px;
+        }
 
         .foto {
             border: 1px solid black;
@@ -1172,13 +1182,39 @@ footer {
         .content {
             display: flex;
 
-            .sizes {
-                display: flex;
-                -ms-flex-direction: row;
-                -webkit-flex-direction: row;
-                flex-direction: row;
-                -webkit-justify-content: space-around;
-                justify-content: space-around;
+            .variacii {
+                .sizes {
+                    display: flex;
+                    -ms-flex-direction: row;
+                    -webkit-flex-direction: row;
+                    flex-direction: row;
+                    -webkit-justify-content: space-between;
+                    justify-content: space-between;
+
+                    & > div {
+                        border: 1px solid transparent;
+                    }
+
+                    & > div:hover {
+                        cursor: pointer;
+                        border: 1px solid darkgray;
+                    }
+
+                    .size-select {
+                        font-weight: bold;
+                        border: 1px solid black;
+                    }
+                }
+
+                .colors {
+                    justify-content: flex-start;
+                    padding: .5rem;
+                    text-align: left;
+                    &>div{
+                        cursor: pointer;
+                        margin: .5rem;
+                    }
+                }
             }
 
             @include mq("tablet", max) {
@@ -1198,10 +1234,18 @@ footer {
                     top: 0;
 
                     .sizes {
-                        color: black;
+                        justify-content: center;
                     }
 
                     .colors {
+                        -ms-flex-direction: column;
+                        -webkit-flex-direction: column;
+                        flex-direction: column;
+                        justify-content: center;
+
+                        div {
+                            display: inline-block;
+                        }
                     }
                 }
             }
@@ -1221,13 +1265,6 @@ footer {
                     width: 33%;
                     position: sticky;
                     top: 0;
-
-                    .sizes {
-                        color: black;
-                    }
-
-                    .colors {
-                    }
                 }
             }
 
@@ -1242,6 +1279,10 @@ footer {
                 margin: auto;
                 background-color: black;
                 border-color: white;
+
+                &:hover {
+                    border-color: black;
+                }
 
                 p {
                     padding: .5rem 1.5rem;

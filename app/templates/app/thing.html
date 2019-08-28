@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<div class="thing-screen">
+<div class="thing-screen" style="background-image: url('/media/{{thing.random_image}}')">
     <div class="thing-conteiner">
         <div class="thing-title">{{title}}</div>
         <br />
@@ -16,7 +16,7 @@
 </div>
 
 <div class="thing-content">
-    <div class="foto_cost" style="background-image: url('/media/{{thing.random_image}}');">
+    <div class="foto_cost">
     </div>
     <div class="info">
         <div class="title">{{thing.title}}</div>
@@ -39,7 +39,28 @@
 
 {% block scripts %} 
     <script>
+
+    function getphoto(v) {
+        var request = $.ajax({
+            url: `/getthingphtotoss/${v}/`,
+            method: "get",
+            // contentType: 'application/json; charset=utf-8',
+            // data: { korzina: stroka },
+            // dataType: 'text',
+        });
+
+        request.done(function (msg) {
+            $(".foto_cost").html(msg);
+        });
+
+        request.fail(function (jqXHR, textStatus) {
+            $(".colors").html(`Извините, произошла ошибка ${jqXHR}\n${textStatus}`);
+        });
+    }
+
     function getcolors(t, s) {
+        $('div[id^="size-"]').removeClass('size-select');
+        $("div[id^='size-"+s+"']").addClass('size-select');
         var request = $.ajax({
             url: `/getthingcolors/${t}/${s}/`,
             method: "get",
@@ -50,6 +71,12 @@
 
         request.done(function (msg) {
             $(".colors").html(msg);
+            $('.colors div').removeClass('size-select');
+            $(".colors div:first").addClass('size-select');
+            getphoto($(".colors div:first").attr("data-var"));
+            $("div[id^='color-']").click(function () {
+                getphoto(this.getAttribute("data-var"));
+            });
         });
 
         request.fail(function (jqXHR, textStatus) {
@@ -94,9 +121,11 @@
         }
         localStorage.setItem("korzina", JSON.stringify(K));
         loadkorzina(false);
-        }
-    //$(document).load(function() {
-
-    //});
+    }
+    $(window).on('load', function () {
+        var s = $(".sizes div:first");
+        s.addClass('size-select');
+        getcolors(s.attr("data-tovar"), s.attr("data-size"));
+    });
 </script>
 {% endblock %}

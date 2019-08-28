@@ -149,6 +149,17 @@ def getthingcolors(request, tovar, size):
     assert isinstance(request, HttpRequest)
     return HttpResponse(st)
 
+def getthingphtotoss(request, variaciya):
+    """Renders the contact page."""
+    v = get_object_or_404(models.Variaciya, pk=variaciya)
+    print("variaciya = ", v)
+    r = v.gallery.all()
+    st = ""
+    for i in r:
+        st = st + f'<img src="/media/{i.image}" alt="" />'
+    assert isinstance(request, HttpRequest)
+    return HttpResponse(st)
+
 def post(request, code):
     if request.method == 'POST':
         form = forms.Form_PotentialClient(request.POST)

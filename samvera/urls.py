@@ -24,6 +24,7 @@ urlpatterns = [
     path('korzina/', views.korzina, name='korzina'),
     path('korzinaget/', views.korzina_get, name='korzinaget'),
     path('getthingcolors/<int:tovar>/<str:size>/', views.getthingcolors, name='getthingcolors'),
+    path('getthingphtotoss/<int:variaciya>/', views.getthingphtotoss, name='getthigetthingphtotossngcolors'),
     path('order/', views.new_order, name='new_order'),
     path('orderget/', views.get_order, name='get_order'),
     path('login/',
