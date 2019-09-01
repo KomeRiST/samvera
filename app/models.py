@@ -23,6 +23,8 @@ class ColorField(models.CharField):
 class StatusOrder(models.Model):
     kod = models.PositiveIntegerField("Код статуса", unique=True)
     text = models.TextField("Текстовое представление статуса")
+    def __str__(self):
+        return self.text
 
 # Create your models here.
 class PotentialClient(models.Model):
@@ -42,7 +44,7 @@ class PotentialClient(models.Model):
 
 class Orders(models.Model):
     ''' Таблица заказов. Запись создается после подтверждения заказа в корзине '''
-    client = models.ForeignKey(User, on_delete=models.CASCADE)
+    client = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
     status = models.ForeignKey(StatusOrder, on_delete=models.DO_NOTHING)
     namber = models.UUIDField(default=uuid.uuid4)
     date_create = models.DateField("Дата создания заявки", auto_now_add=True)
@@ -146,9 +148,9 @@ class Variaciya(models.Model):
 
     @property
     def random_image(self):
-        v = Variaciya.objects.filter(tovar=self.id)[:1]
-        print (v[0].id)
-        g = Gallery.objects.filter(product=v[0].id)[:1]
+        #v = Variaciya.objects.filter(tovar=self.id)[:1]
+        #print (v[0].id)
+        g = Gallery.objects.filter(product=self)[:1]
         return g[0].image
 
     class Meta:

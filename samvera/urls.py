@@ -14,6 +14,7 @@ from django.conf.urls import include
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('kabinet/', views.kabinet, name='kabinet'),
     path('contact/', views.contact, name='contact'),
     path('thing/<int:id>', views.thing, name='thing'),
     path('post/<str:code>/', views.post, name='post'),
@@ -39,7 +40,7 @@ urlpatterns = [
              }
          ),
          name='login'),
-    path('logout/', LogoutView.as_view(next_page='/'), name='logout'),
+    path('logout/', LogoutView.as_view(next_page='/'), name='log_out'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     path('chaining/', include('smart_selects.urls')),

@@ -33,6 +33,11 @@
         <li class="nav__item"><a href="/korzina/" class="nav__link" >Корзина</a><div class="korzcount" id="korzcount2"></div></li>
         <li class="nav__item"><a href="/about/brent" class="nav__link">О нас</a></li>
         <li class="nav__item"><a href="/about/contacts" class="nav__link">Контакты</a></li>
+          {% if request.user.is_authenticated %}
+            <li class="nav__item"><a href="{% url 'log_out' %}" class="nav__link">Выход</a></li>
+          {% else %}
+            <li class="nav__item"><a href="{% url 'kabinet' %}" class="nav__link">Вход</a></li>
+          {% endif %}
         <li class="nav__item sociallinks">
               <div class="sociallinks__item">
                 <a href="https://business.facebook.com/samvera.ru/" target="_blank">
@@ -284,7 +289,8 @@ $(document).ready(function(){
     list.addEventListener('click', function(ev) {
         $("#korzcount").toggle(600);
         $("#korzcount2").toggle(600);
-}, false);
+    }, false);
+    
 });
 </script>
     <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>

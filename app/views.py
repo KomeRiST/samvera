@@ -16,6 +16,20 @@ from django.core import serializers
 from django.template.loader import render_to_string
 
 ABOUT_PAGE = ("brend", "contacts", "rabota-u-nas")
+ABOUT_PAGE_DESCR = {
+    "brend":{
+        "title":"О нас",
+        "message":""
+    },
+    "contacts":{
+        "title":"Контакты",
+        "message":"Ниже представлены контакты для связи с нами"
+    },
+    "rabota-u-nas":{
+        "title":"Вакансии",
+        "message":""
+    }
+}
 INFO_PAGE = ("dostavka", "faq", "idei", "oferta", "oplata", "politika-konfidencialnosti", "preorder", "rukovodstvo-po-pokupke", "samovyvoz", "vozvrattovar")
 INFO_PAGE_DESCR = {
         "dostavka":{
@@ -116,8 +130,8 @@ def contact(request):
         request,
         'app/contact.html',
         {
-            'title':'Contact',
-            'message':'Your contact page.',
+            'title':'Контакты',
+            'message':'Связаться с нами Вы можете по контактам ниже',
             'year':datetime.now().year,
         }
     )
@@ -136,6 +150,42 @@ def thing(request, id):
             'year':datetime.now().year,
         }
     )
+
+def kabinet(request):
+    """Renders the contact page."""
+    if request.user.is_authenticated:
+        title = "Личный кабинет"
+        message = "Посмотрите исторю своих покупок, а также статус текущих заказов."
+        orders = models.Orders.objects.filter(client=request.user.id)
+        page = 'app/lk.html'
+        assert isinstance(request, HttpRequest)
+        return render(
+            request,
+            page,
+            {
+                'title':title,
+                'message':message,
+                'orders':orders,
+                'year':datetime.now().year,
+            }
+        )
+    else:
+        from django.contrib.auth.forms import AuthenticationForm
+        title="Вход на сайт"
+        message="Введите свои данные для входа на сайт"
+        page = 'app/login.html'
+        orders=None
+        assert isinstance(request, HttpRequest)
+        return render(
+            request,
+            page,
+            {
+                'title':title,
+                'message':message,
+                'form':AuthenticationForm,
+                'year':datetime.now().year,
+            }
+        )
 
 def getthingcolors(request, tovar, size):
     """Renders the contact page."""
@@ -156,9 +206,12 @@ def getthingphtotoss(request, variaciya):
     r = v.gallery.all()
     st = ""
     for i in r:
-        st = st + f'<img src="/media/{i.image}" alt="" />'
+        st = st + f'<div class="carousel-cell" ><img src="/media/{i.image}" alt=""/></div>'
+    res={}
+    res['img']=st
+    res['id']=v.id
     assert isinstance(request, HttpRequest)
-    return HttpResponse(st)
+    return HttpResponse(json.dumps(res))
 
 def post(request, code):
     if request.method == 'POST':
@@ -181,15 +234,12 @@ def about(request, page):
     assert isinstance(request, HttpRequest)
     if page in ABOUT_PAGE:
         p = f'app/about/{page}.html'
-    
+        b = ABOUT_PAGE_DESCR.get(page)
+        b["year"] = datetime.now().year
         return render(
             request,
             p,
-            {
-                'title':'About',
-                'message':'Your application description page.',
-                'year':datetime.now().year,
-            }
+            b
         )
     else:
         raise Http404
@@ -312,13 +362,12 @@ def get_order(request):
                 if item['id'] != '':
                     t=models.Variaciya.objects.get(id=int(item['id']))
 
-                    ordertovar = models.OrderTovary()
-                    ordertovar.order = order
-                    ordertovar.tovar = t.tovar
-                    ordertovar.save()
 
                     ordertovarvariaciya = models.OrderTovaryVariaciya()
+
+                    ordertovar, created = models.OrderTovary.objects.get_or_create(order=order, tovar=t.tovar)
                     ordertovarvariaciya.ordertovar = ordertovar
+
                     ordertovarvariaciya.variaciya = t
                     ordertovarvariaciya.count = int(item['count'])
                     ordertovarvariaciya.save()

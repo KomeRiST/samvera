@@ -115,6 +115,7 @@
     <Content Include="app\media\logo.png" />
     <Content Include="app\media\questions.jpg" />
     <Content Include="app\media\video\main.mp4" />
+    <Content Include="app\static\app\content\css\flickity-docs.css" />
     <Content Include="app\static\app\content\css\mixins.scss" />
     <Content Include="app\static\app\content\css\mob_menu.css" />
     <Content Include="app\static\app\content\css\site.css">
@@ -145,6 +146,7 @@
     <Content Include="app\static\app\fonts\11472.otf" />
     <Content Include="app\static\app\fonts\13875.ttf" />
     <Content Include="app\static\app\fonts\16391.ttf" />
+    <Content Include="app\static\app\scripts\flickity-docs.min.js" />
     <Content Include="app\static\app\scripts\jquery-3.3.1.min.js" />
     <Content Include="app\static\app\scripts\jquery.video.js" />
     <Content Include="app\static\app\slick\ajax-loader.gif" />
@@ -183,6 +185,7 @@
     <Content Include="app\templates\app\info\samovyvoz.html" />
     <Content Include="app\templates\app\info\vozvrattovar.html" />
     <Content Include="app\templates\app\korzina.html" />
+    <Content Include="app\templates\app\lk.html" />
     <Content Include="app\templates\app\new_order.html" />
     <Content Include="app\templates\app\slider.html" />
     <Content Include="app\templates\app\thing.html" />

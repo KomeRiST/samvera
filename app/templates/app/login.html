@@ -1,41 +1,38 @@
 {% extends "app/layout.html" %}
 
 {% block content %}
-
-<h2>{{ title }}</h2>
-<div class="row">
-    <div class="col-md-8">
+<div class="catalog-screen">
+    <div class="catalog-conteiner">
+        <div class="catalog-title">{{title}}</div>
+        <br />
+        <div class="catalog-title_descr">{{message}}</div>
+        <br />
         <section id="loginForm">
-            <form action="." method="post" class="form-horizontal">
+            <form action="{% url 'login' %}" method="post" class="white_form">
                 {% csrf_token %}
-                <h4>Use a local account to log in.</h4>
-                <hr />
                 <div class="form-group">
-                    <label for="id_username" class="col-md-2 control-label">User name</label>
-                    <div class="col-md-10">
+                    <label for="id_username" class="field_title">Логин</label>
+                    <div class="fieldWrapper">
                         {{ form.username }}
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="id_password" class="col-md-2 control-label">Password</label>
-                    <div class="col-md-10">
+                    <label for="id_password" class="field_title">Пароль</label>
+                    <div class="fieldWrapper">
                         {{ form.password }}
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="hidden" name="next" value="/" />
-                        <input type="submit" value="Log in" class="btn btn-default" />
+                    <div class="">
+                        <input type="hidden" name="next" value="/catalog/" />
+                        <button type="submit" class="btn-base btn-submit"><p>Вход</p></button>
                     </div>
                 </div>
                 {% if form.errors %}
-                <p class="validation-summary-errors">Please enter a correct user name and password.</p>
+                <p class="validation-summary-errors">Комбинация логина и пароля не верны!</p>
                 {% endif %}
             </form>
         </section>
-    </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm"></section>
     </div>
 </div>
 

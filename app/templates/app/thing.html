@@ -2,6 +2,8 @@
 {% load staticfiles %}
 
 {% block css %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/flickity-docs.css' %}" />
 {% endblock %}
 
 {% block content %}
@@ -16,7 +18,7 @@
 </div>
 
 <div class="thing-content">
-    <div class="foto_cost">
+    <div class="foto_cost slider">
     </div>
     <div class="info">
         <div class="title">{{thing.title}}</div>
@@ -30,15 +32,33 @@
                 <div class="cost">
                     <p>Цена: {{thing.cost}}</p>
                 </div>
-                <div class="btn-base btn-add-korz" data-id="{{thing.id}}" onclick="add(this)"><p>В корзину</p></div>
+                <div id="btn-id" class="btn-base" data-id="{{thing.id}}" onclick="add(this)"><p>В корзину</p></div>
             </div>
         </div>
     </div>
 </div>
 {% endblock %}
 
-{% block scripts %} 
-    <script>
+{% block scripts %}
+<script src="{% static '/app/slick/slick.min.js' %}"></script>
+<script type="text/javascript">
+    function Slider(e) {
+        var settings = {
+            autoplay: false,
+            //autoplaySpeed: 7000,
+            slidesToShow: 1,
+            centerMode: true,
+            centerPadding: '0px',
+            arrows: false,
+            dots: true,
+            infinite: true,
+            speed: 300,
+            fade: false,
+            cssEase: 'linear'
+        }
+        $(".foto_cost").removeClass("slick-initialized slick-slider slick-dotted");
+            $(".foto_cost").slick(settings);
+    };
 
     function getphoto(v) {
         var request = $.ajax({
@@ -50,7 +70,10 @@
         });
 
         request.done(function (msg) {
-            $(".foto_cost").html(msg);
+            var m = JSON.parse(msg)
+            $(".foto_cost").html(m.img);
+            $("#btn-id").attr("data-id", m.id);
+            Slider();
         });
 
         request.fail(function (jqXHR, textStatus) {
@@ -76,6 +99,7 @@
             getphoto($(".colors div:first").attr("data-var"));
             $("div[id^='color-']").click(function () {
                 getphoto(this.getAttribute("data-var"));
+            //Slider();
             });
         });
 
@@ -83,8 +107,10 @@
             $(".colors").html(`Извините, произошла ошибка ${jqXHR}\n${textStatus}`);
         });
     }
+
     $('div[id^="size-"]').click(function () {
         getcolors(this.getAttribute("data-tovar"), this.getAttribute("data-size"));
+            //Slider();
     });
 
     function add(e) {
@@ -122,10 +148,11 @@
         localStorage.setItem("korzina", JSON.stringify(K));
         loadkorzina(false);
     }
-    $(window).on('load', function () {
+    $(document).ready(function () {
         var s = $(".sizes div:first");
         s.addClass('size-select');
         getcolors(s.attr("data-tovar"), s.attr("data-size"));
+        //Slider();
     });
 </script>
 {% endblock %}

@@ -4,8 +4,12 @@
 {% block content %}
 <div class="about-screen">
     <div class="about-conteiner">
-        <div class="about-title"><p>Контакты</p></div>
-
+        <div class="catalog-title">{{title}}</div>
+        <br />
+        <div class="catalog-title_descr">{{message}}</div>
+    </div>
+</div>
+<div class="about-content">
         <div class="about-text">
             <p class="up">Клиентская поддержка</p>
             <p>ПН-ПТ 09:00-18:00 (по МСК)</p>
@@ -19,7 +23,6 @@
             <p></p>
             <p>По вопросам сотрудничества, пожалуйста, пишите на почту info@samvera.ru</p>
         </div>
-    </div>
 </div>
 {% endblock %}
 
