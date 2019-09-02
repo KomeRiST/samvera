@@ -1,13 +1,17 @@
 ﻿@import "variables.scss";
 @import "mixins.scss";
-
+@import url('https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700|Gabriela|Philosopher:400,400i,700,700i&display=swap&subset=cyrillic,greek');
 @font-face {
     font-family: CENTAUR;
+    font-family: 'Comfortaa', cursive;
+    font-family: 'Philosopher', sans-serif;
+    font-family: 'Gabriela', serif;
     src: url('../../fonts/CENTAUR.TTF') format('truetype');
 }
 
 * {
     /*color: $fcDefault;*/
+    font-family: Philosopher;
     padding: 0;
     margin: 0;
     -moz-box-sizing: border-box;
@@ -103,8 +107,11 @@ body {
     }
 
     .titlepre {
+        font-family: CENTAUR;
+
         @include fontsize("title") {
             color: white;
+            font-family: CENTAUR;
         }
     }
 
@@ -138,6 +145,7 @@ body {
 
         @include fontsize("title") {
             text-align: center;
+            font-family: CENTAUR;
         }
         /*@include mq('phone') {
             font-size: 3rem;
@@ -435,6 +443,7 @@ form {
     .field_title {
         @include fontsize("form-field-title");
         margin-top: 1rem;
+        font-family: CENTAUR;
 
         p {
             color: black;
@@ -461,6 +470,7 @@ form {
 .black_form {
     .field_title, .fieldWrapper {
         color: black;
+        font-family: CENTAUR;
 
         input {
             color: black;
@@ -471,6 +481,7 @@ form {
 .white_form {
     .field_title, .fieldWrapper {
         color: white;
+        font-family: CENTAUR;
 
         input {
             color: white;
@@ -718,7 +729,12 @@ footer {
                 .name {
                     font-weight: bold;
                     text-align: center;
-                    @include fontsize("title-descr")
+
+                    @include fontsize("title-descr") {
+                        font-family: CENTAUR;
+                    }
+
+                    ;
                 }
 
                 .element {
@@ -1096,11 +1112,16 @@ footer {
     .info-title {
         @include fontsize("title") {
             color: white;
+            font-family: CENTAUR;
         }
     }
 
     .info-title_descr {
-        @include fontsize("title-descr")
+        @include fontsize("title-descr") {
+            font-family: CENTAUR;
+        }
+
+        ;
     }
 }
 
@@ -1135,11 +1156,16 @@ footer {
     .thing-title {
         @include fontsize("title") {
             color: white;
+            font-family: CENTAUR;
         }
     }
 
     .thing-title_descr {
-        @include fontsize("title-descr")
+        @include fontsize("title-descr") {
+            font-family: CENTAUR;
+        }
+
+        ;
     }
 }
 
@@ -1190,6 +1216,7 @@ footer {
             .title {
                 font-weight: bold;
                 color: white;
+                font-family: CENTAUR;
             }
             /*.desc {
                 text-align: center;
@@ -1311,12 +1338,14 @@ footer {
 .catalog-title, .neworder-title {
     @include fontsize("title") {
         color: white;
+        font-family: CENTAUR;
     }
 }
 
 .catalog-title_descr, .neworder-title_descr {
     @include fontsize("title-descr") {
         color: darkgray;
+        font-family: CENTAUR;
     }
 }
 
@@ -1327,14 +1356,14 @@ footer {
     color: black;
 
     @include mq("tablet", max) {
-        padding: .5rem;
+        padding: 2rem .5rem;
         -ms-flex-direction: column;
         -webkit-flex-direction: column;
         flex-direction: column;
     }
 
     @include mq("tablet") {
-        padding: 8rem;
+        padding: 6rem 3rem;
         -ms-flex-direction: row;
         -webkit-flex-direction: row;
         flex-direction: row;
@@ -1371,23 +1400,29 @@ footer {
         /*min-height: 70vh;*/
         .title {
             color: black;
+            font-family: Comfortaa;
+
             @include fontsize("title");
         }
 
         .content {
             display: flex;
+            margin-top: 2rem;
+            -webkit-justify-content: space-between;
+            justify-content: space-between;
 
             .variacii {
-                padding: 2rem;
-                border: 1px solid gray;
-
+                /*padding: 2rem;*/
                 .sizes {
                     display: flex;
                     -ms-flex-direction: row;
                     -webkit-flex-direction: row;
                     flex-direction: row;
-                    -webkit-justify-content: space-between;
-                    justify-content: space-between;
+                    -webkit-justify-content: center;
+                    justify-content: center;
+                    padding: .5rem 0 1rem 0;
+                    border-bottom: 1px solid gray;
+                    margin-bottom: 1.5rem;
 
                     & > div {
                         border: 1px solid transparent;
@@ -1411,13 +1446,19 @@ footer {
 
                 .colors {
                     justify-content: flex-start;
-                    padding: .5rem;
+                    padding: .5rem 0 1rem 0;
                     text-align: left;
+                    border-bottom: 1px solid gray;
 
                     & > div {
                         cursor: pointer;
                         margin: .5rem;
                     }
+                }
+
+                .cost {
+                    margin: 1rem 0;
+                    font-weight: bold;
                 }
             }
 
@@ -1425,24 +1466,18 @@ footer {
                 -ms-flex-direction: column;
                 -webkit-flex-direction: column;
                 flex-direction: column;
+                margin-top: 0;
 
                 .descr {
                     color: black;
                     max-width: 600px;
                     text-align: justify;
-                    padding-right: 1rem;
+                    padding: 2rem;
                 }
 
                 .variacii {
                     max-width: 300px;
                     margin: auto;
-                    /*position: sticky;*/
-                    /*top: 0;*/
-                    /*padding: 2rem;
-                    border: 1px solid gray;*/
-                    .sizes {
-                        justify-content: center;
-                    }
 
                     .colors {
                         -ms-flex-direction: column;
@@ -1470,14 +1505,9 @@ footer {
                 }
 
                 .variacii {
-                    /*border: 1px solid gray;
-                    padding: 2rem;*/
-                    /*width: 33%;*/
-                    /*position: sticky;*/
-                    /*top: 0;*/
+                    padding-left: 2rem;
                 }
             }
-
 
 
             .cost {
@@ -1577,6 +1607,8 @@ footer {
 }
 
 .about-title {
+    font-family: CENTAUR;
+
     @include fontsize("title") {
         color: white;
         padding: .5rem;
@@ -1584,6 +1616,8 @@ footer {
 }
 
 .about-title_descr {
+    font-family: CENTAUR;
+
     @include fontsize("title-descr") {
         color: darkgray;
     }

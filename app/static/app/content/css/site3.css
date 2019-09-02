@@ -39,12 +39,17 @@
         desktop-wide: 1440px
 
 */
+@import url("https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700|Gabriela|Philosopher:400,400i,700,700i&display=swap&subset=cyrillic,greek");
 @font-face {
   font-family: CENTAUR;
+  font-family: 'Comfortaa', cursive;
+  font-family: 'Philosopher', sans-serif;
+  font-family: 'Gabriela', serif;
   src: url("../../fonts/CENTAUR.TTF") format("truetype"); }
 
 * {
   /*color: $fcDefault;*/
+  font-family: Philosopher;
   padding: 0;
   margin: 0;
   -moz-box-sizing: border-box;
@@ -142,38 +147,48 @@ body {
   #p_prldr .pre {
     color: darkgray;
     align-self: center; }
-  @media only screen and (min-width: 300px) {
-    #p_prldr .titlepre {
-      font-size: 30px;
-      color: white; } }
-  @media only screen and (min-width: 480px) {
-    #p_prldr .titlepre {
-      font-size: 30px;
-      color: white; } }
-  @media only screen and (min-width: 560px) {
-    #p_prldr .titlepre {
-      font-size: 32px;
-      color: white; } }
-  @media only screen and (min-width: 640px) {
-    #p_prldr .titlepre {
-      font-size: 32px;
-      color: white; } }
-  @media only screen and (min-width: 768px) {
-    #p_prldr .titlepre {
-      font-size: 68px;
-      color: white; } }
-  @media only screen and (min-width: 1024px) {
-    #p_prldr .titlepre {
-      font-size: 68px;
-      color: white; } }
-  @media only screen and (min-width: 1248px) {
-    #p_prldr .titlepre {
-      font-size: 72px;
-      color: white; } }
-  @media only screen and (min-width: 1440px) {
-    #p_prldr .titlepre {
-      font-size: 72px;
-      color: white; } }
+  #p_prldr .titlepre {
+    font-family: CENTAUR; }
+    @media only screen and (min-width: 300px) {
+      #p_prldr .titlepre {
+        font-size: 30px;
+        color: white;
+        font-family: CENTAUR; } }
+    @media only screen and (min-width: 480px) {
+      #p_prldr .titlepre {
+        font-size: 30px;
+        color: white;
+        font-family: CENTAUR; } }
+    @media only screen and (min-width: 560px) {
+      #p_prldr .titlepre {
+        font-size: 32px;
+        color: white;
+        font-family: CENTAUR; } }
+    @media only screen and (min-width: 640px) {
+      #p_prldr .titlepre {
+        font-size: 32px;
+        color: white;
+        font-family: CENTAUR; } }
+    @media only screen and (min-width: 768px) {
+      #p_prldr .titlepre {
+        font-size: 68px;
+        color: white;
+        font-family: CENTAUR; } }
+    @media only screen and (min-width: 1024px) {
+      #p_prldr .titlepre {
+        font-size: 68px;
+        color: white;
+        font-family: CENTAUR; } }
+    @media only screen and (min-width: 1248px) {
+      #p_prldr .titlepre {
+        font-size: 72px;
+        color: white;
+        font-family: CENTAUR; } }
+    @media only screen and (min-width: 1440px) {
+      #p_prldr .titlepre {
+        font-size: 72px;
+        color: white;
+        font-family: CENTAUR; } }
   @media only screen and (min-width: 300px) {
     #p_prldr .despre {
       color: darkgray; } }
@@ -248,35 +263,43 @@ body {
     @media only screen and (min-width: 300px) {
       .maintext p {
         font-size: 30px;
-        text-align: center; } }
+        text-align: center;
+        font-family: CENTAUR; } }
     @media only screen and (min-width: 480px) {
       .maintext p {
         font-size: 30px;
-        text-align: center; } }
+        text-align: center;
+        font-family: CENTAUR; } }
     @media only screen and (min-width: 560px) {
       .maintext p {
         font-size: 32px;
-        text-align: center; } }
+        text-align: center;
+        font-family: CENTAUR; } }
     @media only screen and (min-width: 640px) {
       .maintext p {
         font-size: 32px;
-        text-align: center; } }
+        text-align: center;
+        font-family: CENTAUR; } }
     @media only screen and (min-width: 768px) {
       .maintext p {
         font-size: 68px;
-        text-align: center; } }
+        text-align: center;
+        font-family: CENTAUR; } }
     @media only screen and (min-width: 1024px) {
       .maintext p {
         font-size: 68px;
-        text-align: center; } }
+        text-align: center;
+        font-family: CENTAUR; } }
     @media only screen and (min-width: 1248px) {
       .maintext p {
         font-size: 72px;
-        text-align: center; } }
+        text-align: center;
+        font-family: CENTAUR; } }
     @media only screen and (min-width: 1440px) {
       .maintext p {
         font-size: 72px;
-        text-align: center; } }
+        text-align: center;
+        font-family: CENTAUR; } }
 
 .content {
   display: grid;
@@ -507,7 +530,8 @@ form {
       border: none;
       padding: 0px; } }
   form .field_title {
-    margin-top: 1rem; }
+    margin-top: 1rem;
+    font-family: CENTAUR; }
     @media only screen and (min-width: 300px) {
       form .field_title {
         font-size: 20px; } }
@@ -567,12 +591,14 @@ form {
           font-size: 20px; } }
 
 .black_form .field_title, .black_form .fieldWrapper {
-  color: black; }
+  color: black;
+  font-family: CENTAUR; }
   .black_form .field_title input, .black_form .fieldWrapper input {
     color: black; }
 
 .white_form .field_title, .white_form .fieldWrapper {
-  color: white; }
+  color: white;
+  font-family: CENTAUR; }
   .white_form .field_title input, .white_form .fieldWrapper input {
     color: white; }
 
@@ -766,28 +792,36 @@ footer {
         text-align: center; }
         @media only screen and (min-width: 300px) {
           .korz-table .rows .row .discr .name {
-            font-size: 16px; } }
+            font-size: 16px;
+            font-family: CENTAUR; } }
         @media only screen and (min-width: 480px) {
           .korz-table .rows .row .discr .name {
-            font-size: 16px; } }
+            font-size: 16px;
+            font-family: CENTAUR; } }
         @media only screen and (min-width: 560px) {
           .korz-table .rows .row .discr .name {
-            font-size: 18px; } }
+            font-size: 18px;
+            font-family: CENTAUR; } }
         @media only screen and (min-width: 640px) {
           .korz-table .rows .row .discr .name {
-            font-size: 20px; } }
+            font-size: 20px;
+            font-family: CENTAUR; } }
         @media only screen and (min-width: 768px) {
           .korz-table .rows .row .discr .name {
-            font-size: 22px; } }
+            font-size: 22px;
+            font-family: CENTAUR; } }
         @media only screen and (min-width: 1024px) {
           .korz-table .rows .row .discr .name {
-            font-size: 22px; } }
+            font-size: 22px;
+            font-family: CENTAUR; } }
         @media only screen and (min-width: 1248px) {
           .korz-table .rows .row .discr .name {
-            font-size: 24px; } }
+            font-size: 24px;
+            font-family: CENTAUR; } }
         @media only screen and (min-width: 1440px) {
           .korz-table .rows .row .discr .name {
-            font-size: 24px; } }
+            font-size: 24px;
+            font-family: CENTAUR; } }
       .korz-table .rows .row .discr .element {
         display: flex;
         -ms-flex-direction: row;
@@ -1061,59 +1095,75 @@ footer {
   @media only screen and (min-width: 300px) {
     .info-screen .info-title {
       font-size: 30px;
-      color: white; } }
+      color: white;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 480px) {
     .info-screen .info-title {
       font-size: 30px;
-      color: white; } }
+      color: white;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 560px) {
     .info-screen .info-title {
       font-size: 32px;
-      color: white; } }
+      color: white;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 640px) {
     .info-screen .info-title {
       font-size: 32px;
-      color: white; } }
+      color: white;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 768px) {
     .info-screen .info-title {
       font-size: 68px;
-      color: white; } }
+      color: white;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 1024px) {
     .info-screen .info-title {
       font-size: 68px;
-      color: white; } }
+      color: white;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 1248px) {
     .info-screen .info-title {
       font-size: 72px;
-      color: white; } }
+      color: white;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 1440px) {
     .info-screen .info-title {
       font-size: 72px;
-      color: white; } }
+      color: white;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 300px) {
     .info-screen .info-title_descr {
-      font-size: 16px; } }
+      font-size: 16px;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 480px) {
     .info-screen .info-title_descr {
-      font-size: 16px; } }
+      font-size: 16px;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 560px) {
     .info-screen .info-title_descr {
-      font-size: 18px; } }
+      font-size: 18px;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 640px) {
     .info-screen .info-title_descr {
-      font-size: 20px; } }
+      font-size: 20px;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 768px) {
     .info-screen .info-title_descr {
-      font-size: 22px; } }
+      font-size: 22px;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 1024px) {
     .info-screen .info-title_descr {
-      font-size: 22px; } }
+      font-size: 22px;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 1248px) {
     .info-screen .info-title_descr {
-      font-size: 24px; } }
+      font-size: 24px;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 1440px) {
     .info-screen .info-title_descr {
-      font-size: 24px; } }
+      font-size: 24px;
+      font-family: CENTAUR; } }
 
 .info-content {
   background-color: white;
@@ -1141,59 +1191,75 @@ footer {
   @media only screen and (min-width: 300px) {
     .catalog-conteiner .thing-title, .neworder-conteiner .thing-title, .thing-conteiner .thing-title {
       font-size: 30px;
-      color: white; } }
+      color: white;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 480px) {
     .catalog-conteiner .thing-title, .neworder-conteiner .thing-title, .thing-conteiner .thing-title {
       font-size: 30px;
-      color: white; } }
+      color: white;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 560px) {
     .catalog-conteiner .thing-title, .neworder-conteiner .thing-title, .thing-conteiner .thing-title {
       font-size: 32px;
-      color: white; } }
+      color: white;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 640px) {
     .catalog-conteiner .thing-title, .neworder-conteiner .thing-title, .thing-conteiner .thing-title {
       font-size: 32px;
-      color: white; } }
+      color: white;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 768px) {
     .catalog-conteiner .thing-title, .neworder-conteiner .thing-title, .thing-conteiner .thing-title {
       font-size: 68px;
-      color: white; } }
+      color: white;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 1024px) {
     .catalog-conteiner .thing-title, .neworder-conteiner .thing-title, .thing-conteiner .thing-title {
       font-size: 68px;
-      color: white; } }
+      color: white;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 1248px) {
     .catalog-conteiner .thing-title, .neworder-conteiner .thing-title, .thing-conteiner .thing-title {
       font-size: 72px;
-      color: white; } }
+      color: white;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 1440px) {
     .catalog-conteiner .thing-title, .neworder-conteiner .thing-title, .thing-conteiner .thing-title {
       font-size: 72px;
-      color: white; } }
+      color: white;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 300px) {
     .catalog-conteiner .thing-title_descr, .neworder-conteiner .thing-title_descr, .thing-conteiner .thing-title_descr {
-      font-size: 16px; } }
+      font-size: 16px;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 480px) {
     .catalog-conteiner .thing-title_descr, .neworder-conteiner .thing-title_descr, .thing-conteiner .thing-title_descr {
-      font-size: 16px; } }
+      font-size: 16px;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 560px) {
     .catalog-conteiner .thing-title_descr, .neworder-conteiner .thing-title_descr, .thing-conteiner .thing-title_descr {
-      font-size: 18px; } }
+      font-size: 18px;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 640px) {
     .catalog-conteiner .thing-title_descr, .neworder-conteiner .thing-title_descr, .thing-conteiner .thing-title_descr {
-      font-size: 20px; } }
+      font-size: 20px;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 768px) {
     .catalog-conteiner .thing-title_descr, .neworder-conteiner .thing-title_descr, .thing-conteiner .thing-title_descr {
-      font-size: 22px; } }
+      font-size: 22px;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 1024px) {
     .catalog-conteiner .thing-title_descr, .neworder-conteiner .thing-title_descr, .thing-conteiner .thing-title_descr {
-      font-size: 22px; } }
+      font-size: 22px;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 1248px) {
     .catalog-conteiner .thing-title_descr, .neworder-conteiner .thing-title_descr, .thing-conteiner .thing-title_descr {
-      font-size: 24px; } }
+      font-size: 24px;
+      font-family: CENTAUR; } }
   @media only screen and (min-width: 1440px) {
     .catalog-conteiner .thing-title_descr, .neworder-conteiner .thing-title_descr, .thing-conteiner .thing-title_descr {
-      font-size: 24px; } }
+      font-size: 24px;
+      font-family: CENTAUR; } }
 
 .catalog-content, .neworder-content, .thing-content, .info-content, .order-content {
   background-color: whitesmoke;
@@ -1239,7 +1305,8 @@ footer {
             }*/ }
       .catalog-content .container-item .cover .title, .catalog-content .neworder-item .cover .title, .neworder-content .container-item .cover .title, .neworder-content .neworder-item .cover .title, .thing-content .container-item .cover .title, .thing-content .neworder-item .cover .title, .info-content .container-item .cover .title, .info-content .neworder-item .cover .title, .order-content .container-item .cover .title, .order-content .neworder-item .cover .title {
         font-weight: bold;
-        color: white; }
+        color: white;
+        font-family: CENTAUR; }
       .catalog-content .container-item .cover .cost, .catalog-content .neworder-item .cover .cost, .neworder-content .container-item .cover .cost, .neworder-content .neworder-item .cover .cost, .thing-content .container-item .cover .cost, .thing-content .neworder-item .cover .cost, .info-content .container-item .cover .cost, .info-content .neworder-item .cover .cost, .order-content .container-item .cover .cost, .order-content .neworder-item .cover .cost {
         color: darkgreen;
         text-align: right; }
@@ -1337,82 +1404,98 @@ footer {
 @media only screen and (min-width: 300px) {
   .catalog-title, .neworder-title {
     font-size: 30px;
-    color: white; } }
+    color: white;
+    font-family: CENTAUR; } }
 
 @media only screen and (min-width: 480px) {
   .catalog-title, .neworder-title {
     font-size: 30px;
-    color: white; } }
+    color: white;
+    font-family: CENTAUR; } }
 
 @media only screen and (min-width: 560px) {
   .catalog-title, .neworder-title {
     font-size: 32px;
-    color: white; } }
+    color: white;
+    font-family: CENTAUR; } }
 
 @media only screen and (min-width: 640px) {
   .catalog-title, .neworder-title {
     font-size: 32px;
-    color: white; } }
+    color: white;
+    font-family: CENTAUR; } }
 
 @media only screen and (min-width: 768px) {
   .catalog-title, .neworder-title {
     font-size: 68px;
-    color: white; } }
+    color: white;
+    font-family: CENTAUR; } }
 
 @media only screen and (min-width: 1024px) {
   .catalog-title, .neworder-title {
     font-size: 68px;
-    color: white; } }
+    color: white;
+    font-family: CENTAUR; } }
 
 @media only screen and (min-width: 1248px) {
   .catalog-title, .neworder-title {
     font-size: 72px;
-    color: white; } }
+    color: white;
+    font-family: CENTAUR; } }
 
 @media only screen and (min-width: 1440px) {
   .catalog-title, .neworder-title {
     font-size: 72px;
-    color: white; } }
+    color: white;
+    font-family: CENTAUR; } }
 
 @media only screen and (min-width: 300px) {
   .catalog-title_descr, .neworder-title_descr {
     font-size: 16px;
-    color: darkgray; } }
+    color: darkgray;
+    font-family: CENTAUR; } }
 
 @media only screen and (min-width: 480px) {
   .catalog-title_descr, .neworder-title_descr {
     font-size: 16px;
-    color: darkgray; } }
+    color: darkgray;
+    font-family: CENTAUR; } }
 
 @media only screen and (min-width: 560px) {
   .catalog-title_descr, .neworder-title_descr {
     font-size: 18px;
-    color: darkgray; } }
+    color: darkgray;
+    font-family: CENTAUR; } }
 
 @media only screen and (min-width: 640px) {
   .catalog-title_descr, .neworder-title_descr {
     font-size: 20px;
-    color: darkgray; } }
+    color: darkgray;
+    font-family: CENTAUR; } }
 
 @media only screen and (min-width: 768px) {
   .catalog-title_descr, .neworder-title_descr {
     font-size: 22px;
-    color: darkgray; } }
+    color: darkgray;
+    font-family: CENTAUR; } }
 
 @media only screen and (min-width: 1024px) {
   .catalog-title_descr, .neworder-title_descr {
     font-size: 22px;
-    color: darkgray; } }
+    color: darkgray;
+    font-family: CENTAUR; } }
 
 @media only screen and (min-width: 1248px) {
   .catalog-title_descr, .neworder-title_descr {
     font-size: 24px;
-    color: darkgray; } }
+    color: darkgray;
+    font-family: CENTAUR; } }
 
 @media only screen and (min-width: 1440px) {
   .catalog-title_descr, .neworder-title_descr {
     font-size: 24px;
-    color: darkgray; } }
+    color: darkgray;
+    font-family: CENTAUR; } }
 
 .thing-content {
   position: relative;
@@ -1421,13 +1504,13 @@ footer {
   color: black; }
   @media only screen and (max-width: 767px) {
     .thing-content {
-      padding: .5rem;
+      padding: 2rem .5rem;
       -ms-flex-direction: column;
       -webkit-flex-direction: column;
       flex-direction: column; } }
   @media only screen and (min-width: 768px) {
     .thing-content {
-      padding: 8rem;
+      padding: 6rem 3rem;
       -ms-flex-direction: row;
       -webkit-flex-direction: row;
       flex-direction: row; } }
@@ -1452,7 +1535,8 @@ footer {
   .thing-content .info {
     /*min-height: 70vh;*/ }
     .thing-content .info .title {
-      color: black; }
+      color: black;
+      font-family: Comfortaa; }
       @media only screen and (min-width: 300px) {
         .thing-content .info .title {
           font-size: 30px; } }
@@ -1478,17 +1562,22 @@ footer {
         .thing-content .info .title {
           font-size: 72px; } }
     .thing-content .info .content {
-      display: flex; }
+      display: flex;
+      margin-top: 2rem;
+      -webkit-justify-content: space-between;
+      justify-content: space-between; }
       .thing-content .info .content .variacii {
-        padding: 2rem;
-        border: 1px solid gray; }
+        /*padding: 2rem;*/ }
         .thing-content .info .content .variacii .sizes {
           display: flex;
           -ms-flex-direction: row;
           -webkit-flex-direction: row;
           flex-direction: row;
-          -webkit-justify-content: space-between;
-          justify-content: space-between; }
+          -webkit-justify-content: center;
+          justify-content: center;
+          padding: .5rem 0 1rem 0;
+          border-bottom: 1px solid gray;
+          margin-bottom: 1.5rem; }
           .thing-content .info .content .variacii .sizes > div {
             border: 1px solid transparent; }
           .thing-content .info .content .variacii .sizes > div:hover {
@@ -1502,30 +1591,29 @@ footer {
               border: 1px solid black; }
         .thing-content .info .content .variacii .colors {
           justify-content: flex-start;
-          padding: .5rem;
-          text-align: left; }
+          padding: .5rem 0 1rem 0;
+          text-align: left;
+          border-bottom: 1px solid gray; }
           .thing-content .info .content .variacii .colors > div {
             cursor: pointer;
             margin: .5rem; }
+        .thing-content .info .content .variacii .cost {
+          margin: 1rem 0;
+          font-weight: bold; }
       @media only screen and (max-width: 767px) {
         .thing-content .info .content {
           -ms-flex-direction: column;
           -webkit-flex-direction: column;
-          flex-direction: column; }
+          flex-direction: column;
+          margin-top: 0; }
           .thing-content .info .content .descr {
             color: black;
             max-width: 600px;
             text-align: justify;
-            padding-right: 1rem; }
+            padding: 2rem; }
           .thing-content .info .content .variacii {
             max-width: 300px;
-            margin: auto;
-            /*position: sticky;*/
-            /*top: 0;*/
-            /*padding: 2rem;
-                    border: 1px solid gray;*/ }
-            .thing-content .info .content .variacii .sizes {
-              justify-content: center; }
+            margin: auto; }
             .thing-content .info .content .variacii .colors {
               -ms-flex-direction: column;
               -webkit-flex-direction: column;
@@ -1544,11 +1632,7 @@ footer {
             padding-right: 1rem;
             text-align: justify; }
           .thing-content .info .content .variacii {
-            /*border: 1px solid gray;
-                    padding: 2rem;*/
-            /*width: 33%;*/
-            /*position: sticky;*/
-            /*top: 0;*/ } }
+            padding-left: 2rem; } }
       .thing-content .info .content .cost {
         margin-top: 1rem; }
       .thing-content .info .content .btn-add-korz {
@@ -1623,93 +1707,83 @@ footer {
   width: 80%;
   max-width: 320px; }
 
-@media only screen and (min-width: 300px) {
-  .about-title {
-    font-size: 30px;
-    color: white;
-    padding: .5rem; } }
+.about-title {
+  font-family: CENTAUR; }
+  @media only screen and (min-width: 300px) {
+    .about-title {
+      font-size: 30px;
+      color: white;
+      padding: .5rem; } }
+  @media only screen and (min-width: 480px) {
+    .about-title {
+      font-size: 30px;
+      color: white;
+      padding: .5rem; } }
+  @media only screen and (min-width: 560px) {
+    .about-title {
+      font-size: 32px;
+      color: white;
+      padding: .5rem; } }
+  @media only screen and (min-width: 640px) {
+    .about-title {
+      font-size: 32px;
+      color: white;
+      padding: .5rem; } }
+  @media only screen and (min-width: 768px) {
+    .about-title {
+      font-size: 68px;
+      color: white;
+      padding: .5rem; } }
+  @media only screen and (min-width: 1024px) {
+    .about-title {
+      font-size: 68px;
+      color: white;
+      padding: .5rem; } }
+  @media only screen and (min-width: 1248px) {
+    .about-title {
+      font-size: 72px;
+      color: white;
+      padding: .5rem; } }
+  @media only screen and (min-width: 1440px) {
+    .about-title {
+      font-size: 72px;
+      color: white;
+      padding: .5rem; } }
 
-@media only screen and (min-width: 480px) {
-  .about-title {
-    font-size: 30px;
-    color: white;
-    padding: .5rem; } }
-
-@media only screen and (min-width: 560px) {
-  .about-title {
-    font-size: 32px;
-    color: white;
-    padding: .5rem; } }
-
-@media only screen and (min-width: 640px) {
-  .about-title {
-    font-size: 32px;
-    color: white;
-    padding: .5rem; } }
-
-@media only screen and (min-width: 768px) {
-  .about-title {
-    font-size: 68px;
-    color: white;
-    padding: .5rem; } }
-
-@media only screen and (min-width: 1024px) {
-  .about-title {
-    font-size: 68px;
-    color: white;
-    padding: .5rem; } }
-
-@media only screen and (min-width: 1248px) {
-  .about-title {
-    font-size: 72px;
-    color: white;
-    padding: .5rem; } }
-
-@media only screen and (min-width: 1440px) {
-  .about-title {
-    font-size: 72px;
-    color: white;
-    padding: .5rem; } }
-
-@media only screen and (min-width: 300px) {
-  .about-title_descr {
-    font-size: 16px;
-    color: darkgray; } }
-
-@media only screen and (min-width: 480px) {
-  .about-title_descr {
-    font-size: 16px;
-    color: darkgray; } }
-
-@media only screen and (min-width: 560px) {
-  .about-title_descr {
-    font-size: 18px;
-    color: darkgray; } }
-
-@media only screen and (min-width: 640px) {
-  .about-title_descr {
-    font-size: 20px;
-    color: darkgray; } }
-
-@media only screen and (min-width: 768px) {
-  .about-title_descr {
-    font-size: 22px;
-    color: darkgray; } }
-
-@media only screen and (min-width: 1024px) {
-  .about-title_descr {
-    font-size: 22px;
-    color: darkgray; } }
-
-@media only screen and (min-width: 1248px) {
-  .about-title_descr {
-    font-size: 24px;
-    color: darkgray; } }
-
-@media only screen and (min-width: 1440px) {
-  .about-title_descr {
-    font-size: 24px;
-    color: darkgray; } }
+.about-title_descr {
+  font-family: CENTAUR; }
+  @media only screen and (min-width: 300px) {
+    .about-title_descr {
+      font-size: 16px;
+      color: darkgray; } }
+  @media only screen and (min-width: 480px) {
+    .about-title_descr {
+      font-size: 16px;
+      color: darkgray; } }
+  @media only screen and (min-width: 560px) {
+    .about-title_descr {
+      font-size: 18px;
+      color: darkgray; } }
+  @media only screen and (min-width: 640px) {
+    .about-title_descr {
+      font-size: 20px;
+      color: darkgray; } }
+  @media only screen and (min-width: 768px) {
+    .about-title_descr {
+      font-size: 22px;
+      color: darkgray; } }
+  @media only screen and (min-width: 1024px) {
+    .about-title_descr {
+      font-size: 22px;
+      color: darkgray; } }
+  @media only screen and (min-width: 1248px) {
+    .about-title_descr {
+      font-size: 24px;
+      color: darkgray; } }
+  @media only screen and (min-width: 1440px) {
+    .about-title_descr {
+      font-size: 24px;
+      color: darkgray; } }
 
 .about-text {
   color: darkgray; }
