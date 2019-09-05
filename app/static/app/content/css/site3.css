@@ -862,7 +862,7 @@ footer {
   display: inline-block; }
 
 .korzcount {
-  background-color: transparent;
+  background-color: crimson;
   position: absolute;
   top: -14px;
   right: -14px;

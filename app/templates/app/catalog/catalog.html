@@ -30,44 +30,4 @@
 {% endblock %}
 
 {% block scripts %}
-<script>
-    function add(e) {
-        K = JSON.parse(localStorage.getItem("korzina"));
-        if (K == null) {
-            var K = {}
-            K.l = [];
-        }
-        var tovar = {
-                id: e.getAttribute("data-id"),
-                //img: e.getAttribute("data-img"),
-                //name: e.getAttribute("data-name"),
-                //cost: e.getAttribute("data-cost"),
-                //color: e.getAttribute("data-color"),
-                //size: e.getAttribute("data-size"),
-                //article: e.getAttribute("data-article"),
-                count: 1,
-        }
-        var len = K.l.length;
-        var hasTovat = false;
-        if (len > 0) {
-            for (var i = 0; i < len; i++) {
-                if (K.l[i].id == tovar.id && K.l[i].name == tovar.name) {
-                    hasTovat = true;
-                    K.l[i].count = parseInt(K.l[i].count) + parseInt(tovar.count);
-                    break;
-                //} else {
-                //    K.l.push(tovar);
-                }
-            }
-        };
-        if (hasTovat === false) {
-            K.l.push(tovar);
-        }
-        localStorage.setItem("korzina", JSON.stringify(K));
-        loadkorzina(false);
-        }
-    //$(document).load(function() {
-
-    //});
-</script>
 {% endblock %}

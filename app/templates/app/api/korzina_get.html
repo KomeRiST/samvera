@@ -1,5 +1,5 @@
 ﻿{% load staticfiles %}
-<div id="kor">{{ kor }}</div>
+{#<div id="kor">{{ kor }}</div>#}
     <form action="{% url 'get_order' %}" method="get">
 <div class="rows">
 {% for item in korz %}
@@ -15,7 +15,7 @@
                 <div class="cost">Цена <br />{{item.tovar.cost}} р.</div>
                 <div class="count">Количетво <br />{{item.count}} шт.</div>
                 <div class="summ">Сумма <br />{{item.summ}}</div>
-                <div class="del" onclick="del(this)">X</div>
+                <div class="del" data-id="{{item.id}}" onclick="del(this)">X</div>
             </div>
         </div>
      </div>

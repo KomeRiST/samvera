@@ -441,8 +441,7 @@ def korzina_get(request):
     #tovary = models.Variaciya.objects.filter(id__in=map(int, arr.split(','))).agregate('total') #.aggregate(total=Sum('count', field="count*cost"))['total']
     var = []
     #{"list":[{"id":"2","count":1}]}
-    kor = {}
-    kor['l'] = list()
+    kor = list()
     while x>=0:
         print("цикл: ", ids[x])
         try:
@@ -456,7 +455,7 @@ def korzina_get(request):
                 k.summ=int(k.count) * int(t.tovar.cost)
                 var.append(k)
                 itog = itog + k.summ
-                kor['l'].append({'id':t.id, 'count': cts[x]})
+                kor.append({'id':t.id, 'count': cts[x]})
             else:
                 ids.pop(x)
 

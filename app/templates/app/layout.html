@@ -191,6 +191,7 @@
     <!--</div>-->
 
     <script src="{% static '/app/slick/slick.min.js' %}"></script>
+    <script src="{% static '/app/scripts/korzina.js' %}"></script>
     
 <script>
     function openKorzina() {
@@ -212,9 +213,9 @@
        // }
     //});
     const nav = document.querySelector('#nav');
-const menu = document.querySelector('#menu');
-const menuToggle = document.querySelector('.nav__toggle');
-let isMenuOpen = false;
+    const menu = document.querySelector('#menu');
+    const menuToggle = document.querySelector('.nav__toggle');
+    let isMenuOpen = false;
 
 
 // TOGGLE MENU ACTIVE STATE
@@ -251,44 +252,57 @@ nav.addEventListener('keydown', e => {
     }
   }
 });
-    function loadkorzina(r=true) {
-        var count = 0;
-        K = JSON.parse(localStorage.getItem("korzina"));
-        if (K != null)  {
-            if (K.l.length > 0) {
-                for (var i = 0; i < K.l.length; i++) {
-                    count = count + parseInt(K.l[i].count);
-                }
-            }
-        }
-        if (count != 0) {
-            $(".korzcount").html(count);
-            $(".korzcount").css('background-color', 'red');
-            if (r === true) {
-                $("#korzcount2").toggle(600);
-            }
-        }
-    }
-    $(window).on('load', function () {
-        var $preloader = $('#p_prldr');
-        $preloader.delay(500).fadeOut(1000);
-
-        loadkorzina();
-
-        var $preloader = $('.slide .main-text');
-        $preloader.delay(500).fadeIn(1000);
+    //function loadkorzina(r=true) {
+    //    var count = 0;
+    //    K = JSON.parse(localStorage.getItem("korzina"));
+    //    if (K != null)  {
+    //        if (K.l.length > 0) {
+    //            for (var i = 0; i < K.l.length; i++) {
+    //                count = count + parseInt(K.l[i].count);
+    //            }
+    //        }
+    //    }
+    //    if (count != 0) {
+    //        $(".korzcount").html(count);
+    //        $(".korzcount").css('background-color', 'red');
+    //        if (r === true) {
+    //            $("#korzcount2").toggle(600);
+    //        }
+    //    }
+    //}
+    //$(window).on('load', function () {
         //$("body").delay(2000).fadeIn(1000);
     //$preloader.css({
     //    "margin-bottom": "0px",
     //    "opacity": "1"
     //})
-    });
+    //});
 $(document).ready(function(){
+        var $preloader = $('#p_prldr');
+        $preloader.delay(500).fadeOut(1000);
+        if (typeof korz === 'undefined') {
+        korz = new Korzina($('.korzina'), $(".korz-preload"), [$("#korzcount"), $("#korzcount2")], "korzina");
+    }
+        korz.ShowCount();
+        //loadkorzina();
+
+        var $preloader = $('.slide .main-text');
+        $preloader.delay(500).fadeIn(1000);
     var list = document.querySelector('#nav__korz');
-    var t = document.querySelector("#korzcount");
-    list.addEventListener('click', function(ev) {
-        $("#korzcount").toggle(600);
         $("#korzcount2").toggle(600);
+    if (korz.GetCountVars() > 0) {
+        $("#korzcount").show;
+        $("#korzcount2").show;
+    } else {
+        $("#korzcount").hide;
+            $("#korzcount2").hide;
+    }
+    //var t = document.querySelector("#korzcount");
+    list.addEventListener('click', function (ev) {
+        if (korz.GetCountVars() > 0) {
+            $("#korzcount").toggle(600);
+            $("#korzcount2").toggle(600);
+        }
     }, false);
     
 });

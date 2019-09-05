@@ -149,6 +149,7 @@
     <Content Include="app\static\app\scripts\flickity-docs.min.js" />
     <Content Include="app\static\app\scripts\jquery-3.3.1.min.js" />
     <Content Include="app\static\app\scripts\jquery.video.js" />
+    <Content Include="app\static\app\scripts\korzina.js" />
     <Content Include="app\static\app\slick\ajax-loader.gif" />
     <Content Include="app\static\app\slick\config.rb" />
     <Content Include="app\static\app\slick\fonts\slick.eot" />
