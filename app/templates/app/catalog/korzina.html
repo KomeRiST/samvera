@@ -1,10 +1,15 @@
 {% extends "app/layout.html" %}
 {% load staticfiles %}
-{% block content %}
-<div class="about-screen about-screen_korz">
-    <div class="about-title">{{ title }}</div>
-    <div class="about-title_descr">{{ message }}</div>
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/css/catalog/catalog.css' %}" />
+{% endblock %}
+{% block screen %}
+<div class="main_screen about-screen_korz">
+    <div class="main_title text-title-dark">{{ title }}</div>
+    <div class="main_title_descr text-desc-dark">{{ message }}</div>
 </div>
+{% endblock %}
+{% block content %}
 <div class="about-content about-content_korz">
     <div class="korz-table">
         <div class="korz-preload">Ваша корзина пуста</div>

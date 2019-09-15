@@ -15,10 +15,10 @@ from django.conf.urls import include
 urlpatterns = [
     path('', views.home, name='home'),
     path('kabinet/', views.kabinet, name='kabinet'),
-    path('contact/', views.contact, name='contact'),
+    path('about/<str:page>', views.about, name='about'),
+    path('contact/<str:page>', views.about, name='contact'),
     path('thing/<int:id>', views.thing, name='thing'),
     path('post/<str:code>/', views.post, name='post'),
-    path('about/<str:page>', views.about, name='about'),
     path('info/<str:page>', views.info, name='info'),
     path('catalog/', views.catalog, name='catalog'),
     path('catalog/<str:page>', views.catalog),
@@ -31,7 +31,7 @@ urlpatterns = [
     path('login/',
          LoginView.as_view
          (
-             template_name='app/login.html',
+             template_name='app/account/login.html',
              authentication_form=forms.BootstrapAuthenticationForm,
              extra_context=
              {
@@ -41,7 +41,7 @@ urlpatterns = [
          ),
          name='login'),
     path('logout/', LogoutView.as_view(next_page='/'), name='log_out'),
-    path('accounts/', include('django.contrib.auth.urls')),
+    #path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     path('chaining/', include('smart_selects.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

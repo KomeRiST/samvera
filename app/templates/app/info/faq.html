@@ -1,153 +1,185 @@
 {% extends "app/layout.html" %}
 {% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/info/info.css' %}" />
+{% endblock %}
 
 {% block content %}
-<div class="info-screen">
-    <div class="info-conteiner">
-        <div class="info-title">{{title}}</div>
+<div class="main_screen">
+    <div class="main_conteiner">
+        <div class="main_title text-title-dark">{{title}}</div>
         <br />
-        <div class="info-title_descr">{{message}}</div>
+        <div class="main_title_descr text-desc-dark">{{message}}</div>
         <br />
         {{year}}
     </div>
 </div>
-<section class="ac-container">
-	<div>
-		<input name="accordion-1" id="ac-1" type="radio" checked="">
-		<label for="ac-1">О нас</label>
-		<article class="ac-small">
-			<p>Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.</p>
-		</article>
-	</div>
-	<div>
-		<input name="accordion-1" id="ac-2" type="radio">
-		<label for="ac-2">Наши работы</label>
-		<article class="ac-medium">
-			<p>Like you, I used to think the world was this great place where everybody lived by the same standards I did, then some kid with a nail showed me I was living in his world, a world where chaos rules not order, a world where righteousness is not rewarded. That's Cesar's world, and if you're not willing to play by his rules, then you're gonna have to pay the price. </p>
-		</article>
-	</div>
-	<div>
-		<input name="accordion-1" id="ac-3" type="radio">
-		<label for="ac-3">Ссылки</label>
-		<article class="ac-large">
-			<p>You think water moves fast? You should see ice. It moves like it has a mind. Like it knows it killed the world once and got a taste for murder. After the avalanche, it took us a week to climb out. Now, I don't know exactly when we turned on each other, but I know that seven of us survived the slide... and only five made it out. Now we took an oath, that I'm breaking now. We said we'd say it was the snow that killed the other two, but it wasn't. Nature is lethal but it doesn't hold a candle to man. </p>
-		</article>
-	</div>
-	<div>
-		<input name="accordion-1" id="ac-4" type="radio">
-		<label for="ac-4">Контакты</label>
-		<article class="ac-large">
-			<p>You see? It's curious. Ted did figure it out - time travel. And when we get back, we gonna tell everyone. How it's possible, how it's done, what the dangers are. But then why fifty years in the future when the spacecraft encounters a black hole does the computer call it an 'unknown entry event'? Why don't they know? If they don't know, that means we never told anyone. And if we never told anyone it means we never made it back. Hence we die down here. Just as a matter of deductive logic. </p>
-		</article>
-	</div>
-</section>
-
-<div class="info-content">
-    Есть ли у Вас подарочные сертификаты?
-Мы приготовили для вас подарочные сертификаты номиналом: 3000 руб., 5000 руб. и 10000 руб.
-
-Якорная ссылка. Имя: aboutsize 
-
-Какой у Вас самый большой размер?
-Размерная сетка Samvera включает размеры: XS, S, M. Так же в наших коллекциях встречаются вещи свободного кроя – размера ONE SIZE. Если вы сомневаетесь в выборе размера, пожалуйста, свяжитесь с нами по телефону + 7 953 826 3661, по электронной почте info@samvera.ru или другим удобным для вас способом. Мы c удовольствием вам поможем!
-
-Якорная ссылка. Имя: aboutprodaction 
-
-Где находится производство Samvera?
-Все изделия мы производим в России. На данный момент, преимущественно в Свердловской области. 
-
-Якорная ссылка. Имя: aboutcare 
-
-Уход за изделиями
-Чтобы одежда сохраняла форму максимально долго, мы рекомендуем:
-Стирать вручную при температуре воды до 30° (избегать сильного трения и выкручивания)
-Не отбеливать
-Гладить при низкой температуре
-Барабанная сушка запрещена
-Сушить на горизонтальной плоскости в расправленном состоянии
-Химчистка (сохранит внешний вид и правильную форму изделия)
-Деликатная машинная стирка при температуре воды до 30°C;
-Избегать механического воздействия (интенсивное трение о какую-либо поверхность, жесткие ремни сумок, рюкзаков и т.д.).
-
-Доставка
-
-Якорная ссылка. Имя: aboutorderstatus 
-
-Где можно отслеживать статус заказа?
-Когда мы отправим ваш заказ, номер отслеживания придет вам на указанный вами email-адрес. 
-В случае, если сообщение не пришло на email-адрес, проверьте папку "Спам", В случае, если сообщение Вам не пришло, свяжитесь с нами по телефону + 7 953 826 3661, по электронной почте zakaz@samvera.ru или другим удобным для вас способом. Мы c удовольствием вам поможем!
-
-
-Якорная ссылка. Имя: aboutorderCIS 
-
-
-Как сделать заказ в страны СНГ?
-Заказ оформляется на samvera.ru и оплачивается с помощью банковской карты VISA / MasterCard.
-Служба доставки: CDEK.
-Срок доставки: 2-10 рабочих дней, не считая дня отправления, выходных и праздничных дней. 
-Стоимость доставки — 500 рублей. 
-Время доставки с 9:00 до 18:00. 
-
-
-Якорная ссылка. Имя: aboutorderOC 
-
-Как сделать заказ в другую страну?
-Заказ оформляется на samvera.ru и оплачивается с помощью банковской карты VISA / MasterCard. 
-Служба доставки: DHL. 
-Срок доставки: 2-7 рабочих дней, не считая дня отправления (в зависимости от региона), выходных и праздничных дней. 
-Стоимость доставки — 1500 рублей. 
-Время доставки с 9:00 до 18:00. 
-Просим принять во внимание, что в зависимости от страны и суммы заказа может возникнуть необходимость оплаты таможенных сборов согласно таможенному законодательству страны назначения. Для консультации по вопросу доставки вы можете обратиться в местное отделение DHL Express по адресу или телефону указанному на сайте: www.dhl.com.
-
-Якорная ссылка. Имя: delayeddelivery 
-
-Задерживается доставка, что делать?
-Свяжитесь с нами по телефону + 7 953 826 3661, по электронной почте zakaz@samvera.ru или другим удобным для вас способом. Мы c удовольствием вам поможем!
-Мы отправим запрос в курьерскую службу, постараемся оперативно решить данную проблему и предоставим всю информацию. 
-
-Якорная ссылка. Имя: deliverytrying 
-
-Есть ли примерка при доставке?
-Мы предоставляем услугу примерки вещей при получени заказа (не более 5 позиций) только в г. Екатеринбурге. 
-К Вам приедет курьер в назначенное время. Время примерки не более 15 минут. Все неподошедшие вещи можно вернуть курьеру. 
-Стоимость примерки:
-- бесплатно: при покупке товара;
-- 300 рублей: при отказе от покупки товара;
-
-Якорная ссылка. Имя: deliverycost 
-
-Стоимость и сроки доставки?
-Подробно ознакомиться с условиями доставки вы можете на сайте в разделе Оплата и Доставка. 
-
-Оплата
-
-Якорная ссылка. Имя: aboutorderpayment 
-
-Могу ли я оплатить заказ при получении?
-
-Доставка по России, в страны СНГ, другие страны происходит после полной предоплаты заказа на сайте www.samvera.ru 
-Оплата наличными доступна при оформлении доставки по г. Екатеринбургу.
-
-Якорная ссылка. Имя: aboutpaymentmethods 
-
-Способы оплаты заказа?
-Подробно ознакомиться со способами оплаты вы можете на сайте в разделе Оплата.
-
-Обмен и возврат
-
-Якорная ссылка. Имя: aboutorderdisadvantage 
-
-Обнаружен брак, что делать?
-Необходимо сделать фотографию дефекта и связаться с нами по телефону + 7 953 826 3661, по электронной почте vozvrat@samvera.ru или свяжитесь с нами другим удобным для вас способом. Мы c удовольствием вам поможем! 
-
-Якорная ссылка. Имя: aboutaordervozvrat 
-
-Сколько времени ждать возврат денежных средств, если я сделала возврат товара?
-Возврат будет осуществлен в течение 10 рабочих дней с момента получения нами вашего заявления, возвратной посылки. 
-
-
-Не нашли ответ на ваш вопрос?
-Cвяжитесь с нами по телефону + 7 953 826 3661, по электронной почте info@samvera.ru или другим удобным для вас способом. Мы c удовольствием вам поможем!
+<div class="main_content">
+    <section class="ac-container">
+	    <div>
+		    <input name="accordion-1" id="ac-1" type="radio" checked="">
+		    <label for="ac-1">Есть ли у Вас подарочные сертификаты?</label>
+		    <article class="ac-small">
+			    <p>Мы приготовили для вас подарочные сертификаты номиналом: 3000 руб., 5000 руб. и 10000 руб.</p>
+		    </article>
+	    </div>
+	    <div>
+		    <input name="accordion-1" id="ac-2" type="radio">
+		    <label for="ac-2">Какой у Вас самый большой размер?</label>
+		    <article class="ac-medium">
+			    <p>Размерная сетка Samvera включает размеры: XS, S, M.</p>
+                <p>Так же в наших коллекциях встречаются вещи свободного кроя – размера ONE SIZE.</p>
+                <ul>
+                    <p>Если вы сомневаетесь в выборе размера, пожалуйста, свяжитесь с нами:</p>
+                    <li>по телефону + 7 953 826 3661</li>
+                    <li>по электронной почте <a href="mailto:info@samvera.ru?subject=Вопрос о размерах одежды">info@samvera.ru</a></li>
+                    <li>другим удобным для вас способом.</li>
+                </ul>
+                <p class="help">Мы c удовольствием вам поможем!</p>
+		    </article>
+	    </div>
+	    <div>
+		    <input name="accordion-1" id="ac-3" type="radio">
+		    <label for="ac-3">Где находится производство Samvera?</label>
+		    <article class="ac-medium">
+			    <p>Все изделия мы производим в России. На данный момент, преимущественно в Свердловской области.</p>
+		    </article>
+	    </div>
+	    <div>
+		    <input name="accordion-1" id="ac-4" type="radio">
+		    <label for="ac-4">Уход за изделиями</label>
+		    <article class="ac-medium">
+			    <ul>
+                    <p>Чтобы одежда сохраняла форму максимально долго, мы рекомендуем:</p>
+                    <li>Стирать вручную при температуре воды до 30° (избегать сильного трения и выкручивания)</li>
+                    <li>Не отбеливать</li>
+                    <li>Гладить при низкой температуре</li>
+                    <li>Барабанная сушка запрещена</li>
+                    <li>Сушить на горизонтальной плоскости в расправленном состоянии</li>
+                    <li>Химчистка (сохранит внешний вид и правильную форму изделия)</li>
+                    <li>Деликатная машинная стирка при температуре воды до 30°C;</li>
+                    <li>Избегать механического воздействия (интенсивное трение о какую-либо поверхность, жесткие ремни сумок, рюкзаков и т.д.).</li>
+                </ul>
+            </article>
+	    </div>
+	    <div>
+		    <input name="accordion-1" id="ac-5" type="radio">
+		    <label for="ac-5">Где можно отслеживать статус заказа?</label>
+		    <article class="ac-medium">
+			    <p>Когда мы отправим ваш заказ, номер отслеживания придет вам на указанный вами email-адрес.</p>
+                <p>В случае, если сообщение не пришло на email-адрес, проверьте папку "Спам", В случае, если сообщение Вам не пришло, свяжитесь с нами по телефону + 7 953 826 3661, по электронной почте zakaz@samvera.ru или другим удобным для вас способом. Мы c удовольствием вам поможем!</p>
+		    </article>
+	    </div>
+	    <div>
+		    <input name="accordion-1" id="ac-6" type="radio">
+		    <label for="ac-6">Как сделать заказ в страны СНГ?</label>
+		    <article class="ac-medium">
+                <ul>
+			        <p>Заказ оформляется на samvera.ru и оплачивается с помощью банковской карты VISA / MasterCard.</p>
+                    <li>Служба доставки: CDEK.</li>
+                    <li>Срок доставки: 2-10 рабочих дней, не считая дня отправления, выходных и праздничных дней.</li>
+                    <li>Стоимость доставки — 500 рублей.</li>
+                    <li>Время доставки с 9:00 до 18:00.</li>
+                </ul>
+		    </article>
+	    </div>
+	    <div>
+		    <input name="accordion-1" id="ac-7" type="radio">
+		    <label for="ac-7">Как сделать заказ в другую страну?</label>
+		    <article class="ac-medium">
+                <ul>
+                    <p>Заказ оформляется на samvera.ru и оплачивается с помощью банковской карты VISA / MasterCard.</p>
+                    <li>Служба доставки: DHL.</li>
+                    <li>Срок доставки: 2-7 рабочих дней, не считая дня отправления (в зависимости от региона), выходных и праздничных дней.</li>
+                    <li>Стоимость доставки — 1500 рублей.</li>
+                    <li>Время доставки с 9:00 до 18:00.</li>
+                </ul>
+                <p>Просим принять во внимание, что в зависимости от страны и суммы заказа может возникнуть необходимость оплаты таможенных сборов согласно таможенному законодательству страны назначения. Для консультации по вопросу доставки вы можете обратиться в местное отделение DHL Express по адресу или телефону указанному на сайте: www.dhl.com.</p>
+		    </article>
+	    </div>
+	    <div>
+		    <input name="accordion-1" id="ac-8" type="radio">
+		    <label for="ac-8">Задерживается доставка, что делать?</label>
+		    <article class="ac-medium">
+                <p>Мы отправим запрос в курьерскую службу, постараемся оперативно решить данную проблему и предоставим всю информацию.</p>
+                <ul>
+                    <p>Свяжитесь с нами:</p>
+                    <li>по телефону + 7 953 826 3661</li>
+                    <li>по электронной почте <a href="mailto:info@samvera.ru?subject=Задержка доставки заказа">info@samvera.ru</a></li>
+                    <li>другим удобным для вас способом.</li>
+                </ul>
+                <p class="help">Мы c удовольствием вам поможем!</p>
+		    </article>
+	    </div>
+	    <div>
+		    <input name="accordion-1" id="ac-9" type="radio">
+		    <label for="ac-9">Есть ли примерка при доставке?</label>
+		    <article class="ac-medium">
+			    <p>Мы предоставляем услугу примерки вещей при получени заказа (не более 5 позиций) только в г. Екатеринбург.</p>
+                <p>К Вам приедет курьер в назначенное время. Время примерки не более 15 минут. Все неподошедшие вещи можно вернуть курьеру.</p>
+                <ul>
+                    <p>Стоимость примерки:</p>
+                    <li>бесплатно: при покупке товара;</li>
+                    <li>300 рублей: при отказе от покупки товара;</li>
+                </ul>
+		    </article>
+	    </div>
+	    <div>
+		    <input name="accordion-1" id="ac-10" type="radio">
+		    <label for="ac-10">Стоимость и сроки доставки?</label>
+		    <article class="ac-medium">
+			    <p>Подробно ознакомиться с условиями доставки вы можете на сайте в разделе Оплата и Доставка.</p>
+		    </article>
+	    </div>
+	    <div>
+		    <input name="accordion-1" id="ac-11" type="radio">
+		    <label for="ac-11">Могу ли я оплатить заказ при получении?</label>
+		    <article class="ac-medium">
+			    <p>Доставка по России, в страны СНГ, другие страны происходит после полной предоплаты заказа на сайте <a href="www.samvera.ru">www.samvera.ru</a></p>
+                <p>Оплата наличными доступна при оформлении доставки по г. Екатеринбург.</p>
+		    </article>
+	    </div>
+	    <div>
+		    <input name="accordion-1" id="ac-12" type="radio">
+		    <label for="ac-12">Способы оплаты заказа?</label>
+		    <article class="ac-medium">
+			    <p>Подробно ознакомиться со способами оплаты вы можете на сайте в разделе Оплата.</p>
+		    </article>
+	    </div>
+	    <div>
+		    <input name="accordion-1" id="ac-13" type="radio">
+		    <label for="ac-13">Обнаружен брак, что делать?</label>
+		    <article class="ac-medium">
+                <ul>
+                    <p>Необходимо сделать фотографию дефекта и связаться с нами:</p>
+                    <li>по телефону + 7 953 826 3661</li>
+                    <li>по электронной почте <a href="mailto:info@samvera.ru?subject=Обнаружен брак!">info@samvera.ru</a></li>
+                    <li>другим удобным для вас способом.</li>
+                </ul>
+			    <p class="help">Мы c удовольствием вам поможем!</p>
+		    </article>
+	    </div>
+	    <div>
+		    <input name="accordion-1" id="ac-14" type="radio">
+		    <label for="ac-14">Сколько времени ждать возврат денежных средств, если я сделала возврат товара?</label>
+		    <article class="ac-medium">
+			    <p>Возврат будет осуществлен в течение 10 рабочих дней с момента получения нами вашего заявления, возвратной посылки.</p>
+		    </article>
+	    </div>
+	    <div>
+		    <input name="accordion-1" id="ac-15" type="radio">
+		    <label for="ac-15">Не нашли ответ на ваш вопрос?</label>
+		    <article class="ac-medium">
+                <ul>
+                    <p>Cвяжитесь с нами:</p>
+                    <li>по телефону + 7 953 826 3661</li>
+                    <li>по электронной почте <a href="mailto:info@samvera.ru">info@samvera.ru</a></li>
+                    <li>другим удобным для вас способом.</li>
+                </ul>
+			    <p class="help">Мы c удовольствием вам поможем!</p>
+		    </article>
+	    </div>
+    </section>
 </div>
 {% endblock %}
 

@@ -1,0 +1,480 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+
+.catalog-items {
+    position: relative;
+    z-index: 2;
+    /*min-height: 100vh;*/
+    display: grid;
+    grid-gap: 1.5rem;
+    /*padding: 4rem 0px;*/
+    width: 100%;
+    -webkit-justify-content: center;
+    justify-content: center;
+
+    @include mq("desktop-wide") {
+        grid-template-columns: repeat(auto-fit, 450px);
+        grid-gap: 3rem;
+    }
+
+    @include mq("desktop-wide", max) {
+        grid-template-columns: repeat(auto-fit, 450px);
+        grid-gap: 3rem;
+    }
+
+    @include mq("tablet-wide", max) {
+        grid-template-columns: repeat(auto-fit, 450px);
+        grid-gap: 3rem;
+    }
+
+    @include mq("tablet", max) {
+        grid-template-columns: repeat(auto-fit, 360px);
+        grid-gap: .5rem;
+    }
+
+    @include mq("tablet-small", max) {
+        grid-template-columns: repeat(auto-fit, 280px);
+        grid-gap: 1rem;
+    }
+
+    @include mq("phone-wide", max) {
+        grid-template-columns: repeat(auto-fit, 280px);
+    }
+}
+
+.container {
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    -ms-align-content: center;
+    -webkit-align-content: center;
+    align-content: center;
+
+    .container-item {
+        height: auto;
+        width: 100%;
+        /*margin: 2rem;*/
+        position: relative;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: 1px solid rgb(21, 21, 21);
+
+        @include mq("desktop-wide") {
+            height: 640px;
+            /*width: 280px;*/
+        }
+
+        @include mq("desktop-wide", max) {
+            height: 640px;
+            /*width: 280px;*/
+        }
+
+        @include mq("tablet-wide", max) {
+            height: 640px;
+            /*width: 280px;*/
+        }
+
+        @include mq("tablet", max) {
+            height: 510px;
+            /*width: 185px;*/
+        }
+
+        @include mq("tablet-small", max) {
+            height: 400px;
+            /*width: 140px;*/
+        }
+
+        @include mq("phone-wide", max) {
+            height: 400px;
+            /*width: 140px;*/
+        }
+
+        &:hover .cover {
+            /*display: block;*/
+            visibility: visible;
+            background-color: rgba(0, 0, 0, 0.50);
+        }
+
+        .cover {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            height: 100%;
+            width: 100%;
+            padding: 2rem;
+            visibility: hidden;
+            display: flex;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -ms-align-content: center;
+            -webkit-align-content: center;
+            align-content: center;
+            background-color: transparent;
+            -moz-transition: .25s all linear;
+            -o-transition: .25s all linear;
+            -webkit-transition: .25s all linear;
+            transition: .25s all linear;
+            &>div{
+                height: 1rem;
+            }
+
+            @include mq("phablet", max) {
+                padding: 2rem 5%;
+            }
+        }
+
+        .title {
+            font-weight: bold;
+            color: $fc-title_light;
+            font-family: CENTAUR;
+        }
+        /*.desc {
+                text-align: center;
+                color: darkgray;
+            }*/
+        .cost {
+            color: $fc-light;
+            text-align: right;
+        }
+    }
+}
+
+.thing-content {
+    z-index: 2;
+    display: grid;
+    background-color: whitesmoke;
+    margin: auto;
+    grid-gap: .5rem 2rem;
+    justify-content: center;
+    align-items: center;
+
+    .desc, .variacii {
+        align-self: baseline;
+    }
+
+    .variacii {
+        & > p {
+            font-weight: bold;
+        }
+
+        .sizes {
+            padding: .5rem 0 1rem 0;
+            border-bottom: 1px solid gray;
+            margin-bottom: 1.5rem;
+            -webkit-justify-content: center;
+            justify-content: center;
+
+            & > div {
+                border: 1px solid transparent;
+                display: inline-block;
+            }
+
+            & > div:hover {
+                cursor: pointer;
+                border: 1px solid darkgray;
+            }
+
+            .size-select {
+                background-color: white;
+                font-weight: bold;
+                border: 1px solid black;
+
+                &:hover {
+                    border: 1px solid black;
+                }
+            }
+        }
+
+        .colors {
+            justify-content: flex-start;
+            padding: .5rem 0 1rem 0;
+            text-align: left;
+            border-bottom: 1px solid gray;
+
+            .color {
+                height: 1rem;
+                width: 1rem;
+                border: 1px solid #b0b0b0;
+                display: inline-block;
+            }
+
+            & > div {
+                cursor: pointer;
+                margin: .5rem;
+            }
+        }
+
+        .cost {
+            margin: 1rem 0;
+            font-weight: bold;
+        }
+    }
+
+    .foto_cost {
+        margin: auto;
+    }
+
+    .btn {
+        display: inline-block;
+    }
+
+    @include mq("tablet-wide") {
+        max-width: 1024px;
+        padding: 6rem 3rem;
+        /*grid-template-columns: 1.25em auto;*/
+        grid-template-areas: 'title title title' 'photo desc size' 'photo desc btn';
+
+        .foto_cost {
+            width: 300px;
+            height: 450px;
+            grid-area: photo;
+        }
+
+        .foto_cost img {
+            width: 300px;
+            height: 450px;
+        }
+
+        .title {
+            grid-area: title;
+        }
+
+        .desc {
+            grid-area: desc;
+        }
+
+        .variacii {
+            grid-area: size;
+        }
+
+        #btn-id {
+            grid-area: btn;
+        }
+    }
+
+    @include mq("desktop-wide") {
+        padding: 8rem 4rem;
+        max-width: 1440px;
+        grid-gap: .5rem 2rem;
+        grid-template-columns: 300px auto auto;
+        grid-template-areas: 'photo title title' 'photo desc size' 'photo desc size' 'photo desc btn';
+
+        .foto_cost {
+            /*width: 300px;
+            height: 450px;*/
+            grid-area: photo;
+            background-color: black;
+
+            img {
+                width: 300px;
+                height: 450px;
+            }
+        }
+
+        .title {
+            grid-area: title;
+            height: 1.25em;
+        }
+
+        .desc {
+            grid-area: desc;
+        }
+
+        .variacii {
+            grid-area: size;
+        }
+    }
+
+    @include mq("tablet-wide", max) {
+        max-width: 768px;
+        padding: 6rem 3rem;
+        /*grid-template-columns: 1.25em auto;*/
+        grid-template-areas: 'title title' 'photo size' 'photo btn' 'desc desc';
+
+        .foto_cost {
+            width: 300px;
+            height: 450px;
+            grid-area: photo;
+            margin-bottom: 1rem;
+        }
+
+        .foto_cost img {
+            width: 300px;
+            height: 450px;
+        }
+
+        .title {
+            grid-area: title;
+        }
+
+        .desc {
+            grid-area: desc;
+        }
+
+        .variacii {
+            grid-area: size;
+        }
+
+        #btn-id {
+            grid-area: btn;
+        }
+    }
+
+    @include mq("tablet", max) {
+        max-width: 768px;
+        grid-template-areas: 'photo' 'title' 'desc' 'size' 'btn';
+        padding: 2rem .5rem;
+
+        .foto_cost {
+            width: 300px;
+            height: 450px;
+            grid-area: photo;
+        }
+
+        .foto_cost img {
+            width: 300px;
+            height: 450px;
+        }
+    }
+
+    @include mq("tablet-small", max) {
+        max-width: 640px;
+
+        .foto_cost {
+            width: 300px;
+            height: 450px;
+            grid-area: photo;
+        }
+
+        .foto_cost img {
+            width: 300px;
+            height: 450px;
+        }
+    }
+
+    @include mq("phone-wide", max) {
+        max-width: 300px;
+        grid-gap: 1.5rem 2rem;
+
+        .foto_cost {
+            width: 300px;
+            height: 450px;
+            grid-area: photo;
+        }
+
+        .foto_cost img {
+            width: 300px;
+            height: 450px;
+        }
+    }
+
+    .title {
+        color: black;
+        font-weight: bold;
+        font-family: Comfortaa;
+
+        @include fontsize("title");
+    }
+}
+
+
+/*
+    KORZINA
+*/
+
+.cells {
+    display: grid;
+    grid-gap: 2rem;
+    -webkit-justify-content: center;
+    justify-content: center;
+
+    @include mq("tablet") {
+        grid-template-columns: repeat(auto-fit, 560px);
+    }
+
+    @include mq("tablet", max) {
+        grid-template-columns: repeat(auto-fit, 370px);
+    }
+
+    @include mq("tablet-small", max) {
+        grid-template-columns: repeat(auto-fit, 330px);
+    }
+
+    .cell {
+        display: grid;
+        grid-gap: 1rem;
+        padding: 1rem;
+        grid-template-areas: 'image name name' 'image size color' 'image count summ' 'image . .';
+        -webkit-justify-content: center;
+        justify-content: center;
+        -ms-align-content: center;
+        -webkit-align-content: center;
+        align-content: center;
+        box-shadow: 0 0 20px -15px black;
+        border: 1px solid lightgray;
+        /*@include fontsize("text");*/
+        .image {
+            /*height: 400px;*/
+            /*width: 280px;*/
+            grid-area: image;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .name {
+            @include fontsize("form-field-title");
+            padding-right: 2rem;
+            grid-area: name;
+            position: relative;
+
+            .del {
+                position: absolute;
+                top: 0;
+                right: 0;
+                background-color: red;
+                font-weight: bold;
+                color: white;
+                width: 1.5rem;
+                height: 1.5rem;
+                -moz-border-radius: 50%;
+                -webkit-border-radius: 50%;
+                border-radius: 50%;
+            }
+        }
+
+        .size {
+            grid-area: size;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -ms-align-content: center;
+            -webkit-align-content: center;
+            align-content: center;
+        }
+
+        .clr {
+            grid-area: color;
+        }
+
+        .cost {
+            grid-area: cost;
+            display: none;
+        }
+
+        .count {
+            grid-area: count;
+        }
+
+        .summ {
+            grid-area: summ;
+        }
+    }
+}
+
+/// KORZINA

@@ -1,29 +1,24 @@
 {% extends "app/layout.html" %}
 {% load staticfiles %}
-
-{% block content %}
-<div class="catalog-screen">
-    <div class="catalog-conteiner">
-        <div class="catalog-title">{{title}}</div>
-        <br />
-        <div class="catalog-title_descr">{{message}}</div>
-        <br />
-        {{year}}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/catalog/catalog.css' %}" />
+{% endblock %}
+{% block screen %}
+<div class="main_screen">
+    <div class="main_screen__conteiner">
+        <div class="main_title text-title-dark">{{title}}</div>
     </div>
 </div>
-<div class="catalog-content">
+{% endblock %}
+{% block content %}
+<div class="main_content catalog-items">
     {% for item in things %}
-    <div class="container-item" style="background-image: url('/media/{{item.random_image}}')">
-
-        <div class="cover">
-            <p class="title">{{ item.title }}</p>
-            <p class="cost">{{ item.cost }}</p>
-            <p class="article">{{ item.article }}</p>
-            <a href="/thing/{{item.id}}" class="btn-base btn-add-korz">
-                <p>Подробнее</p>
-            </a>
+    <div class="container">
+        <div class="container-item" style="background-image: url('/media/{{item.random_image}}')">
+            <a href="/thing/{{item.id}}" class="cover"></a>
         </div>
-
+        <div class="title">{{ item.title }}</div>
+        <div class="cost">{{ item.cost }}</div>
     </div>
     {% endfor %}
 </div>

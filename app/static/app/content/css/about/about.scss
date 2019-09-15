@@ -1,0 +1,162 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+
+/*
+    Для страницы контакты
+*/
+.about_content__text {
+    color: $fc-Default;
+    min-height: 100vh;
+
+    p {
+        padding: .25rem;
+    }
+
+    .up {
+        padding-top: 1.25rem;
+        color: $fc-title_dark;
+        font-weight: bold;
+
+        @include fontsize("text");
+    }
+}
+
+/*
+    Слайды-экраны
+*/
+.about_slide > div {
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: grid;
+    grid-gap: 0px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: '. text text .';
+    -webkit-justify-content: center;
+    justify-content: center;
+    -ms-align-content: center;
+    -webkit-align-content: center;
+    align-content: center;
+    background: $bg-Default;
+
+    @include mq("desktop-wide") {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas: '. text text .';
+    }
+
+    @include mq("tablet-wide", max) {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-areas: '. text text text text .';
+    }
+
+    @include mq("tablet", max) {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-areas: '. text text text text .';
+    }
+
+    @include mq("tablet-small", max) {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas: 'text text text';
+    }
+
+    @include mq("phone-wide", max) {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-areas: 'text text text';
+    }
+
+    p {
+        padding: 1.5rem;
+        grid-area: text;
+        text-align: center;
+        @include fontsize("title-descr");
+
+        span {
+            display: block;
+            /*text-align: center;*/
+            @include fontsize("title");
+        }
+    }
+}
+
+/*
+    Корректировка некоторых слайдов.
+    Направление в названии указывает на расположение картинки.
+*/
+.about_slide {
+    .slide-left {
+        background-position: left;
+        background: -moz-linear-gradient(45deg, rgba(0,0,0,1) 25%, rgba(0,0,0,0.75) 50%, rgba(0,0,0,0) 100%);
+        background: -webkit-linear-gradient(45deg, rgba(0,0,0,1) 25%, rgba(0,0,0,0.75) 50%, rgba(0,0,0,0) 100%);
+        background: linear-gradient(45deg, rgba(0,0,0,1) 25%, rgba(0,0,0,0.75) 50%, rgba(0,0,0,0) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);
+
+        @include mq("desktop-wide") {
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-areas: '. . text text';
+        }
+
+        @include mq("tablet-wide", max) {
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-areas: '. . text text text text';
+        }
+
+        @include mq("tablet", max) {
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-areas: '. . text text text text';
+        }
+
+        @include mq("tablet-small", max) {
+            grid-template-columns: 1fr;
+            grid-template-areas: 'text';
+        }
+
+        @include mq("phone-wide", max) {
+            grid-template-columns: 1fr;
+            grid-template-areas: 'text';
+        }
+    }
+
+    .slide-right {
+        background-position: right;
+        background: -moz-linear-gradient(-45deg, rgba(0,0,0,1) 25%, rgba(0,0,0,0.75) 50%, rgba(0,0,0,0) 100%);
+        background: -webkit-linear-gradient(-45deg, rgba(0,0,0,1) 25%, rgba(0,0,0,0.75) 50%, rgba(0,0,0,0) 100%);
+        background: linear-gradient(-45deg, rgba(0,0,0,1) 25%, rgba(0,0,0,0.75) 50%, rgba(0,0,0,0) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);
+
+        @include mq("desktop-wide") {
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-areas: 'text text . .';
+        }
+
+        @include mq("tablet-wide", max) {
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-areas: 'text text text text . .';
+        }
+
+        @include mq("tablet", max) {
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-areas: 'text text text text . .';
+        }
+
+        @include mq("tablet-small", max) {
+            grid-template-columns: 1fr;
+            grid-template-areas: 'text';
+        }
+
+        @include mq("phone-wide", max) {
+            grid-template-columns: 1fr;
+            grid-template-areas: 'text';
+        }
+    }
+
+    .bg-light {
+        background: $bg-Default;
+        color: $fc-title_dark;
+    }
+
+    .bg-dark {
+        background: $bg-dark;
+        color: $fc-title_light;
+    }
+}

@@ -1,11 +1,11 @@
 {% extends "app/layout.html" %}
 
 {% block content %}
-<div class="catalog-screen">
-    <div class="catalog-conteiner">
-        <div class="catalog-title">{{title}}</div>
+<div class="main_screen">
+    <div class="">
+        <div class="main_title text-title-dark">{{title}}</div>
         <br />
-        <div class="catalog-title_descr">{{message}}</div>
+        <div class="main_title_descr text-desc-dark">{{message}}</div>
         <br />
         <section id="loginForm">
             <form action="{% url 'login' %}" method="post" class="white_form">
@@ -25,7 +25,7 @@
                 <div class="form-group">
                     <div class="">
                         <input type="hidden" name="next" value="/catalog/" />
-                        <button type="submit" class="btn-base btn-submit"><p>Вход</p></button>
+                        <button type="submit" class="btn-base btn-dark"><p>Вход</p></button>
                     </div>
                 </div>
                 {% if form.errors %}

@@ -69,6 +69,9 @@
     <Folder Include="app\static\app\" />
     <Folder Include="app\static\app\content\" />
     <Folder Include="app\static\app\content\css\" />
+    <Folder Include="app\static\app\content\css\about\" />
+    <Folder Include="app\static\app\content\css\catalog\" />
+    <Folder Include="app\static\app\content\css\info\" />
     <Folder Include="app\static\app\drag_slider\" />
     <Folder Include="app\static\app\fonts\" />
     <Folder Include="app\static\app\scripts\" />
@@ -80,6 +83,7 @@
     <Folder Include="app\templates\app\info\" />
     <Folder Include="app\templates\app\catalog\" />
     <Folder Include="app\templates\app\api\" />
+    <Folder Include="app\templates\app\account\" />
     <Folder Include="samvera\" />
   </ItemGroup>
   <ItemGroup>
@@ -115,7 +119,25 @@
     <Content Include="app\media\logo.png" />
     <Content Include="app\media\questions.jpg" />
     <Content Include="app\media\video\main.mp4" />
+    <Content Include="app\static\app\content\css\about\about.css" />
+    <Content Include="app\static\app\content\css\about\about.min.css" />
+    <Content Include="app\static\app\content\css\about\about.scss" />
+    <Content Include="app\static\app\content\css\catalog\catalog.css" />
+    <Content Include="app\static\app\content\css\catalog\catalog.min.css" />
+    <Content Include="app\static\app\content\css\catalog\catalog.scss" />
     <Content Include="app\static\app\content\css\flickity-docs.css" />
+    <Content Include="app\static\app\content\css\index.css" />
+    <Content Include="app\static\app\content\css\index.min.css" />
+    <Content Include="app\static\app\content\css\index.scss" />
+    <Content Include="app\static\app\content\css\info\info.css" />
+    <Content Include="app\static\app\content\css\info\info.min.css">
+      <SubType>Content</SubType>
+      <DependentUpon>app\static\app\content\css\info\info.css</DependentUpon>
+    </Content>
+    <Content Include="app\static\app\content\css\info\info.scss" />
+    <Content Include="app\static\app\content\css\main.css" />
+    <Content Include="app\static\app\content\css\main.min.css" />
+    <Content Include="app\static\app\content\css\main.scss" />
     <Content Include="app\static\app\content\css\mixins.scss" />
     <Content Include="app\static\app\content\css\mob_menu.css" />
     <Content Include="app\static\app\content\css\site.css">
@@ -130,12 +152,10 @@
       <DependentUpon>app\static\app\content\css\site2.css</DependentUpon>
     </Content>
     <Content Include="app\static\app\content\css\site2.scss" />
-    <Content Include="app\static\app\content\css\site3.css" />
-    <Content Include="app\static\app\content\css\site3.min.css" />
-    <Content Include="app\static\app\content\css\site3.scss" />
     <Content Include="app\static\app\content\css\thing.css" />
     <Content Include="app\static\app\content\css\thing.min.css" />
     <Content Include="app\static\app\content\css\thing.scss" />
+    <Content Include="app\static\app\content\css\variables.css" />
     <Content Include="app\static\app\drag_slider\index.html" />
     <Content Include="app\static\app\drag_slider\slider-1.jpg" />
     <Content Include="app\static\app\drag_slider\slider-2.jpg" />
@@ -185,11 +205,11 @@
     <Content Include="app\templates\app\info\rukovodstvo-po-pokupke.html" />
     <Content Include="app\templates\app\info\samovyvoz.html" />
     <Content Include="app\templates\app\info\vozvrattovar.html" />
-    <Content Include="app\templates\app\korzina.html" />
-    <Content Include="app\templates\app\lk.html" />
+    <Content Include="app\templates\app\catalog\korzina.html" />
+    <Content Include="app\templates\app\account\lk.html" />
     <Content Include="app\templates\app\new_order.html" />
     <Content Include="app\templates\app\slider.html" />
-    <Content Include="app\templates\app\thing.html" />
+    <Content Include="app\templates\app\catalog\thing.html" />
     <Content Include="compilerconfig.json.defaults">
       <SubType>Content</SubType>
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -216,11 +236,10 @@
     <Content Include="app\static\app\scripts\respond.js" />
     <Content Include="app\static\app\scripts\respond.min.js" />
     <Content Include="app\static\app\scripts\_references.js" />
-    <Content Include="app\templates\app\about.html" />
-    <Content Include="app\templates\app\contact.html" />
+    <Content Include="app\templates\app\about\about.html" />
     <Content Include="app\templates\app\index_2.html" />
     <Content Include="app\templates\app\layout.html" />
-    <Content Include="app\templates\app\login.html" />
+    <Content Include="app\templates\app\account\login.html" />
     <Content Include="app\templates\app\loginpartial.html" />
   </ItemGroup>
   <ItemGroup>

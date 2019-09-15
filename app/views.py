@@ -15,9 +15,9 @@ import json
 from django.core import serializers
 from django.template.loader import render_to_string
 
-ABOUT_PAGE = ("brend", "contacts", "rabota-u-nas")
+ABOUT_PAGE = ("about", "contacts", "rabota-u-nas")
 ABOUT_PAGE_DESCR = {
-    "brend":{
+    "about":{
         "title":"О нас",
         "message":""
     },
@@ -89,6 +89,8 @@ CATALOG_PAGE_DESCR = {
             },
     }
 
+def year():
+    return "2019 - " + str(datetime.now().year)
 
 def home(request):
     """Renders the home page."""
@@ -118,46 +120,33 @@ def home(request):
             'title':'Home Page',
             #'tovarfolder': tovarfolder,
             #'kollections': kollections,
-            'year':datetime.now().year,
+            'year':year(),
             #'Form_PotentialClient': forms.Form_PotentialClient,
         }
     )
 
-def contact(request):
-    """Renders the contact page."""
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'app/contact.html',
-        {
-            'title':'Контакты',
-            'message':'Связаться с нами Вы можете по контактам ниже',
-            'year':datetime.now().year,
-        }
-    )
-
 def thing(request, id):
-    """Renders the contact page."""
+    """Карточка товара"""
     t = get_object_or_404(models.Tovar, pk=id)
     assert isinstance(request, HttpRequest)
     return render(
         request,
-        'app/thing.html',
+        'app/catalog/thing.html',
         {
-            'title':t.title,
+            'message':t.title,
             'thing': t,
-            'message':'Your contact page.',
-            'year':datetime.now().year,
+            'title':'Карточка товара',
+            'year':year(),
         }
     )
 
 def kabinet(request):
-    """Renders the contact page."""
+    """Страница личного кабинета юзера со всеми его заказами."""
     if request.user.is_authenticated:
         title = "Личный кабинет"
         message = "Посмотрите исторю своих покупок, а также статус текущих заказов."
         orders = models.Orders.objects.filter(client=request.user.id)
-        page = 'app/lk.html'
+        page = 'app/account/lk.html'
         assert isinstance(request, HttpRequest)
         return render(
             request,
@@ -166,14 +155,14 @@ def kabinet(request):
                 'title':title,
                 'message':message,
                 'orders':orders,
-                'year':datetime.now().year,
+                'year':year(),
             }
         )
     else:
         from django.contrib.auth.forms import AuthenticationForm
         title="Вход на сайт"
         message="Введите свои данные для входа на сайт"
-        page = 'app/login.html'
+        page = 'app/account/login.html'
         orders=None
         assert isinstance(request, HttpRequest)
         return render(
@@ -183,12 +172,12 @@ def kabinet(request):
                 'title':title,
                 'message':message,
                 'form':AuthenticationForm,
-                'year':datetime.now().year,
+                'year':year(),
             }
         )
 
 def getthingcolors(request, tovar, size):
-    """Renders the contact page."""
+    """Формирование HTML кода с вариантами цветов товара"""
     t = get_object_or_404(models.Tovar, pk=tovar)
     print("tovar = ", t)
     r = t.variacii.filter(size=size, kolvo__gt=0)
@@ -200,7 +189,7 @@ def getthingcolors(request, tovar, size):
     return HttpResponse(st)
 
 def getthingphtotoss(request, variaciya):
-    """Renders the contact page."""
+    """Формирование HTML кода с фотками вариации товара"""
     v = get_object_or_404(models.Variaciya, pk=variaciya)
     print("variaciya = ", v)
     r = v.gallery.all()
@@ -230,72 +219,72 @@ def post(request, code):
     return httpresponseredirect('/')
 
 def about(request, page):
-    """Renders the about page."""
+    """Менеджер рендера страниц раздела ABOUT"""
     assert isinstance(request, HttpRequest)
     if page in ABOUT_PAGE:
-        p = f'app/about/{page}.html'
-        b = ABOUT_PAGE_DESCR.get(page)
-        b["year"] = datetime.now().year
+        PAGE = f'app/about/{page}.html'
+        DESC = ABOUT_PAGE_DESCR.get(page)
+        DESC["year"] = year()
         return render(
             request,
-            p,
-            b
+            PAGE,
+            DESC
         )
     else:
         raise Http404
 
 def info(request, page):
-    """Renders the about page."""
+    """Менеджер рендера страниц раздела INFO"""
     
     print(f'\nPAGE:\n{page}\n')
     assert isinstance(request, HttpRequest)
-    b = INFO_PAGE_DESCR.get(page)
-    print(f'\nITEM FROM CONST:\n{b}\n')
-    if b is not None:
-        p = f'app/info/{page}.html'
-        b["year"] = datetime.now().year
+    DESC = INFO_PAGE_DESCR.get(page)
+    print(f'\nITEM FROM CONST:\n{DESC}\n')
+    if DESC is not None:
+        PAGE = f'app/info/{page}.html'
+        DESC["year"] = year()
         return render(
             request,
-            p,
-            b
+            PAGE,
+            DESC
         )
     else:
         raise Http404
 
 def catalog(request, page="catalog"):
-    """Renders the about page."""
+    """Менеджер рендера страниц раздела CATALOG"""
     
     th = models.Tovar.objects.all()
 
     print(f'\nPAGE:\n{page}\n')
     assert isinstance(request, HttpRequest)
-    b = CATALOG_PAGE_DESCR.get(page)
-    print(f'\nITEM FROM CONST:\n{b}\n')
-    if b is not None:
-        p = f'app/catalog/{page}.html'
-        b["year"] = datetime.now().year
-        b['things'] = th
+    DESC = CATALOG_PAGE_DESCR.get(page)
+    print(f'\nITEM FROM CONST:\n{DESC}\n')
+    if DESC is not None:
+        PAGE = f'app/catalog/{page}.html'
+        DESC["year"] = year()
+        DESC['things'] = th
         return render(
             request,
-            p,
-            b
+            PAGE,
+            DESC
         )
     else:
         raise Http404
 
 def korzina(request):
-    """Renders the contact page."""
+    """Рендер страницы Корзина"""
     if request.POST:
         pass
     else:
         assert isinstance(request, HttpRequest)
         return render(
             request,
-            'app/korzina.html',
+            'app/catalog/korzina.html',
             {
                 'title':'Корзина',
                 'message':'бла бла бла',
-                'year':datetime.now().year,
+                'year':year(),
             }
         )
 
@@ -316,7 +305,7 @@ def new_order(request):
             {
                 'title':'Спасибо за оформление заказа<br/>Номер Вашего заказа: {{number_order}}',
                 'message':f'В ближайшее время с Вами свяжутся для подтверждения заказа {email}',
-                'year':datetime.now().year,
+                'year':year(),
             }
         )
     else:
@@ -329,7 +318,7 @@ def new_order(request):
                 'message':'Проверте состав заказа, введите реквизиты и подтвердите оформление заказа',
                 'form': forms.OrderForm,
                 'korzina': request.GET.get("korzina"),
-                'year':datetime.now().year,
+                'year':year(),
             }
         )
     
@@ -346,6 +335,7 @@ def get_order(request):
             user.first_name = request.POST['first_name']
             user.last_name = request.POST['last_name']
             user.save()
+
         # Создать заказ
         order = models.Orders()
         order.client = user
@@ -353,9 +343,9 @@ def get_order(request):
         order.save()
         korz = request.POST['korzina']
 
-        # korz = {"l": [{"id": 1, "count": "1"}, {"id": 2, "count": "2"}]}
+        # korz = [{'count': '1', 'id': 1}, {'count': '2', 'id': 2}]
         korz = json.loads(korz)
-        for item in korz['l']:
+        for item in korz:
             pass
             #print("цикл: ", ids[x])
             try:
@@ -379,6 +369,19 @@ def get_order(request):
                 print("Either the entry or blog doesn't exist.")
                 ids.pop(x)
 
+        
+        send_mail("Регистрация на www.samvera.ru", f"{user.last_name}!\n\
+                Ваш почтовый адресс был указан при регистрации на сайте www.samvera.ru\n\
+                \n\
+                Для входа на сайт используйте следующие данные:\n\
+                Страница входа: <a href='www.samvera.ru\kabinet\'>www.samvera.ru</a>\n\
+                Страница входа: www.samvera.ru\kabinet\\n\
+                Логин: {user.username} или {user.email}\n\
+                Пароль: {password}\n\
+                \n\
+                Номер заказа: {order.namber}\n\
+                \n", 'komerist1993-93@mail.ru', ['komerist1993-93@mail.ru','komerist@bk.ru', 'slviktoleon@yandex.ru'], )
+
         # Отправить на почту оператора состав заказа с реквизитами клиента для связи с ним и пдт заказа. , 'viktoleon@bk.ru'
         html_message = render_to_string(
             'app/email-order_template.html',
@@ -392,7 +395,8 @@ def get_order(request):
                 Email {user.email}\n\
                 Тел. {user.username}\n\
                 \n\
-                ", 'komerist1993-93@mail.ru', ['komerist1993-93@mail.ru'], html_message=html_message)
+                Номер заказа: {order.namber}\n\
+                ", 'komerist1993-93@mail.ru', ['komerist1993-93@mail.ru', 'viktoleon@bk.ru'], html_message=html_message)
 
         # Отправить на почту клиенту уведомление о формировании заказа.
         
@@ -404,7 +408,7 @@ def get_order(request):
                 'title':'Заказ принят на обработку',
                 'message':'Спасибо за оформление заказа. С Вами скоро свяжутся.',
                 'mess': html_message,
-                'year':datetime.now().year,
+                'year':year(),
             }
         )
     else:
@@ -414,16 +418,16 @@ def get_order(request):
             'app/new_order.html',
             {
                 'title':'Оформление заказа',
-                'message':'Проверте состав заказа, введите реквизиты и подтвердите оформление заказа',
+                'message':'Введите реквизиты и подтвердите оформление заказа',
                 'form': forms.OrderForm,
                 'korzina': request.GET.get("korzina"),
-                'year':datetime.now().year,
+                'year':year(),
             }
         )
 
 
 def korzina_get(request):
-    """Renders the contact page."""
+    """Рендер куска кода HTML для вставки в шаблон страницы Корзина"""
     print ("body^ ", request.GET)
     gt = request.GET.get('korzina')
     print(gt)
@@ -475,6 +479,6 @@ def korzina_get(request):
             'kor': json.dumps(kor),
             'korz': var,
             'itog': itog,
-            'year':datetime.now().year,
+            'year':year(),
         }
     )

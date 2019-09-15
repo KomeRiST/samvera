@@ -1,77 +1,74 @@
-/*
-    COLOR -- FONTS
-*/
+/*    COLOR -- FONTS    */
+$fc-Default: black;
+$fc-light: darkgray;
+$fc-gray: #5d5d5d;
+$fc-dark: black;
+$fc-title_light: white;
+$fc-title_dark: black;
+$fc-title_descr_light: darkgray;
+$fc-title_descr_dark: black;
 
-$fcDefault: #444;
-$fcDefaultContur: #ff6f3a;
-$fcMenuHover: #ff6f3a;
-$fcShadowHover: rgba(255, 111, 58, 0.5);
+/*    COLOR -- BLOCKS   */
+$bg-Default: whitesmoke;
+$bg-dark: black;
 
-/*
-    COLOR -- BLOCKS
-*/
-
-$bgColor: black;
-$menu-hover: $fcDefaultContur;
-$cMaterial: #151515;
-$cBurtik: rgb(13, 13, 13);
-$cShov: #444;
-
+$btn-light: white;
+$btn-dark: black;
 
 /*
-    FONTS SIZE
-        phone: 300px
-        phone-wide: 480px
-        phablet: 560px
+FONTS SIZE
+    phone: 300px
+    phone-wide: 480px
+    phablet: 560px
 
-        tablet-small: 640px
-        tablet: 768px
-        tablet-wide: 1024px
+    tablet-small: 640px
+    tablet: 768px
+    tablet-wide: 1024px
 
-        desktop: 1248px
-        desktop-wide: 1440px
+    desktop: 1248px
+    desktop-wide: 1440px
 
 */
 $fontsize: (
-    "text_phone": 16px,
-    "text_phone-wide": 16px,
-    "text_phablet": 16px,
-    "text_tablet-small": 18px,
-    "text_tablet": 18px,
-    "text_tablet-wide": 18px,
-    "text_desktop": 20px,
-    "text_desktop-wide": 20px,
-    "title_phone": 30px,
-    "title_phone-wide": 30px,
-    "title_phablet": 32px,
-    "title_tablet-small": 32px,
-    "title_tablet": 68px,
-    "title_tablet-wide": 68px,
-    "title_desktop": 72px,
-    "title_desktop-wide": 72px,
-    "title-descr_phone": 16px,
-    "title-descr_phone-wide": 16px,
-    "title-descr_phablet": 18px,
-    "title-descr_tablet-small": 20px,
-    "title-descr_tablet": 22px,
-    "title-descr_tablet-wide": 22px,
-    "title-descr_desktop": 24px,
-    "title-descr_desktop-wide": 24px,
+"text_phone": 16px,
+"text_phone-wide": 16px,
+"text_phablet": 16px,
+"text_tablet-small": 18px,
+"text_tablet": 18px,
+"text_tablet-wide": 18px,
+"text_desktop": 18px,
+"text_desktop-wide": 20px,
+"title_phone": 30px,
+"title_phone-wide": 30px,
+"title_phablet": 32px,
+"title_tablet-small": 32px,
+"title_tablet": 68px,
+"title_tablet-wide": 68px,
+"title_desktop": 68px,
+"title_desktop-wide": 72px,
+"title-descr_phone": 16px,
+"title-descr_phone-wide": 16px,
+"title-descr_phablet": 18px,
+"title-descr_tablet-small": 20px,
+"title-descr_tablet": 22px,
+"title-descr_tablet-wide": 22px,
+"title-descr_desktop": 22px,
+"title-descr_desktop-wide": 24px,
 
-    "form-field-title_phone": 20px,
-    "form-field-title_phone-wide": 20px,
-    "form-field-title_phablet": 22px,
-    "form-field-title_tablet-small": 24px,
-    "form-field-title_tablet": 26px,
-    "form-field-title_tablet-wide": 26px,
-    "form-field-title_desktop": 28px,
-    "form-field-title_desktop-wide": 28px,
+"form-field-title_phone": 20px,
+"form-field-title_phone-wide": 20px,
+"form-field-title_phablet": 22px,
+"form-field-title_tablet-small": 24px,
+"form-field-title_tablet": 26px,
+"form-field-title_tablet-wide": 26px,
+"form-field-title_desktop": 26px,
+"form-field-title_desktop-wide": 28px,
 
-    "form-field-descr_phone": 12px,
-    "form-field-descr_phone-wide": 12px,
-    "form-field-descr_phablet": 14px,
-    "form-field-descr_tablet-small": 16px,
-    "form-field-descr_tablet": 18px,
-    "form-field-descr_tablet-wide": 18px,
-    "form-field-descr_desktop": 20px,
-    "form-field-descr_desktop-wide": 20px)
+"form-field-descr_phone": 12px,
+"form-field-descr_phone-wide": 12px,
+"form-field-descr_phablet": 14px,
+"form-field-descr_tablet-small": 16px,
+"form-field-descr_tablet": 18px,
+"form-field-descr_tablet-wide": 18px,
+"form-field-descr_desktop": 18px,
+"form-field-descr_desktop-wide": 20px)

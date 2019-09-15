@@ -1,10 +1,11 @@
 {% extends "app/layout.html" %}
 {% load staticfiles %}
 {% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/css/index.css' %}" />
 <script src="{% static 'app/scripts/jquery.video.js' %}"></script>
 {% endblock %}
 {% block content %}
-<div class="bg"></div>
+<!--<div class="bg"></div>-->
 <!--
     <nav class="nav">
         <ul class="navi">
@@ -44,7 +45,7 @@
         <div class="overlay">
             <div class="maintext">
                 <!--<img src="/media/logo.png" height="auto" />-->
-                <p class="centaur">SAMVERA</p>
+                <a href="www.samvera.ru" class="centaur">SAMVERA</a>
             </div>
         </div>
         <div class="video" data-vvvv-bg="/media/video/main.mp4">

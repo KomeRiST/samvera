@@ -1,32 +1,26 @@
 ﻿{% load staticfiles %}
 {#<div id="kor">{{ kor }}</div>#}
-    <form action="{% url 'get_order' %}" method="get">
-<div class="rows">
+<div class="cells">
 {% for item in korz %}
-    <div class="row">
-        <div class="image">
-            <img src="/media/{{ item.random_image }}" alt="{{item.tovar.title}}" />
+    <div class="cell">
+        <div class="image"><img src="/media/{{ item.random_image }}" alt="{{item.tovar.title}}" /></div>
+        <div class="name">{{item.tovar.title}}
+            <div class="del" data-id="{{item.id}}" onclick="del(this)">X</div>
         </div>
-        <div class="discr">
-            <div class="name">{{item.tovar.title}}</div>
-            <div class="element">
-                <div class="size">Размер <br />{{item.size}}</div>
-                <div class="clr">Цвет <br />{{item.colortile_korz}}</div>
-                <div class="cost">Цена <br />{{item.tovar.cost}} р.</div>
-                <div class="count">Количетво <br />{{item.count}} шт.</div>
-                <div class="summ">Сумма <br />{{item.summ}}</div>
-                <div class="del" data-id="{{item.id}}" onclick="del(this)">X</div>
-            </div>
-        </div>
+        <div class="size"><p>Размер <br />{{item.size}}</p></div>
+        <div class="clr">Цвет <br />{{item.colortile_korz}}</div>
+        <div class="cost">Цена <br />{{item.tovar.cost}} р.</div>
+        <div class="count">Количетво <br />{{item.count}} шт.</div>
+        <div class="summ">Сумма <br />{{item.summ}}</div>
      </div>
-
 {% endfor %}
 </div>
         <br />
     <div class="itog">Общий итог заказа: {{itog}}</div>
+<form action="{% url 'get_order' %}" method="get">
         {% csrf_token %}
         <input name="korzina" type="hidden" value="{{kor}}">
-        <button type="submit" class="btn-base" ><p>Оформить заказ</p></button>
+        <button type="submit" class="btn-base btn-dark" ><p>Оформить заказ</p></button>
 </form>
 <!--<div class="form">
     <form action="." method="post">

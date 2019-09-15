@@ -1,26 +1,30 @@
 ﻿[
   {
-    "outputFile": "app/static/app/content/css/site.css",
-    "inputFile": "app/static/app/content/css/site.scss"
-  },
-  {
     "outputFile": "app/static/app/content/css/variables.css",
     "inputFile": "app/static/app/content/css/variables.scss"
-  },
-  {
-    "outputFile": "app/static/app/content/css/site.css",
-    "inputFile": "app/static/app/content/css/site.scss"
   },
   {
     "outputFile": "app/static/app/content/css/thing.css",
     "inputFile": "app/static/app/content/css/thing.scss"
   },
   {
-    "outputFile": "app/static/app/content/css/site2.css",
-    "inputFile": "app/static/app/content/css/site2.scss"
+    "outputFile": "app/static/app/content/css/about/about.css",
+    "inputFile": "app/static/app/content/css/about/about.scss"
   },
   {
-    "outputFile": "app/static/app/content/css/site3.css",
-    "inputFile": "app/static/app/content/css/site3.scss"
+    "outputFile": "app/static/app/content/css/main.css",
+    "inputFile": "app/static/app/content/css/main.scss"
+  },
+  {
+    "outputFile": "app/static/app/content/css/catalog/catalog.css",
+    "inputFile": "app/static/app/content/css/catalog/catalog.scss"
+  },
+  {
+    "outputFile": "app/static/app/content/css/info/info.css",
+    "inputFile": "app/static/app/content/css/info/info.scss"
+  },
+  {
+    "outputFile": "app/static/app/content/css/index.css",
+    "inputFile": "app/static/app/content/css/index.scss"
   }
 ]

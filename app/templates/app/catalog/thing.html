@@ -2,40 +2,38 @@
 {% load staticfiles %}
 
 {% block css %}
-
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/flickity-docs.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/catalog/catalog.css' %}" />
 {% endblock %}
 
-{% block content %}
-<div class="thing-screen" style="background-image: url('/media/{{thing.random_image}}')">
-    <div class="thing-conteiner">
-        <div class="thing-title">{{title}}</div>
+{% block screen %}
+<!--<div class="main-screen" style="background-image: url('/media/{{thing.random_image}}')">
+    <div class="main-screen__conteiner">
+        <div class="main-title">{{title}}</div>
         <br />
-        <div class="thing-title_descr">{{message}}</div>
+        <div class="main-title_descr">{{message}}</div>
         <br />
         {{year}}
     </div>
-</div>
+</div>-->
+{% endblock %}
 
-<div class="thing-content">
-    <div class="foto_cost slider">
+{% block content %}
+
+<div class="main_content thing-content">
+    <div class="foto_cost slider"></div>
+    <div class="title">{{thing.title}}</div>
+    <div class="desc">
+        <div class="descr">{{thing.descr}}</div>
     </div>
-    <div class="info">
-        <div class="title">{{thing.title}}</div>
-        <div class="content">
-            <div class="descr">{{thing.descr}}</div>
-            <div class="variacii">
-                <p>Размеры</p>
-                <div class="sizes">{{thing.sizes|safe}}</div>
-                <p>Цвета</p>
-                <div class="colors">{{thing.colortile_korz|safe}}</div>
-                <div class="cost">
-                    <p>Цена: {{thing.cost}}</p>
-                </div>
-                <div id="btn-id" class="btn-base" data-id="{{thing.id}}" onclick="add(this)"><p>В корзину</p></div>
-            </div>
-        </div>
+    <div class="variacii">
+        <p>Размеры</p>
+        <div class="sizes">{{thing.sizes|safe}}</div>
+        <p>Цвета</p>
+        <div class="colors">{{thing.colortile_korz|safe}}</div>
+        <div class="cost"><p>Цена: {{thing.cost}}</p></div>
     </div>
+    <div id="btn-id" class="btn-base btn-light" data-id="{{thing.id}}" onclick="add(this)"><p>В корзину</p></div>
 </div>
 {% endblock %}
 
