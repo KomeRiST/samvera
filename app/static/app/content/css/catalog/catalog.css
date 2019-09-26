@@ -43,11 +43,11 @@ FONTS SIZE
   @media only screen and (min-width: 1440px) {
     .catalog-items {
       grid-template-columns: repeat(auto-fit, 450px);
-      grid-gap: 3rem; } }
+      grid-gap: 2rem; } }
   @media only screen and (max-width: 1439px) {
     .catalog-items {
       grid-template-columns: repeat(auto-fit, 450px);
-      grid-gap: 3rem; } }
+      grid-gap: 2rem; } }
   @media only screen and (max-width: 1023px) {
     .catalog-items {
       grid-template-columns: repeat(auto-fit, 450px);

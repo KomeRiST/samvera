@@ -1,46 +1,43 @@
 {% extends "app/layout.html" %}
 {% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/info/info.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/catalog/catalog.css' %}" />
+{% endblock %}
 
 {% block content %}
-<div class="catalog-screen">
-    <div class="catalog-conteiner">
-        <div class="catalog-title">{{title}}</div>
-        <br />
-        <div class="catalog-title_descr">{{message}}</div>
-        <br />
-        {{year}}
+<div class="main_screen">
+    <div class="main_conteiner">
+        <div class="main_title text-title-dark">{{title}}</div>
     </div>
 </div>
 <div class="order-content">
 {% if orders.count > 0 %}
-    <div class="accordion korz-table">
-    {% for item in orders %}
-        <div class="accordion-item rows">
-          <a>Заказ № {{item.namber}} от {{item.date_create}} Статус {{item.status}}</a>
-          <div class="content ">
+    <section class="ac-container">
+      {% for item in orders %}
+	    <div>
+		  <input name="accordion-1" id="ac-{{ forloop.counter }}" type="radio" checked="">
+		  <label for="ac-{{ forloop.counter }}">Заказ № {{item.namber}} от {{item.date_create}} Статус {{item.status}}</label>
+		  <article>
+            <div class="cells ">
               {% for t in item.tovary.all %}
-            {% for v in t.variacii.all %}
-            <div class="row">
-                <div class="image">
-                    <img src="/media/{{ v.variaciya.random_image }}" alt="{{t.tovar.title}}" />
-                </div>
-                <div class="discr">
-                    <div class="name">{{t.tovar.title}}</div>
-                    <div class="element">
+                {% for v in t.variacii.all %}
+                    <div class="cell">
+                        <div class="image"><img src="/media/{{ v.variaciya.random_image }}" alt="{{t.tovar.title}}" /></div>
+                        <div class="name">{{t.tovar.title}}</div>
                         <div class="size">Размер <br />{{v.variaciya.size}}</div>
                         <div class="clr">Цвет <br />{{v.variaciya.colortile_korz}}</div>
                         <div class="cost">Цена <br />{{t.tovar.cost}} р.</div>
                         <div class="count">Количетво <br />{{v.count}} шт.</div>
                         <div class="summ">Сумма <br />{{v.summ}}</div>
                     </div>
-                </div>
+                {% endfor %}
+              {% endfor %}
             </div>
-            {% endfor %}
-        {% endfor %}
-          </div>
-        </div>
-    {% endfor %}
-    </div>
+		    </article>
+	    </div>
+      {% endfor %}
+    </section>
 {% else %}
     <p>У Вас ещё нет заказов.</p>
     <p>Посетите наш <a href="/catalog/">каталог</a> и закажите себе понравившиеся вещи!</p>

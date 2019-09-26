@@ -47,8 +47,11 @@
     <Compile Include="app\migrations\0003_auto_20190817_1703.py" />
     <Compile Include="app\migrations\0004_auto_20190817_1733.py" />
     <Compile Include="app\models.py" />
+    <Compile Include="app\views\pages.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\tests.py" />
-    <Compile Include="app\views.py" />
+    <Compile Include="app\views\views.py" />
     <Compile Include="app\__init__.py" />
     <Compile Include="app\migrations\__init__.py" />
     <Compile Include="manage.py" />
@@ -65,6 +68,7 @@
     <Folder Include="app\media\video\" />
     <Folder Include="app\migrations\" />
     <Folder Include="app\media\" />
+    <Folder Include="app\views\" />
     <Folder Include="app\static\" />
     <Folder Include="app\static\app\" />
     <Folder Include="app\static\app\content\" />

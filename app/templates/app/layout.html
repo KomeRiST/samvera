@@ -19,10 +19,20 @@
 
 <body style="">
     <div id="p_prldr">
-        <div class="pre centaur">samvera</div>
         <div class="sec">
             <div class="titlepre">Подождите</div>
-            <div class="despre">идет загрузка</div>
+            <div class="letter-holder">
+                    <div class="l-1 letter">.</div>
+                    <div class="l-2 letter">.</div>
+                    <div class="l-3 letter">.</div>
+                    <div class="l-4 letter">.</div>
+                    <div class="l-5 letter">.</div>
+                    <div class="l-6 letter">.</div>
+                    <div class="l-7 letter">.</div>
+                    <div class="l-8 letter">.</div>
+                    <div class="l-9 letter">.</div>
+                    <div class="l-10 letter">.</div>
+                </div>
         </div>
     </div>
     <nav id="nav" class="nav" role="navigation">
@@ -34,9 +44,9 @@
         <li class="nav__item"><a href="/about/about" class="nav__link">О нас</a></li>
         <li class="nav__item"><a href="/about/contacts" class="nav__link">Контакты</a></li>
           {% if request.user.is_authenticated %}
-            <li class="nav__item"><a href="{% url 'log_out' %}" class="nav__link">Выход</a></li>
+            <li class="nav__item"><a href="{% url 'kabinet' %}" class="nav__link">{{ request.user.username }}</a><a href="{% url 'log_out' %}" class="korzcount">Выход</a></li>
           {% else %}
-            <li class="nav__item"><a href="{% url 'kabinet' %}" class="nav__link">Вход</a></li>
+            <li class="nav__item"><a href="{% url 'login' %}" class="nav__link">Вход</a></li>
           {% endif %}
         <li class="nav__item sociallinks">
               <div class="sociallinks__item">

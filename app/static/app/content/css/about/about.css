@@ -85,7 +85,10 @@ FONTS SIZE
   -ms-align-content: center;
   -webkit-align-content: center;
   align-content: center;
-  background: whitesmoke; }
+  background: whitesmoke;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; }
   @media only screen and (min-width: 1440px) {
     .about_slide > div {
       grid-template-columns: repeat(4, 1fr);
@@ -192,6 +195,8 @@ FONTS SIZE
     .about_slide .slide-left {
       grid-template-columns: 1fr;
       grid-template-areas: 'text'; } }
+  .about_slide .slide-left p {
+    background-color: whitesmoke; }
 
 .about_slide .slide-right {
   background-position: right;
@@ -219,11 +224,15 @@ FONTS SIZE
     .about_slide .slide-right {
       grid-template-columns: 1fr;
       grid-template-areas: 'text'; } }
+  .about_slide .slide-right p {
+    background-color: whitesmoke; }
 
 .about_slide .bg-light {
-  background: whitesmoke;
   color: black; }
+  .about_slide .bg-light p {
+    background: whitesmoke; }
 
 .about_slide .bg-dark {
-  background: black;
   color: white; }
+  .about_slide .bg-dark p {
+    background: black; }

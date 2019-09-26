@@ -25,7 +25,7 @@ SECRET_KEY = '980e51a4-86f5-41f6-9887-017b09fd5032'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True   
 
-ALLOWED_HOSTS = ['0.0.0.0', '192.168.0.11', '192.168.0.12', '127.0.0.1', 'local.site.my', '192.168.0.99']
+ALLOWED_HOSTS = ['0.0.0.0', '192.168.0.10', '192.168.0.11', '192.168.0.12', '127.0.0.1', 'local.site.my', '192.168.0.99']
 
 # EMAIL settings
 DEFAULT_FROM_EMAIL = 'komerist1993-93@mail.ru'

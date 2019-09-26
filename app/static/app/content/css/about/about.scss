@@ -39,6 +39,9 @@
     -webkit-align-content: center;
     align-content: center;
     background: $bg-Default;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 
     @include mq("desktop-wide") {
         grid-template-columns: repeat(4, 1fr);
@@ -115,6 +118,10 @@
             grid-template-columns: 1fr;
             grid-template-areas: 'text';
         }
+
+        p {
+            background-color: $bg-Default;
+        }
     }
 
     .slide-right {
@@ -148,15 +155,25 @@
             grid-template-columns: 1fr;
             grid-template-areas: 'text';
         }
+
+        p {
+            background-color: $bg-Default;
+        }
     }
 
     .bg-light {
-        background: $bg-Default;
+        p {
+            background: $bg-Default;
+        }
+
         color: $fc-title_dark;
     }
 
     .bg-dark {
-        background: $bg-dark;
+        p {
+            background: $bg-dark;
+        }
+
         color: $fc-title_light;
     }
 }

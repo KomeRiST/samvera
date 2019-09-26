@@ -5,7 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from datetime import datetime
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpRequest, HttpResponse, Http404
+from django.http import HttpRequest, HttpResponse, Http404, HttpResponseRedirect
 from app import forms, models, base_auth
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
@@ -15,82 +15,62 @@ import json
 from django.core import serializers
 from django.template.loader import render_to_string
 
-ABOUT_PAGE = ("about", "contacts", "rabota-u-nas")
-ABOUT_PAGE_DESCR = {
-    "about":{
-        "title":"О нас",
-        "message":""
-    },
-    "contacts":{
-        "title":"Контакты",
-        "message":"Ниже представлены контакты для связи с нами"
-    },
-    "rabota-u-nas":{
-        "title":"Вакансии",
-        "message":""
-    }
-}
-INFO_PAGE = ("dostavka", "faq", "idei", "oferta", "oplata", "politika-konfidencialnosti", "preorder", "rukovodstvo-po-pokupke", "samovyvoz", "vozvrattovar")
-INFO_PAGE_DESCR = {
-        "dostavka":{
-                "title": "Доставка",
-                "message": "Подробности и условия доставки"
-            },
-        "faq":{
-                "title": "Частые вопросы",
-                "message": "Здесь мы собрали для Вас ответы на самые частозадоваемые вопросы."
-            },
-        "idei":{
-                "title": "Ваши идеи",
-                "message": "Делитесь своими идеями!"
-            },
-        "oferta":{
-                "title": "Оферта",
-                "message": ""
-            },
-        "oplata":{
-                "title": "Оплата",
-                "message": "Ниже изложена исчерпывающая информация об оплате заказа"
-            },
-        "politika-konfidencialnosti":{
-                "title": "Политика конфиденциальности",
-                "message": ""
-            },
-        "preorder":{
-                "title": "Предоплата",
-                "message": ""
-            },
-        "rukovodstvo-po-pokupke":{
-                "title": "Руководство по покупке",
-                "message": ""
-            },
-        "samovyvoz":{
-                "title": "Самовывоз",
-                "message": ""
-            },
-        "vozvrattovar":{
-                "title": "Возврат товара",
-                "message": ""
-            }
-    }
-
-CATALOG_PAGE_DESCR = {
-        "new":{
-                "title": "Новинки!",
-                "message": "Для тех кто в тренде"
-            },
-        "sale":{
-                "title": "Скидки",
-                "message": "Успейте приобрести по низкой цене!"
-            },
-        "catalog":{
-                "title": "LOOKBOOK",
-                "message": "Найдите для себя что-то новое"
-            },
-    }
-
 def year():
     return "2019 - " + str(datetime.now().year)
+
+def login(request):
+    """  """
+    assert isinstance(request, HttpRequest)
+    print("request.method: ", request.method)
+    if request.method == "GET":
+        print("Чел не авторизован!")
+        return render(
+            request,
+            'app/account/login.html',
+            {
+                'title':'Авторизация',
+                'form':forms.BootstrapAuthenticationForm,
+                'year':year(),
+            }
+        )
+    else:
+        from django.contrib.auth import authenticate
+        user = authenticate(username=request.POST['username'], password=request.POST['password'])
+        if user is not None:
+            if user.is_active:
+                login(request)
+                print("Чел авторизовлся.\n")
+                print("HTTP_REFERER: ", request.META["HTTP_REFERER"])
+                return HttpResponseRedirect("/kabinet/")
+                # Redirect to a success page.
+            else:
+                print("disabled account.\n")
+                # Return a 'disabled account' error message
+                return HttpResponseRedirect("/")
+        else:
+            # Return an 'invalid login' error message.
+            print("invalid login. \n")
+            return render(
+                request,
+                'app/account/login.html',
+                {
+                    'title':'Авторизация',
+                    'form':forms.BootstrapAuthenticationForm,
+                    'year':year(),
+                }
+            )
+
+def viktoleon(request):
+    """Рендер админки для Вики"""
+    assert isinstance(request, HttpRequest)
+    return render(
+        request,
+        'app/account/viktoleon.html',
+        {
+            'title':'Home Page',
+            'year':year(),
+        }
+    )
 
 def home(request):
     """Renders the home page."""
@@ -217,60 +197,6 @@ def post(request, code):
                 Коммент {p.commet}\n", 'komerist@bk.ru', ['komerist1993-93@mail.ru','komerist@bk.ru', 'viktoleon@bk.ru'], )
             return HttpResponse(f'Всего записей: {l}')
     return httpresponseredirect('/')
-
-def about(request, page):
-    """Менеджер рендера страниц раздела ABOUT"""
-    assert isinstance(request, HttpRequest)
-    if page in ABOUT_PAGE:
-        PAGE = f'app/about/{page}.html'
-        DESC = ABOUT_PAGE_DESCR.get(page)
-        DESC["year"] = year()
-        return render(
-            request,
-            PAGE,
-            DESC
-        )
-    else:
-        raise Http404
-
-def info(request, page):
-    """Менеджер рендера страниц раздела INFO"""
-    
-    print(f'\nPAGE:\n{page}\n')
-    assert isinstance(request, HttpRequest)
-    DESC = INFO_PAGE_DESCR.get(page)
-    print(f'\nITEM FROM CONST:\n{DESC}\n')
-    if DESC is not None:
-        PAGE = f'app/info/{page}.html'
-        DESC["year"] = year()
-        return render(
-            request,
-            PAGE,
-            DESC
-        )
-    else:
-        raise Http404
-
-def catalog(request, page="catalog"):
-    """Менеджер рендера страниц раздела CATALOG"""
-    
-    th = models.Tovar.objects.all()
-
-    print(f'\nPAGE:\n{page}\n')
-    assert isinstance(request, HttpRequest)
-    DESC = CATALOG_PAGE_DESCR.get(page)
-    print(f'\nITEM FROM CONST:\n{DESC}\n')
-    if DESC is not None:
-        PAGE = f'app/catalog/{page}.html'
-        DESC["year"] = year()
-        DESC['things'] = th
-        return render(
-            request,
-            PAGE,
-            DESC
-        )
-    else:
-        raise Http404
 
 def korzina(request):
     """Рендер страницы Корзина"""
