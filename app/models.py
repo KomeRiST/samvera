@@ -153,6 +153,11 @@ class Variaciya(models.Model):
         g = Gallery.objects.filter(product=self)[:1]
         return g[0].image
 
+    @property
+    def images(self):
+        i = Gallery.objects.all()
+        return i
+
     class Meta:
         verbose_name = "Вариация товара"
         verbose_name_plural = "Вариации товаров"

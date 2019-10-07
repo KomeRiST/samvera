@@ -60,17 +60,17 @@ def login(request):
                 }
             )
 
-def viktoleon(request):
-    """Рендер админки для Вики"""
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'app/account/viktoleon.html',
-        {
-            'title':'Home Page',
-            'year':year(),
-        }
-    )
+#def viktoleon(request):
+#    """Рендер админки для Вики"""
+#    assert isinstance(request, HttpRequest)
+#    return render(
+#        request,
+#        'app/account/viktoleon.html',
+#        {
+#            'title':'Home Page',
+#            'year':year(),
+#        }
+#    )
 
 def home(request):
     """Renders the home page."""

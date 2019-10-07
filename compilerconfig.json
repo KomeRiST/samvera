@@ -26,5 +26,13 @@
   {
     "outputFile": "app/static/app/content/css/index.css",
     "inputFile": "app/static/app/content/css/index.scss"
+  },
+  {
+    "outputFile": "app/static/app/content/css/account/account.css",
+    "inputFile": "app/static/app/content/css/account/account.scss"
+  },
+  {
+    "outputFile": "app/static/app/content/css/adm/adminka.css",
+    "inputFile": "app/static/app/content/css/adm/adminka.scss"
   }
 ]

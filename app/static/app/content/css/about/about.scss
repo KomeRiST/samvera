@@ -6,7 +6,7 @@
 */
 .about_content__text {
     color: $fc-Default;
-    min-height: 100vh;
+    padding-bottom: $main_title-padding;
 
     p {
         padding: .25rem;

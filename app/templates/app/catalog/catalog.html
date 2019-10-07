@@ -15,7 +15,12 @@
     {% for item in things %}
     <div class="container">
         <div class="container-item" style="background-image: url('/media/{{item.random_image}}')">
-            <a href="/thing/{{item.id}}" class="cover"></a>
+            <div class="cover">
+                <a href="{% url 'thing' item.id %}" class="btn-base btn-light"><p>Подробнее</p></a>
+                {% if request.user.is_staff %}
+                <a href="{% url 'thing_edit' item.id %}" class="btn-base btn-dark"><p>Редактировать</p></a>
+                {% endif %}
+            </div>
         </div>
         <div class="title">{{ item.title }}</div>
         <div class="cost">{{ item.cost }}</div>

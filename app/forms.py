@@ -66,3 +66,36 @@ class OrderForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email', 'phone']
+
+################################
+#
+#
+#    Формы для своей админки   #
+#
+#
+################################
+
+
+class ThingEditForm(forms.ModelForm):
+
+    class Meta:
+        model = models.Tovar
+        fields = ['title', 'descr', 'uhod', 'sebestoimost', 'cost', 'hidden']
+        
+class VariaciyaEditForm(forms.ModelForm):
+    from app.models import ColorField
+    color = forms.CharField(widget=forms.TextInput({
+                    'type': 'color',
+                    'style': 'height: 25px; width: 100px'})
+                )
+    size = forms.CharField(max_length=50, label=_("Размер"))
+
+    class Meta:
+        model = models.Variaciya
+        fields = ['color', 'color_text', 'size', 'obmer', 'model', 'kolvo']
+
+class VarPhotoForm(forms.ModelForm):
+
+    class Meta:
+        model = models.Gallery
+        fields = ['image']

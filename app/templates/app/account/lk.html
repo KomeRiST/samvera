@@ -1,7 +1,7 @@
 {% extends "app/layout.html" %}
 {% load staticfiles %}
 {% block css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/info/info.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/account/account.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/catalog/catalog.css' %}" />
 {% endblock %}
 
@@ -11,9 +11,9 @@
         <div class="main_title text-title-dark">{{title}}</div>
     </div>
 </div>
-<div class="order-content">
+<div class="main_content">
 {% if orders.count > 0 %}
-    <section class="ac-container">
+    <section class="lk-content ac-container">
       {% for item in orders %}
 	    <div>
 		  <input name="accordion-1" id="ac-{{ forloop.counter }}" type="radio" checked="">
@@ -39,8 +39,10 @@
       {% endfor %}
     </section>
 {% else %}
-    <p>У Вас ещё нет заказов.</p>
-    <p>Посетите наш <a href="/catalog/">каталог</a> и закажите себе понравившиеся вещи!</p>
+    <div class="lk-content">
+        <p>У Вас ещё нет заказов.</p>
+        <p>Посетите наш <a href="/catalog/">каталог</a> и закажите себе понравившиеся вещи!</p>
+    </div>
 {% endif %}
 </div>
 {% endblock %}

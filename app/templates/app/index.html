@@ -3,6 +3,11 @@
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/index.css' %}" />
 <script src="{% static 'app/scripts/jquery.video.js' %}"></script>
+<style>
+    body {
+        background-color: black;
+    }
+</style>
 {% endblock %}
 {% block content %}
 <!--<div class="bg"></div>-->
@@ -43,20 +48,20 @@
 <div class="content">
     <div class="block-one">
         <div class="overlay">
-            <div class="maintext">
-                <!--<img src="/media/logo.png" height="auto" />-->
+            <!--<div class="maintext">
+                <img src="/media/logo.png" height="auto" />
                 <a href="www.samvera.ru" class="centaur">SAMVERA</a>
-            </div>
+            </div>-->
         </div>
         <div class="video" data-vvvv-bg="/media/video/main.mp4">
         </div>
     </div>
+    <!--
     <div class="block-two">
         <div class="drag_slider">
-            {% include "app/slider.html" %}
+            {#{% include "app/slider.html" %}#}
         </div>
     </div>
-    <!--
     <div class="block-tree">
         <div class="gallery">
             <div class="item"></div>
@@ -78,7 +83,7 @@
 -->
 </div>
 
-
+<!--
 <div class="b-popup" id="popup1">
     <div class="popupClose" onclick="PopUpHide()"></div>
     <div class="form">
@@ -89,34 +94,34 @@
             <input type="submit" value="Submit" />
         </form>
     </div>
-</div>
+</div>-->
 {% endblock %}
 
 {% block scripts %}
 <script>
-$(document).ready(function(){
-    PopUpHide();
-});
-    function parallax(){
-		  var scrolled = $(window).scrollTop();
-        $('.block-one .overlay .maintext').css('top', -(scrolled * 0.5) + 'px');
-        //$('.bg').css('top', -(scrolled * 0.5) + 'px');
-        if (scrolled > 170) {
-            $(".nav").css("background-color", "black");
-        } else {
-            $(".nav").css("background-color", "transparent");
-        }
-    }
-    $(window).scroll(function () {
-        parallax();
-    });
-    function PopUpShow() {
-        $("#popup1").css("top", $(".navi").height())
-    $("#popup1").delay(200).fadeIn();
-}
-function PopUpHide(){
-    $("#popup1").delay(200).fadeOut();
-        }
+//$(document).ready(function(){
+//    PopUpHide();
+//});
+//    function parallax(){
+//		  var scrolled = $(window).scrollTop();
+//        $('.block-one .overlay .maintext').css('top', -(scrolled * 0.5) + 'px');
+//        //$('.bg').css('top', -(scrolled * 0.5) + 'px');
+//        if (scrolled > 170) {
+//            $(".nav").css("background-color", "black");
+//        } else {
+//            $(".nav").css("background-color", "transparent");
+//        }
+//    }
+//    $(window).scroll(function () {
+//        parallax();
+//    });
+//    function PopUpShow() {
+//        $("#popup1").css("top", $(".navi").height())
+//    $("#popup1").delay(200).fadeIn();
+//}
+//function PopUpHide(){
+//    $("#popup1").delay(200).fadeOut();
+//        }
     
 </script>
 {% endblock %}

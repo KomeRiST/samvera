@@ -1,0 +1,36 @@
+{% extends "app/adminka/adm_layout.html" %}
+{% load staticfiles %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/css/main.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/css/adm/adminka.css' %}" />
+{% endblock %}
+
+{% block screen %}
+<div class="main_screen">
+    <div class="main_conteiner">
+        <div class="main_title_descr text-title-dark">{{title}}</div>
+        <div class="text-title-dark">Артикул: <small>{{variaciya.article}}</small></div>
+        <div class="text-title-dark"><small>ID: {{variaciya.id}}</small></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="main_content thing-content">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        {% for form in photos %}
+            {{ form.as_p }}
+        {% endfor %}
+        <input class="btn_default" type="submit" value="Send" >
+    </form>
+</div>
+{{g}}
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

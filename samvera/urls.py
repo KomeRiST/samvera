@@ -7,7 +7,7 @@ from django.urls import path
 from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
 from app import forms
-from app.views import views, pages
+from app.views import views, pages, adminka
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import include
@@ -15,7 +15,7 @@ from django.conf.urls import include
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('viktoleon/', views.viktoleon, name='viktoleon'),
+    #path('viktoleon/', views.viktoleon, name='viktoleon'),
     path('kabinet/', views.kabinet, name='kabinet'),
     path('about/<str:page>', pages.about, name='about'),
     path('contact/<str:page>', pages.about, name='contact'),
@@ -35,6 +35,11 @@ urlpatterns = [
     #path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     path('chaining/', include('smart_selects.urls')),
+    path('adminka/', adminka.main),
+    path('adminka/thing/edit/<int:id>/', adminka.thing_edit, name='thing_edit'),
+    path('adminka/thing/delete/<int:id>/', adminka.thing_delete, name='thing_delete'),
+    path('adminka/variaciya/edit/<int:id>/', adminka.variaciya_edit, name='variaciya_edit'),
+    path('adminka/variaciya/delete/<int:id>/', adminka.variaciya_delete, name='variaciya_delete'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

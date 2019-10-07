@@ -1,11 +1,28 @@
-﻿.content {
+﻿/*    COLOR -- FONTS    */
+/*    COLOR -- BLOCKS   */
+/*
+FONTS SIZE
+    phone: 300px
+    phone-wide: 480px
+    phablet: 560px
+
+    tablet-small: 640px
+    tablet: 768px
+    tablet-wide: 1024px
+
+    desktop: 1248px
+    desktop-wide: 1440px
+
+*/
+.content {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-column-gap: 15px; }
   .content .block-one {
     -ms-grid-column: 1/13;
     grid-column: 1/13;
-    position: relative; }
+    position: relative;
+    background-color: black; }
     .content .block-one .overlay {
       position: absolute;
       height: 100%;
@@ -27,3 +44,8 @@
       height: 70vh; }
       .content .block-two .drag_slider .slider-container {
         overflow: hidden; }
+
+footer {
+  background-color: black; }
+  footer .bottom-menu__link {
+    color: white; }

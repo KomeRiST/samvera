@@ -10,7 +10,7 @@
     <InterpreterArguments>
     </InterpreterArguments>
     <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
-    <CommandLineArguments>runserver 0.0.0.0:8888</CommandLineArguments>
+    <CommandLineArguments>runserver 0.0.0.0:80</CommandLineArguments>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -47,6 +47,9 @@
     <Compile Include="app\migrations\0003_auto_20190817_1703.py" />
     <Compile Include="app\migrations\0004_auto_20190817_1733.py" />
     <Compile Include="app\models.py" />
+    <Compile Include="app\views\adminka.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\views\pages.py">
       <SubType>Code</SubType>
     </Compile>
@@ -68,6 +71,11 @@
     <Folder Include="app\media\video\" />
     <Folder Include="app\migrations\" />
     <Folder Include="app\media\" />
+    <Folder Include="app\static\app\content\css\account\" />
+    <Folder Include="app\static\app\content\css\adm\" />
+    <Folder Include="app\templates\app\adminka\" />
+    <Folder Include="app\templates\app\adminka\thing\" />
+    <Folder Include="templates\admin\" />
     <Folder Include="app\views\" />
     <Folder Include="app\static\" />
     <Folder Include="app\static\app\" />
@@ -88,11 +96,13 @@
     <Folder Include="app\templates\app\catalog\" />
     <Folder Include="app\templates\app\api\" />
     <Folder Include="app\templates\app\account\" />
+    <Folder Include="templates\" />
     <Folder Include="samvera\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="app\static\app\content\css\site.scss" />
     <Compile Include="app\static\app\content\css\variables.scss" />
+    <Content Include="templates\admin\index.html" />
     <None Include="compilerconfig.json" />
     <Content Include="app\media\bg.jpg" />
     <Content Include="app\media\foto\%281%29.jpg" />
@@ -126,6 +136,12 @@
     <Content Include="app\static\app\content\css\about\about.css" />
     <Content Include="app\static\app\content\css\about\about.min.css" />
     <Content Include="app\static\app\content\css\about\about.scss" />
+    <Content Include="app\static\app\content\css\account\account.css" />
+    <Content Include="app\static\app\content\css\account\account.min.css" />
+    <Content Include="app\static\app\content\css\account\account.scss" />
+    <Content Include="app\static\app\content\css\adm\adminka.css" />
+    <Content Include="app\static\app\content\css\adm\adminka.min.css" />
+    <Content Include="app\static\app\content\css\adm\adminka.scss" />
     <Content Include="app\static\app\content\css\catalog\catalog.css" />
     <Content Include="app\static\app\content\css\catalog\catalog.min.css" />
     <Content Include="app\static\app\content\css\catalog\catalog.scss" />
@@ -160,6 +176,7 @@
     <Content Include="app\static\app\content\css\thing.min.css" />
     <Content Include="app\static\app\content\css\thing.scss" />
     <Content Include="app\static\app\content\css\variables.css" />
+    <Content Include="app\static\app\content\css\variables.min.css" />
     <Content Include="app\static\app\drag_slider\index.html" />
     <Content Include="app\static\app\drag_slider\slider-1.jpg" />
     <Content Include="app\static\app\drag_slider\slider-2.jpg" />
@@ -188,9 +205,14 @@
     <Content Include="app\static\app\slick\slick.less" />
     <Content Include="app\static\app\slick\slick.min.js" />
     <Content Include="app\static\app\slick\slick.scss" />
+    <Content Include="templates\admin\base.html" />
+    <Content Include="templates\admin\base_site.html" />
     <Content Include="app\templates\app\about\brend.html" />
     <Content Include="app\templates\app\about\contacts.html" />
     <Content Include="app\templates\app\about\rabota-u-nas.html" />
+    <Content Include="app\templates\app\adminka\adm_layout.html" />
+    <Content Include="app\templates\app\adminka\adm_main.html" />
+    <Content Include="app\templates\app\adminka\thing\edit.html" />
     <Content Include="app\templates\app\api\getthingcolors.html" />
     <Content Include="app\templates\app\api\korzina_get.html" />
     <Content Include="app\templates\app\catalog\catalog.html" />

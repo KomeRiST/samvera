@@ -107,7 +107,8 @@
             width: 100%;
             padding: 2rem;
             visibility: hidden;
-            display: flex;
+            display: grid;
+            grid-gap: 2rem;
             -webkit-justify-content: center;
             justify-content: center;
             -ms-align-content: center;
@@ -118,7 +119,12 @@
             -o-transition: .25s all linear;
             -webkit-transition: .25s all linear;
             transition: .25s all linear;
-            &>div{
+
+            a {
+                text-decoration: none;
+            }
+
+            & > div {
                 height: 1rem;
             }
 
@@ -408,7 +414,7 @@
         display: grid;
         grid-gap: 1rem;
         padding: 1rem;
-        grid-template-areas: 'image name name' 'image size color' 'image count summ' 'image . .';
+        grid-template-areas: 'image name name' 'image size color' 'image count summ' 'image edit delete';
         -webkit-justify-content: center;
         justify-content: center;
         -ms-align-content: center;
@@ -473,6 +479,14 @@
 
         .summ {
             grid-area: summ;
+        }
+
+        .edit {
+            grid-area: edit;
+        }
+
+        .delete {
+            grid-area: delete;
         }
     }
 }

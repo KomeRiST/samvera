@@ -1,4 +1,5 @@
-﻿
+﻿@import "variables.scss";
+
 .content {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -8,6 +9,7 @@
         -ms-grid-column: 1/13;
         grid-column: 1/13;
         position: relative;
+        background-color: black;
 
         .overlay {
             position: absolute;
@@ -31,6 +33,7 @@
         -ms-grid-column: 1/13;
         grid-column: 1/13;
         background-color: black;
+
         .drag_slider {
             height: 70vh;
 
@@ -38,5 +41,12 @@
                 overflow: hidden;
             }
         }
+    }
+}
+
+footer {
+    background-color: $bg-dark;
+    .bottom-menu__link {
+        color: $fc-title_light;
     }
 }

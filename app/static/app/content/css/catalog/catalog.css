@@ -123,7 +123,8 @@ FONTS SIZE
       width: 100%;
       padding: 2rem;
       visibility: hidden;
-      display: flex;
+      display: grid;
+      grid-gap: 2rem;
       -webkit-justify-content: center;
       justify-content: center;
       -ms-align-content: center;
@@ -134,6 +135,8 @@ FONTS SIZE
       -o-transition: .25s all linear;
       -webkit-transition: .25s all linear;
       transition: .25s all linear; }
+      .container .container-item .cover a {
+        text-decoration: none; }
       .container .container-item .cover > div {
         height: 1rem; }
       @media only screen and (max-width: 559px) {
@@ -345,7 +348,7 @@ FONTS SIZE
     display: grid;
     grid-gap: 1rem;
     padding: 1rem;
-    grid-template-areas: 'image name name' 'image size color' 'image count summ' 'image . .';
+    grid-template-areas: 'image name name' 'image size color' 'image count summ' 'image edit delete';
     -webkit-justify-content: center;
     justify-content: center;
     -ms-align-content: center;
@@ -417,3 +420,7 @@ FONTS SIZE
       grid-area: count; }
     .cells .cell .summ {
       grid-area: summ; }
+    .cells .cell .edit {
+      grid-area: edit; }
+    .cells .cell .delete {
+      grid-area: delete; }

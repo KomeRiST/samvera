@@ -1,0 +1,121 @@
+﻿@import "../variables.scss";
+@import "../mixins.scss";
+
+
+.lk-content {
+    color: $fc-Default;
+    padding-bottom: $main_title-padding;
+
+    p {
+        padding: .25rem;
+    }
+}
+
+
+.ac-container input {
+    display: none;
+}
+
+.ac-container > div {
+    padding: .5rem;
+    border-bottom: 1px solid lightgray;
+}
+
+.ac-container label {
+    cursor: pointer;
+    font-weight: 400;
+    @include fontsize("form-field-title");
+}
+
+.ac-container article {
+    overflow: hidden;
+    max-height: 0px;
+    position: relative;
+    -webkit-transition: max-height 0.3s ease-in-out;
+    -moz-transition: max-height 0.3s ease-in-out;
+    -o-transition: max-height 0.3s ease-in-out;
+    -ms-transition: max-height 0.3s ease-in-out;
+    transition: max-height 0.3s ease-in-out;
+    .help {
+        margin-top: 1rem;
+        text-align: center;
+        text-indent: 0px;
+    }
+}
+
+.ac-container article p {
+    text-indent: 1rem;
+    padding: .225rem 0px;
+
+    @include mq("tablet-wide") {
+        text-align: justify;
+    }
+
+    @include mq("tablet") {
+        text-align: center;
+    }
+
+    @include mq("tablet", max) {
+        text-align: justify;
+    }
+}
+
+.ac-container a {
+    text-decoration: none;
+    color: $fc-gray;
+    font-weight: bold;
+
+    &:hover {
+        color: $fc-Default;
+    }
+}
+
+.ac-container article ul {
+    text-align: left;
+    margin: auto;
+
+    @include mq("tablet") {
+        width: 75%;
+    }
+
+    @include mq("tablet-wide") {
+        width: 50%;
+    }
+
+    @include mq("tablet", max) {
+        width: 100%;
+    }
+
+    li {
+        margin-left: 1rem;
+        padding: .2rem 0px;
+    }
+}
+
+.ac-container label:hover {
+    font-weight: 700;
+}
+
+.ac-container input:checked + label, .ac-container input:checked + label:hover {
+    font-weight: bold;
+    -webkit-transition: font-weight 1s linear;
+    -moz-transition: font-weight 1s linear;
+    -o-transition: font-weight 1s linear;
+    -ms-transition: font-weight 1s linear;
+    transition: font-weight 1s linear;
+}
+
+.ac-container input:checked ~ article {
+    max-height: 999px;
+    height: auto;
+    padding: 1rem 0px;
+    -webkit-transition: max-height 0.5s ease-in-out;
+    -moz-transition: max-height 0.5s ease-in-out;
+    -o-transition: max-height 0.5s ease-in-out;
+    -ms-transition: max-height 0.5s ease-in-out;
+    transition: max-height 0.5s ease-in-out;
+}
+
+/*.ac-container input:checked ~ article.ac-small {
+    height: 140px;
+}*/
