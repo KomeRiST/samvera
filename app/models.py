@@ -25,6 +25,9 @@ class StatusOrder(models.Model):
     text = models.TextField("Текстовое представление статуса")
     def __str__(self):
         return self.text
+    class Meta:
+        verbose_name = "Статус заказа"
+        verbose_name_plural = "Справочник статусов заказа"
 
 # Create your models here.
 class PotentialClient(models.Model):
@@ -60,8 +63,8 @@ class OrderTovary(models.Model):
     #count = models.PositiveIntegerField("Количество товара")
 
     class Meta:
-        verbose_name = "Товар Заказа"
-        verbose_name_plural = "Товары заказов"
+        verbose_name = "Заказанное изделие"
+        verbose_name_plural = "Заказанные изделия"
         
 class OrderTovaryVariaciya(models.Model):
     ''' Таблица вариаций для товара из заказа '''
@@ -73,8 +76,8 @@ class OrderTovaryVariaciya(models.Model):
         return str(self.count * self.variaciya.tovar.cost)+' р.'
 
     class Meta:
-        verbose_name = "Вариация товара"
-        verbose_name_plural = "Выриации товаров"
+        verbose_name = "Вариация товара из заявки"
+        verbose_name_plural = "Вариации товаров из заявок"
 
 class Tovar(models.Model):
     kod = models.UUIDField(default=uuid.uuid1)
@@ -159,8 +162,8 @@ class Variaciya(models.Model):
         return i
 
     class Meta:
-        verbose_name = "Вариация товара"
-        verbose_name_plural = "Вариации товаров"
+        verbose_name = "Вариация изделия"
+        verbose_name_plural = "Вариации изделий"
 
 class Korzina(Variaciya):
     def __init__(self):
@@ -194,4 +197,7 @@ class Gallery(models.Model):
             return '(Нет изображения)'
     image_img.short_description = 'Картинка'
     image_img.allow_tags = True
+    class Meta:
+        verbose_name = "Галлерея вариации"
+        verbose_name_plural = "Галлереи вариаций"
 

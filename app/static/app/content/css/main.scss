@@ -143,7 +143,7 @@
     -webkit-flex-direction: row;
     flex-direction: row;
 
-    a {
+    &>a {
         @include fontsize("title");
         color: $fc-title_light;
         display: contents;

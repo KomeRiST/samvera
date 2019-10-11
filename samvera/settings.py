@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'smart_selects',
     #'nested_inline',
     'app',
+    'admin_reorder',
 ]
 
 # Middleware framework
@@ -61,7 +62,39 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'admin_reorder.middleware.ModelAdminReorder',
 ]
+ADMIN_REORDER = (
+    
+    {'app': 'app', 'label': 'Склад',
+    'models': ('app.Tovar', 'app.Variaciya', 'app.Gallery')},
+
+    {'app': 'app', 'label': 'Заказы',
+    'models': ('app.Orders', 'app.OrderTovary', 'app.OrderTovaryVariaciya')},
+
+    {'app': 'auth', 'label': 'Авторизация',
+    'models': ('auth.User', 'auth.Group')},
+#    # Keep original label and models
+#    'sites', 
+
+#    # Rename app
+#    {'app': 'auth', 'label': 'Authorisation'},
+
+#    # Reorder app models
+#    {'app': 'auth', 'models': ('auth.User', 'auth.Group')},
+
+#    # Exclude models
+#    {'app': 'auth', 'models': ('auth.User', )},
+
+#    # Cross-linked models
+#    {'app': 'auth', 'models': ('auth.User', 'sites.Site')},
+
+#    # models with custom name
+#    {'app': 'auth', 'models': (
+#        'auth.Group',
+#        {'model': 'auth.User', 'label': 'Staff'},
+#    )},
+)
 
 ROOT_URLCONF = 'samvera.urls'
 

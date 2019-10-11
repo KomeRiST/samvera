@@ -211,7 +211,7 @@ FONTS SIZE
   -ms-flex-direction: row;
   -webkit-flex-direction: row;
   flex-direction: row; }
-  .logo a {
+  .logo > a {
     color: white;
     display: contents;
     /*padding: .75rem 0px;*/
@@ -220,30 +220,30 @@ FONTS SIZE
     text-transform: uppercase;
     font-family: CENTAUR; }
     @media only screen and (min-width: 300px) {
-      .logo a {
+      .logo > a {
         font-size: 30px; } }
     @media only screen and (min-width: 480px) {
-      .logo a {
+      .logo > a {
         font-size: 30px; } }
     @media only screen and (min-width: 560px) {
-      .logo a {
+      .logo > a {
         font-size: 32px; } }
     @media only screen and (min-width: 640px) {
-      .logo a {
+      .logo > a {
         font-size: 32px; } }
     @media only screen and (min-width: 768px) {
-      .logo a {
+      .logo > a {
         font-size: 68px; } }
     @media only screen and (min-width: 1024px) {
-      .logo a {
+      .logo > a {
         font-size: 68px; } }
     @media only screen and (min-width: 1248px) {
-      .logo a {
+      .logo > a {
         font-size: 68px; } }
     @media only screen and (min-width: 1440px) {
-      .logo a {
+      .logo > a {
         font-size: 72px; } }
-    .logo a svg {
+    .logo > a svg {
       height: 30px;
       align-self: center;
       margin-left: 1rem;
