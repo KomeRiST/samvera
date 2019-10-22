@@ -1,0 +1,53 @@
+﻿{% extends "app/layout.html" %}
+
+{% load static %}
+{% block title %}
+    Your shopping cart
+{% endblock %}
+{% block content %}
+    <h1>Your shopping cart</h1>
+    <table class="cart">
+        <thead>
+        <tr>
+            <th>Image</th>
+            <th>variaciya</th>
+            <th>Quantity</th>
+            <th>Remove</th>
+            <th>Unit price</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in cart %}
+            {% with variaciya=item.variaciya %}
+                <tr>
+                    <td>
+                        <a href="{{ variaciya.get_absolute_url }}">
+                            <img src="
+                                {% if variaciya.image %}
+                                    {{ variaciya.image.url }}
+                                {% else %}
+                                    {% static "img/no_image.png" %}
+                                {% endif %}">
+                        </a>
+                    </td>
+                    <td>{{ variaciya.name }}</td>
+                    <td>{{ item.kolvo }}</td>
+                    <td><a href="{% url "cart:cart_remove" variaciya.id%}">Remove</a></td>
+                    <td class="num">${{ item.cost }}</td>
+                    <td class="num">${{ item.summ }}</td>
+                </tr>
+            {% endwith %}
+        {% endfor %}
+        <tr class="total">
+            <td>Total</td>
+            <td colspan="4"></td>
+            <td class="num">${{ cart.get_total_price }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="text-right">
+        <a href="\" class="button light">Continue shopping</a>
+        <a href="#" class="button">Checkout</a>
+    </p>
+{% endblock %}

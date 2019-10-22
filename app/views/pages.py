@@ -111,8 +111,10 @@ def info(request, page):
 
 def catalog(request, page="catalog"):
     """Менеджер рендера страниц раздела CATALOG"""
-    
-    th = models.Tovar.objects.all()
+    if not request.user.is_staff:
+        th = models.Tovar.objects.filter(hidden=True)
+    else:
+        th = models.Tovar.objects.all()
 
     print(f'\nPAGE:\n{page}\n')
     assert isinstance(request, HttpRequest)

@@ -73,7 +73,17 @@ FONTS SIZE
   justify-content: flex-start;
   -ms-align-content: center;
   -webkit-align-content: center;
-  align-content: center; }
+  align-content: center;
+  -moz-transition: .25s opacity linear;
+  -o-transition: .25s opacity linear;
+  -webkit-transition: .25s opacity linear;
+  transition: .25s opacity linear; }
+  .container:hover {
+    opacity: 1 !important;
+    -moz-transition: .25s opacity linear;
+    -o-transition: .25s opacity linear;
+    -webkit-transition: .25s opacity linear;
+    transition: .25s opacity linear; }
   .container .container-item {
     height: auto;
     width: 100%;

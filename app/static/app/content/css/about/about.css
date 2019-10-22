@@ -236,3 +236,11 @@ FONTS SIZE
   color: white; }
   .about_slide .bg-dark p {
     background: black; }
+
+footer {
+  background-color: black; }
+  footer .bottom-menu__link {
+    color: white; }
+
+.line {
+  display: none; }

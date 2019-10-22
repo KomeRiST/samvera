@@ -295,4 +295,4 @@
             }
         });
     });
-})(django.jQuery);
+})(jQuery);

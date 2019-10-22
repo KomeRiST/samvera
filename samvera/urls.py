@@ -10,10 +10,12 @@ from app import forms
 from app.views import views, pages, adminka
 from django.conf import settings
 from django.conf.urls.static import static
-from django.conf.urls import include
+from django.conf.urls import include, url
 
 
 urlpatterns = [
+    url(r'^cart/', include('cart.urls', namespace='cart')),
+    url(r'^shop/', include('shop.urls', namespace='shop')),
     path('', views.home, name='home'),
     #path('viktoleon/', views.viktoleon, name='viktoleon'),
     path('kabinet/', views.kabinet, name='kabinet'),

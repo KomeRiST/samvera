@@ -35,6 +35,7 @@ EMAIL_HOST_USER = "komerist1993-93@mail.ru"
 EMAIL_HOST_PASSWORD = "KrMkh999z9n"
 EMAIL_USE_TLS = True
 
+CART_SESSION_ID = "cart" # Ключ для хранения корзины в сессии пользователя
 
 # Application references
 # https://docs.djangoproject.com/en/2.1/ref/settings/#std:setting-INSTALLED_APPS
@@ -48,7 +49,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'smart_selects',
     #'nested_inline',
+    'cart',
+    'shop',
     'app',
+    'orders',
     'admin_reorder',
 ]
 
@@ -65,7 +69,7 @@ MIDDLEWARE = [
     'admin_reorder.middleware.ModelAdminReorder',
 ]
 ADMIN_REORDER = (
-    
+    'shop',
     {'app': 'app', 'label': 'Склад',
     'models': ('app.Tovar', 'app.Variaciya', 'app.Gallery')},
 

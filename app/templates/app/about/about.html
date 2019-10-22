@@ -26,10 +26,24 @@
             В коллекции, мы рассуждаем об истинной женственности, которая берет начало в сокровенных желаниях, гармонии тела и души.
         </p>
     </div>
-    <div class="bg-dark" style="background-image: url(/media/about_5.jpg);">
+    <div class="bg-dark" >
         <p>
             <span>Каждый образ</span> – это философия душевной свободы, уникальность красоты и единение внутреннего мира с внешним образом.
         </p>
+        <div id="bottom_page" style="background-image: url(/media/about_5.jpg);"></div>
     </div>
 </div>
 {% endblock %}
+
+{% block scripts %}
+<script>
+    function parallax(){
+	    var scrolled = $(window).scrollTop();
+	    $('#bottom_page').css('top',-(scrolled*0.1)+'px');
+    }
+
+    $(window).scroll(function () {
+        parallax();
+    });
+</script>
+{% endblock%}

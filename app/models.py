@@ -8,8 +8,10 @@ from django.db.models import Count
 import datetime
 import uuid
 from django import forms
+from samvera import settings
 from django.contrib.auth.models import User
 from smart_selects.db_fields import ChainedForeignKey
+from django.utils.safestring import mark_safe
 
 class ColorField(models.CharField):
     """ Поле для хранения HTML-кода цвета."""
@@ -68,6 +70,7 @@ class OrderTovary(models.Model):
         
 class OrderTovaryVariaciya(models.Model):
     ''' Таблица вариаций для товара из заказа '''
+    order = models.ForeignKey(Orders, on_delete=models.CASCADE, related_name="ordervars")
     ordertovar = models.ForeignKey(OrderTovary, on_delete=models.CASCADE, related_name="variacii")
     variaciya = models.ForeignKey('Variaciya', on_delete=models.DO_NOTHING, related_name="in_orders")
     count = models.PositiveIntegerField("Количество товара")
@@ -99,6 +102,10 @@ class Tovar(models.Model):
         g = Gallery.objects.filter(product=v[0].id).order_by('?')[:1]
         return g[0].image
 
+    def count_var(self):
+        vars = Variaciya.objects.filter(tovar=self)
+        return vars.count()
+    count_var.short_description = 'Кол-во вариаций'
     
     def sizes(self):
         s = ""
@@ -154,12 +161,27 @@ class Variaciya(models.Model):
         #v = Variaciya.objects.filter(tovar=self.id)[:1]
         #print (v[0].id)
         g = Gallery.objects.filter(product=self)[:1]
-        return g[0].image
+        if g.count() == 0:
+            return u'No image'
+        return mark_safe(u'<img src="{0}{1}" width="100"/>'.format(settings.MEDIA_URL,g[0].image))
 
     @property
     def images(self):
-        i = Gallery.objects.all()
+        i = Gallery.objects.filter(pk=self.id)
         return i
+    
+    #def image_img(self):
+    #    imgs = self.images
+    #    if imgs:
+    #        from django.utils.safestring import mark_safe
+    #        s = ""
+    #        for i in imgs:
+    #            s = s + mark_safe(u'<a href="{0}" target="_blank"><img src="{0}" width="100"/></a>'.format(i.image.url))
+    #        return s
+    #    else:
+    #        return '(Нет изображения)'
+    #image_img.short_description = 'Картинка'
+    #image_img.allow_tags = True
 
     class Meta:
         verbose_name = "Вариация изделия"
@@ -191,8 +213,7 @@ class Gallery(models.Model):
     # Вывод картинок в админке!
     def image_img(self):
         if self.image:
-            from django.utils.safestring import mark_safe
-            return mark_safe(u'<a href="{0}" target="_blank"><img src="{0}" width="100"/></a>'.format(self.image.url))
+            return mark_safe(u'<img src="{0}" width="100"/>'.format(self.image.url))
         else:
             return '(Нет изображения)'
     image_img.short_description = 'Картинка'

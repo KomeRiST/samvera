@@ -177,3 +177,14 @@
         color: $fc-title_light;
     }
 }
+
+footer {
+    background-color: $bg-dark;
+
+    .bottom-menu__link {
+        color: $fc-title_light;
+    }
+}
+.line {
+    display: none;
+}

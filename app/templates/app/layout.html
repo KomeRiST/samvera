@@ -12,6 +12,115 @@
 <link rel="stylesheet" type="text/css" href="{% static 'app/slick/slick.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'app/slick/slick-theme.css' %}" />
     
+<style>
+    
+.letter {
+    animation-name: loadingF;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: linear;
+    display: inline-block;
+    color: white;
+    font-size: 5rem;
+}
+
+.l-1 {
+    animation-delay: .48s;
+}
+
+.l-2 {
+    animation-delay: .6s;
+}
+
+.l-3 {
+    animation-delay: .72s;
+}
+
+.l-4 {
+    animation-delay: .84s;
+}
+
+.l-5 {
+    animation-delay: .96s;
+}
+
+.l-6 {
+    animation-delay: 1.08s;
+}
+
+.l-7 {
+    animation-delay: 1.2s;
+}
+
+.l-8 {
+    animation-delay: 1.32s;
+}
+
+.l-9 {
+    animation-delay: 1.44s;
+}
+
+.l-10 {
+    animation-delay: 1.56s;
+}
+
+@keyframes loadingF {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+#p_prldr {
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    position: fixed;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: black;
+    z-index: 1001;
+    /*.svg_anm {
+        position: absolute;
+        width: 41px;
+        height: 41px;
+        background: url(images/oval.svg) center center no-repeat;
+        fill: #5aa0e2;
+        background-size: 41px;
+        margin: -16px 0 0 -16px;
+    }*/
+    .pre {
+        color: darkgray;
+        align-self: center;
+    }
+
+    .sec {
+    }
+
+    .titlepre {
+        color: white;
+        font-family: CENTAUR;
+
+        @include fontsize("title");
+    }
+
+    .despre {
+        @include fontsize("descr") {
+            color: darkgray;
+        }
+    }
+}
+
+</style>
+
 {% block css %}{% endblock %}
     <!--<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>-->
@@ -104,7 +213,7 @@
     <div class="logo">
         <a href="/">samvera</a>
         {% if request.user.is_staff %}
-        <a href="/adminka/">
+        <a href="{% url 'admin:index' %}">
             <svg version="1.1" id="door" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="50px" height="50px" viewBox="0 0 492.5 492.5" style="enable-background:new 0 0 492.5 492.5;" xml:space="preserve">
 <g>
 	<path d="M285.048,21.72L164.234,0v21.72H79.292v433.358h31.403V53.123h53.539V492.5l208.15-37.422v-61.235h9.421v61.235h31.403

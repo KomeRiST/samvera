@@ -109,6 +109,7 @@ def thing(request, id):
     """Карточка товара"""
     t = get_object_or_404(models.Tovar, pk=id)
     assert isinstance(request, HttpRequest)
+    cart_product_form = CartAddProductForm()
     return render(
         request,
         'app/catalog/thing.html',
@@ -117,6 +118,7 @@ def thing(request, id):
             'thing': t,
             'title':'Карточка товара',
             'year':year(),
+            'cart_product_form': cart_product_form
         }
     )
 
@@ -351,6 +353,17 @@ def get_order(request):
             }
         )
 
+
+from cart.forms import CartAddProductForm
+
+
+def product_detail(request, id, slug):
+    variaciya = get_object_or_404(models.Variaciya,
+                                id=id,
+                                tovar__hidden=False)
+    cart_product_form = CartAddProductForm()
+    return render(request, 'app/catalog/thing.html', {'variaciya': variaciya,
+                                                        'cart_product_form': cart_product_form})
 
 def korzina_get(request):
     """Рендер куска кода HTML для вставки в шаблон страницы Корзина"""

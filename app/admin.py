@@ -1,32 +1,60 @@
 ﻿from django.contrib import admin
 from django import forms
+from django.db import models
 from app.models import *
 from app.models import ColorField
+from django.utils.safestring import mark_safe
 #from nested_inline.admin import NestedModelAdmin, NestedStackedInline, NestedTabularInline
+from django.contrib.admin.widgets import AdminFileWidget
+from django.utils.translation import ugettext as _
 
 admin.site.register(StatusOrder)
 admin.site.register(PotentialClient)
-admin.site.register(Orders)
-admin.site.register(OrderTovary)
-admin.site.register(Tovar)
-admin.site.register(OrderTovaryVariaciya)
+#admin.site.register(Orders)
+#admin.site.register(OrderTovary)
+#admin.site.register(OrderTovaryVariaciya)
 #admin.site.register(Variaciya)
 
+class OrderVarsInline(admin.TabularInline):
+    model = OrderTovaryVariaciya
+    fields = ['variaciya', 'count']
 
+class OrderTovarsInline(admin.TabularInline):
+    model = OrderTovary
+    inlines = [OrderVarsInline,]
+    #fields = ['variaciya', 'count']
+    fields = ['tovar',]
+
+@admin.register(Orders)
+class OrderAdmin(admin.ModelAdmin):
+    model = Orders
+    inlines = [OrderTovarsInline,]
+    fields = ['client', 'status', 'namber', 'date_create']
+    readonly_fields = ['date_create', ]
+
+@admin.register(Gallery)
 class GallAdmin(admin.ModelAdmin):
     model = Gallery
-    list_display = ['image_img',]
+    list_display = ['image_img', 'product', 'image']
+    #image_fields = ['image', ]
+    fields = ['product', 'image_img', 'image']
+    readonly_fields = ['image_img', 'product']
 
-admin.site.register(Gallery, GallAdmin)
 
 class ImageInline(admin.TabularInline):
     model = Gallery
     extra = 1
+    fields = ['image_img', 'image']
+    readonly_fields = ['image_img']
 
 
-#@admin.register(Variaciya)
+
+@admin.register(Variaciya)
 class VariaciyaAdm(admin.ModelAdmin):
     inlines = [ImageInline,]
+    list_display = ['random_image', 'tovar', 'article', 'color', 'color_text', 'size', 'obmer', 'model', 'kolvo']
+    fields = ['tovar', 'article', ('color_text', 'color'), 'size', ('obmer', 'model'), 'kolvo']
+    readonly_fields = []
     formfield_overrides = {
         ColorField: {
             'widget': forms.TextInput(
@@ -38,50 +66,28 @@ class VariaciyaAdm(admin.ModelAdmin):
             }
         }
 
-admin.site.register(Variaciya, VariaciyaAdm)
-
-#class VarInline(NestedStackedInline):
-#    model = OrderTovaryVariaciya
-#    extra = 1
-#    fk_name = 'ordertovar'
-
-#class OrderTovaryInline(NestedStackedInline):
-#    model = OrderTovary
-#    fk_name = "order"
-#    extra = 1
-#    inlines = [VarInline]
-
-
-#class OrdersAdm(NestedModelAdmin):
-#    model = Orders
-#    read_only = ['namber']
-#    inlines = [OrderTovaryInline]
-    
-#admin.site.register(Orders, OrdersAdm)
+class VariaciyaInline(admin.StackedInline):
+    model = Variaciya
+    save_on_top = True
+    extra = 0
+    fields = [('color_text', 'color'), ('size', 'kolvo')]
+    formfield_overrides = {
+        ColorField: {
+            'widget': forms.TextInput(
+                attrs={
+                    'type': 'color',
+                    'style': 'height: 25px; width: 100px'
+                    }
+                )
+            }
+        }
+    #readonly_fields = ['image_img']
+    #list_display = []
 
 
-#class LevelThreeInline(NestedStackedInline):
-#    model = LevelThree
-#    extra = 1
-#    fk_name = 'level'
-
-
-#class LevelTwoInline(NestedStackedInline):
-#    model = Gallery
-#    extra = 1
-#    fk_name = 'product'
-
-
-#class LevelOneInline(NestedStackedInline):
-#    model = Variaciya
-#    extra = 1
-#    fk_name = 'tovar'
-#    inlines = [LevelTwoInline]
-
-
-#class TopLevelAdmin(NestedModelAdmin):
-#    model = Tovar
-#    inlines = [LevelOneInline]
-
-
-#admin.site.register(Tovar, TopLevelAdmin)
+@admin.register(Tovar)
+class TovarAdm(admin.ModelAdmin):
+    inlines = [VariaciyaInline,]
+    list_display = ['title', 'count_var', 'sebestoimost', 'cost', 'data_create', 'hidden']
+    fields = ['kod', ('title', 'hidden', 'data_create'),('descr', 'uhod'), ('sebestoimost', 'cost')]
+    readonly_fields = ['kod', 'data_create', 'count_var']
