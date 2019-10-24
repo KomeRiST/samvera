@@ -28,12 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['www.komerist.ru', '212.220.110.23', '0.0.0.0', '192.168.0.10', '192.168.0.11', '192.168.0.12', '127.0.0.1', 'local.site.my', '192.168.0.99']
 
 # EMAIL settings
-DEFAULT_FROM_EMAIL = 'komerist1993-93@mail.ru'
-EMAIL_HOST = "smtp.mail.ru"
-EMAIL_PORT = 2525
-EMAIL_HOST_USER = "komerist1993-93@mail.ru"
-EMAIL_HOST_PASSWORD = "KrMkh999z9n"
-EMAIL_USE_TLS = True
+import EMAIL_settings
 
 CART_SESSION_ID = "cart" # Ключ для хранения корзины в сессии пользователя
 
@@ -50,7 +45,7 @@ INSTALLED_APPS = [
     'smart_selects',
     #'nested_inline',
     'cart',
-    'shop',
+    #'shop',
     'app',
     'orders',
     'admin_reorder',

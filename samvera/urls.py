@@ -15,7 +15,7 @@ from django.conf.urls import include, url
 
 urlpatterns = [
     url(r'^cart/', include('cart.urls', namespace='cart')),
-    url(r'^shop/', include('shop.urls', namespace='shop')),
+    #url(r'^shop/', include('shop.urls', namespace='shop')),
     path('', views.home, name='home'),
     #path('viktoleon/', views.viktoleon, name='viktoleon'),
     path('kabinet/', views.kabinet, name='kabinet'),

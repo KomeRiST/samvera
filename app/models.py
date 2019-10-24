@@ -162,12 +162,12 @@ class Variaciya(models.Model):
         #print (v[0].id)
         g = Gallery.objects.filter(product=self)[:1]
         if g.count() == 0:
-            return u'No image'
+            return mark_safe(u'<img src="{0}{1}" width="100"/>'.format(settings.MEDIA_URL, "gallery/no_image.png"))
         return mark_safe(u'<img src="{0}{1}" width="100"/>'.format(settings.MEDIA_URL,g[0].image))
 
     @property
     def images(self):
-        i = Gallery.objects.filter(pk=self.id)
+        i = Gallery.objects.filter(pk=self.pk)
         return i
     
     #def image_img(self):
@@ -215,7 +215,7 @@ class Gallery(models.Model):
         if self.image:
             return mark_safe(u'<img src="{0}" width="100"/>'.format(self.image.url))
         else:
-            return '(Нет изображения)'
+            return mark_safe(u'<img src="{0}" width="100"/>'.format("gallery/no_image.png"))
     image_img.short_description = 'Картинка'
     image_img.allow_tags = True
     class Meta:
