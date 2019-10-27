@@ -159,9 +159,9 @@ body {
 }
 
 form {
-    padding: 2rem;
+    // padding: 2rem;
     min-width: 300px;
-    margin: 2rem auto;
+    // margin: 2rem auto;
     /*background-color: white;*/
     @include mq("tablet", max) {
         border: none;
@@ -173,7 +173,7 @@ form {
         margin-top: 1rem;
         font-family: CENTAUR;
 
-        p {
+        &>p {
             color: black;
         }
     }
@@ -191,6 +191,10 @@ form {
 
         .field_descr {
             @include fontsize("form-field-drescr");
+            .small{
+                font-size: 0.75rem;
+                color: gray;
+            }
         }
     }
 }
@@ -212,7 +216,7 @@ form {
 }
 
 /*
-    Ссылки в подвале
+    пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 */
 .bottom-menu__list {
     text-align: center;
@@ -269,10 +273,10 @@ form {
         }
     }
 }
-// Ссылки в подвале
+// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 /*
-    Меню сайта
+    пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 */
 .nav_ {
     width: 100vw;
@@ -615,7 +619,7 @@ form {
         }
     }
 }
-// Меню сайта
+// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 
 .t-sociallinks__svg {
     background-color: white;
@@ -636,8 +640,8 @@ form {
 }
 
 /*
-    Стли основных блоков
-    в которые будет вставляться контент других страниц
+    пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+    пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 */
 
 .main_screen {
@@ -653,6 +657,8 @@ form {
     justify-content: center;
     position: relative;
     z-index: 1;
+    width: 80%;
+    margin: auto;
     /*&__container {
         background-color: rgba(0,0,0,0.75);
         padding: 2rem 0px;
@@ -689,7 +695,7 @@ form {
         max-width: 85%;
     }
 
-    @include mq("tablet-wide", max) {
+    @include mq("tablet-wide") {
         width: 1024px;
         max-width: 85%;
     }
@@ -701,18 +707,18 @@ form {
 
     @include mq("tablet-small", max) {
         width: 95%;
-        max-width: 100%;
+        max-width: 95%;
         /*padding: 1.5rem;*/
     }
 
     @include mq("phone-wide", max) {
-        width: 100%;
-        max-width: 100%;
+        width: 95%;
+        max-width: 95%;
         /*padding: 1rem;*/
     }
 }
 
-// Стили основных блоков
+// пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
 .line {
     width: 80%;
@@ -721,8 +727,22 @@ form {
     margin: 3rem auto 0px auto;
 }
 
+a {
+    color: $fc-href-dark;
+    text-decoration: none;
+    font-weight: bold;
+}
+
 footer {
     z-index: 0;
     /*padding: 1.5rem 0;*/
     background-color: whitesmoke;
 }
+
+small {
+    font-size: .65rem;
+    color: $fc-gray;
+}
+// li {
+//     list-style: none;
+// }

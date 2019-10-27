@@ -126,7 +126,7 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>-->
 </head>
 
-<body style="">
+<body>
     <div id="p_prldr">
         <div class="sec">
             <div class="titlepre">Подождите</div>
@@ -226,7 +226,16 @@
         {% endif %}
     </div>
 
-
+    <!-- {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">
+                {{ message|safe }}
+                <a href="#" class="close">✖</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %} -->
 
     {% block screen %}
         <!--
@@ -269,9 +278,9 @@
                     <li class="bottom-menu__sub-item">
                         <a href="/about/contacts" class="bottom-menu__sub-link">Контакты</a>
                     </li>
-                    <li class="bottom-menu__sub-item">
+                    <!-- <li class="bottom-menu__sub-item">
                         <a href="/about/rabota-u-nas" class="bottom-menu__sub-link">Работа у нас</a>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
             <!--
@@ -296,9 +305,9 @@
             <li class="bottom-menu__item">
                 <span class="bottom-menu__link">Покупателям</span>
                 <ul class="bottom-menu__sub">
-                    <li class="bottom-menu__sub-item">
+                    <!-- <li class="bottom-menu__sub-item">
                         <a href="/info/samovyvoz" class="bottom-menu__sub-link">Самовывоз</a>
-                    </li>
+                    </li> -->
                     <li class="bottom-menu__sub-item">
                         <a href="/info/vozvrattovar" class="bottom-menu__sub-link">Возврат</a>
                     </li>
@@ -311,9 +320,9 @@
                     <li class="bottom-menu__sub-item">
                         <a href="/info/oplata" class="bottom-menu__sub-link">Оплата</a>
                     </li>
-                    <li class="bottom-menu__sub-item">
+                    <!-- <li class="bottom-menu__sub-item">
                         <a href="/info/preorder" class="bottom-menu__sub-link">Предзаказ</a>
-                    </li>
+                    </li> -->
                     <li class="bottom-menu__sub-item">
                         <a href="/info/dostavka" class="bottom-menu__sub-link">Доставка</a>
                     </li>
@@ -323,9 +332,9 @@
                     <li class="bottom-menu__sub-item">
                         <a href="/info/oferta" class="bottom-menu__sub-link">Оферта</a>
                     </li>
-                    <li class="bottom-menu__sub-item">
+                    <!-- <li class="bottom-menu__sub-item">
                         <a href="/info/idei" class="bottom-menu__sub-link">Идеи и предложения</a>
-                    </li>
+                    </li> -->
                     <!--
                     <li class="bottom-menu__sub-item">
                         <a href="/info/bonus" class="bottom-menu__sub-link">Бонусная программа</a>

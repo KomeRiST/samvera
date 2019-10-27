@@ -253,17 +253,33 @@ def new_order(request):
 def get_order(request):
     """ Рендер страницы подтверждения заказа """
     if request.method == 'POST':
+        user_pass = ''
+        phone = request.POST['phone']
+        print (phone)
+        import re
+        re.sub('\ |(|)|-', '', phone)
+        print (phone)
         try:
             # Проверить пользователя по его телефону
-            user = User.objects.get(username = request.POST['phone'], email = request.POST['email'])
+            user = User.objects.get(username = phone, email = request.POST['email'])
         except ObjectDoesNotExist:
             # Создать пользователя
-            password =  User.objects.make_random_password()
-            user = User.objects.create_user(request.POST['phone'], request.POST['email'], password)
+            user_pass =  User.objects.make_random_password()
+            user = User.objects.create_user(phone, request.POST['email'], user_pass)
             user.first_name = request.POST['first_name']
             user.last_name = request.POST['last_name']
             user.save()
-
+            from django.core.mail import EmailMessage
+            email = EmailMessage("Регистрация на www.samvera.ru", f"{user.last_name}!\n\
+                    Ваш почтовый адресс был указан при регистрации на сайте www.samvera.ru\n\
+                    \n\
+                    Для входа на сайт используйте следующие данные:\n\
+                    Страница входа: <a href='www.samvera.ru\kabinet\'>www.samvera.ru</a>\n\
+                    Страница входа: www.samvera.ru\kabinet\ \n\
+                    Логин: {user.username} или {user.email}\n\
+                    Пароль: {user_pass}", to=['komerist1993-93@mail.ru','komerist@bk.ru'])
+            email.send()
+            
         # Создать заказ
         order = models.Orders()
         order.client = user
@@ -284,6 +300,7 @@ def get_order(request):
                     ordertovarvariaciya = models.OrderTovaryVariaciya()
 
                     ordertovar, created = models.OrderTovary.objects.get_or_create(order=order, tovar=t.tovar)
+                    ordertovarvariaciya.order = order
                     ordertovarvariaciya.ordertovar = ordertovar
 
                     ordertovarvariaciya.variaciya = t
@@ -297,24 +314,13 @@ def get_order(request):
                 print("Either the entry or blog doesn't exist.")
                 ids.pop(x)
 
-        
-        send_mail("Регистрация на www.samvera.ru", f"{user.last_name}!\n\
-                Ваш почтовый адресс был указан при регистрации на сайте www.samvera.ru\n\
-                \n\
-                Для входа на сайт используйте следующие данные:\n\
-                Страница входа: <a href='www.samvera.ru\kabinet\'>www.samvera.ru</a>\n\
-                Страница входа: www.samvera.ru\kabinet\\n\
-                Логин: {user.username} или {user.email}\n\
-                Пароль: {password}\n\
-                \n\
-                Номер заказа: {order.namber}\n\
-                \n", 'komerist1993-93@mail.ru', ['komerist1993-93@mail.ru','komerist@bk.ru', 'slviktoleon@yandex.ru'], )
-
+#, 'slviktoleon@yandex.ru'
         # Отправить на почту оператора состав заказа с реквизитами клиента для связи с ним и пдт заказа. , 'viktoleon@bk.ru'
         html_message = render_to_string(
             'app/email-order_template.html',
             {
                 'order': order,
+                'user': user,
             }
         )
         print("html_message = \n")
@@ -324,10 +330,11 @@ def get_order(request):
                 Тел. {user.username}\n\
                 \n\
                 Номер заказа: {order.namber}\n\
-                ", 'komerist1993-93@mail.ru', ['komerist1993-93@mail.ru', 'viktoleon@bk.ru'], html_message=html_message)
-
+                ", 'komerist@bk.ru', ['komerist1993-93@mail.ru'], html_message=html_message)
+#, 'viktoleon@bk.ru'
         # Отправить на почту клиенту уведомление о формировании заказа.
-        
+        from django.contrib import messages
+        messages.success(request, 'Profile updated successfully')
         assert isinstance(request, HttpRequest)
         return render(
             request,

@@ -1,4 +1,4 @@
-﻿/*    COLOR -- FONTS    */
+/*    COLOR -- FONTS    */
 /*    COLOR -- BLOCKS   */
 /*
 FONTS SIZE
@@ -14,38 +14,72 @@ FONTS SIZE
     desktop-wide: 1440px
 
 */
+body {
+  background-color: black;
+}
+
 .content {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-column-gap: 15px; }
-  .content .block-one {
-    -ms-grid-column: 1/13;
-    grid-column: 1/13;
-    position: relative;
-    background-color: black; }
-    .content .block-one .overlay {
-      position: absolute;
-      height: 100%;
-      width: 100%;
-      background: linear-gradient(0deg, black 0%, transparent 30%, transparent 70%, black 100%);
-      /*opacity: 0.75;*/
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 2; }
-    .content .block-one .video {
-      height: 100vh;
-      width: 100%; }
-  .content .block-two {
-    -ms-grid-column: 1/13;
-    grid-column: 1/13;
-    background-color: black; }
-    .content .block-two .drag_slider {
-      height: 70vh; }
-      .content .block-two .drag_slider .slider-container {
-        overflow: hidden; }
+  -ms-grid-columns: (1fr)[12];
+      grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 15px;
+}
+
+.content .block-one {
+  -ms-grid-column: 1/13;
+  grid-column: 1/13;
+  position: relative;
+  background-color: black;
+}
+
+.content .block-one .overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: -webkit-gradient(linear, left bottom, left top, from(black), color-stop(30%, transparent), color-stop(70%, transparent), to(black));
+  background: linear-gradient(0deg, black 0%, transparent 30%, transparent 70%, black 100%);
+  /*opacity: 0.75;*/
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 2;
+}
+
+.content .block-one .video {
+  height: 100vh;
+  width: 100%;
+}
+
+.content .block-two {
+  -ms-grid-column: 1/13;
+  grid-column: 1/13;
+  background-color: black;
+}
+
+.content .block-two .drag_slider {
+  height: 70vh;
+}
+
+.content .block-two .drag_slider .slider-container {
+  overflow: hidden;
+}
 
 footer {
-  background-color: black; }
-  footer .bottom-menu__link {
-    color: white; }
+  background-color: black;
+}
+
+footer .bottom-menu__link {
+  color: white;
+}
+
+.bottom-menu__sub-link:hover {
+  color: white !important;
+}
+/*# sourceMappingURL=index.css.map */

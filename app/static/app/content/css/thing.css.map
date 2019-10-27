@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,MAAM,CAAC;EACH,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,KAAK;EACZ,gBAAgB,EAAE,KAAK;EACvB,MAAM,EAAE,aAAa;CACxB",
+    "sources": [
+        "thing.scss"
+    ],
+    "names": [],
+    "file": "thing.css"
+}

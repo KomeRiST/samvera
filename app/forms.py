@@ -61,7 +61,12 @@ class OrderForm(forms.ModelForm):
     email = forms.CharField(widget=forms.TextInput({
                                    'type': 'email',
                                    'class': 'form-control'}))
-
+            
+    adress = forms.CharField(label=_("Адрес доставки"),
+                            widget=forms.TextInput({
+                                   'type': 'text',
+                                   'class': 'form-control',
+                                   'placeholder': 'Адрес доставки'}))
 
     class Meta:
         model = User

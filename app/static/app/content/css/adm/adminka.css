@@ -1,4 +1,4 @@
-﻿@charset "UTF-8";
+@charset "UTF-8";
 /*    COLOR -- FONTS    */
 /*    COLOR -- BLOCKS   */
 /*
@@ -33,42 +33,54 @@ FONTS SIZE
 */
 body {
   width: 80%;
-  margin: auto; }
+  margin: auto;
+}
 
 .image {
   height: 200px;
-  width: 140px; }
-  .image .carousel-cell img {
-    height: 200px;
-    width: 140px; }
+  width: 140px;
+}
+
+.image .carousel-cell img {
+  height: 200px;
+  width: 140px;
+}
 
 #header, .breadcrumbs {
   background-color: black !important;
-  color: #5d5d5d !important; }
+  color: #5d5d5d !important;
+}
 
 #container {
-  box-shadow: 0 0 20px -10px black;
-  border: 1px solid black; }
+  -webkit-box-shadow: 0 0 20px -10px black;
+          box-shadow: 0 0 20px -10px black;
+  border: 1px solid black;
+}
 
 small {
-  font-size: small; }
+  font-size: small;
+}
 
 .cells {
-  grid-template-columns: repeat(auto-fit, minmax(250px, 400px)) !important; }
+  -ms-grid-columns: (minmax(250px, 400px))[auto-fit] !important;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 400px)) !important;
+}
 
 /* ������� ��������� ����� */
 .tabs {
   min-width: 300px;
   max-width: 100%;
   padding: 0px;
-  margin: 0 auto; }
+  margin: 0 auto;
+}
 
 /* ����� ������ � ����������� */
 .tabs > section {
   display: none;
   padding: 15px;
   background: #fff;
-  border: 1px solid #ddd; }
+  border: 1px solid #ddd;
+}
 
 .tabs > section > p {
   margin: 0 0 5px;
@@ -80,25 +92,33 @@ small {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
   -webkit-animation-name: fadeIn;
-  animation-name: fadeIn; }
+  animation-name: fadeIn;
+}
 
 /* ��������� �������� �������� opacity */
 @-webkit-keyframes fadeIn {
   from {
-    opacity: 0; }
+    opacity: 0;
+  }
   to {
-    opacity: 1; } }
+    opacity: 1;
+  }
+}
 
 @keyframes fadeIn {
   from {
-    opacity: 0; }
+    opacity: 0;
+  }
   to {
-    opacity: 1; } }
+    opacity: 1;
+  }
+}
 
 /* ������ �������� */
 .tabs > input {
   display: none;
-  position: absolute; }
+  position: absolute;
+}
 
 /* ����� �������������� ������� (�����) */
 .tabs > label {
@@ -111,143 +131,202 @@ small {
   border: 0px solid #ddd;
   border-width: 1px 1px 1px 1px;
   background: #f1f1f1;
-  border-radius: 3px 3px 0 0; }
+  border-radius: 3px 3px 0 0;
+}
 
 /* ��������� ����� �������������� ������� ��� ��������� */
 .tabs > label:hover {
   color: #888;
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 /* ����� ��� �������� ������� */
 .tabs > input:checked + label {
   color: #555;
   border-top: 1px solid #009933;
   border-bottom: 1px solid #fff;
-  background: #fff; }
+  background: #fff;
+}
 
 /* ��������� ������ � ������� ������������ :checked */
 #tab1:checked ~ #content-tab1, #tab2:checked ~ #content-tab2, #tab3:checked ~ #content-tab3, #tab4:checked ~ #content-tab4 {
-  display: block; }
+  display: block;
+}
 
 /* ������� ����� � �������������� 
 * � ��������� ������ �� ����� �������
 */
 @media screen and (max-width: 680px) {
   .tabs > label {
-    font-size: 0; }
+    font-size: 0;
+  }
   .tabs > label:before {
     margin: 0;
-    font-size: 18px; } }
+    font-size: 18px;
+  }
+}
 
 /* �������� ���������� ������� 
 *  �������������� ��� ����� �������
 */
 @media screen and (max-width: 400px) {
   .tabs > label {
-    padding: 15px; } }
+    padding: 15px;
+  }
+}
 
 .ac-container input {
-  display: none; }
+  display: none;
+}
 
 .ac-container > div {
   padding: .5rem;
-  border-bottom: 1px solid lightgray; }
+  border-bottom: 1px solid lightgray;
+}
 
 .ac-container label {
   cursor: pointer;
-  font-weight: 400; }
-  @media only screen and (min-width: 300px) {
-    .ac-container label {
-      font-size: 20px; } }
-  @media only screen and (min-width: 480px) {
-    .ac-container label {
-      font-size: 20px; } }
-  @media only screen and (min-width: 560px) {
-    .ac-container label {
-      font-size: 22px; } }
-  @media only screen and (min-width: 640px) {
-    .ac-container label {
-      font-size: 24px; } }
-  @media only screen and (min-width: 768px) {
-    .ac-container label {
-      font-size: 26px; } }
-  @media only screen and (min-width: 1024px) {
-    .ac-container label {
-      font-size: 26px; } }
-  @media only screen and (min-width: 1248px) {
-    .ac-container label {
-      font-size: 26px; } }
-  @media only screen and (min-width: 1440px) {
-    .ac-container label {
-      font-size: 28px; } }
+  font-weight: 400;
+}
+
+@media only screen and (min-width: 300px) {
+  .ac-container label {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .ac-container label {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 560px) {
+  .ac-container label {
+    font-size: 22px;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+  .ac-container label {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .ac-container label {
+    font-size: 26px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .ac-container label {
+    font-size: 26px;
+  }
+}
+
+@media only screen and (min-width: 1248px) {
+  .ac-container label {
+    font-size: 26px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .ac-container label {
+    font-size: 28px;
+  }
+}
 
 .ac-container article {
   overflow: hidden;
   max-height: 0px;
   position: relative;
   -webkit-transition: max-height 0.3s ease-in-out;
-  -moz-transition: max-height 0.3s ease-in-out;
-  -o-transition: max-height 0.3s ease-in-out;
-  -ms-transition: max-height 0.3s ease-in-out;
-  transition: max-height 0.3s ease-in-out; }
-  .ac-container article .help {
-    margin-top: 1rem;
-    text-align: center;
-    text-indent: 0px; }
+  transition: max-height 0.3s ease-in-out;
+}
+
+.ac-container article .help {
+  margin-top: 1rem;
+  text-align: center;
+  text-indent: 0px;
+}
 
 .ac-container article p {
   text-indent: 1rem;
-  padding: .225rem 0px; }
-  @media only screen and (min-width: 1024px) {
-    .ac-container article p {
-      text-align: justify; } }
-  @media only screen and (min-width: 768px) {
-    .ac-container article p {
-      text-align: center; } }
-  @media only screen and (max-width: 767px) {
-    .ac-container article p {
-      text-align: justify; } }
+  padding: .225rem 0px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .ac-container article p {
+    text-align: justify;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .ac-container article p {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .ac-container article p {
+    text-align: justify;
+  }
+}
 
 .ac-container a {
   text-decoration: none;
   color: #5d5d5d;
-  font-weight: bold; }
-  .ac-container a:hover {
-    color: black; }
+  font-weight: bold;
+}
+
+.ac-container a:hover {
+  color: black;
+}
 
 .ac-container > article > ul {
   text-align: left;
-  margin: auto; }
-  @media only screen and (min-width: 768px) {
-    .ac-container > article > ul {
-      width: 75%; } }
-  @media only screen and (min-width: 1024px) {
-    .ac-container > article > ul {
-      width: 50%; } }
-  @media only screen and (max-width: 767px) {
-    .ac-container > article > ul {
-      width: 100%; } }
-  .ac-container > article > ul li {
-    margin-left: 1rem;
-    padding: .2rem 0px; }
+  margin: auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .ac-container > article > ul {
+    width: 75%;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .ac-container > article > ul {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .ac-container > article > ul {
+    width: 100%;
+  }
+}
+
+.ac-container > article > ul li {
+  margin-left: 1rem;
+  padding: .2rem 0px;
+}
 
 .ac-container label:hover {
-  font-weight: 700; }
+  font-weight: 700;
+}
 
 .ac-container input:checked + label, .ac-container input:checked + label:hover {
   font-weight: bold;
   -webkit-transition: font-weight 1s linear;
-  -moz-transition: font-weight 1s linear;
-  -o-transition: font-weight 1s linear;
-  -ms-transition: font-weight 1s linear;
-  transition: font-weight 1s linear; }
+  transition: font-weight 1s linear;
+}
 
 .ac-container input:checked ~ article {
   max-height: 999px;
   height: auto;
   padding: 1rem 0px;
   -webkit-transition: max-height 0.5s ease-in-out;
-  -moz-transition: max-height 0.5s ease-in-out;
-  -o-transition: max-height 0.5s ease-in-out;
-  -ms-transition: max-height 0.5s ease-in-out;
-  transition: max-height 0.5s ease-in-out; }
+  transition: max-height 0.5s ease-in-out;
+}
+/*# sourceMappingURL=adminka.css.map */

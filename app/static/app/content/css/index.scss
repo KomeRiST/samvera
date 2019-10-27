@@ -1,5 +1,8 @@
 ﻿@import "variables.scss";
 
+body {
+    background-color: black;
+}
 .content {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -49,4 +52,8 @@ footer {
     .bottom-menu__link {
         color: $fc-title_light;
     }
+}
+
+.bottom-menu__sub-link:hover {
+    color: white !important;
 }

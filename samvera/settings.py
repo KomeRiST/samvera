@@ -28,7 +28,13 @@ DEBUG = True
 ALLOWED_HOSTS = ['www.komerist.ru', '212.220.110.23', '0.0.0.0', '192.168.0.10', '192.168.0.11', '192.168.0.12', '127.0.0.1', 'local.site.my', '192.168.0.99']
 
 # EMAIL settings
-import EMAIL_settings
+from samvera import EMAIL_settings as ES
+DEFAULT_FROM_EMAIL = ES.DEFAULT_FROM_EMAIL
+EMAIL_HOST = ES.EMAIL_HOST
+EMAIL_PORT = ES.EMAIL_PORT
+EMAIL_HOST_USER = ES.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = ES.EMAIL_HOST_PASSWORD
+EMAIL_USE_TLS = ES.EMAIL_USE_TLS
 
 CART_SESSION_ID = "cart" # Ключ для хранения корзины в сессии пользователя
 

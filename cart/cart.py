@@ -19,8 +19,8 @@ class Cart(object):
         Добавить товар в корзину или обновить его количество
         """
         var_id = str(variaciya.id)
-        print("Нашли вариацию: ", var_id)
         if var_id not in self.cart:
+            print("Не нашли вариацию: ", var_id)
             self.cart[var_id] = {'kolvo': 0,
                                  'cost': str(variaciya.tovar.cost)}
             print("    добавили вариацию: ", self.cart[var_id])

@@ -4,17 +4,12 @@
 {% endblock %}
 
 {% block content %}
-<div class="neworder-screen">
-    <div class="neworder-conteiner">
-        <div class="neworder-title">{{title}}</div>
-        <br />
-        <div class="neworder-title_descr">{{message}}</div>
-        <br />
-        {{year}}<br />
-        {{ korzina }}
+<div class="main_screen">
+    <div class="main_screen__conteiner">
+        <div class="main_title text-title-dark">{{title}}</div>
     </div>
 </div>
-<div class="neworder-content">
+<div class="main_content">
     <form action="." method="post">
         {% csrf_token %}
         <input name="korzina" type="hidden" value="{{korzina}}">
@@ -40,9 +35,22 @@
             <!--<label for="{{ form.phone.id_for_label }}">Мобильный телефон</label>-->
             {{ form.phone }}
             <div class="field_descr">
-                <p>Необходим для связи с Вами и подтверждения заказа</p>
+                <p><small>Необходим для связи с Вами и подтверждения заказа</small></p>
             </div>
         </div>
+
+        <div class="field_title">
+            <p>Адрес доставки</p>
+        </div>
+        <div class="fieldWrapper">
+            {{ form.adres.errors }}
+            <!--<label for="{{ form.phone.id_for_label }}">Мобильный телефон</label>-->
+            {{ form.adress }}
+            <div class="field_descr">
+                <p><small>Укажите полный и достоверный адрес достави заказа<br>(Россия, Екатеринбург, Ленина 5 кв 3)</small></p>
+            </div>
+        </div>
+
         <div class="field_title">
             <p>Ваш email (электронный адрес)</p>
         </div>
@@ -51,19 +59,21 @@
             <!--<label for="{{ form.email.id_for_label }}">Электронный адрес (email)</label>-->
             {{ form.email }}
             <div class="field_descr">
-                <p>Необходим для отправки уведомлений о статусе заказа</p>
+                <p><small>Необходим для отправки уведомлений о статусе заказа</small></p>
             </div>
         </div>
-        <button type="submit" class="btn-base btn-submit"><p>Подтвердить заказ товара</p></button>
+        <div class="field_title">
+            <button type="submit" class="btn-base btn-dark btn-submit"><p>Подтвердить заказ товара</p></button>
+        </div>
     </form>
 </div>
 {% endblock %}
 
 {% block scripts %}
-<script src="{% static 'app/scripts/jquery.maskedinput.js' %}"></script>
+<!-- <script src="{% static 'app/scripts/jquery.maskedinput.js' %}"></script>
 <script>
     $(function () {
         $("#id_phone").mask("8 (999) 999-9999");
     });
-</script>
+</script> -->
 {% endblock %}

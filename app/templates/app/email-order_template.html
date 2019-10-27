@@ -10,6 +10,11 @@
         {% for v in t.variacii.all %}
         <br />
         <div class="container-item" style="background-image: url('/media/{{v.variaciya.random_image}}')"></div>
+        <br>
+        <div>
+            <div>Клиент: {{ user.lastname }} {{ user.firstname }}</div>
+            <div>Телеыон: {{ user.name }}</div>
+        </div>
         <div class="">
             <div class="cost">Размер: {{ v.variaciya.size }}</div>
             <div class="cost">  Цвет: {{ v.variaciya.colortile_korz }}</div>

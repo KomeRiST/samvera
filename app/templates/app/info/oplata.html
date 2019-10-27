@@ -1,8 +1,33 @@
 {% extends "app/layout.html" %}
 {% load staticfiles %}
 
+{% block css %}
+    <link rel="stylesheet" href="{% static 'app/content/css/info/info.css' %}">
+{% endblock %}
+
 {% block content %}
 
+    <div class="main_screen">
+        <div class="main_screen__conteiner">
+            <div class="main_title text-title-dark">{{title}}</div>
+            <div class="text-title-dark">{{message}}</div>
+        </div>
+    </div>
+
+    <div class="main_content info">
+        <ul>
+            <p>Совершая заказ, Вы можете выбрать наиболее удобный для Вас способ оплаты:</p>
+            <li><strong>Наличный расчёт</strong><br><small>(при получении заказа - только для г. Екатеринбург)</small></li>
+            <li><strong>Безналичный расчёт</strong><br><small>(банковской картой при оформлении заказа на сайте)</small></li>
+        </ul>
+        <ul>
+            <p>После оформления заказа вы автоматически перейдете на страницу онлайн оплаты, где требуется внимательно и безошибочно ввести данные вашей карты:</p>
+            <li><strong>Владелец карты</strong><br><small>(указан на лицевой стороне банковской карты на английском языке заглавными буквами. Например: IVANOV IVAN)</small></li>
+            <li><strong>Номер карты</strong><br><small>(указан на лицевой стороне банковской карты и состоит из 16-и цифр)</small></li>
+            <li><strong>Срок действия карты</strong><br><small>(указан на лицевой стороне банковской карты - месяц и год, до которого действительна карта. Срок действия карты вводится цифрами. Например: 01/20)</small></li>
+            <li><strong>CVV2 или CVC2 код карты</strong><br><small>(указан на обратной стороне банковской карты и состоит из трех цифр. Например: 123)</small></li>
+        </ul>
+    </div>
 {% endblock %}
 
 {% block scripts %}

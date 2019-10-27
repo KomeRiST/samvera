@@ -1,7 +1,52 @@
 {% extends "app/layout.html" %}
 {% load staticfiles %}
-
+{% block css %}
+    <link rel="stylesheet" href="{% static 'app/content/css/info/info.css' %}">
+{% endblock %}
 {% block content %}
+    <div class="main_screen">
+        <div class="main_screen__conteiner">
+            <div class="main_title text-title-dark">{{title}}</div>
+            <div class="text-title-dark">{{message}}</div>
+            <div class="text-title-dark">{{message2}}</div>
+        </div>
+    </div>
+    
+    <div class="main_content">
+        <div class="step">
+            <div class="number"><p>1</p></div>
+            <div class="step-content">
+                <p class="step-title">Выбор интересующего Вас товара</p>
+                <div class="step-text">
+                    <p>В карточке товара ознакомьтесь с внешним видом, описанием товара, с таблицей обмеров на каждый размер, узнайте состав ткани, доступные размеры и цену.</p>
+                    <p>Выберите цвет, размер и добавьте товар в корзину.</p>
+                </div>
+            </div>
+        </div>
+        <div class="step">
+                <div class="number"><p>2</p></div>
+            <div class="step-content">
+                <p class="step-title">Оформление заказа</p>
+                <div class="step-text">
+                    <p>Укажите данные для оформления заказа: Имя, Фамилия, E-mail, Телефон, Адрес доставки, Вид доставки, Способ оплаты.</p>
+                    <p>Проверьте правильность оформленного заказа и введенных Вами данных.</p>
+                    <p>Нажмите кнопку "Оформить заказ" и Вы автоматически перейдете на страницу оплаты. Каким образом произвести оплату подробно описано в разделе </p>
+                </div>
+            </div>
+        </div>
+        <div class="step">
+                <div class="number"><p>3</p></div>
+            <div class="step-content border_none">
+                <p class="step-title">Подтверждение заказа</p>
+                <div class="step-text">
+                    <p>После оформления заказа мы свяжемся с Вами для подтверждения заказа, согласования доставки.</p>
+                </div>
+            </div>
+        </div>
+        <div class="postinfo">
+            <p>Если у вас остались вопросы, свяжитесь с нами с нами по номеру ‪‪<a href="tel:+79538263661">+7 953 826 3661</a>, по почте <a href="mailto:zakaz@samvera.ru">zakaz@samvera.ru</a> или любым другим удобным способом.</p>
+        </div>
+    </div>
 
 {% endblock %}
 

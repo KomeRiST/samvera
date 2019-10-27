@@ -36,6 +36,20 @@
     -o-transition: max-height 0.3s ease-in-out;
     -ms-transition: max-height 0.3s ease-in-out;
     transition: max-height 0.3s ease-in-out;
+
+    @include mq("tablet") {
+        width: 85%;
+    }
+
+    @include mq("tablet-wide") {
+        width: 65%;
+    }
+
+     @include mq("tablet", max) {
+         width: 90%;
+    }
+    margin: auto;
+    
     .help {
         margin-top: 1rem;
         text-align: center;
@@ -44,20 +58,21 @@
 }
 
 .ac-container article p {
-    text-indent: 1rem;
+    // text-indent: 1rem;
     padding: .225rem 0px;
+    text-align: justify;
 
-    @include mq("tablet-wide") {
-        text-align: justify;
-    }
+    // @include mq("tablet-wide") {
+    //     text-align: justify;
+    // }
 
-    @include mq("tablet") {
-        text-align: center;
-    }
+    // @include mq("tablet") {
+    //     text-align: center;
+    // }
 
-    @include mq("tablet", max) {
-        text-align: justify;
-    }
+    // @include mq("tablet", max) {
+    //     text-align: justify;
+    // }
 }
 
 .ac-container a {
@@ -73,18 +88,19 @@
 .ac-container article ul {
     text-align: left;
     margin: auto;
+    width: 100%;
 
-    @include mq("tablet") {
-        width: 75%;
-    }
+    // @include mq("tablet") {
+    //     width: 75%;
+    // }
 
-    @include mq("tablet-wide") {
-        width: 50%;
-    }
+    // @include mq("tablet-wide") {
+    //     width: 50%;
+    // }
 
-    @include mq("tablet", max) {
-        width: 100%;
-    }
+    // @include mq("tablet", max) {
+    //     width: 100%;
+    // }
 
     li {
         margin-left: 1rem;
@@ -106,7 +122,7 @@
 }
 
 .ac-container input:checked ~ article {
-    max-height: 999px;
+    max-height: 3000px;
     height: auto;
     padding: 1rem 0px;
     -webkit-transition: max-height 0.5s ease-in-out;
@@ -114,6 +130,7 @@
     -o-transition: max-height 0.5s ease-in-out;
     -ms-transition: max-height 0.5s ease-in-out;
     transition: max-height 0.5s ease-in-out;
+    
 }
 
 /*.ac-container input:checked ~ article.ac-small {
