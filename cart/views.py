@@ -24,9 +24,17 @@ def cart_add(request, var_id):
 def cart_remove(request, var_id):
     cart = Cart(request)
     variaciya = get_object_or_404(Variaciya, id=var_id)
-    cart.remove(variaciya)
+    if variaciya is not None:
+        cart.remove(str(variaciya.id))
     return redirect('cart:cart_detail')
 
 def cart_detail(request):
     cart = Cart(request)
+    for item in cart:
+        item['update_kolvo_form'] = CartAddProductForm(
+            initial={
+                'kolvo': item['kolvo'],
+                'update': True
+            }
+        )
     return render(request, 'cart/detail.html', {'cart': cart})

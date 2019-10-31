@@ -47,40 +47,40 @@ class PotentialClient(models.Model):
         verbose_name = "Потенциальный клиент"
         verbose_name_plural = "Потенциальные клиенты"
 
-class Orders(models.Model):
-    ''' Таблица заказов. Запись создается после подтверждения заказа в корзине '''
-    client = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
-    status = models.ForeignKey(StatusOrder, on_delete=models.DO_NOTHING)
-    namber = models.UUIDField(default=uuid.uuid4)
-    date_create = models.DateField("Дата создания заявки", auto_now_add=True)
+# class Orders(models.Model):
+#     ''' Таблица заказов. Запись создается после подтверждения заказа в корзине '''
+#     client = models.ForeignKey(User, on_delete=models.CASCADE, related_name='orders')
+#     status = models.ForeignKey(StatusOrder, on_delete=models.DO_NOTHING)
+#     namber = models.UUIDField(default=uuid.uuid4)
+#     date_create = models.DateField("Дата создания заявки", auto_now_add=True)
 
-    class Meta:
-        verbose_name = "Заявка клиента"
-        verbose_name_plural = "Заявки клиентов"
+#     class Meta:
+#         verbose_name = "Заявка клиента"
+#         verbose_name_plural = "Заявки клиентов"
 
-class OrderTovary(models.Model):
-    ''' Таблица товаров из заказа '''
-    order = models.ForeignKey(Orders, on_delete=models.CASCADE, related_name="tovary")
-    tovar = models.ForeignKey('Tovar', on_delete=models.DO_NOTHING, related_name="in_orders")
-    #count = models.PositiveIntegerField("Количество товара")
+# class OrderTovary(models.Model):
+#     ''' Таблица товаров из заказа '''
+#     order = models.ForeignKey(Orders, on_delete=models.CASCADE, related_name="tovary")
+#     tovar = models.ForeignKey('Tovar', on_delete=models.DO_NOTHING, related_name="in_orders")
+#     #count = models.PositiveIntegerField("Количество товара")
 
-    class Meta:
-        verbose_name = "Заказанное изделие"
-        verbose_name_plural = "Заказанные изделия"
+#     class Meta:
+#         verbose_name = "Заказанное изделие"
+#         verbose_name_plural = "Заказанные изделия"
         
-class OrderTovaryVariaciya(models.Model):
-    ''' Таблица вариаций для товара из заказа '''
-    order = models.ForeignKey(Orders, on_delete=models.CASCADE, related_name="ordervars")
-    ordertovar = models.ForeignKey(OrderTovary, on_delete=models.CASCADE, related_name="variacii")
-    variaciya = models.ForeignKey('Variaciya', on_delete=models.DO_NOTHING, related_name="in_orders")
-    count = models.PositiveIntegerField("Количество товара")
+# class OrderTovaryVariaciya(models.Model):
+#     ''' Таблица вариаций для товара из заказа '''
+#     order = models.ForeignKey(Orders, on_delete=models.CASCADE, related_name="ordervars")
+#     ordertovar = models.ForeignKey(OrderTovary, on_delete=models.CASCADE, related_name="variacii")
+#     variaciya = models.ForeignKey('Variaciya', on_delete=models.DO_NOTHING, related_name="in_orders")
+#     count = models.PositiveIntegerField("Количество товара")
 
-    def summ(self):
-        return str(self.count * self.variaciya.tovar.cost)+' р.'
+#     def summ(self):
+#         return str(self.count * self.variaciya.tovar.cost)+' р.'
 
-    class Meta:
-        verbose_name = "Вариация товара из заявки"
-        verbose_name_plural = "Вариации товаров из заявок"
+#     class Meta:
+#         verbose_name = "Вариация товара из заявки"
+#         verbose_name_plural = "Вариации товаров из заявок"
 
 class Tovar(models.Model):
     kod = models.UUIDField(default=uuid.uuid1)
@@ -149,7 +149,7 @@ class Variaciya(models.Model):
     def colortile_korz(self):
         if self.color:
             from django.utils.safestring import mark_safe
-            return mark_safe(u'<div id="color-{2}" data-var="{2}"><div style="background-color: {0};" class="color"></div> <small>({1})</small></div>'.format(self.color, self.color_text, self.id))
+            return mark_safe(u'<div id="color-{2}" data-var="{2}"><div style="background-color: {0};height: 24px;width: 24px;margin: auto;" class="color"></div> <small>({1})</small></div>'.format(self.color, self.color_text, self.id))
         return 'пусто'
 
     def size_tag(self):

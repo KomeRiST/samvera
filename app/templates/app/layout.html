@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/media/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/media/favicon.png" type="image/x-icon">
     <title>{{ title }}</title>
     {% load staticfiles %}
     <script src="{% static 'app/scripts/jquery-3.3.1.min.js' %}"></script>
@@ -149,7 +151,17 @@
       <ul class="nav__menu" id="menu" tabindex="-1" aria-label="main navigation" hidden>
         <li class="nav__item"><a href="/" class="nav__link">SAMVERA</a></li>
         <li class="nav__item"><a href="/catalog/" class="nav__link">Каталог</a></li>
-        <li class="nav__item"><a href="/korzina/" class="nav__link" >Корзина</a><div class="korzcount" id="korzcount2"></div></li>
+            {% with total_items=cart|length %}
+            {% if cart|length > 0 %}
+        <li class="nav__item"><a href="{% url "cart:cart_detail" %}"" class="nav__link" >Корзина</a>
+                <div class="korzcount" id="korzcount2">{{ total_items }}</div>
+        </li>
+             {% else %}
+             <li class="nav__item">
+                <a href="#" class="nav__link" >Корзина пуста</a>
+        </li>
+            {% endif %}
+        {% endwith %}
         <li class="nav__item"><a href="/about/about" class="nav__link">О нас</a></li>
         <li class="nav__item"><a href="/about/contacts" class="nav__link">Контакты</a></li>
           {% if request.user.is_authenticated %}
@@ -192,7 +204,13 @@
       
       <!-- MENU TOGGLE BUTTON -->
       <a href="#nav" id="nav__korz" class="nav__toggle" role="button" aria-expanded="false" aria-controls="menu">
-          <div id="korzcount" class="korzcount"></div>
+        {% with total_items=cart|length %}
+            {% if cart|length > 0 %}
+            <div id="korzcount" class="korzcount">
+                {{ total_items }}
+            </div>
+            {% endif %}
+        {% endwith %}
         <svg class="menuicon" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
           <title>Toggle Menu</title>
           <g>
@@ -309,10 +327,10 @@
                         <a href="/info/samovyvoz" class="bottom-menu__sub-link">Самовывоз</a>
                     </li> -->
                     <li class="bottom-menu__sub-item">
-                        <a href="/info/vozvrattovar" class="bottom-menu__sub-link">Возврат</a>
+                        <a href="/info/vozvrattovar" class="bottom-menu__sub-link">Возврат (только сплошной текст)</a>
                     </li>
                     <li class="bottom-menu__sub-item">
-                        <a href="/info/politika-konfidencialnosti" class="bottom-menu__sub-link">Политика конфиденциальности</a>
+                        <a href="/info/politika-konfidencialnosti" class="bottom-menu__sub-link">Политика конфиденциальности (пусто)</a>
                     </li>
                     <li class="bottom-menu__sub-item">
                         <a href="/info/rukovodstvo-po-pokupke" class="bottom-menu__sub-link">Руководство по покупке</a>
@@ -324,7 +342,7 @@
                         <a href="/info/preorder" class="bottom-menu__sub-link">Предзаказ</a>
                     </li> -->
                     <li class="bottom-menu__sub-item">
-                        <a href="/info/dostavka" class="bottom-menu__sub-link">Доставка</a>
+                        <a href="/info/dostavka" class="bottom-menu__sub-link">Доставка (пусто)</a>
                     </li>
                     <li class="bottom-menu__sub-item">
                         <a href="/info/faq" class="bottom-menu__sub-link">Часто задаваемые вопросы (F.A.Q.)</a>
@@ -419,11 +437,6 @@
     $(document).ready(function () {
         var $preloader = $('#p_prldr');
         $preloader.delay(500).fadeOut(1000);
-        if (typeof korz === 'undefined') {
-            korz = new Korzina($('.korzina'), $(".korz-preload"), [$("#korzcount"), $("#korzcount2")], "korzina");
-        }
-        korz.ShowCount();
-        //loadkorzina();
 
         var $preloader = $('.slide .main-text');
         var list = document.querySelector('#nav__korz');

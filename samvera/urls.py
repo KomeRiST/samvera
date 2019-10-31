@@ -26,7 +26,7 @@ urlpatterns = [
     path('info/<str:page>', pages.info, name='info'),
     path('catalog/', pages.catalog, name='catalog'),
     path('catalog/<str:page>', pages.catalog),
-    path('korzina/', views.korzina, name='korzina'),
+    # path('korzina/', views.korzina, name='korzina'),
     path('korzinaget/', views.korzina_get, name='korzinaget'),
     path('getthingcolors/<int:tovar>/<str:size>/', views.getthingcolors, name='getthingcolors'),
     path('getthingphtotoss/<int:variaciya>/', views.getthingphtotoss, name='getthigetthingphtotossngcolors'),

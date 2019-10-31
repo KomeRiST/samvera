@@ -3,6 +3,7 @@ from django import forms
 from django.db import models
 from app.models import *
 from app.models import ColorField
+from orders.models import *
 from django.utils.safestring import mark_safe
 #from nested_inline.admin import NestedModelAdmin, NestedStackedInline, NestedTabularInline
 from django.contrib.admin.widgets import AdminFileWidget
@@ -15,20 +16,20 @@ admin.site.register(PotentialClient)
 #admin.site.register(OrderTovaryVariaciya)
 #admin.site.register(Variaciya)
 
-class OrderVarsInline(admin.TabularInline):
-    model = OrderTovaryVariaciya
-    fields = ['variaciya', 'count']
+# class OrderVarsInline(admin.TabularInline):
+#     model = OrderTovaryVariaciya
+#     fields = ['variaciya', 'count']
 
-class OrderTovarsInline(admin.TabularInline):
-    model = OrderTovary
-    inlines = [OrderVarsInline,]
+class OrderItemsInline(admin.TabularInline):
+    model = OrderItem
+    # inlines = [OrderVarsInline,]
     #fields = ['variaciya', 'count']
     fields = ['tovar',]
 
-@admin.register(Orders)
+@admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    model = Orders
-    inlines = [OrderTovarsInline,]
+    model = Order
+    inlines = [OrderItemsInline,]
     fields = ['client', 'status', 'namber', 'date_create']
     readonly_fields = ['date_create', ]
 

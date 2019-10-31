@@ -24,7 +24,32 @@
     <div class="foto_cost slider"></div>
     <div class="title">{{thing.title}}</div>
     <div class="desc">
-        <div class="descr">{{thing.descr}}</div>
+
+            <div class="tv-tabs">
+                    <label class="tv-tab" for="tv-tab-1">Описание и обмеры</label>
+                    <label class="tv-tab" for="tv-tab-2">Параметры модели</label>
+                    <label class="tv-tab" for="tv-tab-3">Уход за изделием</label>
+                  </div>
+
+                  <input class="tv-radio" id="tv-tab-1" name="tv-group" type="radio" checked="checked"/>
+                  <div class="tv-content descr">
+                      {{thing.descr}}
+                      <br>
+                      <div class="obmer"></div>
+                    <p>Обратите вниммание на 
+                      <label class="tv-link" for="tv-tab-3">уход за изделием</label>!
+                    </p>
+                  </div>
+
+                  <input class="tv-radio" id="tv-tab-2" name="tv-group" type="radio"/>
+                  <div class="tv-content descr model">
+
+                  </div>
+
+                  <input class="tv-radio" id="tv-tab-3" name="tv-group" type="radio"/>
+                  <div class="tv-content descr">
+                    {{ thing.uhod }}
+                  </div>
     </div>
     <div class="variacii">
         <p>Размеры</p>
@@ -33,11 +58,11 @@
         <div class="colors">{{thing.colortile_korz|safe}}</div>
         <div class="cost"><p>Цена: {{thing.cost}}</p></div>
     </div>
-    <div id="btn-id" class="btn-base btn-light" data-id="{{thing.id}}" onclick="add(this)"><p>В корзину</p></div>
-    <form action="{% url "cart:cart_add" thing.id %}" method="post">
+    <!-- <div id="btn-id" class="btn-base btn-light" data-id="{{thing.id}}" onclick="add(this)"><p>В корзину</p></div> -->
+    <form id="cart_product_form" action="{% url "cart:cart_add" thing.id %}" method="post">
     {{ cart_product_form }}
     {% csrf_token %}
-    <input type="submit" value="Add to cart">
+    <input id="btn-id" class="btn-base btn-light" type="submit" value="В корзину">
 </form>
 </div>
 {% endblock %}
@@ -75,7 +100,11 @@
         request.done(function (msg) {
             var m = JSON.parse(msg)
             $(".foto_cost").html(m.img);
-            $("#btn-id").attr("data-id", m.id);
+            $(".obmer").html(m.obmer);
+            $(".model").html(m.model);
+            // $("#btn-id").attr("data-id", m.id);
+            $("#cart_product_form").attr("action", "/cart/add/" + m.id + "/");
+            $("#id_kolvo").html(m.kolvo);
             Slider();
         });
 
@@ -107,7 +136,7 @@
         });
 
         request.fail(function (jqXHR, textStatus) {
-            $(".colors").html(`Извините, произошла ошибка ${jqXHR}\n${textStatus}`);
+            $(".colors").html(`Извините,\n\nпроизошла ошибка ${jqXHR}\n\n${textStatus}`);
         });
     }
 

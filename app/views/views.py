@@ -181,6 +181,12 @@ def getthingphtotoss(request, variaciya):
     res={}
     res['img']=st
     res['id']=v.id
+    for i in range(1, v.kolvo, 1):
+        st = st + f'<option value="{i}">{i}</option>'
+    res['kolvo']=st
+    res['model']=v.model
+    res['obmer']=v.obmer
+    # <option value="1">1</option>
     assert isinstance(request, HttpRequest)
     return HttpResponse(json.dumps(res))
 
@@ -199,22 +205,6 @@ def post(request, code):
                 Коммент {p.commet}\n", 'komerist@bk.ru', ['komerist1993-93@mail.ru','komerist@bk.ru', 'viktoleon@bk.ru'], )
             return HttpResponse(f'Всего записей: {l}')
     return httpresponseredirect('/')
-
-def korzina(request):
-    """Рендер страницы Корзина"""
-    if request.POST:
-        pass
-    else:
-        assert isinstance(request, HttpRequest)
-        return render(
-            request,
-            'app/catalog/korzina.html',
-            {
-                'title':'Корзина',
-                'message':'бла бла бла',
-                'year':year(),
-            }
-        )
 
 def new_order(request):
     """ Рендер страницы подтверждения заказа """
