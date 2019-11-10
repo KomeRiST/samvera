@@ -31,70 +31,14 @@ FONTS SIZE
     desktop-wide: 1440px
 
 */
-@import url("https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700|Gabriela|Philosopher:400,400i,700,700i&display=swap&subset=cyrillic,greek");
-@font-face {
-  font-family: CENTAUR;
-  font-family: 'Comfortaa', cursive;
-  font-family: 'Philosopher', sans-serif;
-  font-family: 'Gabriela', serif;
-  src: url("../../fonts/CENTAUR.TTF") format("truetype");
-}
-
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&display=swap&subset=cyrillic");
 * {
   /*color: $fcDefault;*/
-  font-family: Philosopher;
+  font: 400 13px/1.2 'Roboto', Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
   padding: 0;
   margin: 0;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
-
-@media only screen and (min-width: 300px) {
-  * {
-    font-size: 16px;
-  }
-}
-
-@media only screen and (min-width: 480px) {
-  * {
-    font-size: 16px;
-  }
-}
-
-@media only screen and (min-width: 560px) {
-  * {
-    font-size: 16px;
-  }
-}
-
-@media only screen and (min-width: 640px) {
-  * {
-    font-size: 18px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  * {
-    font-size: 18px;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  * {
-    font-size: 18px;
-  }
-}
-
-@media only screen and (min-width: 1248px) {
-  * {
-    font-size: 18px;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  * {
-    font-size: 20px;
-  }
 }
 
 .logo {
@@ -125,56 +69,55 @@ FONTS SIZE
   display: contents;
   /*padding: .75rem 0px;*/
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 300;
   text-transform: uppercase;
-  font-family: CENTAUR;
 }
 
 @media only screen and (min-width: 300px) {
   .logo > a {
-    font-size: 30px;
+    font-size: 24px;
   }
 }
 
 @media only screen and (min-width: 480px) {
   .logo > a {
-    font-size: 30px;
+    font-size: 24px;
   }
 }
 
 @media only screen and (min-width: 560px) {
   .logo > a {
-    font-size: 32px;
+    font-size: 24px;
   }
 }
 
 @media only screen and (min-width: 640px) {
   .logo > a {
-    font-size: 32px;
+    font-size: 24px;
   }
 }
 
 @media only screen and (min-width: 768px) {
   .logo > a {
-    font-size: 68px;
+    font-size: 48px;
   }
 }
 
 @media only screen and (min-width: 1024px) {
   .logo > a {
-    font-size: 68px;
+    font-size: 48px;
   }
 }
 
 @media only screen and (min-width: 1248px) {
   .logo > a {
-    font-size: 68px;
+    font-size: 48px;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .logo > a {
-    font-size: 72px;
+    font-size: 48px;
   }
 }
 
@@ -281,7 +224,6 @@ body {
   -webkit-transition: 0.5s font-size linear;
   transition: 0.5s font-size linear;
   text-align: center;
-  font-family: CENTAUR;
 }
 
 @media only screen and (min-width: 300px) {
@@ -350,7 +292,6 @@ form {
 
 form .field_title {
   margin-top: 1rem;
-  font-family: CENTAUR;
 }
 
 @media only screen and (min-width: 300px) {
@@ -565,7 +506,6 @@ form .fieldWrapper .field_descr .small {
   margin: 3rem;
   min-width: 220px;
   list-style: none;
-  text-align: center;
 }
 
 .bottom-menu__list .bottom-menu__item .bottom-menu__link {
@@ -1042,7 +982,6 @@ form .fieldWrapper .field_descr .small {
 
 .main_title {
   color: white;
-  font-family: CENTAUR;
 }
 
 @media only screen and (min-width: 300px) {
@@ -1095,7 +1034,6 @@ form .fieldWrapper .field_descr .small {
 
 .main_title_descr {
   color: darkgray;
-  font-family: CENTAUR;
 }
 
 @media only screen and (min-width: 300px) {
@@ -1156,43 +1094,12 @@ form .fieldWrapper .field_descr .small {
 
 .main_content {
   margin: auto;
-  /*padding: 2rem;*/
+  padding: 2rem;
 }
 
 @media only screen and (min-width: 1440px) {
   .main_content {
     width: 1440px;
-    max-width: 85%;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .main_content {
-    width: 1024px;
-    max-width: 85%;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .main_content {
-    width: 768px;
-    max-width: 90%;
-  }
-}
-
-@media only screen and (max-width: 639px) {
-  .main_content {
-    width: 95%;
-    max-width: 95%;
-    /*padding: 1.5rem;*/
-  }
-}
-
-@media only screen and (max-width: 479px) {
-  .main_content {
-    width: 95%;
-    max-width: 95%;
-    /*padding: 1rem;*/
   }
 }
 
@@ -1205,7 +1112,6 @@ form .fieldWrapper .field_descr .small {
 a {
   color: black;
   text-decoration: none;
-  font-weight: bold;
 }
 
 footer {

@@ -82,15 +82,19 @@ class PotentialClient(models.Model):
 #         verbose_name = "Вариация товара из заявки"
 #         verbose_name_plural = "Вариации товаров из заявок"
 
+class Category(models.Model):
+    title = models.CharField("Название категории")
+
 class Tovar(models.Model):
     kod = models.UUIDField(default=uuid.uuid1)
-    title = models.CharField("Нозвание изделия", max_length=50)
+    title = models.CharField("Название изделия", max_length=50)
     descr = models.TextField("Описание товара")
     uhod = models.TextField("Уход за изделием")
     sebestoimost = models.PositiveIntegerField("Себестоимость товара")
     cost = models.PositiveIntegerField("Цена для клиента", default=5000)
     data_create = models.DateField("Дата добавления товара", auto_now_add=True)
     hidden = models.BooleanField("Видимость для покупателя", help_text="Признак видимости товара на сайте", default=True)
+    category = 
 
     def __str__(self):
         return self.title
@@ -98,7 +102,7 @@ class Tovar(models.Model):
     @property
     def random_image(self):
         v = Variaciya.objects.filter(tovar=self.id).order_by('?')[:1]
-        print (v[0].id)
+        # print (v[0].id)
         g = Gallery.objects.filter(product=v[0].id).order_by('?')[:1]
         return g[0].image
 

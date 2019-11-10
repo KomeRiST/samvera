@@ -2,8 +2,9 @@
 {% load staticfiles %}
 
 {% block css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/flickity-docs.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/catalog/catalog.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/css/flickity-docs.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/css/account/account.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/css/catalog/catalog.css' %}" />
 {% endblock %}
 
 {% block screen %}
@@ -24,46 +25,50 @@
     <div class="foto_cost slider"></div>
     <div class="title">{{thing.title}}</div>
     <div class="desc">
-
-            <div class="tv-tabs">
-                    <label class="tv-tab" for="tv-tab-1">Описание и обмеры</label>
-                    <label class="tv-tab" for="tv-tab-2">Параметры модели</label>
-                    <label class="tv-tab" for="tv-tab-3">Уход за изделием</label>
-                  </div>
-
-                  <input class="tv-radio" id="tv-tab-1" name="tv-group" type="radio" checked="checked"/>
-                  <div class="tv-content descr">
-                      {{thing.descr}}
-                      <br>
-                      <div class="obmer"></div>
-                    <p>Обратите вниммание на 
-                      <label class="tv-link" for="tv-tab-3">уход за изделием</label>!
+        <section class="ac-container">
+            <div>
+                <input name="accordion-1" id="ac-1" type="checkbox" checked="">
+                <label for="ac-1">Описание и обмеры</label>
+                <article class="ac-small">
+                    <p>{{thing.descr}}</p>
+                    <p>Обратите вниммание на
+                        <label class="tv-link" for="ac-3"><b>уход за изделием</b></label>!
                     </p>
-                  </div>
+                </article>
+            </div>
 
-                  <input class="tv-radio" id="tv-tab-2" name="tv-group" type="radio"/>
-                  <div class="tv-content descr model">
+            <div>
+                <input name="accordion-1" id="ac-2" type="checkbox" checked="">
+                <label for="ac-2">Параметры модели</label>
+                <article class="ac-small">
+                    <p class="model"></p>
+                </article>
+            </div>
 
-                  </div>
-
-                  <input class="tv-radio" id="tv-tab-3" name="tv-group" type="radio"/>
-                  <div class="tv-content descr">
-                    {{ thing.uhod }}
-                  </div>
+            <div>
+                <input name="accordion-1" id="ac-3" type="checkbox" checked="">
+                <label for="ac-3">Уход за изделием</label>
+                <article class="ac-small">
+                    <p>{{ thing.uhod }}</p>
+                </article>
+            </div>
+        </section>
     </div>
     <div class="variacii">
         <p>Размеры</p>
         <div class="sizes">{{thing.sizes|safe}}</div>
         <p>Цвета</p>
         <div class="colors">{{thing.colortile_korz|safe}}</div>
-        <div class="cost"><p>Цена: {{thing.cost}}</p></div>
+        <div class="cost">
+            <p>Цена: {{thing.cost}}</p>
+        </div>
     </div>
     <!-- <div id="btn-id" class="btn-base btn-light" data-id="{{thing.id}}" onclick="add(this)"><p>В корзину</p></div> -->
     <form id="cart_product_form" action="{% url "cart:cart_add" thing.id %}" method="post">
-    {{ cart_product_form }}
-    {% csrf_token %}
-    <input id="btn-id" class="btn-base btn-light" type="submit" value="В корзину">
-</form>
+        {{ cart_product_form }}
+        {% csrf_token %}
+        <input id="btn-id" class="btn-base btn-light" type="submit" value="В корзину">
+    </form>
 </div>
 {% endblock %}
 
@@ -85,7 +90,7 @@
             cssEase: 'linear'
         }
         $(".foto_cost").removeClass("slick-initialized slick-slider slick-dotted");
-            $(".foto_cost").slick(settings);
+        $(".foto_cost").slick(settings);
     };
 
     function getphoto(v) {
@@ -115,7 +120,7 @@
 
     function getcolors(t, s) {
         $('div[id^="size-"]').removeClass('size-select');
-        $("div[id^='size-"+s+"']").addClass('size-select');
+        $("div[id^='size-" + s + "']").addClass('size-select');
         var request = $.ajax({
             url: `/getthingcolors/${t}/${s}/`,
             method: "get",
@@ -131,7 +136,7 @@
             getphoto($(".colors div:first").attr("data-var"));
             $("div[id^='color-']").click(function () {
                 getphoto(this.getAttribute("data-var"));
-            //Slider();
+                //Slider();
             });
         });
 
@@ -142,7 +147,7 @@
 
     $('div[id^="size-"]').click(function () {
         getcolors(this.getAttribute("data-tovar"), this.getAttribute("data-size"));
-            //Slider();
+        //Slider();
     });
 
     function add(e) {

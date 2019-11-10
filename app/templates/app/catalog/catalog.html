@@ -4,28 +4,56 @@
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/catalog/catalog.css' %}" />
 {% endblock %}
 {% block screen %}
-<div class="main_screen">
+<!-- <div class="main_screen">
     <div class="main_screen__conteiner">
         <div class="main_title text-title-dark">{{title}}</div>
     </div>
-</div>
+</div> -->
 {% endblock %}
 {% block content %}
-<div class="main_content catalog-items">
-    {% for item in things %}
-    <div class="container" style="{% if not item.hidden %}opacity: .5;{% endif %}">
-        <div class="container-item" style="background-image: url('/media/{{item.random_image}}')">
-            <div class="cover">
-                <a href="{% url 'thing' item.id %}" class="btn-base btn-light"><p>Подробнее</p></a>
-                {% if request.user.is_staff %}
-                <a href="{% url 'thing_edit' item.id %}" class="btn-base btn-dark"><p>Редактировать</p></a>
-                {% endif %}
+<div class="main_content">
+    <div class="catalog_content">
+        <div class="category">
+            <div class="category_item category_item__title">
+                <p>каталог</p>
+            </div>
+            <div class="category_item">
+                <a href="#">Первый</a>
+            </div>
+            <div class="category_item">
+                <a href="#">Второй</a>
+            </div>
+            <div class="category_item category_item__select">
+                <a href="#">Третий</a>
+            </div>
+            <div class="category_item">
+                <a href="#">Четвёртый</a>
+            </div>
+            <div class="category_item">
+                <a href="#">Пятый</a>
+            </div>
+            <div class="category_item">
+                <a href="#">Шестой</a>
+            </div>
+            <div class="category_item">
+                <a href="#">Седьмой</a>
             </div>
         </div>
-        <div class="title">{{ item.title }}</div>
-        <div class="cost">{{ item.cost }}</div>
+        <div class="catalog-items">
+        {% for item in things %}
+            <div class="container" style="{% if not item.hidden %}opacity: .5;{% endif %}">
+                <a href="{% url 'thing' item.id %}" class="container-item">
+                    <img src="/media/{{item.random_image}}" alt="" width="100%" srcset="">
+                    <div class="title">{{ item.title }}</div>
+                    <div class="cost">{{ item.cost }}</div>
+                {% if request.user.is_staff %}
+                    <a href="{% url 'thing_edit' item.id %}" class="btn-base btn-dark"><p>Редактировать</p></a>
+                {% endif %}
+                </a>
+            </div>
+        {% endfor %}
+        </div>
     </div>
-    {% endfor %}
 </div>
 {% endblock %}
 

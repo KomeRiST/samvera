@@ -99,7 +99,8 @@
         background-size: 41px;
         margin: -16px 0 0 -16px;
     }*/
-    .pre {
+}
+.pre {
         color: darkgray;
         align-self: center;
     }
@@ -109,17 +110,12 @@
 
     .titlepre {
         color: white;
-        font-family: CENTAUR;
-
-        @include fontsize("title");
+        font-size: 2rem;
     }
 
     .despre {
-        @include fontsize("descr") {
             color: darkgray;
-        }
     }
-}
 
 </style>
 
@@ -131,7 +127,7 @@
 <body>
     <div id="p_prldr">
         <div class="sec">
-            <div class="titlepre">Подождите</div>
+            <div class="titlepre">{{title}}</div>
             <div class="letter-holder">
                     <div class="l-1 letter">.</div>
                     <div class="l-2 letter">.</div>

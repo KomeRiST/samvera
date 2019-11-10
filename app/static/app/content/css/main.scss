@@ -1,24 +1,27 @@
 @import "variables.scss";
 @import "mixins.scss";
-@import url('https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700|Gabriela|Philosopher:400,400i,700,700i&display=swap&subset=cyrillic,greek');
+// @import url('https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700|Gabriela|Philosopher:400,400i,700,700i&display=swap&subset=cyrillic,greek');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&display=swap&subset=cyrillic');
 
-@font-face {
-    font-family: CENTAUR;
-    font-family: 'Comfortaa', cursive;
-    font-family: 'Philosopher', sans-serif;
-    font-family: 'Gabriela', serif;
-    src: url('../../fonts/CENTAUR.TTF') format('truetype');
-}
+// @font-face {
+    // font-family: 'Roboto';
+//     font-family: 'Comfortaa', cursive;
+//     font-family: 'Philosopher', sans-serif;
+//     font-family: 'Gabriela', serif;
+    // src: url('../../fonts/roboto/Roboto-Thin.TTF');
+    // src: url('../../fonts/roboto/Roboto-ThinItalic.TTF');
+// }
 
 * {
     /*color: $fcDefault;*/
-    font-family: Philosopher;
+    // font-family: Philosopher;
+    font: 400 13px/1.2 'Roboto', Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
     padding: 0;
     margin: 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    @include fontsize("text");
+    // @include fontsize("text");
 }
 
 .logo {
@@ -39,14 +42,14 @@
     flex-direction: row;
 
     &>a {
-        @include fontsize("title");
+        @include fontsize("logo");
         color: $fc-title_light;
         display: contents;
         /*padding: .75rem 0px;*/
         text-decoration: none;
-        font-weight: bold;
+        font-weight: 300;
         text-transform: uppercase;
-        font-family: CENTAUR;
+        // font-family: CENTAUR;
 
         svg {
             height: 30px;
@@ -148,7 +151,7 @@ body {
         -webkit-transition: 0.5s font-size linear;
         transition: 0.5s font-size linear;
         text-align: center;
-        font-family: CENTAUR;
+        // font-family: CENTAUR;
 
         @include fontsize("title");
     }
@@ -171,7 +174,7 @@ form {
     .field_title {
         @include fontsize("form-field-title");
         margin-top: 1rem;
-        font-family: CENTAUR;
+        // font-family: CENTAUR;
 
         &>p {
             color: black;
@@ -242,7 +245,6 @@ form {
         margin: 3rem;
         min-width: 220px;
         list-style: none;
-        text-align: center;
 
         .bottom-menu__link {
             text-transform: uppercase;
@@ -668,12 +670,12 @@ form {
 .main_title {
     @include fontsize("title");
     color: $fc-title_light;
-    font-family: CENTAUR;
+    // font-family: CENTAUR;
 }
 
 .main_title_descr {
     color: $fc-title_descr_light;
-    font-family: CENTAUR;
+    // font-family: CENTAUR;
 
     @include fontsize("title-descr");
 }
@@ -688,34 +690,34 @@ form {
 
 .main_content {
     margin: auto;
-    /*padding: 2rem;*/
+    padding: 2rem;
 
     @include mq("desktop-wide") {
         width: 1440px;
-        max-width: 85%;
+        // max-width: 85%;
     }
 
-    @include mq("tablet-wide") {
-        width: 1024px;
-        max-width: 85%;
-    }
+    // @include mq("tablet-wide") {
+    //     width: 1024px;
+    //     max-width: 85%;
+    // }
 
-    @include mq("tablet", max) {
-        width: 768px;
-        max-width: 90%;
-    }
+    // @include mq("tablet", max) {
+    //     width: 768px;
+    //     max-width: 90%;
+    // }
 
-    @include mq("tablet-small", max) {
-        width: 95%;
-        max-width: 95%;
-        /*padding: 1.5rem;*/
-    }
+    // @include mq("tablet-small", max) {
+    //     width: 95%;
+    //     max-width: 95%;
+    //     /*padding: 1.5rem;*/
+    // }
 
-    @include mq("phone-wide", max) {
-        width: 95%;
-        max-width: 95%;
-        /*padding: 1rem;*/
-    }
+    // @include mq("phone-wide", max) {
+    //     width: 95%;
+    //     max-width: 95%;
+    //     /*padding: 1rem;*/
+    // }
 }
 
 // ����� �������� ������
@@ -730,7 +732,7 @@ form {
 a {
     color: $fc-href-dark;
     text-decoration: none;
-    font-weight: bold;
+    // font-weight: bold;
 }
 
 footer {

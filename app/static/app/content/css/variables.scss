@@ -34,6 +34,17 @@ FONTS SIZE
 
 */
 $fontsize: (
+"text_footer": 13px,
+
+"logo_phone": 24px,
+"logo_phone-wide": 24px,
+"logo_phablet": 24px,
+"logo_tablet-small": 24px,
+"logo_tablet": 48px,
+"logo_tablet-wide": 48px,
+"logo_desktop": 48px,
+"logo_desktop-wide": 48px,
+
 "text_phone": 16px,
 "text_phone-wide": 16px,
 "text_phablet": 16px,
@@ -42,6 +53,7 @@ $fontsize: (
 "text_tablet-wide": 18px,
 "text_desktop": 18px,
 "text_desktop-wide": 20px,
+
 "title_phone": 30px,
 "title_phone-wide": 30px,
 "title_phablet": 32px,
@@ -50,6 +62,7 @@ $fontsize: (
 "title_tablet-wide": 68px,
 "title_desktop": 68px,
 "title_desktop-wide": 72px,
+
 "title-descr_phone": 16px,
 "title-descr_phone-wide": 16px,
 "title-descr_phablet": 18px,
