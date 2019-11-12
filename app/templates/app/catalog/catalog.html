@@ -17,30 +17,14 @@
             <div class="category_item category_item__title">
                 <p>каталог</p>
             </div>
+            {% for item in categories %}
             <div class="category_item">
-                <a href="#">Первый</a>
+                <a href="{{ item.get_absolute_url }}">{{ item }}</a>
             </div>
-            <div class="category_item">
-                <a href="#">Второй</a>
-            </div>
-            <div class="category_item category_item__select">
-                <a href="#">Третий</a>
-            </div>
-            <div class="category_item">
-                <a href="#">Четвёртый</a>
-            </div>
-            <div class="category_item">
-                <a href="#">Пятый</a>
-            </div>
-            <div class="category_item">
-                <a href="#">Шестой</a>
-            </div>
-            <div class="category_item">
-                <a href="#">Седьмой</a>
-            </div>
+            {% endfor %}
         </div>
         <div class="catalog-items">
-        {% for item in things %}
+        {% for item in tovary %}
             <div class="container" style="{% if not item.hidden %}opacity: .5;{% endif %}">
                 <a href="{% url 'thing' item.id %}" class="container-item">
                     <img src="/media/{{item.random_image}}" alt="" width="100%" srcset="">

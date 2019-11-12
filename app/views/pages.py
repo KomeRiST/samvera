@@ -116,7 +116,7 @@ def catalog(request, page="catalog"):
         th = models.Tovar.objects.filter(hidden=True)
     else:
         th = models.Tovar.objects.all()
-
+    category = models.Category.objects.all()
     print(f'\nPAGE:\n{page}\n')
     assert isinstance(request, HttpRequest)
     DESC = CATALOG_PAGE_DESCR.get(page)
@@ -125,6 +125,7 @@ def catalog(request, page="catalog"):
         PAGE = f'app/catalog/{page}.html'
         #DESC["year"] = year()
         DESC['things'] = th
+        DESC['category'] = category
         return render(
             request,
             PAGE,

@@ -42,6 +42,7 @@ CART_SESSION_ID = "cart" # Ключ для хранения корзины в с
 # https://docs.djangoproject.com/en/2.1/ref/settings/#std:setting-INSTALLED_APPS
 INSTALLED_APPS = [
     # Add your apps here to enable them
+    'nested_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -72,7 +73,7 @@ MIDDLEWARE = [
 ADMIN_REORDER = (
     'shop',
     {'app': 'app', 'label': 'Склад',
-    'models': ('app.Tovar', 'app.Variaciya', 'app.Gallery')},
+    'models': ('app.Category', 'app.Tovar', 'app.Variaciya', 'app.Gallery')},
 
     {'app': 'app', 'label': 'Заказы',
     'models': ('app.Orders', 'app.OrderTovary', 'app.OrderTovaryVariaciya')},

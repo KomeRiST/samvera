@@ -34,7 +34,7 @@ class OrderItem(models.Model):
     ''' Таблица вариаций для товара из заказа '''
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="ordervars")
     # ordertovar = models.ForeignKey(OrderTovary, on_delete=models.CASCADE, related_name="variacii")
-    variaciya = models.ForeignKey('Variaciya', on_delete=models.DO_NOTHING, related_name="in_orders")
+    variaciya = models.ForeignKey(m.Variaciya, on_delete=models.DO_NOTHING, related_name="in_orders")
     cost = models.DecimalField(verbose_name='Цена', max_digits=10, decimal_places=2)
     count = models.PositiveIntegerField("Количество товара")
 

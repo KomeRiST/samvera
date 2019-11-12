@@ -161,6 +161,7 @@ body {
   background-color: transparent;
   cursor: pointer;
   display: inline-block;
+  margin: auto;
 }
 
 .btn-base p {

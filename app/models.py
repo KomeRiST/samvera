@@ -12,6 +12,7 @@ from samvera import settings
 from django.contrib.auth.models import User
 from smart_selects.db_fields import ChainedForeignKey
 from django.utils.safestring import mark_safe
+from django.urls import reverse
 
 class ColorField(models.CharField):
     """ Поле для хранения HTML-кода цвета."""
@@ -83,18 +84,31 @@ class PotentialClient(models.Model):
 #         verbose_name_plural = "Вариации товаров из заявок"
 
 class Category(models.Model):
-    title = models.CharField("Название категории")
+    title = models.CharField("Название категории", db_index=True, max_length=50, help_text="(Например: Платья, юбки, костюмы)")
+    slug = models.SlugField(max_length=200, db_index=True, unique=True, help_text="url адресс данной категории", blank=True)
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('tovarbycategory', args=[self.slug])
+
+    class Meta:
+        ordering = ['title']
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
 
 class Tovar(models.Model):
     kod = models.UUIDField(default=uuid.uuid1)
-    title = models.CharField("Название изделия", max_length=50)
+    title = models.CharField("Название изделия", db_index=True, max_length=50)
+    slug = models.SlugField("url адресс товара", db_index=True, max_length=50, unique=True, blank=True)
     descr = models.TextField("Описание товара")
     uhod = models.TextField("Уход за изделием")
     sebestoimost = models.PositiveIntegerField("Себестоимость товара")
     cost = models.PositiveIntegerField("Цена для клиента", default=5000)
     data_create = models.DateField("Дата добавления товара", auto_now_add=True)
     hidden = models.BooleanField("Видимость для покупателя", help_text="Признак видимости товара на сайте", default=True)
-    category = 
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1, related_name='tovaritems', verbose_name='Категория товара')
 
     def __str__(self):
         return self.title
@@ -104,7 +118,10 @@ class Tovar(models.Model):
         v = Variaciya.objects.filter(tovar=self.id).order_by('?')[:1]
         # print (v[0].id)
         g = Gallery.objects.filter(product=v[0].id).order_by('?')[:1]
-        return g[0].image
+        if g.count() == 0:
+            return "gallery/no_image.png"
+        else:
+            return g[0].image
 
     def count_var(self):
         vars = Variaciya.objects.filter(tovar=self)
@@ -121,7 +138,14 @@ class Tovar(models.Model):
             s=s+f'<div id="size-{sz}" data-tovar="{self.id}" data-size="{sz}" style="padding: .5rem; background: 1px solid gray; border-radius: .5rem;">{sz}</div>'
         return s
 
+    def get_absolute_url(self):
+        return reverse('')
+
     class Meta:
+        ordering = ['title']
+        index_together = [
+            ['id', 'slug']
+        ]
         verbose_name = "Изделие"
         verbose_name_plural = "Изделия"
 

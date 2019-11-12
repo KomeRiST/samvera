@@ -33,9 +33,12 @@ FONTS SIZE
 .catalog_content {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr auto;
-      grid-template-columns: 1fr auto;
+  -ms-grid-columns: minmax(250px, 300px) minmax(auto, 1400px);
+      grid-template-columns: minmax(250px, 300px) minmax(auto, 1400px);
   grid-gap: 1rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .catalog-items {
@@ -155,7 +158,8 @@ FONTS SIZE
           align-items: center;
 }
 
-.thing-content .desc, .thing-content .variacii {
+.thing-content .desc,
+.thing-content .variacii {
   -ms-flex-item-align: baseline;
       align-self: baseline;
 }
@@ -232,7 +236,7 @@ FONTS SIZE
     max-width: 1024px;
     padding: 6rem 3rem;
     /*grid-template-columns: 1.25em auto;*/
-        grid-template-areas: 'title title title' 'photo desc size' 'photo desc btn';
+        grid-template-areas: "title title title" "photo desc size" "photo desc btn";
   }
   .thing-content .foto_cost {
     width: 300px;
@@ -277,7 +281,7 @@ FONTS SIZE
     grid-gap: .5rem 2rem;
     -ms-grid-columns: 300px auto auto;
         grid-template-columns: 300px auto auto;
-        grid-template-areas: 'photo title title' 'photo desc size' 'photo desc size' 'photo desc btn';
+        grid-template-areas: "photo title title" "photo desc size" "photo desc size" "photo desc btn";
   }
   .thing-content .foto_cost {
     /*width: 300px;
@@ -317,7 +321,7 @@ FONTS SIZE
     max-width: 768px;
     padding: 6rem 3rem;
     /*grid-template-columns: 1.25em auto;*/
-        grid-template-areas: 'title title' 'photo size' 'photo btn' 'desc desc';
+        grid-template-areas: "title title" "photo size" "photo btn" "desc desc";
   }
   .thing-content .foto_cost {
     width: 300px;
@@ -359,7 +363,7 @@ FONTS SIZE
 @media only screen and (max-width: 767px) {
   .thing-content {
     max-width: 768px;
-        grid-template-areas: 'photo' 'title' 'desc' 'size' 'btn';
+        grid-template-areas: "photo" "title" "desc" "size" "btn";
     padding: 2rem .5rem;
   }
   .thing-content .foto_cost {
@@ -466,6 +470,7 @@ FONTS SIZE
 
 .category .category_item {
   padding: 0rem 1rem 1rem;
+  margin-bottom: 1rem;
 }
 
 .category .category_item a {
@@ -514,7 +519,8 @@ FONTS SIZE
   padding: 8px;
 }
 
-.desc .tv-radio:checked, .desc .tv-tab:hover {
+.desc .tv-radio:checked,
+.desc .tv-tab:hover {
   font-weight: bold;
   cursor: pointer;
 }
@@ -567,7 +573,7 @@ FONTS SIZE
   display: grid;
   grid-gap: 1rem;
   padding: 1rem;
-      grid-template-areas: 'image name name' 'image size color' 'image count summ' 'image edit delete';
+      grid-template-areas: "image name name" "image size color" "image count summ" "image edit delete";
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;

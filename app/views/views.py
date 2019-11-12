@@ -105,6 +105,24 @@ def home(request):
         }
     )
 
+def tovarlist(request, category_slug=None):
+    template = 'app/catalog/catalog.html'
+    context = {}
+    category = None
+    categories = models.Category.objects.all()
+    tovary = models.Tovar.objects.filter(hidden=True)
+    if category_slug:
+        category = get_object_or_404(models.Category, slug=category_slug)
+        tovary = tovary.filter(category=category)
+    context['category'] = category
+    context['tovary'] = tovary
+    context['categories'] = categories
+    return render(
+        request,
+        template,
+        context,
+    )
+
 def thing(request, id):
     """Карточка товара"""
     t = get_object_or_404(models.Tovar, pk=id)

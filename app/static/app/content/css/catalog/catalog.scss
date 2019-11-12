@@ -3,8 +3,9 @@
 
 .catalog_content {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(250px, 300px) minmax(auto, 1400px);
     grid-gap: 1rem;
+    justify-content: center;
 }
 
 .catalog-items {
@@ -59,11 +60,11 @@
     -ms-align-content: center;
     -webkit-align-content: center;
     align-content: center;
-        -moz-transition: .25s opacity linear;
-        -o-transition: .25s opacity linear;
-        -webkit-transition: .25s opacity linear;
-        transition: .25s opacity linear;
-        position: relative;
+    -moz-transition: .25s opacity linear;
+    -o-transition: .25s opacity linear;
+    -webkit-transition: .25s opacity linear;
+    transition: .25s opacity linear;
+    position: relative;
 
     &:hover {
         opacity: 1 !important;
@@ -144,7 +145,7 @@
                 text-decoration: none;
             }
 
-            & > div {
+            &>div {
                 height: 1rem;
             }
 
@@ -154,19 +155,21 @@
         }
 
     }
-        .title {
-            margin-top: 1rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        /*.desc {
+
+    .title {
+        margin-top: 1rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    /*.desc {
                 text-align: center;
                 color: darkgray;
             }*/
-        .cost {
-            margin-top: 1rem;
-            letter-spacing: 1px;
-        }
+    .cost {
+        margin-top: 1rem;
+        letter-spacing: 1px;
+    }
 }
 
 .thing-content {
@@ -178,12 +181,13 @@
     justify-content: center;
     align-items: center;
 
-    .desc, .variacii {
+    .desc,
+    .variacii {
         align-self: baseline;
     }
 
     .variacii {
-        & > p {
+        &>p {
             font-weight: bold;
         }
 
@@ -194,12 +198,12 @@
             -webkit-justify-content: center;
             justify-content: center;
 
-            & > div {
+            &>div {
                 border: 1px solid transparent;
                 display: inline-block;
             }
 
-            & > div:hover {
+            &>div:hover {
                 cursor: pointer;
                 border: 1px solid darkgray;
             }
@@ -228,7 +232,7 @@
                 display: inline-block;
             }
 
-            & > div {
+            &>div {
                 cursor: pointer;
                 margin: .5rem;
             }
@@ -252,7 +256,7 @@
         max-width: 1024px;
         padding: 6rem 3rem;
         /*grid-template-columns: 1.25em auto;*/
-        grid-template-areas: 'title title title' 'photo desc size' 'photo desc btn';
+        grid-template-areas: 'title title title''photo desc size''photo desc btn';
 
         .foto_cost {
             width: 300px;
@@ -287,7 +291,7 @@
         max-width: 1440px;
         grid-gap: .5rem 2rem;
         grid-template-columns: 300px auto auto;
-        grid-template-areas: 'photo title title' 'photo desc size' 'photo desc size' 'photo desc btn';
+        grid-template-areas: 'photo title title''photo desc size''photo desc size''photo desc btn';
 
         .foto_cost {
             /*width: 300px;
@@ -319,7 +323,7 @@
         max-width: 768px;
         padding: 6rem 3rem;
         /*grid-template-columns: 1.25em auto;*/
-        grid-template-areas: 'title title' 'photo size' 'photo btn' 'desc desc';
+        grid-template-areas: 'title title''photo size''photo btn''desc desc';
 
         .foto_cost {
             width: 300px;
@@ -352,7 +356,7 @@
 
     @include mq("tablet", max) {
         max-width: 768px;
-        grid-template-areas: 'photo' 'title' 'desc' 'size' 'btn';
+        grid-template-areas: 'photo''title''desc''size''btn';
         padding: 2rem .5rem;
 
         .foto_cost {
@@ -412,24 +416,30 @@
     letter-spacing: 2px;
 
     .category_item {
-            padding: 0rem 1rem 1rem;
+        padding: 0rem 1rem 1rem;
+        margin-bottom: 1rem;
+
         a {
             font-size: 1.2rem;
             font-weight: 300;
+
             &:hover {
                 color: $fc-gray;
                 border-bottom: 1px solid $fc-Default;
             }
         }
     }
+
     .category_item__select {
         a {
             border-bottom: 1px solid $fc-Default;
         }
     }
+
     .category_item__title {
         text-transform: uppercase;
         margin-bottom: 1.5rem;
+
         p {
             font-size: 1.5rem;
             // letter-spacing: 2px;
@@ -441,36 +451,44 @@
 #cart_product_form {
     min-width: 40px;
 }
-.desc{
 
-.tv-content {
-    display: none;
-  }
-  .tv-radio {
-    display: none;
-  }
-  .tv-radio:checked + .tv-content {
-    display: block;
-  }
-  .tv-tab {
-    display: inline-block;
-    cursor: pointer;
-    padding: 8px;
-  }
-  .tv-radio:checked, .tv-tab:hover {
-    font-weight: bold;
-    cursor: pointer;
-  }
-  .tv-tabs {
-    color: $fc-Default;
-    background-color: $bg-Default;
-  }
+.desc {
 
-  .tv-content {
-    padding: .75rem;
-    max-width: 600px;
-  }
+    .tv-content {
+        display: none;
+    }
+
+    .tv-radio {
+        display: none;
+    }
+
+    .tv-radio:checked+.tv-content {
+        display: block;
+    }
+
+    .tv-tab {
+        display: inline-block;
+        cursor: pointer;
+        padding: 8px;
+    }
+
+    .tv-radio:checked,
+    .tv-tab:hover {
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .tv-tabs {
+        color: $fc-Default;
+        background-color: $bg-Default;
+    }
+
+    .tv-content {
+        padding: .75rem;
+        max-width: 600px;
+    }
 }
+
 /*
     KORZINA
 */
@@ -497,7 +515,7 @@
         display: grid;
         grid-gap: 1rem;
         padding: 1rem;
-        grid-template-areas: 'image name name' 'image size color' 'image count summ' 'image edit delete';
+        grid-template-areas: 'image name name''image size color''image count summ''image edit delete';
         -webkit-justify-content: center;
         justify-content: center;
         -ms-align-content: center;
@@ -505,6 +523,7 @@
         align-content: center;
         box-shadow: 0 0 20px -15px black;
         border: 1px solid lightgray;
+
         /*@include fontsize("text");*/
         .image {
             /*height: 400px;*/
@@ -579,6 +598,7 @@
 
 footer {
     background-color: $bg-dark;
+
     .bottom-menu__link {
         color: $fc-title_light;
     }

@@ -12,8 +12,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import include, url
 
+app_name = 'app'
 
 urlpatterns = [
+    url(r'^nestуd_admin/', include('nested_admin.urls')),
     url(r'^cart/', include('cart.urls', namespace='cart')),
     #url(r'^shop/', include('shop.urls', namespace='shop')),
     path('', views.home, name='home'),
@@ -24,7 +26,8 @@ urlpatterns = [
     path('thing/<int:id>', views.thing, name='thing'),
     path('post/<str:code>/', views.post, name='post'),
     path('info/<str:page>', pages.info, name='info'),
-    path('catalog/', pages.catalog, name='catalog'),
+    path('catalog/', views.tovarlist, name='tovarbycategory'),
+    path('catalog/<str:category_slug>', views.tovarlist, name='tovarbycategory'),
     path('catalog/<str:page>', pages.catalog),
     # path('korzina/', views.korzina, name='korzina'),
     path('korzinaget/', views.korzina_get, name='korzinaget'),
@@ -35,13 +38,13 @@ urlpatterns = [
     path('login/', LoginView.as_view(template_name = 'app/account/login.html'), name='login'),
     path('logout/', LogoutView.as_view(next_page='/'), name='log_out'),
     #path('accounts/', include('django.contrib.auth.urls')),
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
     path('chaining/', include('smart_selects.urls')),
     path('adminka/', adminka.main),
-    path('adminka/thing/edit/<int:id>/', adminka.thing_edit, name='thing_edit'),
-    path('adminka/thing/delete/<int:id>/', adminka.thing_delete, name='thing_delete'),
-    path('adminka/variaciya/edit/<int:id>/', adminka.variaciya_edit, name='variaciya_edit'),
-    path('adminka/variaciya/delete/<int:id>/', adminka.variaciya_delete, name='variaciya_delete'),
+    path('admin/app/tovar/<int:id>/change/', adminka.thing_edit, name='thing_edit'),
+    # path('adminka/thing/delete/<int:id>/', adminka.thing_delete, name='thing_delete'),
+    # path('adminka/variaciya/edit/<int:id>/', adminka.variaciya_edit, name='variaciya_edit'),
+    # path('adminka/variaciya/delete/<int:id>/', adminka.variaciya_delete, name='variaciya_delete'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

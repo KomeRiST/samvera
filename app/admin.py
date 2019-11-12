@@ -8,10 +8,11 @@ from django.utils.safestring import mark_safe
 #from nested_inline.admin import NestedModelAdmin, NestedStackedInline, NestedTabularInline
 from django.contrib.admin.widgets import AdminFileWidget
 from django.utils.translation import ugettext as _
+import nested_admin
 
 admin.site.register(StatusOrder)
 admin.site.register(PotentialClient)
-#admin.site.register(Orders)
+#admin.site.register(Category)
 #admin.site.register(OrderTovary)
 #admin.site.register(OrderTovaryVariaciya)
 #admin.site.register(Variaciya)
@@ -26,12 +27,18 @@ class OrderItemsInline(admin.TabularInline):
     #fields = ['variaciya', 'count']
     fields = ['tovar',]
 
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    fields = ['title', 'slug']
+    prepopulated_fields = {'slug': ('title',)}
+
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     model = Order
     inlines = [OrderItemsInline,]
     fields = ['client', 'status', 'namber', 'date_create']
     readonly_fields = ['date_create', ]
+    # list_editable = ['status', ]
 
 @admin.register(Gallery)
 class GallAdmin(admin.ModelAdmin):
@@ -42,7 +49,7 @@ class GallAdmin(admin.ModelAdmin):
     readonly_fields = ['image_img', 'product']
 
 
-class ImageInline(admin.TabularInline):
+class ImageInline(nested_admin.nested.NestedTabularInline):
     model = Gallery
     extra = 1
     fields = ['image_img', 'image']
@@ -51,7 +58,7 @@ class ImageInline(admin.TabularInline):
 
 
 @admin.register(Variaciya)
-class VariaciyaAdm(admin.ModelAdmin):
+class VariaciyaAdm(nested_admin.nested.NestedModelAdmin):
     inlines = [ImageInline,]
     list_display = ['random_image', 'tovar', 'article', 'color', 'color_text', 'size', 'obmer', 'model', 'kolvo']
     fields = ['tovar', 'article', ('color_text', 'color'), 'size', ('obmer', 'model'), 'kolvo']
@@ -67,7 +74,8 @@ class VariaciyaAdm(admin.ModelAdmin):
             }
         }
 
-class VariaciyaInline(admin.StackedInline):
+class VariaciyaInline(nested_admin.nested.NestedStackedInline):
+    inlines = [ImageInline,]
     model = Variaciya
     save_on_top = True
     extra = 0
@@ -87,8 +95,12 @@ class VariaciyaInline(admin.StackedInline):
 
 
 @admin.register(Tovar)
-class TovarAdm(admin.ModelAdmin):
+class TovarAdm(nested_admin.nested.NestedModelAdmin):
     inlines = [VariaciyaInline,]
-    list_display = ['title', 'count_var', 'sebestoimost', 'cost', 'data_create', 'hidden']
-    fields = ['kod', ('title', 'hidden', 'data_create'),('descr', 'uhod'), ('sebestoimost', 'cost')]
+    list_display = ['title', 'slug', 'count_var', 'sebestoimost', 'cost', 'data_create', 'hidden']
+    fields = ['kod', ('title', 'category'),('slug', 'hidden', 'data_create'),('descr', 'uhod'), ('sebestoimost', 'cost')]
     readonly_fields = ['kod', 'data_create', 'count_var']
+    prepopulated_fields = {'slug': ('title',)}
+
+#@admin.register(Category)
+#class CategoryAdmin(admin.ModelAdmin):
