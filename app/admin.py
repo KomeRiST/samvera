@@ -79,13 +79,13 @@ class VariaciyaInline(nested_admin.nested.NestedStackedInline):
     model = Variaciya
     save_on_top = True
     extra = 0
-    fields = [('color_text', 'color'), ('size', 'kolvo')]
+    fields = [('color', 'color_text'), ('size', 'kolvo'), ('obmer', 'model')]
     formfield_overrides = {
         ColorField: {
             'widget': forms.TextInput(
                 attrs={
                     'type': 'color',
-                    'style': 'height: 25px; width: 100px'
+                    'style': 'height: 25px; width: 25px; border-radius: 50%;'
                     }
                 )
             }

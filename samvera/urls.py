@@ -2,6 +2,8 @@
 Definition of urls for samvera.
 """
 
+app_name = 'app'
+
 from datetime import datetime
 from django.urls import path
 from django.contrib import admin
@@ -12,7 +14,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import include, url
 
-app_name = 'app'
 
 urlpatterns = [
     url(r'^nestуd_admin/', include('nested_admin.urls')),
@@ -23,7 +24,7 @@ urlpatterns = [
     path('kabinet/', views.kabinet, name='kabinet'),
     path('about/<str:page>', pages.about, name='about'),
     path('contact/<str:page>', pages.about, name='contact'),
-    path('thing/<int:id>', views.thing, name='thing'),
+    path('thing/<int:id>/<str:slug>/', views.thing, name='thing'),
     path('post/<str:code>/', views.post, name='post'),
     path('info/<str:page>', pages.info, name='info'),
     path('catalog/', views.tovarlist, name='tovarbycategory'),

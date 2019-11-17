@@ -21,54 +21,61 @@
 
 {% block content %}
 
-<div class="main_content thing-content">
-    <div class="foto_cost slider"></div>
-    <div class="title">{{thing.title}}</div>
-    <div class="desc">
-        <section class="ac-container">
-            <div>
-                <input name="accordion-1" id="ac-1" type="checkbox" checked="">
-                <label for="ac-1">Описание и обмеры</label>
-                <article class="ac-small">
-                    <p>{{thing.descr}}</p>
-                    <p>Обратите вниммание на
-                        <label class="tv-link" for="ac-3"><b>уход за изделием</b></label>!
-                    </p>
-                </article>
+<div class="main_content">
+    <div class="thing-content">
+        <div class="photos">
+        </div>
+        <div class="info-thing">
+            <div class="title">{{thing.title}}</div>
+            <div class="variacii">
+                <p>Размеры</p>
+                <div class="sizes">{{thing.sizes|safe}}</div>
+                <p>Цвета</p>
+                <div class="colors">{{thing.colortile_korz|safe}}</div>
+                <div class="cost">
+                    <p>Цена: {{thing.cost}}</p>
+                </div>
             </div>
+            <div class="desc">
+                <section class="ac-container">
+                    <div class="">
+                        <input name="accordion-1" id="ac-1" type="checkbox" checked="">
+                        <label for="ac-1">Описание и обмеры</label>
+                        <article class="ac-small">
+                            <p>{{thing.descr}}</p>
+                            <p>Обратите вниммание на
+                                <label class="tv-link" for="ac-3"><b>уход за изделием</b></label>!
+                            </p>
+                        </article>
+                    </div>
 
-            <div>
-                <input name="accordion-1" id="ac-2" type="checkbox" checked="">
-                <label for="ac-2">Параметры модели</label>
-                <article class="ac-small">
-                    <p class="model"></p>
-                </article>
-            </div>
+                    <div>
+                        <input name="accordion-1" id="ac-2" type="checkbox" checked="">
+                        <label for="ac-2">Параметры модели</label>
+                        <article class="ac-small">
+                            <p class="model"></p>
+                        </article>
+                    </div>
 
-            <div>
-                <input name="accordion-1" id="ac-3" type="checkbox" checked="">
-                <label for="ac-3">Уход за изделием</label>
-                <article class="ac-small">
-                    <p>{{ thing.uhod }}</p>
-                </article>
+                    <div>
+                        <input name="accordion-1" id="ac-3" type="checkbox" checked="">
+                        <label for="ac-3">Уход за изделием</label>
+                        <article class="ac-small">
+                            <p>{{ thing.uhod }}</p>
+                        </article>
+                    </div>
+                </section>
             </div>
-        </section>
-    </div>
-    <div class="variacii">
-        <p>Размеры</p>
-        <div class="sizes">{{thing.sizes|safe}}</div>
-        <p>Цвета</p>
-        <div class="colors">{{thing.colortile_korz|safe}}</div>
-        <div class="cost">
-            <p>Цена: {{thing.cost}}</p>
+            <!-- <div id="btn-id" class="btn-base btn-light" data-id="{{thing.id}}" onclick="add(this)"><p>В корзину</p></div> -->
+            <form id="cart_product_form" action="{% url "cart:cart_add" thing.id %}" method="post">
+                {{ cart_product_form }}
+                {% csrf_token %}
+                <input id="btn-id" class="btn-base btn-light" type="submit" value="В корзину">
+            </form>
         </div>
     </div>
-    <!-- <div id="btn-id" class="btn-base btn-light" data-id="{{thing.id}}" onclick="add(this)"><p>В корзину</p></div> -->
-    <form id="cart_product_form" action="{% url "cart:cart_add" thing.id %}" method="post">
-        {{ cart_product_form }}
-        {% csrf_token %}
-        <input id="btn-id" class="btn-base btn-light" type="submit" value="В корзину">
-    </form>
+
+
 </div>
 {% endblock %}
 
@@ -89,8 +96,8 @@
             fade: false,
             cssEase: 'linear'
         }
-        $(".foto_cost").removeClass("slick-initialized slick-slider slick-dotted");
-        $(".foto_cost").slick(settings);
+        $(".photos").removeClass("slick-initialized slick-slider slick-dotted");
+        $(".photos").slick(settings);
     };
 
     function getphoto(v) {
@@ -104,13 +111,20 @@
 
         request.done(function (msg) {
             var m = JSON.parse(msg)
-            $(".foto_cost").html(m.img);
+            $(".photos").html("");
+            $(".photos").html(m.img);
             $(".obmer").html(m.obmer);
             $(".model").html(m.model);
             // $("#btn-id").attr("data-id", m.id);
             $("#cart_product_form").attr("action", "/cart/add/" + m.id + "/");
             $("#id_kolvo").html(m.kolvo);
-            Slider();
+            GranicaSlick(true);
+            // if (window.outerWidth < 1024) {
+            //     Slider();
+            //     // $(".photos").slick();
+            // } else {
+            //     $(".photos").slick('unslick');
+            // }
         });
 
         request.fail(function (jqXHR, textStatus) {
@@ -136,7 +150,6 @@
             getphoto($(".colors div:first").attr("data-var"));
             $("div[id^='color-']").click(function () {
                 getphoto(this.getAttribute("data-var"));
-                //Slider();
             });
         });
 
@@ -160,6 +173,38 @@
         s.addClass('size-select');
         getcolors(s.attr("data-tovar"), s.attr("data-size"));
         //Slider();
+    });
+    var Granica = {
+        type: null,
+        val: function(value, f){
+            if (value != this.type){
+                this.type=value;
+                this.change()
+            }
+            if (f) {
+                this.change();
+            }
+        },
+        change: function(){
+            if (this.type == 0) {
+                Slider();
+            } else {
+                $(".photos").slick("unslick");
+            }
+        }
+    };
+    function GranicaSlick(force = false){
+        if (window.innerWidth < 1024) {
+            Granica.val(0, force);
+            // Slider();
+            // $(".photos").slick();
+        } else {
+            Granica.val(1, force);
+            // $(".photos").slick('unslick');
+        }
+    };
+    $(window).resize(function () {
+        GranicaSlick();
     });
 </script>
 {% endblock %}

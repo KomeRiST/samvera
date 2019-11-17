@@ -62,11 +62,14 @@ FONTS SIZE
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;
+  border-bottom: 1px solid darkgray;
+  -webkit-box-shadow: 0 -2px 6px 3px #5d5d5d;
+          box-shadow: 0 -2px 6px 3px #5d5d5d;
 }
 
 .logo > a {
+  letter-spacing: 1rem;
   color: white;
-  display: contents;
   /*padding: .75rem 0px;*/
   text-decoration: none;
   font-weight: 300;
@@ -75,49 +78,49 @@ FONTS SIZE
 
 @media only screen and (min-width: 300px) {
   .logo > a {
-    font-size: 24px;
+    font-size: 2rem;
   }
 }
 
 @media only screen and (min-width: 480px) {
   .logo > a {
-    font-size: 24px;
+    font-size: 2.15rem;
   }
 }
 
 @media only screen and (min-width: 560px) {
   .logo > a {
-    font-size: 24px;
+    font-size: 2.3rem;
   }
 }
 
 @media only screen and (min-width: 640px) {
   .logo > a {
-    font-size: 24px;
+    font-size: 2.5rem;
   }
 }
 
 @media only screen and (min-width: 768px) {
   .logo > a {
-    font-size: 48px;
+    font-size: 2.65rem;
   }
 }
 
 @media only screen and (min-width: 1024px) {
   .logo > a {
-    font-size: 48px;
+    font-size: 2.7rem;
   }
 }
 
 @media only screen and (min-width: 1248px) {
   .logo > a {
-    font-size: 48px;
+    font-size: 3rem;
   }
 }
 
 @media only screen and (min-width: 1440px) {
   .logo > a {
-    font-size: 48px;
+    font-size: 3rem;
   }
 }
 
@@ -152,7 +155,7 @@ FONTS SIZE
 
 body {
   margin: 0;
-  background-color: whitesmoke;
+  background-color: white;
   text-align: center;
 }
 
@@ -694,7 +697,6 @@ form .fieldWrapper .field_descr .small {
   background: transparent;
   outline: 0;
   right: 15px;
-  top: 15px;
   cursor: pointer;
   border-radius: 50%;
   -webkit-transition: background-color .15s linear;
@@ -734,7 +736,6 @@ form .fieldWrapper .field_descr .small {
   background-color: black;
   list-style: none;
   padding: 0 20px;
-  z-index: 9;
   visibility: hidden;
 }
 
@@ -1100,7 +1101,13 @@ form .fieldWrapper .field_descr .small {
 
 @media only screen and (min-width: 1440px) {
   .main_content {
-    width: 1440px;
+    width: 1600px;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+  .main_content {
+    padding: 0px;
   }
 }
 

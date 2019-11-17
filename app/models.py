@@ -139,7 +139,7 @@ class Tovar(models.Model):
         return s
 
     def get_absolute_url(self):
-        return reverse('')
+        return reverse('thing', args=[self.id, self.slug])
 
     class Meta:
         ordering = ['title']
@@ -177,7 +177,7 @@ class Variaciya(models.Model):
     def colortile_korz(self):
         if self.color:
             from django.utils.safestring import mark_safe
-            return mark_safe(u'<div id="color-{2}" data-var="{2}"><div style="background-color: {0};height: 24px;width: 24px;margin: auto;" class="color"></div> <small>({1})</small></div>'.format(self.color, self.color_text, self.id))
+            return mark_safe(u'<div id="color-{2}" data-var="{2}"><div style="background-color: {0};border-radius: 50%;border: 1px solid white;height: 24px;width: 24px;margin: auto;box-shadow: 0 0 0px 1px gray;text-align: center;" class="color"></div> <small>({1})</small></div>'.format(self.color, self.color_text, self.id))
         return 'пусто'
 
     def size_tag(self):

@@ -98,6 +98,7 @@ def home(request):
         'app/index.html',
         {
             'title':'Home Page',
+            # 'categories' : models.Category.objects.all(),
             #'tovarfolder': tovarfolder,
             #'kollections': kollections,
             'year':year(),
@@ -109,23 +110,23 @@ def tovarlist(request, category_slug=None):
     template = 'app/catalog/catalog.html'
     context = {}
     category = None
-    categories = models.Category.objects.all()
+    # categories = models.Category.objects.all()
     tovary = models.Tovar.objects.filter(hidden=True)
     if category_slug:
         category = get_object_or_404(models.Category, slug=category_slug)
         tovary = tovary.filter(category=category)
     context['category'] = category
     context['tovary'] = tovary
-    context['categories'] = categories
+    # context['categories'] = categories
     return render(
         request,
         template,
         context,
     )
 
-def thing(request, id):
+def thing(request, id, slug):
     """Карточка товара"""
-    t = get_object_or_404(models.Tovar, pk=id)
+    t = get_object_or_404(models.Tovar, pk=id, slug=slug, hidden=True)
     assert isinstance(request, HttpRequest)
     cart_product_form = CartAddProductForm()
     return render(

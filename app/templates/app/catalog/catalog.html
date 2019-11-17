@@ -1,7 +1,7 @@
 {% extends "app/layout.html" %}
 {% load staticfiles %}
 {% block css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/catalog/catalog.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/css/catalog/catalog.css' %}" />
 {% endblock %}
 {% block screen %}
 <!-- <div class="main_screen">
@@ -17,25 +17,36 @@
             <div class="category_item category_item__title">
                 <p>каталог</p>
             </div>
+            <div class="category_item {% if None == category %}category_item__select{% endif %}">
+                <a href="{% url 'tovarbycategory' %}">Все</a>
+            </div>
             {% for item in categories %}
-            <div class="category_item">
+            <div class="category_item {% if item == category %}category_item__select{% endif %}">
                 <a href="{{ item.get_absolute_url }}">{{ item }}</a>
             </div>
             {% endfor %}
         </div>
         <div class="catalog-items">
-        {% for item in tovary %}
+            {% if tovary %}
+            {% for item in tovary %}
             <div class="container" style="{% if not item.hidden %}opacity: .5;{% endif %}">
-                <a href="{% url 'thing' item.id %}" class="container-item">
+                <a href="{% url 'thing' item.id item.slug %}" class="container-item">
                     <img src="/media/{{item.random_image}}" alt="" width="100%" srcset="">
                     <div class="title">{{ item.title }}</div>
                     <div class="cost">{{ item.cost }}</div>
-                {% if request.user.is_staff %}
-                    <a href="{% url 'thing_edit' item.id %}" class="btn-base btn-dark"><p>Редактировать</p></a>
-                {% endif %}
+                    {% if request.user.is_staff %}
+                    <a href="{% url 'thing_edit' item.id %}" class="btn-base btn-dark">
+                        <p>Редактировать</p>
+                    </a>
+                    {% endif %}
                 </a>
             </div>
-        {% endfor %}
+            {% endfor %}
+            {% else %}
+            <div class="container_not_items">
+                <p>Извините, но товаров данной категории нет.</p>
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>
