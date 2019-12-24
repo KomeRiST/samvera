@@ -42,7 +42,7 @@ class PotentialClient(models.Model):
     phone = models.IntegerField("Моб. тел.", help_text="Телефон для связи с Вами", default="89997776655")
     commet = models.TextField("", max_length = 255, blank=True, help_text="Укажите свои пожелания в одежде", default="Моё пожелание/описание одежды")
 
-    data_create = models.DateTimeField("Дата регистрации", default=datetime.datetime.now())
+    data_create = models.DateTimeField("Дата регистрации", auto_now=True)
 
     class Meta:
         verbose_name = "Потенциальный клиент"
@@ -83,9 +83,28 @@ class PotentialClient(models.Model):
 #         verbose_name = "Вариация товара из заявки"
 #         verbose_name_plural = "Вариации товаров из заявок"
 
+class Collection(models.Model):
+    title = models.CharField("Название коллекции", db_index=True, max_length=50, help_text='Краткое название коллекции. Например: "Зима-Лето 2020"')
+    slug = models.SlugField(max_length=200, db_index=True, unique=True, help_text="url адресс данной коллекции", blank=True)
+    data_create = models.DateField("Дата создания коллекции", auto_now_add=True)
+    data_change = models.DateField("Дата изменения коллекции", auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('tovarbycollection', args=[self.slug])
+
+    class Meta:
+        ordering = ['-data_create',]
+        verbose_name = "Коллекция товаров"
+        verbose_name_plural = "Коллекции товаров"
+
 class Category(models.Model):
     title = models.CharField("Название категории", db_index=True, max_length=50, help_text="(Например: Платья, юбки, костюмы)")
     slug = models.SlugField(max_length=200, db_index=True, unique=True, help_text="url адресс данной категории", blank=True)
+    data_create = models.DateField("Дата создания категории", auto_now_add=True)
+    data_change = models.DateField("Дата изменения категории", auto_now=True)
 
     def __str__(self):
         return self.title
@@ -109,6 +128,7 @@ class Tovar(models.Model):
     data_create = models.DateField("Дата добавления товара", auto_now_add=True)
     hidden = models.BooleanField("Видимость для покупателя", help_text="Признак видимости товара на сайте", default=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1, related_name='tovaritems', verbose_name='Категория товара')
+    collection = models.ForeignKey(Collection, on_delete=models.CASCADE, null=True, blank=True, default=1, related_name='collectionparts', verbose_name='В составе коллекции')
 
     def __str__(self):
         return self.title
@@ -177,7 +197,7 @@ class Variaciya(models.Model):
     def colortile_korz(self):
         if self.color:
             from django.utils.safestring import mark_safe
-            return mark_safe(u'<div id="color-{2}" data-var="{2}"><div style="background-color: {0};border-radius: 50%;border: 1px solid white;height: 24px;width: 24px;margin: auto;box-shadow: 0 0 0px 1px gray;text-align: center;" class="color"></div> <small>({1})</small></div>'.format(self.color, self.color_text, self.id))
+            return mark_safe(u'<div id="color-{2}" data-var="{2}"><div style="background-color: {0};" class="color"></div> <small>({1})</small></div>'.format(self.color, self.color_text, self.id))
         return 'пусто'
 
     def size_tag(self):

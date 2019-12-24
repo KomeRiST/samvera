@@ -19,7 +19,7 @@
     display: none;
 }
 
-.ac-container > div{
+.ac-container>div {
     padding: .5rem;
     border-bottom: 1px solid lightgray;
     text-align: left;
@@ -29,19 +29,20 @@
     cursor: pointer;
     font-weight: 300;
     font-size: 1.5rem;
-    letter-spacing: 0.15rem;
+    // letter-spacing: 0.15rem;
     display: block;
     width: 100%;
     // @include fontsize("form-field-title");
     position: relative;
     margin: 1rem 0;
-    &:after {
-        content: "+";
-        float: right;
-        font-size: 1.5rem;
-        position: absolute;
-        right: 0rem;
-    }
+}
+
+.ac-container>div>label:after {
+    content: "+";
+    float: right;
+    font-size: 1.5rem;
+    position: absolute;
+    right: 0rem;
 }
 
 .ac-container article {
@@ -67,7 +68,7 @@
     //  @include mq("tablet", max) {
     //      width: 90%;
     // }
-    
+
     .help {
         margin-top: 1rem;
         text-align: center;
@@ -130,7 +131,8 @@
     // font-weight: 700;
 }
 
-.ac-container input:checked + label, .ac-container input:checked + label:hover {
+.ac-container input:checked+label,
+.ac-container input:checked+label:hover {
     // font-weight: bold;
     -webkit-transition: font-weight 1s linear;
     -moz-transition: font-weight 1s linear;
@@ -139,7 +141,7 @@
     transition: font-weight 1s linear;
 }
 
-.ac-container input:checked ~ article {
+.ac-container input:checked~article {
     max-height: 3000px;
     height: auto;
     // padding: 1rem 0px;
@@ -148,9 +150,9 @@
     -o-transition: max-height 0.5s ease-in-out;
     -ms-transition: max-height 0.5s ease-in-out;
     transition: max-height 0.5s ease-in-out;
-    
+
 }
 
-.ac-container input:checked ~ label:after {
+.ac-container input:checked~label:after {
     content: "-";
 }

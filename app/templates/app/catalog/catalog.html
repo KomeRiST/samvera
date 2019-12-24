@@ -31,7 +31,9 @@
             {% for item in tovary %}
             <div class="container" style="{% if not item.hidden %}opacity: .5;{% endif %}">
                 <a href="{% url 'thing' item.id item.slug %}" class="container-item">
-                    <img src="/media/{{item.random_image}}" alt="" width="100%" srcset="">
+                    <div class="img_container">
+                        <img src="/media/{{item.random_image}}" alt="" width="100%" srcset="">
+                    </div>
                     <div class="title">{{ item.title }}</div>
                     <div class="cost">{{ item.cost }}</div>
                     {% if request.user.is_staff %}

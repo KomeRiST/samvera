@@ -1,4 +1,5 @@
 ﻿@import "variables.scss";
+@import "mixins.scss";
 
 body {
     background-color: black;
@@ -33,17 +34,34 @@ body {
     }
 
     .block-two {
-        -ms-grid-column: 1/13;
         grid-column: 1/13;
-        background-color: black;
-
-        .drag_slider {
-            height: 70vh;
-
-            .slider-container {
-                overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        &>div {
+            height: 100vh;
+            p {
+                @include fontsize("form-field-title");
+                color: $fc-title_light;
             }
         }
+        // .catalog {
+        //     display: flex;
+        //     align-items: center;
+        //     justify-content: center;
+        //     p {
+        //         @include fontsize("title");
+        //     }
+        // }
+        // .about {
+        //     display: flex;
+        //     align-items: center;
+        //     justify-content: center;
+        //     p {
+        //         @include fontsize("title");
+        //     }
+        // }
     }
 }
 

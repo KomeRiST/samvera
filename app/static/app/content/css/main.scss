@@ -4,12 +4,12 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&display=swap&subset=cyrillic');
 
 // @font-face {
-    // font-family: 'Roboto';
+// font-family: 'Roboto';
 //     font-family: 'Comfortaa', cursive;
 //     font-family: 'Philosopher', sans-serif;
 //     font-family: 'Gabriela', serif;
-    // src: url('../../fonts/roboto/Roboto-Thin.TTF');
-    // src: url('../../fonts/roboto/Roboto-ThinItalic.TTF');
+// src: url('../../fonts/roboto/Roboto-Thin.TTF');
+// src: url('../../fonts/roboto/Roboto-ThinItalic.TTF');
 // }
 
 * {
@@ -21,6 +21,7 @@
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    text-align: center;
     // @include fontsize("text");
 }
 
@@ -30,7 +31,7 @@
     position: sticky;
     top: 0px;
     background-color: black;
-    z-index: 8;
+    z-index: 11;
     display: flex;
     -ms-align-content: center;
     -webkit-align-content: center;
@@ -41,7 +42,12 @@
     -webkit-flex-direction: row;
     flex-direction: row;
     border-bottom: 1px solid $fc-light;
-    box-shadow: 0 -2px 6px 3px $fc-gray;
+    // box-shadow: 0 -2px 6px 3px $fc-gray;
+    min-height: 50px;
+
+    @include mq('phablet', max) {
+        min-height: auto;
+    }
 
     &>a {
         @include fontsize("logo");
@@ -64,8 +70,9 @@
 }
 
 .developer {
-    position: absolute;
-    bottom: 0px;
+    // position: absolute;
+    // bottom: 0px;
+    padding-top: 2rem;
     justify-self: flex-end;
     align-self: center;
     font-size: 0.75rem;
@@ -81,11 +88,12 @@
     }
 }
 
-body {
-    margin: 0;
-    background-color: $bg-Default;
-    text-align: center;
-}
+// .blur {
+    // margin: 0;
+    // background-color: $bg-Default;
+    // text-align: center;
+    // transition: filter .5s 0.5s;
+// }
 
 .btn-base {
     border: 1px solid transparent;
@@ -168,6 +176,7 @@ body {
 form {
     // padding: 2rem;
     min-width: 300px;
+
     // margin: 2rem auto;
     /*background-color: white;*/
     @include mq("tablet", max) {
@@ -198,7 +207,8 @@ form {
 
         .field_descr {
             @include fontsize("form-field-drescr");
-            .small{
+
+            .small {
                 font-size: 0.75rem;
                 color: gray;
             }
@@ -209,17 +219,13 @@ form {
 .korzcount {
     background-color: crimson;
     position: absolute;
-    top: -14px;
-    right: -14px;
-    height: 25px;
-    width: 25px;
-    font-size: 14px;
+    top: 0px;
+    right: 0;
+    height: 2rem;
+    width: 2rem;
     color: white;
     border-radius: 100%;
-    padding: 4px;
-    text-align: center;
-    /*line-height: 25px;
-            align-self: center;*/
+    line-height: 2rem;
 }
 
 /*
@@ -233,10 +239,12 @@ form {
     /* grid-gap: 35px; */
     justify-content: center;
     flex-wrap: wrap;
+
     /*border-top: 1px solid gray;*/
     /* grid-auto-flow: column; */
-    @include mq('phablet', max) {
+    @include mq('tablet', max) {
         font-size: 12px;
+        width: 100%;
     }
 
     @include mq('phablet') {
@@ -246,7 +254,7 @@ form {
     .bottom-menu__item {
         vertical-align: top;
         text-align: left;
-        margin: 3rem;
+        margin: 1rem;
         min-width: 220px;
         list-style: none;
 
@@ -279,6 +287,7 @@ form {
         }
     }
 }
+
 // ������ � �������
 
 /*
@@ -294,18 +303,19 @@ form {
     @include mq("tablet", max) {
         display: none;
     }
+
     /*.navi:after, .navi:before {
         content: "";
         width: 0px;
         border-left: 2px dashed $cShov;
         box-shadow: 0px 0px 7px 4px $cBurtik;
     }*/
-    & > ul > li {
+    &>ul>li {
         width: 33%;
         text-align: center;
     }
 
-    & > ul {
+    &>ul {
         position: sticky;
         z-index: 1000;
         top: 0px;
@@ -318,19 +328,20 @@ form {
         -webkit-align-items: stretch;
         align-items: stretch;
         font-size: 1.5rem;
+
         /*background-color: rgba(0, 0, 0, 0.8);*/
         /*box-shadow: 0 10px 20px -10px $cBurtik;*/
         /*@include border_shov();*/
-        & > li:first-child {
+        &>li:first-child {
             float: left;
         }
 
-        & > li > a:hover {
+        &>li>a:hover {
             /*color: #ff6f3a;*/
             text-shadow: 0 0 10px black, 0 0 30px rgba(255, 255, 255, 0.6);
         }
 
-        & > li:hover ul {
+        &>li:hover ul {
             /*display: flex;*/
             background-color: rgba(0, 0, 0, 0.8);
             /* background-attachment: fixed; */
@@ -350,9 +361,9 @@ form {
             /*@include border_shov();*/
             border-bottom: none;
             /*border-radius: 0 0 1em 1em;*/
-            box-shadow: inset 0 10px 15px -5px black,0 25px 30px -10px black;
+            box-shadow: inset 0 10px 15px -5px black, 0 25px 30px -10px black;
 
-            & > .itemnewcollection {
+            &>.itemnewcollection {
                 text-align: center;
                 text-decoration: none;
                 color: #ff6f3a;
@@ -360,11 +371,11 @@ form {
             }
         }
 
-        & > li:last-child {
+        &>li:last-child {
             float: right;
         }
 
-        & > li:nth-child(2n) {
+        &>li:nth-child(2n) {
             font-size: 2rem;
             align-content: center;
             align-items: center;
@@ -398,7 +409,8 @@ form {
             }
         }
 
-        & > li > ul > li > a {
+        &>li>ul>li>a {
+
             /*border-bottom: 2px dashed #444444;*/
             /*-moz-border-radius: 1em;*/
             /*box-shadow: 0 15px 15px -5px black;*/
@@ -409,6 +421,7 @@ form {
         }
     }
 }
+
 // ---------------------------
 // Main Navigation Menu
 // ---------------------------
@@ -422,8 +435,10 @@ form {
         background-color: white;
         color: black;
     }
+
     // Toggle Button
-    &__toggle, &__toggleC {
+    &__toggle,
+    &__toggleC {
         /*display: inline-block;*/
         position: fixed;
         z-index: 10;
@@ -431,13 +446,13 @@ form {
         border: 0;
         background: transparent;
         outline: 0;
-        right: 15px;
-        // top: 15px;
+        right: 0px;
+        top: 0px;
         cursor: pointer;
         border-radius: 50%;
         transition: background-color .15s linear;
         text-decoration: none;
-        background-color: rgba(0,0,0,.25);
+        background-color: rgba(0, 0, 0, .25);
 
 
         .hid {
@@ -446,7 +461,7 @@ form {
 
         &:hover,
         &:focus {
-            background-color: rgba(0,0,0,.85);
+            background-color: rgba(0, 0, 0, .85);
         }
     }
 
@@ -458,16 +473,17 @@ form {
     &__menu {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        height: 100%;
-        position: fixed;
-        top: 0;
-        right: 0;
+        // justify-content: center;
+        height: 100vh;
+        // position: fixed;
+        // top: 0;
+        // right: 0;
         background-color: black;
         list-style: none;
         padding: 0 20px;
         // z-index: 9;
         visibility: hidden;
+        overflow-y: auto;
 
         @include mq("phablet", max) {
             width: 100%;
@@ -489,8 +505,8 @@ form {
         border-top: 1px solid gray;
 
         .sociallinks__item {
-            width: 30%;
-            margin: 1rem 1.25%;
+            // width: 30%;
+            // margin: 1rem 1.25%;
 
             @include mq("phablet", max) {
                 width: 50px;
@@ -509,15 +525,15 @@ form {
         display: block;
         text-align: center;
         text-transform: uppercase;
-        letter-spacing: 5px;
-        font-size: 1.25rem;
+        letter-spacing: 1px;
+        // font-size: 1.25rem;
         text-decoration: none;
         padding: 1rem;
 
         &:hover,
         &:focus {
             outline: 0;
-            background-color: rgba(0,0,0,0.2);
+            background-color: rgba(0, 0, 0, 0.2);
         }
     }
 }
@@ -587,10 +603,12 @@ form {
 
 .nav:target,
 .nav--open {
+
     //scale the background circle to full size
-    > .splash::after {
+    >.splash::after {
         transform: scale(1);
     }
+
     //animate the menu icon
     .menuicon {
         color: white;
@@ -613,6 +631,7 @@ form {
             transform: rotate(-45deg);
         }
     }
+
     //show the nav items
     .nav {
         &__menu {
@@ -625,6 +644,7 @@ form {
         }
     }
 }
+
 // ���� �����
 
 .t-sociallinks__svg {
@@ -728,7 +748,7 @@ form {
 
 .line {
     width: 80%;
-    height:1px;
+    height: 1px;
     // background-color: gray;
     margin: 3rem auto 0px auto;
 }
@@ -741,7 +761,7 @@ a {
 
 footer {
     z-index: 0;
-    /*padding: 1.5rem 0;*/
+    padding: 1.5rem 0;
     background-color: whitesmoke;
 }
 
@@ -749,6 +769,163 @@ small {
     font-size: .65rem;
     color: $fc-gray;
 }
-// li {
-//     list-style: none;
+
+
+
+// Гармошка для меню сайта(Каталог)
+
+
+
+
+.ac-menu_container input {
+    display: none;
+}
+
+// .ac-menu_container>div {
+//     padding: .5rem;
+//     border-bottom: 1px solid lightgray;
+//     text-align: left;
 // }
+
+.ac-menu_container label {
+    cursor: pointer;
+    // font-weight: 300;
+    // font-size: 1.5rem;
+    // letter-spacing: 0.15rem;
+    // display: block;
+    // width: 100%;
+    // @include fontsize("form-field-title");
+    position: relative;
+    // margin: 1rem 0;
+}
+
+.ac-menu_container>div>label:after {
+    content: "+";
+    float: right;
+    // font-size: 1.5rem;
+    position: absolute;
+    right: 0rem;
+}
+
+.ac-menu_container article {
+    margin-top: 1rem 0;
+    overflow: hidden;
+    max-height: 0px;
+    position: relative;
+    margin: auto;
+    -webkit-transition: max-height 0.3s ease-in-out;
+    -moz-transition: max-height 0.3s ease-in-out;
+    -o-transition: max-height 0.3s ease-in-out;
+    -ms-transition: max-height 0.3s ease-in-out;
+    transition: max-height 0.3s ease-in-out;
+
+    // @include mq("tablet") {
+    //     width: 85%;
+    // }
+
+    // @include mq("tablet-wide") {
+    //     width: 65%;
+    // }
+
+    //  @include mq("tablet", max) {
+    //      width: 90%;
+    // }
+
+    .help {
+        margin-top: 1rem;
+        text-align: center;
+        text-indent: 0px;
+    }
+}
+
+.ac-menu_container article p {
+    // text-indent: 1rem;
+    padding: .225rem 0px;
+    // text-align: justify;
+
+    // @include mq("tablet-wide") {
+    //     text-align: justify;
+    // }
+
+    // @include mq("tablet") {
+    //     text-align: center;
+    // }
+
+    // @include mq("tablet", max) {
+    //     text-align: justify;
+    // }
+}
+
+.ac-menu_container a {
+    text-decoration: none;
+    color: $fc-gray;
+    // font-weight: bold;
+
+    &:hover {
+        color: $fc-light;
+    }
+}
+
+.ac-menu_container article ul {
+    text-align: left;
+    margin: auto;
+    width: 100%;
+
+    // @include mq("tablet") {
+    //     width: 75%;
+    // }
+
+    // @include mq("tablet-wide") {
+    //     width: 50%;
+    // }
+
+    // @include mq("tablet", max) {
+    //     width: 100%;
+    // }
+
+    li {
+        margin-left: 1rem;
+        padding: .2rem 0px;
+    }
+}
+
+.ac-menu_container label:hover {
+    // font-weight: 700;
+}
+
+.ac-menu_container input:checked+label,
+.ac-menu_container input:checked+label:hover {
+    // font-weight: bold;
+    -webkit-transition: font-weight 1s linear;
+    -moz-transition: font-weight 1s linear;
+    -o-transition: font-weight 1s linear;
+    -ms-transition: font-weight 1s linear;
+    transition: font-weight 1s linear;
+}
+
+.ac-menu_container input:checked~article {
+    max-height: 3000px;
+    height: auto;
+    // padding: 1rem 0px;
+    -webkit-transition: max-height 0.5s ease-in-out;
+    -moz-transition: max-height 0.5s ease-in-out;
+    -o-transition: max-height 0.5s ease-in-out;
+    -ms-transition: max-height 0.5s ease-in-out;
+    transition: max-height 0.5s ease-in-out;
+
+}
+
+.ac-menu_container input:checked~label:after {
+    content: "-";
+}
+
+@media screen and (max-width: 560px) {
+    .fullscreenmenu {
+        display: none;
+    }
+}
+@media screen and (min-width: 561px) {
+    #menu {
+        display: none;
+    }
+}

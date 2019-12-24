@@ -2,7 +2,7 @@
 from django import forms
 from django.db import models
 from app.models import *
-from app.models import ColorField
+# from app.models import ColorField
 from orders.models import *
 from django.utils.safestring import mark_safe
 #from nested_inline.admin import NestedModelAdmin, NestedStackedInline, NestedTabularInline
@@ -13,7 +13,8 @@ import nested_admin
 admin.site.register(StatusOrder)
 admin.site.register(PotentialClient)
 #admin.site.register(Category)
-#admin.site.register(OrderTovary)
+# admin.site.register(Order)
+admin.site.register(OrderItem)
 #admin.site.register(OrderTovaryVariaciya)
 #admin.site.register(Variaciya)
 
@@ -21,11 +22,15 @@ admin.site.register(PotentialClient)
 #     model = OrderTovaryVariaciya
 #     fields = ['variaciya', 'count']
 
+@admin.register(Collection)
+class CollectionAdmin(admin.ModelAdmin):
+    fields=['title', 'slug']
+    prepopulated_fields={'slug':('title',)}
+
 class OrderItemsInline(admin.TabularInline):
     model = OrderItem
-    # inlines = [OrderVarsInline,]
-    #fields = ['variaciya', 'count']
-    fields = ['tovar',]
+    fields = ['variaciya', 'cost', 'count']
+    # readonly_fields = ['variaciya', 'cost', 'count' ]
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -36,8 +41,9 @@ class CategoryAdmin(admin.ModelAdmin):
 class OrderAdmin(admin.ModelAdmin):
     model = Order
     inlines = [OrderItemsInline,]
-    fields = ['client', 'status', 'namber', 'date_create']
-    readonly_fields = ['date_create', ]
+    extrta = 0
+    fields = ['client', 'status', 'addres', 'date_create', 'date_update']
+    readonly_fields = ['date_create', 'date_update' ]
     # list_editable = ['status', ]
 
 @admin.register(Gallery)
@@ -51,7 +57,7 @@ class GallAdmin(admin.ModelAdmin):
 
 class ImageInline(nested_admin.nested.NestedTabularInline):
     model = Gallery
-    extra = 1
+    extra = 0
     fields = ['image_img', 'image']
     readonly_fields = ['image_img']
 
@@ -97,10 +103,11 @@ class VariaciyaInline(nested_admin.nested.NestedStackedInline):
 @admin.register(Tovar)
 class TovarAdm(nested_admin.nested.NestedModelAdmin):
     inlines = [VariaciyaInline,]
-    list_display = ['title', 'slug', 'count_var', 'sebestoimost', 'cost', 'data_create', 'hidden']
-    fields = ['kod', ('title', 'category'),('slug', 'hidden', 'data_create'),('descr', 'uhod'), ('sebestoimost', 'cost')]
+    list_display = ['title', 'slug', 'collection', 'count_var', 'sebestoimost', 'cost', 'data_create', 'hidden']
+    fields = ['kod', ('title', 'category', 'collection'),('slug', 'hidden', 'data_create'),('descr', 'uhod'), ('sebestoimost', 'cost')]
     readonly_fields = ['kod', 'data_create', 'count_var']
     prepopulated_fields = {'slug': ('title',)}
+    list_editable = ['sebestoimost', 'collection', 'cost', 'hidden']
 
 #@admin.register(Category)
 #class CategoryAdmin(admin.ModelAdmin):

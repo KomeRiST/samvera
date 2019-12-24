@@ -10,18 +10,20 @@
     {% load staticfiles %}
     <script src="{% static 'app/scripts/jquery-3.3.1.min.js' %}"></script>
     <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
+    <!-- <script src="{% static 'app/scripts/blur.js' %}"></script> -->
+    <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/full_screen_menu.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/account/account.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/main.css' %}" />
     {#<link rel="stylesheet" type="text/css" href="{% static 'app/content/css/mob_menu.css' %}" />#}
     <link rel="stylesheet" type="text/css" href="{% static 'app/slick/slick.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/slick/slick-theme.css' %}" />
-
     <style>
         #nav {
             position: absolute;
             top: 0;
             right: 0;
             z-index: 10;
+            height: 0;
         }
 
         .letter {
@@ -124,16 +126,6 @@
         .despre {
             color: darkgray;
         }
-    .nav__item > div {
-        border: none !important;
-        
-    }
-    .ac-small a {
-        font-size: medium !important;
-    }
-    .ac-small a:hover {
-        color: white !important;
-    }
     </style>
 
     {% block css %}{% endblock %}
@@ -142,6 +134,27 @@
 </head>
 
 <body>
+        <div class="fullscreenmenu" id="fs_menu" hidden>
+            <div class="greed">
+                <a href='{% url "cart:cart_detail" %}' class="cart">
+                    <p>Корзина</p>
+                    <p>
+                        {% with total_items=cart|length %}
+                        {% if cart|length > 0 %}
+                            У Вас в корзине имеется товар в количестве <b>{{total_items}} шт.</b><strong>xdfxd</strong>
+                        {% else %}
+                            Ваша корзина пуста!
+                        {% endif %}
+                        {% endwith %}
+                    </p>
+                </a>
+                <div class="collections"></div>
+                <div class="center"><a href="/">samvera</a></div>
+                <div class="contacts"></div>
+                <div class="social"></div>
+                <div class="categories"></div>
+            </div>
+        </div>
     <div id="p_prldr">
         <div class="sec">
             <div class="titlepre">{{title}}</div>
@@ -180,7 +193,7 @@
             <!-- ACTUAL NAVIGATION MENU -->
             <ul class="nav__menu" id="menu" tabindex="-1" aria-label="main navigation" hidden>
                 <li class="nav__item"><a href="/" class="nav__link">SAMVERA</a></li>
-                <li class="nav__item ac-container">
+                <li class="nav__item ac-menu_container">
                     <!-- <a href="/catalog/" class="nav__link">Каталог</a> -->
                     <div>
                         <input name="accordion-01" id="ac-01" type="checkbox" checked="">
@@ -315,6 +328,7 @@
 
         </nav>
     </div>
+    <div class="blur" id="blur">
 
     <!-- {% if messages %}
     <ul class="messages">
@@ -342,6 +356,7 @@
     {% endblock %}
 
     <div class="line"></div>
+
 
     <footer>
         <ul class="bottom-menu__list">
@@ -443,7 +458,7 @@
             -->
         </ul>
     </footer>
-
+</div>
 
     <script src="{% static '/app/slick/slick.min.js' %}"></script>
     <script src="{% static '/app/scripts/korzina.js' %}"></script>
@@ -469,6 +484,7 @@
         //});
         const nav = document.querySelector('#nav');
         const menu = document.querySelector('#menu');
+        const $fs_menu = $('#fs_menu');
         const menuToggle = document.querySelector('.nav__toggle');
         let isMenuOpen = false;
 
@@ -481,6 +497,18 @@
             // toggle a11y attributes and active class
             menuToggle.setAttribute('aria-expanded', String(isMenuOpen));
             menu.hidden = !isMenuOpen;
+            // $fs_menu.hidden = !isMenuOpen;
+            if (isMenuOpen) {
+                // 
+                $(".blur").css("filter", "blur(5px)");
+                $(".blur").css("transition", "filter .5s");
+                $fs_menu.fadeIn(500);
+            } else {
+                // 
+                $(".blur").css("filter", "none");
+                $(".blur").css("transition", "filter .5s");
+                $fs_menu.fadeOut(500);
+            }
             nav.classList.toggle('nav--open');
         });
 
@@ -510,44 +538,45 @@
         $(document).ready(function () {
             var $preloader = $('#p_prldr');
             $preloader.delay(500).fadeOut(1000);
+            // $('.blur').blurjs();
+            // var $preloader = $('.slide .main-text');
+            // var list = document.querySelector('#nav__korz');
+            // $("#korzcount2").toggle(600);
+            // if (korz.GetCountVars() > 0) {
+            //     $("#korzcount").show;
+            //     $("#korzcount2").show;
+            // } else {
+            //     $("#korzcount").hide;
+            //     $("#korzcount2").hide;
+            // }
+            // //var t = document.querySelector("#korzcount");
+            // list.addEventListener('click', function (ev) {
+            //     if (document.documentElement.clientHeight < 550) {
+            //         if ($(".nav__menu").attr("visibility") === "visible") { // Если меню открыто (нужно закрыть)
+            //             $(".nav__menu").css("justify-content", "center");
+            //             $(".nav__menu").css("overflow-y", "hidden");
+            //             $(".developer").css("display", "block");
+            //         } else {
+            //             $(".nav__menu").css("justify-content", "start");
+            //             $(".nav__menu").css("overflow-y", "auto");
+            //             $(".developer").css("display", "contents");
+            //         }
+            //     } else {
+            //         $(".nav__menu").css("justify-content", "center");
+            //         $(".nav__menu").css("overflow-y", "hidden");
+            //         $(".developer").css("display", "block");
+            //     }
 
-            var $preloader = $('.slide .main-text');
-            var list = document.querySelector('#nav__korz');
-            $("#korzcount2").toggle(600);
-            if (korz.GetCountVars() > 0) {
-                $("#korzcount").show;
-                $("#korzcount2").show;
-            } else {
-                $("#korzcount").hide;
-                $("#korzcount2").hide;
-            }
-            //var t = document.querySelector("#korzcount");
-            list.addEventListener('click', function (ev) {
-                if (document.documentElement.clientHeight < 550) {
-                    if ($(".nav__menu").attr("visibility") === "visible") { // Если меню открыто (нужно закрыть)
-                        $(".nav__menu").css("justify-content", "center");
-                        $(".nav__menu").css("overflow-y", "hidden");
-                        $(".developer").css("display", "block");
-                    } else {
-                        $(".nav__menu").css("justify-content", "start");
-                        $(".nav__menu").css("overflow-y", "auto");
-                        $(".developer").css("display", "contents");
-                    }
-                } else {
-                    $(".nav__menu").css("justify-content", "center");
-                    $(".nav__menu").css("overflow-y", "hidden");
-                    $(".developer").css("display", "block");
-                }
-
-                if (korz.GetCountVars() > 0) {
-                    $("#korzcount").toggle(600);
-                    $("#korzcount2").toggle(600);
-                }
-            }, false);
+            //     if (korz.GetCountVars() > 0) {
+            //         $("#korzcount").toggle(600);
+            //         $("#korzcount2").toggle(600);
+            //     }
+            // }, false);
 
         });
         $(window).load(function () {
             $preloader.delay(500).fadeIn(1000);
+        
         });
     </script>
     <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>

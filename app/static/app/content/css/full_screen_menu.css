@@ -1,0 +1,204 @@
+/*    COLOR -- FONTS    */
+/*    COLOR -- BLOCKS   */
+/*
+FONTS SIZE
+    phone: 300px
+    phone-wide: 480px
+    phablet: 560px
+
+    tablet-small: 640px
+    tablet: 768px
+    tablet-wide: 1024px
+
+    desktop: 1248px
+    desktop-wide: 1440px
+
+*/
+/*    COLOR -- FONTS    */
+/*    COLOR -- BLOCKS   */
+/*
+FONTS SIZE
+    phone: 300px
+    phone-wide: 480px
+    phablet: 560px
+
+    tablet-small: 640px
+    tablet: 768px
+    tablet-wide: 1024px
+
+    desktop: 1248px
+    desktop-wide: 1440px
+
+*/
+.fullscreenmenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 10;
+}
+
+.fullscreenmenu .greed {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 3fr 1fr;
+      grid-template-columns: 1fr 3fr 1fr;
+      grid-template-areas: 'cart collections .' 'cart collections categories' '. center categories' '. contacts categories' '. social categories';
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.fullscreenmenu .greed > div {
+  height: 100%;
+}
+
+.fullscreenmenu .greed > div:hover {
+  background-color: #0a0a0a42;
+  -webkit-transition: background-color .5s;
+  transition: background-color .5s;
+}
+
+.fullscreenmenu .greed .cart {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  grid-area: cart;
+  height: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: background-color .5s;
+  transition: background-color .5s;
+}
+
+.fullscreenmenu .greed .cart * {
+  color: darkgray;
+}
+
+.fullscreenmenu .greed .cart:hover {
+  background-color: #0a0a0a;
+  -webkit-transition: background-color .5s;
+  transition: background-color .5s;
+}
+
+.fullscreenmenu .greed .collections {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 2;
+  grid-area: collections;
+}
+
+.fullscreenmenu .greed .center {
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  grid-area: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: color .5s;
+  transition: color .5s;
+}
+
+.fullscreenmenu .greed .center a {
+  text-transform: uppercase;
+  color: darkgray;
+  display: contents;
+}
+
+@media only screen and (min-width: 300px) {
+  .fullscreenmenu .greed .center a {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .fullscreenmenu .greed .center a {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (min-width: 560px) {
+  .fullscreenmenu .greed .center a {
+    font-size: 32px;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+  .fullscreenmenu .greed .center a {
+    font-size: 32px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .fullscreenmenu .greed .center a {
+    font-size: 68px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .fullscreenmenu .greed .center a {
+    font-size: 68px;
+  }
+}
+
+@media only screen and (min-width: 1248px) {
+  .fullscreenmenu .greed .center a {
+    font-size: 68px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .fullscreenmenu .greed .center a {
+    font-size: 72px;
+  }
+}
+
+.fullscreenmenu .greed .center a:hover {
+  color: white;
+  -webkit-transition: color .5s;
+  transition: color .5s;
+}
+
+.fullscreenmenu .greed .center:hover {
+  background-color: black;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.fullscreenmenu .greed .contacts {
+  -ms-grid-row: 4;
+  -ms-grid-column: 2;
+  grid-area: contacts;
+}
+
+.fullscreenmenu .greed .social {
+  -ms-grid-row: 5;
+  -ms-grid-column: 2;
+  grid-area: social;
+}
+
+.fullscreenmenu .greed .categories {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 4;
+  -ms-grid-column: 3;
+  grid-area: categories;
+}
+/*# sourceMappingURL=full_screen_menu.css.map */

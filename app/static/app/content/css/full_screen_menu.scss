@@ -1,0 +1,96 @@
+@import "variables.scss";
+@import "mixins.scss";
+
+.fullscreenmenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    z-index: 10;
+    // display: none;
+    // transition: display .5s;
+    // @include mq('phablet', max) {
+    //     display: none;
+    // }
+    .greed {
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+        grid-template-areas: 
+            'cart collections .'
+            'cart collections categories'
+            '. center categories'
+            '. contacts categories'
+            '. social categories';
+        height: 100%;
+        align-items: center;
+        &>div{
+            height: 100%;
+        }
+        &>div:hover{
+                background-color: #0a0a0a42;
+                // border: 1px solid #1f1f1f;
+                // box-shadow: 0 0 20px #1f1f1f;
+                transition: background-color .5s;
+        }
+
+        .cart{
+            grid-area: cart;
+            height: inherit;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            // border: 1px solid black;
+            transition: background-color .5s;
+            * {
+                color: $fc-light;
+            }
+            &:hover{
+                background-color: #0a0a0a;
+                // border: 1px solid #1f1f1f;
+                // box-shadow: 0 0 20px #1f1f1f;
+                transition: background-color .5s;
+            
+        }
+        }
+        .collections {
+            grid-area: collections;
+            // background-color: green;
+        }
+        .center {
+            grid-area: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: color .5s;
+            a {
+                // background-color: #000;
+                text-transform: uppercase;
+                color: $fc-light;
+                @include fontsize("title");
+                display: contents;
+                &:hover {
+                    color: white;
+                    transition: color .5s;
+                }
+            }
+            &:hover {
+                background-color: $bg-dark;
+                transition: none;
+            }
+        }
+        .contacts {
+            grid-area: contacts;
+            // background-color: gray;
+        }
+        .social {
+            grid-area: social;
+            // background-color: blue;
+        }
+        .categories {
+            grid-area: categories;
+            // background-color: yellow;
+        }
+    }
+}

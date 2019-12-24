@@ -73,10 +73,10 @@ MIDDLEWARE = [
 ADMIN_REORDER = (
     'shop',
     {'app': 'app', 'label': 'Склад',
-    'models': ('app.Category', 'app.Tovar', 'app.Variaciya', 'app.Gallery')},
+    'models': ('app.Collection', 'app.Category', 'app.Tovar', 'app.Variaciya', 'app.Gallery')},
 
-    {'app': 'app', 'label': 'Заказы',
-    'models': ('app.Orders', 'app.OrderTovary', 'app.OrderTovaryVariaciya')},
+    {'app': 'orders', 'label': 'Заказы',
+    'models': ('orders.Order', 'orders.OrderItem')},
 
     {'app': 'auth', 'label': 'Авторизация',
     'models': ('auth.User', 'auth.Group')},

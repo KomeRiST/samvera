@@ -14,6 +14,22 @@ FONTS SIZE
     desktop-wide: 1440px
 
 */
+/*    COLOR -- FONTS    */
+/*    COLOR -- BLOCKS   */
+/*
+FONTS SIZE
+    phone: 300px
+    phone-wide: 480px
+    phablet: 560px
+
+    tablet-small: 640px
+    tablet: 768px
+    tablet-wide: 1024px
+
+    desktop: 1248px
+    desktop-wide: 1440px
+
+*/
 body {
   background-color: black;
 }
@@ -58,17 +74,78 @@ body {
 }
 
 .content .block-two {
-  -ms-grid-column: 1/13;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 12;
   grid-column: 1/13;
-  background-color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-.content .block-two .drag_slider {
-  height: 70vh;
+.content .block-two > div {
+  height: 100vh;
 }
 
-.content .block-two .drag_slider .slider-container {
-  overflow: hidden;
+.content .block-two > div p {
+  color: white;
+}
+
+@media only screen and (min-width: 300px) {
+  .content .block-two > div p {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .content .block-two > div p {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (min-width: 560px) {
+  .content .block-two > div p {
+    font-size: 22px;
+  }
+}
+
+@media only screen and (min-width: 640px) {
+  .content .block-two > div p {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .content .block-two > div p {
+    font-size: 26px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .content .block-two > div p {
+    font-size: 26px;
+  }
+}
+
+@media only screen and (min-width: 1248px) {
+  .content .block-two > div p {
+    font-size: 26px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .content .block-two > div p {
+    font-size: 28px;
+  }
 }
 
 footer {

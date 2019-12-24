@@ -43,14 +43,14 @@
                         <label for="ac-1">Описание и обмеры</label>
                         <article class="ac-small">
                             <p>{{thing.descr}}</p>
-                            <p>Обратите вниммание на
+                            <!-- <p>Обратите вниммание на
                                 <label class="tv-link" for="ac-3"><b>уход за изделием</b></label>!
-                            </p>
+                            </p> -->
                         </article>
                     </div>
 
                     <div>
-                        <input name="accordion-1" id="ac-2" type="checkbox" checked="">
+                        <input name="accordion-1" id="ac-2" type="checkbox">
                         <label for="ac-2">Параметры модели</label>
                         <article class="ac-small">
                             <p class="model"></p>
@@ -58,7 +58,7 @@
                     </div>
 
                     <div>
-                        <input name="accordion-1" id="ac-3" type="checkbox" checked="">
+                        <input name="accordion-1" id="ac-3" type="checkbox">
                         <label for="ac-3">Уход за изделием</label>
                         <article class="ac-small">
                             <p>{{ thing.uhod }}</p>
@@ -82,49 +82,35 @@
 {% block scripts %}
 <script src="{% static '/app/slick/slick.min.js' %}"></script>
 <script type="text/javascript">
-    function Slider(e) {
-        var settings = {
-            autoplay: false,
-            //autoplaySpeed: 7000,
-            slidesToShow: 1,
-            centerMode: true,
-            centerPadding: '0px',
-            arrows: false,
-            dots: true,
-            infinite: true,
-            speed: 300,
-            fade: false,
-            cssEase: 'linear'
-        }
-        $(".photos").removeClass("slick-initialized slick-slider slick-dotted");
-        $(".photos").slick(settings);
-    };
+    var settingsSlider = {
+        autoplay: false,
+        //autoplaySpeed: 7000,
+        slidesToShow: 1,
+        centerMode: true,
+        centerPadding: '0px',
+        arrows: false,
+        dots: true,
+        infinite: true,
+        speed: 300,
+        fade: false,
+        cssEase: 'linear'
+    }
 
     function getphoto(v) {
         var request = $.ajax({
             url: `/getthingphtotoss/${v}/`,
             method: "get",
-            // contentType: 'application/json; charset=utf-8',
-            // data: { korzina: stroka },
-            // dataType: 'text',
         });
 
         request.done(function (msg) {
             var m = JSON.parse(msg)
-            $(".photos").html("");
-            $(".photos").html(m.img);
+            // $(".photos").slick('unslick');
+            // $(".photos").html(m.img);
             $(".obmer").html(m.obmer);
             $(".model").html(m.model);
-            // $("#btn-id").attr("data-id", m.id);
             $("#cart_product_form").attr("action", "/cart/add/" + m.id + "/");
             $("#id_kolvo").html(m.kolvo);
-            GranicaSlick(true);
-            // if (window.outerWidth < 1024) {
-            //     Slider();
-            //     // $(".photos").slick();
-            // } else {
-            //     $(".photos").slick('unslick');
-            // }
+            GranicaSlick(m.img);
         });
 
         request.fail(function (jqXHR, textStatus) {
@@ -138,9 +124,6 @@
         var request = $.ajax({
             url: `/getthingcolors/${t}/${s}/`,
             method: "get",
-            // contentType: 'application/json; charset=utf-8',
-            // data: { korzina: stroka },
-            // dataType: 'text',
         });
 
         request.done(function (msg) {
@@ -160,7 +143,6 @@
 
     $('div[id^="size-"]').click(function () {
         getcolors(this.getAttribute("data-tovar"), this.getAttribute("data-size"));
-        //Slider();
     });
 
     function add(e) {
@@ -172,35 +154,43 @@
         var s = $(".sizes div:first");
         s.addClass('size-select');
         getcolors(s.attr("data-tovar"), s.attr("data-size"));
-        //Slider();
+        // GranicaSlick();
     });
+
     var Granica = {
         type: null,
-        val: function(value, f){
-            if (value != this.type){
-                this.type=value;
-                this.change()
+        hasSlick: false,
+        val: function (value, h) {
+            if (value != this.type) {
+                this.type = value;
             }
-            if (f) {
-                this.change();
-            }
+            // if (f) {
+            // $(".photos").html(h);
+            // }
+            this.change(h)
         },
-        change: function(){
+        change: function (h) {
             if (this.type == 0) {
-                Slider();
+                if (this.hasSlick) {
+                    $(".photos").slick("unslick");
+                }
+                $(".photos").html(h);
+                $(".photos").slick(settingsSlider);
+                this.hasSlick = true;
             } else {
-                $(".photos").slick("unslick");
+                if (this.hasSlick) {
+                    $(".photos").slick("unslick");
+                }
+                $(".photos").html(h);
+                this.hasSlick = false;
             }
         }
     };
-    function GranicaSlick(force = false){
+    function GranicaSlick(htm = "") {
         if (window.innerWidth < 1024) {
-            Granica.val(0, force);
-            // Slider();
-            // $(".photos").slick();
+            Granica.val(0, htm);
         } else {
-            Granica.val(1, force);
-            // $(".photos").slick('unslick');
+            Granica.val(1, htm);
         }
     };
     $(window).resize(function () {

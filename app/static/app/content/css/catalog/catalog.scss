@@ -7,6 +7,10 @@
     grid-template-rows: minmax(85vh, auto);
     grid-gap: 1rem;
     justify-content: center;
+    @include mq("tablet", max) {
+        grid-template-columns: 1fr;
+        grid-gap: 0;
+    }
 }
 
 .catalog-items {
@@ -20,6 +24,10 @@
     -webkit-justify-content: center;
     justify-content: center;
     grid-template-columns: 1fr 1fr;
+    @include mq("tablet", max) {
+        grid-gap: 1rem;
+        padding: 1rem;
+    }
 
     .title {
         letter-spacing: 0.5rem;
@@ -27,107 +35,51 @@
         font-weight: 300;
         // margin-bottom: 1rem;
         text-transform: uppercase;
+        @include mq("tablet", max) {
+            font-size: 1rem;
+        }
+        @include mq("phablet", max) {
+            font-size: .8rem;
+        }
     }
-
-    // @include mq("desktop-wide") {
-    //     grid-template-columns: repeat(auto-fit, 450px);
-    //     grid-gap: 2rem;
-    // }
-
-    // @include mq("desktop-wide", max) {
-    //     grid-template-columns: repeat(auto-fit, 450px);
-    //     grid-gap: 2rem;
-    // }
-
-    // @include mq("tablet-wide", max) {
-    //     grid-template-columns: repeat(auto-fit, 450px);
-    //     grid-gap: 3rem;
-    // }
-
-    // @include mq("tablet", max) {
-    //     grid-template-columns: repeat(auto-fit, 360px);
-    //     grid-gap: .5rem;
-    // }
-
-    // @include mq("tablet-small", max) {
-    //     grid-template-columns: repeat(auto-fit, 280px);
-    //     grid-gap: 1rem;
-    // }
-
-    // @include mq("phone-wide", max) {
-    //     grid-template-columns: repeat(auto-fit, 280px);
-    // }
 }
 
 .container {
     display: flex;
-    -ms-flex-direction: column;
-    -webkit-flex-direction: column;
+    // -ms-flex-direction: column;
+    // -webkit-flex-direction: column;
     flex-direction: column;
-    -webkit-justify-content: flex-start;
+    // -webkit-justify-content: flex-start;
     justify-content: flex-start;
-    -ms-align-content: center;
-    -webkit-align-content: center;
+    // -ms-align-content: center;
+    // -webkit-align-content: center;
     align-content: center;
-    -moz-transition: .25s opacity linear;
-    -o-transition: .25s opacity linear;
-    -webkit-transition: .25s opacity linear;
+    // -moz-transition: .25s opacity linear;
+    // -o-transition: .25s opacity linear;
+    // -webkit-transition: .25s opacity linear;
     transition: .25s opacity linear;
     position: relative;
 
-    &:hover {
-        opacity: 1 !important;
-        -moz-transition: .25s opacity linear;
-        -o-transition: .25s opacity linear;
-        -webkit-transition: .25s opacity linear;
-        transition: .25s opacity linear;
+    // a:hover {
+    //     opacity: 1 !important;
+    //     -moz-transition: .25s opacity linear;
+    //     -o-transition: .25s opacity linear;
+    //     -webkit-transition: .25s opacity linear;
+    //     transition: .25s opacity linear;
+    // }
+    &:hover .container-item .img_container img {
+        transition: transform .5s;
+        transform: scale(1.025);
     }
-
     .container-item {
-        // height: auto;
-        // width: 100%;
-        /*margin: 2rem;*/
-        // position: relative;
-        // background-position: center;
-        // background-repeat: no-repeat;
-        // background-size: cover;
-        // border: 1px solid rgb(21, 21, 21);
-
-        // @include mq("desktop-wide") {
-        //     height: 640px;
-        //     /*width: 280px;*/
-        // }
-
-        // @include mq("desktop-wide", max) {
-        //     height: 640px;
-        //     /*width: 280px;*/
-        // }
-
-        // @include mq("tablet-wide", max) {
-        //     height: 640px;
-        //     /*width: 280px;*/
-        // }
-
-        // @include mq("tablet", max) {
-        //     height: 510px;
-        //     /*width: 185px;*/
-        // }
-
-        // @include mq("tablet-small", max) {
-        //     height: 400px;
-        //     /*width: 140px;*/
-        // }
-
-        // @include mq("phone-wide", max) {
-        //     height: 400px;
-        //     /*width: 140px;*/
-        // }
-
-        &:hover .cover {
-            /*display: block;*/
-            visibility: visible;
-            background-color: rgba(0, 0, 0, 0.50);
+        .img_container {
+            overflow: hidden;
+            img {
+                transition: transform .5s;
+            }
         }
+        
+        
 
         .cover {
             position: absolute;
@@ -169,6 +121,10 @@
         margin-top: 1rem;
         letter-spacing: 1px;
         text-transform: uppercase;
+
+        // @include mq("phablet", max) {
+        //     padding: 2rem 5%;
+        // }
     }
 
     /*.desc {
@@ -186,10 +142,11 @@
     display: grid;
     grid-gap: 2rem;
     grid-template-columns: 3fr 1fr;
+    align-items: flex-start;
 
     .title {
-        font-size: 2rem;
-        letter-spacing: 0.25rem;
+        // font-size: 2rem;
+        letter-spacing: 0.15rem;
         font-weight: 300;
         text-transform: uppercase;
         margin-bottom: 2rem;
@@ -199,14 +156,18 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 3rem;
-
-        @include mq("tablet-wide", min) {
-            grid-gap: 2rem;
-        }
+        align-self: start;
 
         img {
             width: 100%;
         }
+    }
+
+    .info-thing {
+        padding: 0 1rem;
+        position: sticky;
+        top: 0px; // Подставить высоту шапки
+        height: auto;
     }
 
     .desc,
@@ -217,21 +178,23 @@
     .variacii {
         &>p {
             font-weight: 300;
-            font-size: 1.5rem;
-            letter-spacing: 0.15rem;
+            // font-size: 1.5rem;
+            // letter-spacing: 0.15rem;
             text-align: left;
         }
 
         .sizes {
             padding: .5rem 0 1rem 0;
-            border-bottom: 1px solid gray;
-            margin-bottom: 1.5rem;
+            // border-bottom: 1px solid gray;
+            // margin-bottom: 1.5rem;
             -webkit-justify-content: center;
             justify-content: center;
+            display: flex;
 
             &>div {
                 border: 1px solid transparent;
                 display: inline-block;
+                margin: 0 .5rem;
             }
 
             &>div:hover {
@@ -251,18 +214,19 @@
         }
 
         .colors {
-            justify-content: flex-start;
+            display: flex;
+            justify-content: center;
             padding: .5rem 0 1rem 0;
             text-align: left;
-            border-bottom: 1px solid gray;
+            // border-bottom: 1px solid gray;
 
             .color {
-                height: 2rem;
-                width: 2rem;
+                height: 3rem;
+                width: 3rem;
                 border-radius: 50%;
                 border: 1px solid white;
                 margin: auto;
-                box-shadow: 0 0 0px 1px gray;
+                box-shadow: 0 0 1px 1px gray;
                 text-align: center;
                 display: inline-block;
             }
@@ -270,6 +234,7 @@
             &>div {
                 cursor: pointer;
                 margin: .5rem;
+                display: inline-block;
             }
         }
 
@@ -467,6 +432,10 @@
 .category {
     text-align: left;
     letter-spacing: 2px;
+
+    @include mq("tablet", max) {
+        display: none;
+    }
 
     .category_item {
         padding: 0rem 1rem 1rem;
