@@ -100,52 +100,16 @@ body {
   color: white;
 }
 
-@media only screen and (min-width: 300px) {
-  .content .block-two > div p {
-    font-size: 20px;
-  }
-}
-
-@media only screen and (min-width: 480px) {
-  .content .block-two > div p {
-    font-size: 20px;
-  }
-}
-
-@media only screen and (min-width: 560px) {
-  .content .block-two > div p {
-    font-size: 22px;
-  }
-}
-
-@media only screen and (min-width: 640px) {
-  .content .block-two > div p {
-    font-size: 24px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .content .block-two > div p {
-    font-size: 26px;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .content .block-two > div p {
-    font-size: 26px;
-  }
-}
-
-@media only screen and (min-width: 1248px) {
-  .content .block-two > div p {
-    font-size: 26px;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .content .block-two > div p {
-    font-size: 28px;
-  }
+.content .block-two .catalog {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 footer {

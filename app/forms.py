@@ -62,7 +62,7 @@ class VariaciyaEditForm(forms.ModelForm):
 
     class Meta:
         model = models.Variaciya
-        fields = ['color', 'color_text', 'size', 'obmer', 'model', 'kolvo']
+        fields = ['color', 'color_text', 'size', 'obmer', 'model'] #, 'kolvo']
 
 class VarPhotoForm(forms.ModelForm):
 

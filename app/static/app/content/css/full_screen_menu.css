@@ -32,6 +32,7 @@ FONTS SIZE
 */
 .fullscreenmenu {
   position: fixed;
+  /*padding: 7rem 2rem 2rem;*/
   top: 0;
   left: 0;
   right: 0;
@@ -45,21 +46,41 @@ FONTS SIZE
   display: grid;
   -ms-grid-columns: 1fr 3fr 1fr;
       grid-template-columns: 1fr 3fr 1fr;
-      grid-template-areas: 'cart collections .' 'cart collections categories' '. center categories' '. contacts categories' '. social categories';
+      grid-template-areas: 'cart collections user' 'cart collections categories' '. center categories' '. contacts categories' '. social categories';
   height: 100%;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.fullscreenmenu .greed > div {
+.fullscreenmenu .greed section {
   height: 100%;
 }
 
-.fullscreenmenu .greed > div:hover {
-  background-color: #0a0a0a42;
-  -webkit-transition: background-color .5s;
-  transition: background-color .5s;
+.fullscreenmenu .greed section header {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  letter-spacing: 0px;
+  -webkit-transition: letter-spacing .5s, -webkit-box-shadow .5s;
+  transition: letter-spacing .5s, -webkit-box-shadow .5s;
+  transition: box-shadow .5s, letter-spacing .5s;
+  transition: box-shadow .5s, letter-spacing .5s, -webkit-box-shadow .5s;
+}
+
+.fullscreenmenu .greed section:hover header {
+  -webkit-box-shadow: 0px 10px 10px -10px black;
+          box-shadow: 0px 10px 10px -10px black;
+  letter-spacing: 0.25rem;
+  -webkit-transition: letter-spacing .5s, -webkit-box-shadow .5s;
+  transition: letter-spacing .5s, -webkit-box-shadow .5s;
+  transition: box-shadow .5s, letter-spacing .5s;
+  transition: box-shadow .5s, letter-spacing .5s, -webkit-box-shadow .5s;
+}
+
+.fullscreenmenu .greed .user {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: user;
 }
 
 .fullscreenmenu .greed .cart {
@@ -67,6 +88,9 @@ FONTS SIZE
   -ms-grid-row-span: 2;
   -ms-grid-column: 1;
   grid-area: cart;
+}
+
+.fullscreenmenu .greed .cart, .fullscreenmenu .greed .user {
   height: inherit;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -82,11 +106,11 @@ FONTS SIZE
   transition: background-color .5s;
 }
 
-.fullscreenmenu .greed .cart * {
+.fullscreenmenu .greed .cart *, .fullscreenmenu .greed .user * {
   color: darkgray;
 }
 
-.fullscreenmenu .greed .cart:hover {
+.fullscreenmenu .greed .cart:hover, .fullscreenmenu .greed .user:hover {
   background-color: #0a0a0a;
   -webkit-transition: background-color .5s;
   transition: background-color .5s;
@@ -97,6 +121,62 @@ FONTS SIZE
   -ms-grid-row-span: 2;
   -ms-grid-column: 2;
   grid-area: collections;
+}
+
+.fullscreenmenu .greed .categories {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 4;
+  -ms-grid-column: 3;
+  grid-area: categories;
+}
+
+.fullscreenmenu .greed .collections__items,
+.fullscreenmenu .greed .categories__items {
+  margin-top: 1rem;
+}
+
+.fullscreenmenu .greed .collections__items__item, .fullscreenmenu .greed .collections__items__title,
+.fullscreenmenu .greed .categories__items__item,
+.fullscreenmenu .greed .categories__items__title {
+  /*float: left;*/
+  display: inline-block;
+}
+
+.fullscreenmenu .greed .collections__items__item p, .fullscreenmenu .greed .collections__items__title p,
+.fullscreenmenu .greed .categories__items__item p,
+.fullscreenmenu .greed .categories__items__title p {
+  padding: 1rem;
+}
+
+.fullscreenmenu .greed .collections__items__item p a, .fullscreenmenu .greed .collections__items__title p a,
+.fullscreenmenu .greed .categories__items__item p a,
+.fullscreenmenu .greed .categories__items__title p a {
+  color: darkgray;
+  letter-spacing: 2px;
+  font-size: 1.1rem;
+}
+
+.fullscreenmenu .greed .collections__items__item p a:hover, .fullscreenmenu .greed .collections__items__title p a:hover,
+.fullscreenmenu .greed .categories__items__item p a:hover,
+.fullscreenmenu .greed .categories__items__title p a:hover {
+  color: white;
+}
+
+.fullscreenmenu .greed .collections__title,
+.fullscreenmenu .greed .categories__title {
+  display: block;
+}
+
+.fullscreenmenu .greed .collections__title p,
+.fullscreenmenu .greed .categories__title p {
+  padding: 2rem;
+  font-weight: bold;
+  color: white;
+  font-size: 1.25rem;
+}
+
+.fullscreenmenu .greed .categories__items__item {
+  display: block;
 }
 
 .fullscreenmenu .greed .center {
@@ -113,14 +193,14 @@ FONTS SIZE
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-transition: color .5s;
-  transition: color .5s;
 }
 
 .fullscreenmenu .greed .center a {
   text-transform: uppercase;
   color: darkgray;
   display: contents;
+  -webkit-transition: none;
+  transition: none;
 }
 
 @media only screen and (min-width: 300px) {
@@ -177,12 +257,6 @@ FONTS SIZE
   transition: color .5s;
 }
 
-.fullscreenmenu .greed .center:hover {
-  background-color: black;
-  -webkit-transition: none;
-  transition: none;
-}
-
 .fullscreenmenu .greed .contacts {
   -ms-grid-row: 4;
   -ms-grid-column: 2;
@@ -193,12 +267,15 @@ FONTS SIZE
   -ms-grid-row: 5;
   -ms-grid-column: 2;
   grid-area: social;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.fullscreenmenu .greed .categories {
-  -ms-grid-row: 2;
-  -ms-grid-row-span: 4;
-  -ms-grid-column: 3;
-  grid-area: categories;
+.fullscreenmenu .greed .social .sociallinks__item {
+  display: inline-block;
+  margin: 0px 1rem;
 }
 /*# sourceMappingURL=full_screen_menu.css.map */

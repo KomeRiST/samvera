@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     #'shop',
     'app',
     'orders',
+    'fabricator',
     'admin_reorder',
 ]
 
@@ -74,6 +75,9 @@ ADMIN_REORDER = (
     'shop',
     {'app': 'app', 'label': 'Склад',
     'models': ('app.Collection', 'app.Category', 'app.Tovar', 'app.Variaciya', 'app.Gallery')},
+
+    {'app': 'fabricator', 'label': 'Наrладные',
+    'models': ('fabricator.fabricator', 'fabricator.consignment', 'app.MtoM_VarsToCons')},
 
     {'app': 'orders', 'label': 'Заказы',
     'models': ('orders.Order', 'orders.OrderItem')},
@@ -119,6 +123,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'cart.context_processors.cart',
                 'app.context_processors.categories',
+                'app.context_processors.collections',
             ],
         },
     },

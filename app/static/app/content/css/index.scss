@@ -42,18 +42,18 @@ body {
         &>div {
             height: 100vh;
             p {
-                @include fontsize("form-field-title");
+                // @include fontsize("form-field-title");
                 color: $fc-title_light;
             }
         }
-        // .catalog {
-        //     display: flex;
-        //     align-items: center;
-        //     justify-content: center;
-        //     p {
-        //         @include fontsize("title");
-        //     }
-        // }
+        .catalog {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            // p {
+            //     @include fontsize("title");
+            // }
+        }
         // .about {
         //     display: flex;
         //     align-items: center;

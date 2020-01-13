@@ -13,6 +13,7 @@ from django.contrib.auth.models import User
 from smart_selects.db_fields import ChainedForeignKey
 from django.utils.safestring import mark_safe
 from django.urls import reverse
+from fabricator.models import consignment
 
 class ColorField(models.CharField):
     """ Поле для хранения HTML-кода цвета."""
@@ -176,17 +177,25 @@ class Variaciya(models.Model):
     #color = {
     #    ColorField: {'widget': forms.TextInput(attrs={'type': 'color'})}
     #}
+    consignments = models.ManyToManyField(consignment)
     color = ColorField('Цвет материала', default='#FF0000')
     color_text = models.CharField("Название цвета", max_length=25, default='Красный')
     size = models.TextField("Размер", default="S")
     obmer = models.TextField("Обмеры")
     model = models.TextField("Параметры модели")
-    kolvo = models.SmallIntegerField("Количество на складах", default=0)
+    # kolvo = models.SmallIntegerField("Количество на складах", default=0) # Заменить это поле на вычисляемое (сумма из накладных по этой вариации) и только для чтения.
     #image = models.ForeignKey(Gallery, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.tovar.title} [{str(self.color_text)} | {str(self.size)}]'
     
+    @property
+    def kolvo(self):
+        from django.db.models import Sum
+        result = 0
+        result = MtoM_VarsToCons.objects.filter(variacii=self).aggregate(sum_var=Sum('kolvo'))
+        return result['sum_var']
+
     def colortile(self):
         if self.color:
             from django.utils.safestring import mark_safe
@@ -234,6 +243,17 @@ class Variaciya(models.Model):
     class Meta:
         verbose_name = "Вариация изделия"
         verbose_name_plural = "Вариации изделий"
+
+class MtoM_VarsToCons(models.Model):
+    consignments = models.ForeignKey(consignment, on_delete=models.CASCADE, related_name="in_consignments")
+    variacii = models.ForeignKey(Variaciya, on_delete=models.CASCADE, related_name="in_variacii")
+    # gallery = models.ForeignKey('Gallery', on_delete=models.CASCADE, related_name="in_gallery")
+    kolvo = models.SmallIntegerField("Количество", default=0)
+    cost = models.SmallIntegerField("Цена", default=0)
+    nds = models.SmallIntegerField("Ставка НДС (%)", default=0)
+    nds_summ = models.SmallIntegerField("Сумма НДС (руб.)", default=0)
+    total_not_nds = models.SmallIntegerField("Сумма без НДС", default=0)
+    total_nds = models.SmallIntegerField("Сумма с учётом НДС", default=0)
 
 class Korzina(Variaciya):
     def __init__(self):

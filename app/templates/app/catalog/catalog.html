@@ -15,13 +15,25 @@
     <div class="catalog_content">
         <div class="category">
             <div class="category_item category_item__title">
-                <p>каталог</p>
+                <p>Категории</p>
             </div>
             <div class="category_item {% if None == category %}category_item__select{% endif %}">
                 <a href="{% url 'tovarbycategory' %}">Все</a>
             </div>
             {% for item in categories %}
             <div class="category_item {% if item == category %}category_item__select{% endif %}">
+                <a href="{{ item.get_absolute_url }}">{{ item }}</a>
+            </div>
+            {% endfor %}
+            <br>
+            <div class="category_item category_item__title">
+                <p>Коллекции</p>
+            </div>
+            <div class="category_item {% if None == collection %}category_item__select{% endif %}">
+                <a href="{% url 'tovarbycollection' %}">Все</a>
+            </div>
+            {% for item in collections %}
+            <div class="category_item {% if item == collection %}category_item__select{% endif %}">
                 <a href="{{ item.get_absolute_url }}">{{ item }}</a>
             </div>
             {% endfor %}

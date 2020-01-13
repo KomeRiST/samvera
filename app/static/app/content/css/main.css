@@ -49,7 +49,7 @@ FONTS SIZE
   position: sticky;
   top: 0px;
   background-color: black;
-  z-index: 11;
+  z-index: 9;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -63,7 +63,6 @@ FONTS SIZE
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;
-  border-bottom: 1px solid darkgray;
   min-height: 50px;
 }
 
@@ -510,8 +509,7 @@ form .fieldWrapper .field_descr .small {
 
 .bottom-menu__list .bottom-menu__item .bottom-menu__link {
   text-transform: uppercase;
-  display: inline-block;
-  vertical-align: top;
+  display: block;
   font-weight: bold;
 }
 
@@ -532,7 +530,7 @@ form .fieldWrapper .field_descr .small {
 }
 
 .bottom-menu__list .bottom-menu__item .bottom-menu__sub .bottom-menu__sub-item .bottom-menu__sub-link:hover {
-  color: black;
+  color: darkgray;
   cursor: pointer;
 }
 
@@ -919,12 +917,11 @@ form .fieldWrapper .field_descr .small {
 }
 
 .t-sociallinks__svg {
-  background-color: white;
   border-radius: 50%;
 }
 
 .t-sociallinks__svg path {
-  fill: black !important;
+  fill: #a9a9a9 !important;
 }
 
 .t-sociallinks__svg:hover {

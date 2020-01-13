@@ -4,7 +4,8 @@ from django.db import models
 from app.models import *
 # from app.models import ColorField
 from orders.models import *
-from django.utils.safestring import mark_safe
+from fabricator.models import *
+from django.utils.safestring import mark_safe 
 #from nested_inline.admin import NestedModelAdmin, NestedStackedInline, NestedTabularInline
 from django.contrib.admin.widgets import AdminFileWidget
 from django.utils.translation import ugettext as _
@@ -17,6 +18,8 @@ admin.site.register(PotentialClient)
 admin.site.register(OrderItem)
 #admin.site.register(OrderTovaryVariaciya)
 #admin.site.register(Variaciya)
+#admin.site.register(consignment)
+admin.site.register(MtoM_VarsToCons)
 
 # class OrderVarsInline(admin.TabularInline):
 #     model = OrderTovaryVariaciya
@@ -26,6 +29,7 @@ admin.site.register(OrderItem)
 class CollectionAdmin(admin.ModelAdmin):
     fields=['title', 'slug']
     prepopulated_fields={'slug':('title',)}
+
 
 class OrderItemsInline(admin.TabularInline):
     model = OrderItem
@@ -67,7 +71,7 @@ class ImageInline(nested_admin.nested.NestedTabularInline):
 class VariaciyaAdm(nested_admin.nested.NestedModelAdmin):
     inlines = [ImageInline,]
     list_display = ['random_image', 'tovar', 'article', 'color', 'color_text', 'size', 'obmer', 'model', 'kolvo']
-    fields = ['tovar', 'article', ('color_text', 'color'), 'size', ('obmer', 'model'), 'kolvo']
+    fields = ['tovar', 'article', ('color_text', 'color'), 'size', ('obmer', 'model'), 'kolvo', 'consignments']
     readonly_fields = []
     formfield_overrides = {
         ColorField: {
@@ -85,7 +89,7 @@ class VariaciyaInline(nested_admin.nested.NestedStackedInline):
     model = Variaciya
     save_on_top = True
     extra = 0
-    fields = [('color', 'color_text'), ('size', 'kolvo'), ('obmer', 'model')]
+    fields = ['tovar', ('color', 'color_text'), ('size', 'kolvo'), ('obmer', 'model')]
     formfield_overrides = {
         ColorField: {
             'widget': forms.TextInput(
@@ -99,6 +103,27 @@ class VariaciyaInline(nested_admin.nested.NestedStackedInline):
     #readonly_fields = ['image_img']
     #list_display = []
 
+class MtM_VariaciyaInline(nested_admin.nested.NestedTabularInline):
+    # inlines = [ImageInline,]
+    model = MtoM_VarsToCons
+    save_on_top = True
+    extra = 0
+    # readonly_fields = ['nds_summ', 'total_not_nds', 'total_nds']
+    # raw_id_fields = ['variacii',]
+
+
+    # def nds_summ(self, obj):
+    #     return (obj.nds * obj.cost / 100) * obj.kolvo
+
+    # def total_not_nds(self, obj):
+    #     return obj.cost * obj.kolvo
+
+    # def total_nds(self, obj):
+    #     return (obj.nds * obj.cost / 100 * obj.kolvo) + (obj.cost * obj.kolvo)
+
+    class Media:
+        js = [ '/static/admin/js/consignment.js', ]
+        
 
 @admin.register(Tovar)
 class TovarAdm(nested_admin.nested.NestedModelAdmin):
@@ -111,3 +136,23 @@ class TovarAdm(nested_admin.nested.NestedModelAdmin):
 
 #@admin.register(Category)
 #class CategoryAdmin(admin.ModelAdmin):
+
+class ConsignmentInline(nested_admin.nested.NestedStackedInline):
+    inlines = [MtM_VariaciyaInline,]
+    model = consignment
+    exstra = 0
+    readonly_fields = ['data_create', 'data_change',]
+    fields = [('number', 'data_doc'), 'responsible', ('data_create', 'data_change')]
+
+@admin.register(fabricator)
+class FabricatorAdmin(nested_admin.nested.NestedModelAdmin):
+    inlines = [ConsignmentInline,]
+    fields=['title', 'slug', 'address', 'contacts', 'data_create', 'data_change']
+    readonly_fields = ['data_create', 'data_change',]
+    prepopulated_fields={'slug':('title',)}
+    
+@admin.register(consignment)
+class ConsignmentAdmin(nested_admin.nested.NestedModelAdmin):
+    inlines = [MtM_VariaciyaInline,]
+    fields=['fabricator', 'number', 'data_doc', 'responsible', 'data_create', 'data_change']
+    readonly_fields = ['data_create', 'data_change',]

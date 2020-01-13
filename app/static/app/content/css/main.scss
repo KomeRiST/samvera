@@ -31,7 +31,7 @@
     position: sticky;
     top: 0px;
     background-color: black;
-    z-index: 11;
+    z-index: 9;
     display: flex;
     -ms-align-content: center;
     -webkit-align-content: center;
@@ -41,7 +41,7 @@
     -ms-flex-direction: row;
     -webkit-flex-direction: row;
     flex-direction: row;
-    border-bottom: 1px solid $fc-light;
+    // border-bottom: 1px solid $fc-light;
     // box-shadow: 0 -2px 6px 3px $fc-gray;
     min-height: 50px;
 
@@ -260,9 +260,10 @@ form {
 
         .bottom-menu__link {
             text-transform: uppercase;
-            display: inline-block;
-            vertical-align: top;
+            display: block;
+            // vertical-align: top;
             font-weight: bold;
+            // text-align: center;
         }
 
         .bottom-menu__sub {
@@ -279,7 +280,7 @@ form {
                     text-decoration: none;
 
                     &:hover {
-                        color: black;
+                        color: $fc-light;
                         cursor: pointer;
                     }
                 }
@@ -293,6 +294,7 @@ form {
 /*
     ���� �����
 */
+
 .nav_ {
     width: 100vw;
     position: fixed;
@@ -648,12 +650,12 @@ form {
 // ���� �����
 
 .t-sociallinks__svg {
-    background-color: white;
+    // background-color: white;
     border-radius: 50%;
 }
 
 .t-sociallinks__svg path {
-    fill: black !important;
+    fill: #a9a9a9 !important;
 }
 
 .t-sociallinks__svg:hover {
@@ -918,6 +920,8 @@ small {
 .ac-menu_container input:checked~label:after {
     content: "-";
 }
+
+
 
 @media screen and (max-width: 560px) {
     .fullscreenmenu {

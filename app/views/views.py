@@ -124,6 +124,24 @@ def tovarlist(request, category_slug=None):
         context,
     )
 
+def tovarlist_collection(request, collection_slug=None):
+    template = 'app/catalog/catalog.html'
+    context = {}
+    coll = None
+    # categories = models.Category.objects.all()
+    tovary = models.Tovar.objects.filter(hidden=True)
+    if collection_slug:
+        coll = get_object_or_404(models.Collection, slug=collection_slug)
+        tovary = tovary.filter(collection=coll)
+    context['collection'] = coll
+    context['tovary'] = tovary
+    # context['categories'] = categories
+    return render(
+        request,
+        template,
+        context,
+    )
+
 def thing(request, id, slug):
     """Карточка товара"""
     t = get_object_or_404(models.Tovar, pk=id, slug=slug, hidden=True)
@@ -181,7 +199,7 @@ def getthingcolors(request, tovar, size):
     """Формирование HTML кода с вариантами цветов товара"""
     t = get_object_or_404(models.Tovar, pk=tovar)
     print("tovar = ", t)
-    r = t.variacii.filter(size=size, kolvo__gt=0)
+    r = t.variacii.filter(size=size) #, kolvo__gt=0)
     print("FILTER SIZE = ", r)
     st = ""
     for v in r:
@@ -200,11 +218,12 @@ def getthingphtotoss(request, variaciya):
     res={}
     res['img']=st
     res['id']=v.id
-    for i in range(1, v.kolvo, 1):
-        st = st + f'<option value="{i}">{i}</option>'
-    res['kolvo']=st
     res['model']=v.model
     res['obmer']=v.obmer
+    kol = v.kolvo + 1
+    for i in range(1, kol, 1):
+        st = st + f'<option value="{i}">{i}</option>'
+    res['kolvo']=st
     # <option value="1">1</option>
     assert isinstance(request, HttpRequest)
     return HttpResponse(json.dumps(res))
