@@ -1,69 +1,66 @@
-﻿@import "variables.scss";
+@import "variables.scss";
 @import "mixins.scss";
 
 body {
-    background-color: black;
+    background-color: #c9c9c9;
 }
-.content {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-column-gap: 15px;
-
-    .block-one {
-        -ms-grid-column: 1/13;
-        grid-column: 1/13;
-        position: relative;
-        background-color: black;
-
-        .overlay {
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            background: linear-gradient(0deg, black 0%, transparent 30%, transparent 70%, black 100%);
-            /*opacity: 0.75;*/
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2;
-        }
-
+.vid {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
         .video {
             height: 100vh;
             width: 100%;
         }
+}
+
+    
+    div[class^="block-"] {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+    }
+
+    .block-one {
+        
+
+        .cover {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            grid-template-rows: repeat(3, 1fr);
+            height: inherit;
+            width: inherit;
+            z-index: 9;
+            position: relative;
+            .before-logo {
+                font-size: 1em;
+                text-align: center;
+            }
+            .logo {
+                font-size: 3em;
+                text-transform: uppercase;
+                letter-spacing: 1%;
+                text-align: center;
+            }
+        }
+
     }
 
     .block-two {
-        grid-column: 1/13;
         display: flex;
-        align-items: center;
-        justify-content: center;
         flex-direction: column;
-        &>div {
-            height: 100vh;
-            p {
-                // @include fontsize("form-field-title");
-                color: $fc-title_light;
-            }
-        }
-        .catalog {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            // p {
-            //     @include fontsize("title");
-            // }
-        }
-        // .about {
-        //     display: flex;
-        //     align-items: center;
-        //     justify-content: center;
-        //     p {
-        //         @include fontsize("title");
-        //     }
-        // }
+        justify-content: center;
+        align-items: center;
     }
-}
+
+    .block-three {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
 footer {
     background-color: $bg-dark;

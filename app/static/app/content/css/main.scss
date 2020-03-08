@@ -1,6 +1,6 @@
 @import "variables.scss";
 @import "mixins.scss";
-// @import url('https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700|Gabriela|Philosopher:400,400i,700,700i&display=swap&subset=cyrillic,greek');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700|Gabriela|Philosopher:400,400i,700,700i&display=swap&subset=cyrillic,greek');
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&display=swap&subset=cyrillic');
 
 // @font-face {
@@ -22,7 +22,24 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     text-align: center;
+    color: $fc-Default;
     // @include fontsize("text");
+}
+
+html {
+    background-color: $bg-Default;
+}
+
+a {
+    text-decoration: none;
+    color:$fc-href;
+    &:hover {
+        color: $fc-href-hover;
+    }
+}
+
+.block_screen {
+    min-height: 100vh;
 }
 
 .logo {
@@ -30,7 +47,7 @@
     margin: auto;
     position: sticky;
     top: 0px;
-    background-color: black;
+    background-color: $bg-Default;
     z-index: 9;
     display: flex;
     -ms-align-content: center;
@@ -44,6 +61,7 @@
     // border-bottom: 1px solid $fc-light;
     // box-shadow: 0 -2px 6px 3px $fc-gray;
     min-height: 50px;
+    box-shadow: 0px 10px 10px -10px black;
 
     @include mq('phablet', max) {
         min-height: auto;
@@ -52,13 +70,14 @@
     &>a {
         @include fontsize("logo");
         letter-spacing: 1rem;
-        color: $fc-title_light;
+        // color: $fc-title_dark;
         // display: contents;
         /*padding: .75rem 0px;*/
         text-decoration: none;
         font-weight: 300;
         text-transform: uppercase;
         // font-family: CENTAUR;
+        font-family: Times;
 
         svg {
             height: 30px;
@@ -128,6 +147,7 @@
 .btn-dark {
     border: 1px solid $btn-light;
     background-color: $btn-dark;
+    // box-shadow: 0px 5px 10px -8px black, 0px -5px 10px -8px black;
 
     p {
         color: $fc-light;
@@ -140,6 +160,17 @@
         p {
             color: $fc-dark;
         }
+    }
+}
+
+.btn-shadow {
+    box-shadow: 0px 5px 10px -8px black, 0px -5px 10px -8px black;
+    transition: all .5s;
+    &:hover {
+        box-shadow: none;
+        border-top: 1px solid #b7b7b7;
+        border-bottom: 1px solid #b7b7b7;
+        transition: all .5s;
     }
 }
 
@@ -276,11 +307,10 @@ form {
                 margin-top: 5px;
 
                 .bottom-menu__sub-link {
-                    color: gray;
+                    // color: gray;
                     text-decoration: none;
 
                     &:hover {
-                        color: $fc-light;
                         cursor: pointer;
                     }
                 }
@@ -755,16 +785,15 @@ form {
     margin: 3rem auto 0px auto;
 }
 
-a {
-    color: $fc-href-dark;
-    text-decoration: none;
-    // font-weight: bold;
-}
+// a {
+//     color: $fc-href-dark;
+//     text-decoration: none;
+// }
 
 footer {
     z-index: 0;
     padding: 1.5rem 0;
-    background-color: whitesmoke;
+    background-color: #090909;
 }
 
 small {

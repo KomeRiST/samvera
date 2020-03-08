@@ -51,6 +51,7 @@
     max-height: 0px;
     position: relative;
     margin: auto;
+    overflow-x: auto;
     -webkit-transition: max-height 0.3s ease-in-out;
     -moz-transition: max-height 0.3s ease-in-out;
     -o-transition: max-height 0.3s ease-in-out;

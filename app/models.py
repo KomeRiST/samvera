@@ -15,6 +15,7 @@ from django.utils.safestring import mark_safe
 from django.urls import reverse
 from fabricator.models import consignment
 
+
 class ColorField(models.CharField):
     """ Поле для хранения HTML-кода цвета."""
 
@@ -23,15 +24,6 @@ class ColorField(models.CharField):
         super().__init__(*args, **kwargs)
         self.validators.append(validators.RegexValidator(r'#[a-f\d]{6}'))
 
-
-class StatusOrder(models.Model):
-    kod = models.PositiveIntegerField("Код статуса", unique=True)
-    text = models.TextField("Текстовое представление статуса")
-    def __str__(self):
-        return self.text
-    class Meta:
-        verbose_name = "Статус заказа"
-        verbose_name_plural = "Справочник статусов заказа"
 
 # Create your models here.
 class PotentialClient(models.Model):
@@ -128,6 +120,7 @@ class Tovar(models.Model):
     cost = models.PositiveIntegerField("Цена для клиента", default=5000)
     data_create = models.DateField("Дата добавления товара", auto_now_add=True)
     hidden = models.BooleanField("Видимость для покупателя", help_text="Признак видимости товара на сайте", default=True)
+    # have_vars = models.BooleanField("Наличие вариаций у товара", help_text="Признак видимости вариаций", default=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1, related_name='tovaritems', verbose_name='Категория товара')
     collection = models.ForeignKey(Collection, on_delete=models.CASCADE, null=True, blank=True, default=1, related_name='collectionparts', verbose_name='В составе коллекции')
 
@@ -183,7 +176,7 @@ class Variaciya(models.Model):
     size = models.TextField("Размер", default="S")
     obmer = models.TextField("Обмеры")
     model = models.TextField("Параметры модели")
-    # kolvo = models.SmallIntegerField("Количество на складах", default=0) # Заменить это поле на вычисляемое (сумма из накладных по этой вариации) и только для чтения.
+    count_sklad = models.IntegerField("Количество на складах", default=0, help_text="Считается автоматом при создании накладных и заказов")
     #image = models.ForeignKey(Gallery, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -192,9 +185,15 @@ class Variaciya(models.Model):
     @property
     def kolvo(self):
         from django.db.models import Sum
-        result = 0
-        result = MtoM_VarsToCons.objects.filter(variacii=self).aggregate(sum_var=Sum('kolvo'))
-        return result['sum_var']
+        from orders.models import OrderItem
+        prihod = self.in_variacii.all().aggregate(sum_var=Sum('kolvo'))
+        if prihod['sum_var'] is None:
+            prihod['sum_var'] = 0
+        rashod = self.in_orders.all().aggregate(sum_var=Sum('count'))
+        if rashod['sum_var'] is None:
+            rashod['sum_var'] = 0
+
+        return int(prihod['sum_var']) - int(rashod['sum_var'])
 
     def colortile(self):
         if self.color:
@@ -254,6 +253,28 @@ class MtoM_VarsToCons(models.Model):
     nds_summ = models.SmallIntegerField("Сумма НДС (руб.)", default=0)
     total_not_nds = models.SmallIntegerField("Сумма без НДС", default=0)
     total_nds = models.SmallIntegerField("Сумма с учётом НДС", default=0)
+    count_added = models.BooleanField(default=False)
+
+    def save(self, *args, **kwargs):
+        if (self.count_added == 0) or (self.count_added == None):
+            # r = self.variacii.count_sklad + self.kolvo
+            # self.variacii.update(count_sklad=r)
+            var = Variaciya.objects.get(pk=self.variacii.id)
+            var.count_sklad += self.kolvo
+            var.save()
+            self.count_added = True
+        super(MtoM_VarsToCons, self).save(*args, **kwargs)
+                                                                                                                                                                                                                    
+    def delete(self, *args, **kwargs):
+        if self.count_added == 1:
+            var = Variaciya.objects.get(pk=self.variacii.id)
+            var.count_sklad -= self.kolvo
+            var.save()
+        super(MtoM_VarsToCons, self).delete(*args, **kwargs)
+    
+    class Meta:
+        verbose_name = "Позиция накладной"
+        verbose_name_plural = "Состав накладной"
 
 class Korzina(Variaciya):
     def __init__(self):
@@ -287,6 +308,6 @@ class Gallery(models.Model):
     image_img.short_description = 'Картинка'
     image_img.allow_tags = True
     class Meta:
-        verbose_name = "Галлерея вариации"
-        verbose_name_plural = "Галлереи вариаций"
+        verbose_name = "Фото вариации"
+        verbose_name_plural = "Фотографии вариации"
 

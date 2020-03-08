@@ -14,29 +14,37 @@
 <div class="main_content">
     <div class="catalog_content">
         <div class="category">
-            <div class="category_item category_item__title">
-                <p>Категории</p>
+            <div class="category_block">
+                <div class="category_item category_item__title">
+                    <p>Категории</p>
+                </div>
+                <div class="category_items_block">
+                    <div class="category_item {% if None == category %}category_item__select{% endif %}">
+                        <a href="{% url 'tovarbycategory' %}">Все</a>
+                    </div>
+                    {% for item in categories %}
+                    <div class="category_item {% if item == category %}category_item__select{% endif %}">
+                        <a href="{{ item.get_absolute_url }}">{{ item }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
-            <div class="category_item {% if None == category %}category_item__select{% endif %}">
-                <a href="{% url 'tovarbycategory' %}">Все</a>
-            </div>
-            {% for item in categories %}
-            <div class="category_item {% if item == category %}category_item__select{% endif %}">
-                <a href="{{ item.get_absolute_url }}">{{ item }}</a>
-            </div>
-            {% endfor %}
             <br>
-            <div class="category_item category_item__title">
-                <p>Коллекции</p>
+            <div class="collection_block">
+                <div class="category_item category_item__title">
+                    <p>Коллекции</p>
+                </div>
+                <div class="collection_items_block">
+                    <div class="category_item {% if None == collection %}category_item__select{% endif %}">
+                        <a href="{% url 'tovarbycollection' %}">Все</a>
+                    </div>
+                    {% for item in collections %}
+                    <div class="category_item {% if item == collection %}category_item__select{% endif %}">
+                        <a href="{{ item.get_absolute_url }}">{{ item }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
-            <div class="category_item {% if None == collection %}category_item__select{% endif %}">
-                <a href="{% url 'tovarbycollection' %}">Все</a>
-            </div>
-            {% for item in collections %}
-            <div class="category_item {% if item == collection %}category_item__select{% endif %}">
-                <a href="{{ item.get_absolute_url }}">{{ item }}</a>
-            </div>
-            {% endfor %}
         </div>
         <div class="catalog-items">
             {% if tovary %}
@@ -49,7 +57,7 @@
                     <div class="title">{{ item.title }}</div>
                     <div class="cost">{{ item.cost }}</div>
                     {% if request.user.is_staff %}
-                    <a href="{% url 'thing_edit' item.id %}" class="btn-base btn-dark">
+                    <a href="{% url 'thing_edit' item.id %}" class="btn-base btn-shadow">
                         <p>Редактировать</p>
                     </a>
                     {% endif %}

@@ -107,7 +107,7 @@ FONTS SIZE
 }
 
 .fullscreenmenu .greed .cart *, .fullscreenmenu .greed .user * {
-  color: darkgray;
+  color: white;
 }
 
 .fullscreenmenu .greed .cart:hover, .fullscreenmenu .greed .user:hover {
@@ -151,7 +151,7 @@ FONTS SIZE
 .fullscreenmenu .greed .collections__items__item p a, .fullscreenmenu .greed .collections__items__title p a,
 .fullscreenmenu .greed .categories__items__item p a,
 .fullscreenmenu .greed .categories__items__title p a {
-  color: darkgray;
+  color: white;
   letter-spacing: 2px;
   font-size: 1.1rem;
 }
@@ -197,7 +197,7 @@ FONTS SIZE
 
 .fullscreenmenu .greed .center a {
   text-transform: uppercase;
-  color: darkgray;
+  color: white;
   display: contents;
   -webkit-transition: none;
   transition: none;

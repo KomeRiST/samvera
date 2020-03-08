@@ -66,13 +66,12 @@ class ImageInline(nested_admin.nested.NestedTabularInline):
     readonly_fields = ['image_img']
 
 
-
 @admin.register(Variaciya)
 class VariaciyaAdm(nested_admin.nested.NestedModelAdmin):
     inlines = [ImageInline,]
     list_display = ['random_image', 'tovar', 'article', 'color', 'color_text', 'size', 'obmer', 'model', 'kolvo']
     fields = ['tovar', 'article', ('color_text', 'color'), 'size', ('obmer', 'model'), 'kolvo', 'consignments']
-    readonly_fields = []
+    readonly_fields = ['kolvo', ]
     formfield_overrides = {
         ColorField: {
             'widget': forms.TextInput(
@@ -100,7 +99,7 @@ class VariaciyaInline(nested_admin.nested.NestedStackedInline):
                 )
             }
         }
-    #readonly_fields = ['image_img']
+    readonly_fields = ['kolvo',]
     #list_display = []
 
 class MtM_VariaciyaInline(nested_admin.nested.NestedTabularInline):
@@ -154,5 +153,20 @@ class FabricatorAdmin(nested_admin.nested.NestedModelAdmin):
 @admin.register(consignment)
 class ConsignmentAdmin(nested_admin.nested.NestedModelAdmin):
     inlines = [MtM_VariaciyaInline,]
-    fields=['fabricator', 'number', 'data_doc', 'responsible', 'data_create', 'data_change']
+    list_display = ['number', 'fabricator', 'closed', 'data_doc', 'count_sku', 'count_variacii', 'summ_itog']
+    fields=[('fabricator', 'number'), ('data_doc', 'responsible'), ('closed', 'data_create', 'data_change')]
     readonly_fields = ['data_create', 'data_change',]
+
+    def count_sku(self, obj):
+        return MtoM_VarsToCons.objects.filter(consignments=obj).count()
+    count_sku.short_description = 'Кол-во позиций'
+
+    def count_variacii(self, obj):
+        from django.db.models import Sum
+        return MtoM_VarsToCons.objects.filter(consignments=obj).aggregate(count_var=Sum('kolvo'))
+    count_variacii.short_description = 'Всего штук'
+
+    def summ_itog(self, obj):
+        from django.db.models import Sum
+        return MtoM_VarsToCons.objects.filter(consignments=obj).aggregate(summ_itog=Sum('total_nds'))
+    summ_itog.short_description = 'Сумма'

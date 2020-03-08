@@ -7,6 +7,7 @@ from datetime import datetime
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpRequest, HttpResponse, Http404, HttpResponseRedirect
 from app import forms, models, base_auth
+from orders.models import Order
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.db.models import Sum
@@ -111,7 +112,7 @@ def tovarlist(request, category_slug=None):
     context = {}
     category = None
     # categories = models.Category.objects.all()
-    tovary = models.Tovar.objects.filter(hidden=True)
+    tovary = models.Tovar.objects.filter(hidden=True, variacii__count_sklad__gt = 0, variacii__in_variacii__consignments__closed = True)
     if category_slug:
         category = get_object_or_404(models.Category, slug=category_slug)
         tovary = tovary.filter(category=category)
@@ -129,7 +130,7 @@ def tovarlist_collection(request, collection_slug=None):
     context = {}
     coll = None
     # categories = models.Category.objects.all()
-    tovary = models.Tovar.objects.filter(hidden=True)
+    tovary = models.Tovar.objects.filter(hidden=True, variacii__count_sklad__gt = 0, variacii__in_variacii__consignments__closed = True)
     if collection_slug:
         coll = get_object_or_404(models.Collection, slug=collection_slug)
         tovary = tovary.filter(collection=coll)
@@ -144,7 +145,7 @@ def tovarlist_collection(request, collection_slug=None):
 
 def thing(request, id, slug):
     """Карточка товара"""
-    t = get_object_or_404(models.Tovar, pk=id, slug=slug, hidden=True)
+    t = get_object_or_404(models.Tovar, pk=id, slug=slug, hidden=True, variacii__in_variacii__consignments__closed = True)
     assert isinstance(request, HttpRequest)
     cart_product_form = CartAddProductForm()
     return render(
@@ -164,7 +165,7 @@ def kabinet(request):
     if request.user.is_authenticated:
         title = "Личный кабинет"
         message = "Посмотрите исторю своих покупок, а также статус текущих заказов."
-        orders = models.Orders.objects.filter(client=request.user.id)
+        orders = Order.objects.filter(client=request.user.id)
         page = 'app/account/lk.html'
         assert isinstance(request, HttpRequest)
         return render(

@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000">
     <link rel="icon" href="/media/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="/media/favicon.png" type="image/x-icon">
     <title>{{ title }}</title>
@@ -183,12 +184,12 @@
             </section>
             <section class="user">
                 {% if request.user.is_authenticated %}
-                    <div>
+                    <a href="{% url 'kabinet' %}">
                         <p>Здравствуй</p>
                         <p>{{ request.user.last_name }} {{ request.user.first_name }}</p>
                         <small>{{ request.user.username }}</small>
                         <p><a href='{% url "log_out" %}'>Выход</a></p>
-                    </div>
+                    </a>
                 {% else %}
                 <a href='{% url "login" %}' class="user">
                     Войти
@@ -496,6 +497,7 @@
                 {% endfor %}
             </ul>
         {% endif %} -->
+        <div class="block_screen">
         {% block screen %}
         <!--
             Блок для добавления, при необходимости, TopScreen
@@ -509,7 +511,7 @@
         {% block content %}
         <!--    Блок для добавления контента страницы   -->
         {% endblock %}
-
+        </div>
         <div class="line"></div>
 
 

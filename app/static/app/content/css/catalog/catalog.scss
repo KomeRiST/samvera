@@ -437,6 +437,22 @@
         display: none;
     }
 
+    .category_block, .collection_block {
+        &:hover {
+            a {
+                letter-spacing: 3px;
+                transition: letter-spacing .5s;
+            }
+            // background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.25) 50%, rgba(255,255,255,0) 100%);;
+            .category_item__title {
+                // color: $fc-title_light;
+                // background-color: $bg-dark;
+                transition: all .5s 0s;
+                box-shadow: 0px 10px 10px -10px black;
+            }
+        }
+    }
+
     .category_item {
         padding: 0rem 1rem 1rem;
         margin-bottom: 1rem;
@@ -444,10 +460,14 @@
         a {
             font-size: 1.2rem;
             font-weight: 300;
+            padding-top: 1rem;
+            transition: letter-spacing .5s;
 
             &:hover {
-                color: $fc-gray;
+                // color: $fc-gray;
                 border-bottom: 1px solid $fc-Default;
+                letter-spacing: 1px;
+                transition: letter-spacing .5s;
             }
         }
     }
@@ -461,6 +481,8 @@
     .category_item__title {
         text-transform: uppercase;
         margin-bottom: 1.5rem;
+        transition: all .5s 0s;
+        box-shadow: 0px 5px 5px -5px black;
 
         p {
             font-size: 1.5rem;
@@ -468,6 +490,7 @@
             font-weight: 300;
         }
     }
+
 }
 
 #cart_product_form {
@@ -524,6 +547,21 @@
         font-weight: 300;
     }
 }
+
+article {
+    table {
+        width: 100%;
+        border: 1px solid grey;
+        border-collapse: collapse;
+        /* границы ячеек первого ряда таблицы */
+        th {border: 1px solid grey;}
+        /* границы ячеек тела таблицы */
+        td {border: 1px solid grey;
+        padding: 0.5rem;}
+    }
+
+}
+
 
 /*
     KORZINA

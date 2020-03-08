@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*    COLOR -- FONTS    */
 /*    COLOR -- BLOCKS   */
 /*
@@ -342,6 +343,19 @@ FONTS SIZE
   }
 }
 
+.category .category_block:hover a, .category .collection_block:hover a {
+  letter-spacing: 3px;
+  -webkit-transition: letter-spacing .5s;
+  transition: letter-spacing .5s;
+}
+
+.category .category_block:hover .category_item__title, .category .collection_block:hover .category_item__title {
+  -webkit-transition: all .5s 0s;
+  transition: all .5s 0s;
+  -webkit-box-shadow: 0px 10px 10px -10px black;
+          box-shadow: 0px 10px 10px -10px black;
+}
+
 .category .category_item {
   padding: 0rem 1rem 1rem;
   margin-bottom: 1rem;
@@ -350,20 +364,29 @@ FONTS SIZE
 .category .category_item a {
   font-size: 1.2rem;
   font-weight: 300;
+  padding-top: 1rem;
+  -webkit-transition: letter-spacing .5s;
+  transition: letter-spacing .5s;
 }
 
 .category .category_item a:hover {
-  color: #5d5d5d;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid whitesmoke;
+  letter-spacing: 1px;
+  -webkit-transition: letter-spacing .5s;
+  transition: letter-spacing .5s;
 }
 
 .category .category_item__select a {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid whitesmoke;
 }
 
 .category .category_item__title {
   text-transform: uppercase;
   margin-bottom: 1.5rem;
+  -webkit-transition: all .5s 0s;
+  transition: all .5s 0s;
+  -webkit-box-shadow: 0px 5px 5px -5px black;
+          box-shadow: 0px 5px 5px -5px black;
 }
 
 .category .category_item__title p {
@@ -400,8 +423,8 @@ FONTS SIZE
 }
 
 .desc .tv-tabs {
-  color: black;
-  background-color: white;
+  color: whitesmoke;
+  background-color: #0f0f0f;
 }
 
 .desc .tv-content {
@@ -427,6 +450,23 @@ FONTS SIZE
 .container_not_items p {
   font-size: 3rem;
   font-weight: 300;
+}
+
+article table {
+  width: 100%;
+  border: 1px solid grey;
+  border-collapse: collapse;
+  /* границы ячеек первого ряда таблицы */
+  /* границы ячеек тела таблицы */
+}
+
+article table th {
+  border: 1px solid grey;
+}
+
+article table td {
+  border: 1px solid grey;
+  padding: 0.5rem;
 }
 
 /*

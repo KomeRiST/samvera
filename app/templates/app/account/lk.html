@@ -19,21 +19,28 @@
 		  <input name="accordion-1" id="ac-{{ forloop.counter }}" type="radio" checked="">
 		  <label for="ac-{{ forloop.counter }}">Заказ № {{item.namber}} от {{item.date_create}} Статус {{item.status}}</label>
 		  <article>
-            <div class="cells ">
-              {% for t in item.tovary.all %}
-                {% for v in t.variacii.all %}
-                    <div class="cell">
-                        <div class="image"><img src="/media/{{ v.variaciya.random_image }}" alt="{{t.tovar.title}}" /></div>
-                        <div class="name">{{t.tovar.title}}</div>
-                        <div class="size">Размер <br />{{v.variaciya.size}}</div>
-                        <div class="clr">Цвет <br />{{v.variaciya.colortile_korz}}</div>
-                        <div class="cost">Цена <br />{{t.tovar.cost}} р.</div>
-                        <div class="count">Количетво <br />{{v.count}} шт.</div>
-                        <div class="summ">Сумма <br />{{v.summ}}</div>
-                    </div>
-                {% endfor %}
-              {% endfor %}
-            </div>
+            <table>
+                <thead>
+                    <tr>
+                    <th>Наименование</th>
+                    <th>Размер/</br>Цвет</th>
+                    <th>Кол-во (шт.)</th>
+                    <th>Цена (руб.)</th>
+                    <th>Сумма (руб.)</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for v in item.ordervars.all %}
+                    <tr>
+                        <td>{{v.variaciya.tovar.title}}</td>
+                        <td>{{v.variaciya.size}}</br>{{v.variaciya.colortile_korz}}</td>
+                        <td>{{v.count}}</td>
+                        <td>{{v.cost}}</td>
+                        <td>{{v.summ}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
 		    </article>
 	    </div>
       {% endfor %}

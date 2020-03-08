@@ -29,6 +29,7 @@ class consignment(models.Model):
     '''
     Накладная
     '''
+    closed = models.BooleanField("Документ закрыт", default=False, help_text="Еслди документ закрыт, то он обрабатывается системой.")
     number = models.CharField("Номер накладной", db_index=True, max_length=25, help_text="Это поле соответствует номеру документа")
     data_doc = models.DateField("Дата документа")
     fabricator = models.ForeignKey(fabricator, on_delete=models.DO_NOTHING, related_name="items")
