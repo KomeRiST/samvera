@@ -1,27 +1,27 @@
 class Korzina {
     /**
-     * Конструктор корзины
-     * @param {Element} korzinaDOM - селектор для вставки HTML корзины
-     * @param {Element} preloadDOM - селектор для показа и скрытия прелоадера во время загрузки HTML (korzinaDOM)
-     * @param {Array of Element} countVarDOM - селекторы для отображения количества товаров в корзине
-     * @param {String} nameKeyStorage - название ключа для хранения в LocalStorage
+     * РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕСЂР·РёРЅС‹
+     * @param {Element} korzinaDOM - СЃРµР»РµРєС‚РѕСЂ РґР»СЏ РІСЃС‚Р°РІРєРё HTML РєРѕСЂР·РёРЅС‹
+     * @param {Element} preloadDOM - СЃРµР»РµРєС‚РѕСЂ РґР»СЏ РїРѕРєР°Р·Р° Рё СЃРєСЂС‹С‚РёСЏ РїСЂРµР»РѕР°РґРµСЂР° РІРѕ РІСЂРµРјСЏ Р·Р°РіСЂСѓР·РєРё HTML (korzinaDOM)
+     * @param {Array of Element} countVarDOM - СЃРµР»РµРєС‚РѕСЂС‹ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РєРѕР»РёС‡РµСЃС‚РІР° С‚РѕРІР°СЂРѕРІ РІ РєРѕСЂР·РёРЅРµ
+     * @param {String} nameKeyStorage - РЅР°Р·РІР°РЅРёРµ РєР»СЋС‡Р° РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РІ LocalStorage
      */
     constructor (korzinaDOM, preloadDOM, countVarDOM, nameKeyStorage = "korzina") {
         this.korzinaDOM = korzinaDOM;
         this.preloadDOM = preloadDOM;
         this.countVarDOM = countVarDOM;
         this.nameKeyStorage = nameKeyStorage;
-        this.variacii = []; // массив для храения массива вариаций.
-        //this.colichestvo = []; // массив для хранения массива количества вариаций.
+        this.variacii = []; // РјР°СЃСЃРёРІ РґР»СЏ С…СЂР°РµРЅРёСЏ РјР°СЃСЃРёРІР° РІР°СЂРёР°С†РёР№.
+        //this.colichestvo = []; // РјР°СЃСЃРёРІ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РјР°СЃСЃРёРІР° РєРѕР»РёС‡РµСЃС‚РІР° РІР°СЂРёР°С†РёР№.
         this.LoadFromLocalStorage();
     }
     /**
-     * Добавление товара в корзину
-     * @param {Int} v - id вариации товара
-     * @param {Int} c - количество
+     * Р”РѕР±Р°РІР»РµРЅРёРµ С‚РѕРІР°СЂР° РІ РєРѕСЂР·РёРЅСѓ
+     * @param {Int} v - id РІР°СЂРёР°С†РёРё С‚РѕРІР°СЂР°
+     * @param {Int} c - РєРѕР»РёС‡РµСЃС‚РІРѕ
      */
     AddTovar(v, c) {
-        // ищем в массиве добавляемую вариацию товара
+        // РёС‰РµРј РІ РјР°СЃСЃРёРІРµ РґРѕР±Р°РІР»СЏРµРјСѓСЋ РІР°СЂРёР°С†РёСЋ С‚РѕРІР°СЂР°
         var b = true;
         for (var i = 0; i < this.variacii.length; i++) {
             if (this.variacii[i].id === v) {
@@ -30,16 +30,16 @@ class Korzina {
                 break;
             }
         }
-        if (b) { // если не находим
-            this.variacii.push({id: v, count: c}); // добавляем в конец массива
-            //this.colichestvo.push(c); // ... за одно и количество :)
+        if (b) { // РµСЃР»Рё РЅРµ РЅР°С…РѕРґРёРј
+            this.variacii.push({id: v, count: c}); // РґРѕР±Р°РІР»СЏРµРј РІ РєРѕРЅРµС† РјР°СЃСЃРёРІР°
+            //this.colichestvo.push(c); // ... Р·Р° РѕРґРЅРѕ Рё РєРѕР»РёС‡РµСЃС‚РІРѕ :)
         }
         this.SaveToLocalStorage();
     }
     /**
-     * Удаление товара из корзины
-     * @param {Int} v - id вариации товара
-     * @param {Int} c - количество
+     * РЈРґР°Р»РµРЅРёРµ С‚РѕРІР°СЂР° РёР· РєРѕСЂР·РёРЅС‹
+     * @param {Int} v - id РІР°СЂРёР°С†РёРё С‚РѕРІР°СЂР°
+     * @param {Int} c - РєРѕР»РёС‡РµСЃС‚РІРѕ
      */
     DelTovar (v, c = 1) {
         for (var i = this.variacii.length-1; i >= 0; i--) {
@@ -51,7 +51,7 @@ class Korzina {
         this.SaveToLocalStorage();
     }
     /**
-     * Узнаем количество товара в корзине
+     * РЈР·РЅР°РµРј РєРѕР»РёС‡РµСЃС‚РІРѕ С‚РѕРІР°СЂР° РІ РєРѕСЂР·РёРЅРµ
      * */
     GetCountVars() {
         var r = 0;
@@ -61,7 +61,7 @@ class Korzina {
         return r
     }
     /**
-     * Показываем на сайте количество товара
+     * РџРѕРєР°Р·С‹РІР°РµРј РЅР° СЃР°Р№С‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ С‚РѕРІР°СЂР°
      * */
     ShowCount() {
         var count = this.countVarDOM.length;
@@ -71,7 +71,7 @@ class Korzina {
         }
     }
     /** 
-     *  Полная очистка корзины.
+     *  РџРѕР»РЅР°СЏ РѕС‡РёСЃС‚РєР° РєРѕСЂР·РёРЅС‹.
      */
     Clear () {
         this.variacii.length = 0;
@@ -79,11 +79,11 @@ class Korzina {
         //this.SaveToLocalStorage();
     }
     Oformit () {
-        // Переадресация на страницу оформления заявки.
+        // РџРµСЂРµР°РґСЂРµСЃР°С†РёСЏ РЅР° СЃС‚СЂР°РЅРёС†Сѓ РѕС„РѕСЂРјР»РµРЅРёСЏ Р·Р°СЏРІРєРё.
          
     }
     /** 
-     *  Формируем строку для работы с Ajax, JSON и LocalStorage
+     *  Р¤РѕСЂРјРёСЂСѓРµРј СЃС‚СЂРѕРєСѓ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Ajax, JSON Рё LocalStorage
      */
     GetString() {
         if (this.variacii.length < 1) {
@@ -104,23 +104,23 @@ class Korzina {
         }
     }
     LoadFromLocalStorage () {
-        // Прячем содержимое корзины
+        // РџСЂСЏС‡РµРј СЃРѕРґРµСЂР¶РёРјРѕРµ РєРѕСЂР·РёРЅС‹
         this.preloadDOM.delay(500).fadeIn();
-        // Загрузка в объект из локального хранилища
-        this.Clear(); // Зачищаем место для новых данных
-        this.variacii = JSON.parse(localStorage.getItem(this.nameKeyStorage)); // читаем хранилище
+        // Р—Р°РіСЂСѓР·РєР° РІ РѕР±СЉРµРєС‚ РёР· Р»РѕРєР°Р»СЊРЅРѕРіРѕ С…СЂР°РЅРёР»РёС‰Р°
+        this.Clear(); // Р—Р°С‡РёС‰Р°РµРј РјРµСЃС‚Рѕ РґР»СЏ РЅРѕРІС‹С… РґР°РЅРЅС‹С…
+        this.variacii = JSON.parse(localStorage.getItem(this.nameKeyStorage)); // С‡РёС‚Р°РµРј С…СЂР°РЅРёР»РёС‰Рµ
         if (this.variacii === null) {
             this.variacii = [];
         }
         this.preloadDOM.delay(500).fadeOut();
     }
     /**
-     * Сохранение набранной корзины в localStorage
+     * РЎРѕС…СЂР°РЅРµРЅРёРµ РЅР°Р±СЂР°РЅРЅРѕР№ РєРѕСЂР·РёРЅС‹ РІ localStorage
      */
     SaveToLocalStorage () {
-        // Сохранение в хранилище
-        var K = this.variacii; // Получаем строку для сохранения...
-        localStorage.setItem(this.nameKeyStorage, JSON.stringify(K)); // Серриализуем в JSON и сохраняем в хранилище.
+        // РЎРѕС…СЂР°РЅРµРЅРёРµ РІ С…СЂР°РЅРёР»РёС‰Рµ
+        var K = this.variacii; // РџРѕР»СѓС‡Р°РµРј СЃС‚СЂРѕРєСѓ РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ...
+        localStorage.setItem(this.nameKeyStorage, JSON.stringify(K)); // РЎРµСЂСЂРёР°Р»РёР·СѓРµРј РІ JSON Рё СЃРѕС…СЂР°РЅСЏРµРј РІ С…СЂР°РЅРёР»РёС‰Рµ.
         this.ShowCount();
     }
     KorzinaGet() {
@@ -143,7 +143,7 @@ class Korzina {
         });
 
         request.fail(function (jqXHR, textStatus) {
-            K.korzinaDOM.html("При загрузке данных произошла ошибка!");
+            K.korzinaDOM.html("РџСЂРё Р·Р°РіСЂСѓР·РєРµ РґР°РЅРЅС‹С… РїСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР°!");
             //alert("Request failed: " + textStatus);
         });
         this.preloadDOM.delay(500).fadeOut();

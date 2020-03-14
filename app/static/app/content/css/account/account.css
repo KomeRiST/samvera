@@ -31,12 +31,16 @@ FONTS SIZE
 
 */
 .lk-content {
-  color: black;
+  color: whitesmoke;
   padding-bottom: 3rem;
 }
 
 .lk-content p {
   padding: .25rem;
+}
+
+.main_content {
+  max-width: 1200px !important;
 }
 
 .ac-container input {
@@ -46,86 +50,36 @@ FONTS SIZE
 .ac-container > div {
   padding: .5rem;
   border-bottom: 1px solid lightgray;
+  text-align: left;
 }
 
 .ac-container label {
   cursor: pointer;
-  font-weight: 400;
+  font-weight: 300;
+  font-size: 1.5rem;
+  display: block;
+  width: 100%;
+  position: relative;
+  margin: 1rem 0;
 }
 
-@media only screen and (min-width: 300px) {
-  .ac-container label {
-    font-size: 20px;
-  }
-}
-
-@media only screen and (min-width: 480px) {
-  .ac-container label {
-    font-size: 20px;
-  }
-}
-
-@media only screen and (min-width: 560px) {
-  .ac-container label {
-    font-size: 22px;
-  }
-}
-
-@media only screen and (min-width: 640px) {
-  .ac-container label {
-    font-size: 24px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .ac-container label {
-    font-size: 26px;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .ac-container label {
-    font-size: 26px;
-  }
-}
-
-@media only screen and (min-width: 1248px) {
-  .ac-container label {
-    font-size: 26px;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .ac-container label {
-    font-size: 28px;
-  }
+.ac-container > div > label:after {
+  content: "+";
+  float: right;
+  font-size: 1.5rem;
+  position: absolute;
+  right: 0rem;
 }
 
 .ac-container article {
+  margin-top: 1rem 0;
   overflow: hidden;
   max-height: 0px;
   position: relative;
+  margin: auto;
+  overflow-x: auto;
   -webkit-transition: max-height 0.3s ease-in-out;
   transition: max-height 0.3s ease-in-out;
-  margin: auto;
-}
-
-@media only screen and (min-width: 768px) {
-  .ac-container article {
-    width: 85%;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .ac-container article {
-    width: 65%;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .ac-container article {
-    width: 90%;
-  }
 }
 
 .ac-container article .help {
@@ -142,11 +96,10 @@ FONTS SIZE
 .ac-container a {
   text-decoration: none;
   color: #5d5d5d;
-  font-weight: bold;
 }
 
 .ac-container a:hover {
-  color: black;
+  color: whitesmoke;
 }
 
 .ac-container article ul {
@@ -160,12 +113,8 @@ FONTS SIZE
   padding: .2rem 0px;
 }
 
-.ac-container label:hover {
-  font-weight: 700;
-}
-
-.ac-container input:checked + label, .ac-container input:checked + label:hover {
-  font-weight: bold;
+.ac-container input:checked + label,
+.ac-container input:checked + label:hover {
   -webkit-transition: font-weight 1s linear;
   transition: font-weight 1s linear;
 }
@@ -173,12 +122,11 @@ FONTS SIZE
 .ac-container input:checked ~ article {
   max-height: 3000px;
   height: auto;
-  padding: 1rem 0px;
   -webkit-transition: max-height 0.5s ease-in-out;
   transition: max-height 0.5s ease-in-out;
 }
 
-/*.ac-container input:checked ~ article.ac-small {
-    height: 140px;
-}*/
+.ac-container input:checked ~ label:after {
+  content: "-";
+}
 /*# sourceMappingURL=account.css.map */

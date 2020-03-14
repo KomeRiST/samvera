@@ -1,23 +1,3 @@
-/*    COLOR -- FONTS    */
-$fc-Default: black;
-$fc-light: darkgray;
-$fc-gray: #5d5d5d;
-$fc-dark: black;
-$fc-title_light: white;
-$fc-title_dark: black;
-$fc-title_descr_light: darkgray;
-$fc-title_descr_dark: black;
-
-$fc-href-dark: black;
-$fc-href-liht: gray;
-
-/*    COLOR -- BLOCKS   */
-$bg-Default: whitesmoke;
-$bg-dark: black;
-
-$btn-light: white;
-$btn-dark: black;
-
 $main_title-padding: 3rem;
 /*
 FONTS SIZE
@@ -34,6 +14,17 @@ FONTS SIZE
 
 */
 $fontsize: (
+"text_footer": 13px,
+
+"logo_phone": 2rem,
+"logo_phone-wide": 2.15rem,
+"logo_phablet": 2.3rem,
+"logo_tablet-small": 2.5rem,
+"logo_tablet": 2.65rem,
+"logo_tablet-wide": 2.7rem,
+"logo_desktop": 3rem,
+"logo_desktop-wide": 3rem,
+
 "text_phone": 16px,
 "text_phone-wide": 16px,
 "text_phablet": 16px,
@@ -42,6 +33,7 @@ $fontsize: (
 "text_tablet-wide": 18px,
 "text_desktop": 18px,
 "text_desktop-wide": 20px,
+
 "title_phone": 30px,
 "title_phone-wide": 30px,
 "title_phablet": 32px,
@@ -50,6 +42,7 @@ $fontsize: (
 "title_tablet-wide": 68px,
 "title_desktop": 68px,
 "title_desktop-wide": 72px,
+
 "title-descr_phone": 16px,
 "title-descr_phone-wide": 16px,
 "title-descr_phablet": 18px,

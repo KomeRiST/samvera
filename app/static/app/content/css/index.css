@@ -14,72 +14,166 @@ FONTS SIZE
     desktop-wide: 1440px
 
 */
-body {
-  background-color: black;
+/*    COLOR -- FONTS    */
+/*    COLOR -- BLOCKS   */
+/*
+FONTS SIZE
+    phone: 300px
+    phone-wide: 480px
+    phablet: 560px
+
+    tablet-small: 640px
+    tablet: 768px
+    tablet-wide: 1024px
+
+    desktop: 1248px
+    desktop-wide: 1440px
+
+*/
+.vid {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
 }
 
-.content {
+.vid .video {
+  height: 100vh;
+  width: 100%;
+}
+
+.before-logo {
+  font-size: 1em;
+  text-align: center;
+}
+
+.logo {
+  font-size: 5em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.btn-next {
+  font-size: 1.25em;
+  display: inline-block;
+  border: 1px solid transparent;
+  padding: .5em 1em;
+}
+
+.btn-next:hover {
+  border: 1px solid transparent;
+}
+
+div[class^="block-"] {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.block-one .cover {
+  z-index: 9;
+  position: relative;
+  height: inherit;
+}
+
+.block-one .cover .cont {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[12];
-      grid-template-columns: repeat(12, 1fr);
-  grid-column-gap: 15px;
-}
-
-.content .block-one {
-  -ms-grid-column: 1/13;
-  grid-column: 1/13;
-  position: relative;
-  background-color: black;
-}
-
-.content .block-one .overlay {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background: -webkit-gradient(linear, left bottom, left top, from(black), color-stop(30%, transparent), color-stop(70%, transparent), to(black));
-  background: linear-gradient(0deg, black 0%, transparent 30%, transparent 70%, black 100%);
-  /*opacity: 0.75;*/
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  z-index: 2;
+  -ms-grid-rows: (1fr)[3];
+      grid-template-rows: repeat(3, 1fr);
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  height: inherit;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
 }
 
-.content .block-one .video {
-  height: 100vh;
+.block-one .cover nav ul {
   width: 100%;
+  list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-grid-columns: (200px)[3];
+      grid-template-columns: repeat(3, 200px);
+  gap: 2em;
 }
 
-.content .block-two {
-  -ms-grid-column: 1/13;
-  grid-column: 1/13;
-  background-color: black;
+.block-one .cover nav ul a {
+  padding: 0px .5em;
+  font-size: 1.5em;
+  border-bottom: 2px solid transparent;
 }
 
-.content .block-two .drag_slider {
-  height: 70vh;
+.block-one .cover nav ul a:hover {
+  border-bottom: 2px solid transparent;
 }
 
-.content .block-two .drag_slider .slider-container {
-  overflow: hidden;
+.block-one .after-logo {
+  height: 100%;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 65%;
+  margin: auto;
 }
 
-footer {
-  background-color: black;
+.block-one .after-logo p {
+  font-size: 1.75em;
 }
 
-footer .bottom-menu__link {
-  color: white;
+.block-two {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.bottom-menu__sub-link:hover {
-  color: white !important;
+.block-three {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.block-three .logo {
+  margin-bottom: .5em;
+}
+
+.block-three .after-logo {
+  font-size: 2em;
 }
 /*# sourceMappingURL=index.css.map */

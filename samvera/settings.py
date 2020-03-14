@@ -25,7 +25,7 @@ SECRET_KEY = '980e51a4-86f5-41f6-9887-017b09fd5032'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True   
 
-ALLOWED_HOSTS = ['www.komerist.ru', '212.220.110.23', '0.0.0.0', '192.168.0.10', '192.168.0.11', '192.168.0.12', '127.0.0.1', 'local.site.my', '192.168.0.99']
+ALLOWED_HOSTS = ['komerist.ru', 'www.komerist.ru', '212.220.110.23', '0.0.0.0', '192.168.0.10', '192.168.0.11', '192.168.0.12', '127.0.0.1', 'local.site.my', '192.168.0.99']
 
 # EMAIL settings
 from samvera import EMAIL_settings as ES
@@ -42,6 +42,7 @@ CART_SESSION_ID = "cart" # Ключ для хранения корзины в с
 # https://docs.djangoproject.com/en/2.1/ref/settings/#std:setting-INSTALLED_APPS
 INSTALLED_APPS = [
     # Add your apps here to enable them
+    'nested_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,6 +55,7 @@ INSTALLED_APPS = [
     #'shop',
     'app',
     'orders',
+    'fabricator',
     'admin_reorder',
 ]
 
@@ -72,10 +74,13 @@ MIDDLEWARE = [
 ADMIN_REORDER = (
     'shop',
     {'app': 'app', 'label': 'Склад',
-    'models': ('app.Tovar', 'app.Variaciya', 'app.Gallery')},
+    'models': ('app.Collection', 'app.Category', 'app.Tovar', 'app.Variaciya', 'app.Gallery')},
 
-    {'app': 'app', 'label': 'Заказы',
-    'models': ('app.Orders', 'app.OrderTovary', 'app.OrderTovaryVariaciya')},
+    {'app': 'fabricator', 'label': 'Наrладные',
+    'models': ('fabricator.fabricator', 'fabricator.consignment', 'app.MtoM_VarsToCons')},
+
+    {'app': 'orders', 'label': 'Заказы',
+    'models': ('orders.Order', 'orders.OrderItem')},
 
     {'app': 'auth', 'label': 'Авторизация',
     'models': ('auth.User', 'auth.Group')},
@@ -116,6 +121,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processors.cart',
+                'app.context_processors.categories',
+                'app.context_processors.collections',
             ],
         },
     },

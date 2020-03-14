@@ -2,8 +2,9 @@
 {% load staticfiles %}
 
 {% block css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/flickity-docs.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/catalog/catalog.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/css/flickity-docs.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/css/account/account.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/css/catalog/catalog.css' %}" />
 {% endblock %}
 
 {% block screen %}
@@ -20,79 +21,109 @@
 
 {% block content %}
 
-<div class="main_content thing-content">
-    <div class="foto_cost slider"></div>
-    <div class="title">{{thing.title}}</div>
-    <div class="desc">
-        <div class="descr">{{thing.descr}}</div>
+<div class="main_content">
+    <div class="thing-content">
+        <div class="photos">
+        </div>
+        <div class="info-thing">
+            <div class="title">{{thing.title}}</div>
+            <div class="variacii">
+                <p>Размеры</p>
+                <div class="sizes">{{thing.sizes|safe}}</div>
+                <p>Цвета</p>
+                <div class="colors">{{thing.colortile_korz|safe}}</div>
+                <div class="cost">
+                    <p>Цена: {{thing.cost}}</p>
+                </div>
+            </div>
+            <div class="desc">
+                <section class="ac-container">
+                    <div class="">
+                        <input name="accordion-1" id="ac-1" type="checkbox" checked="">
+                        <label for="ac-1">Описание и обмеры</label>
+                        <article class="ac-small">
+                            <p>{{thing.descr}}</p>
+                            <!-- <p>Обратите вниммание на
+                                <label class="tv-link" for="ac-3"><b>уход за изделием</b></label>!
+                            </p> -->
+                        </article>
+                    </div>
+
+                    <div>
+                        <input name="accordion-1" id="ac-2" type="checkbox">
+                        <label for="ac-2">Параметры модели</label>
+                        <article class="ac-small">
+                            <p class="model"></p>
+                        </article>
+                    </div>
+
+                    <div>
+                        <input name="accordion-1" id="ac-3" type="checkbox">
+                        <label for="ac-3">Уход за изделием</label>
+                        <article class="ac-small">
+                            <p>{{ thing.uhod }}</p>
+                        </article>
+                    </div>
+                </section>
+            </div>
+            <!-- <div id="btn-id" class="btn-base btn-light" data-id="{{thing.id}}" onclick="add(this)"><p>В корзину</p></div> -->
+            <form id="cart_product_form" action="{% url "cart:cart_add" thing.id %}" method="post">
+                {{ cart_product_form }}
+                {% csrf_token %}
+                <input id="btn-id" class="btn-base btn-light" type="submit" value="В корзину">
+            </form>
+        </div>
     </div>
-    <div class="variacii">
-        <p>Размеры</p>
-        <div class="sizes">{{thing.sizes|safe}}</div>
-        <p>Цвета</p>
-        <div class="colors">{{thing.colortile_korz|safe}}</div>
-        <div class="cost"><p>Цена: {{thing.cost}}</p></div>
-    </div>
-    <div id="btn-id" class="btn-base btn-light" data-id="{{thing.id}}" onclick="add(this)"><p>В корзину</p></div>
-    <form action="{% url "cart:cart_add" thing.id %}" method="post">
-    {{ cart_product_form }}
-    {% csrf_token %}
-    <input type="submit" value="Add to cart">
-</form>
+
+
 </div>
 {% endblock %}
 
 {% block scripts %}
 <script src="{% static '/app/slick/slick.min.js' %}"></script>
 <script type="text/javascript">
-    function Slider(e) {
-        var settings = {
-            autoplay: false,
-            //autoplaySpeed: 7000,
-            slidesToShow: 1,
-            centerMode: true,
-            centerPadding: '0px',
-            arrows: false,
-            dots: true,
-            infinite: true,
-            speed: 300,
-            fade: false,
-            cssEase: 'linear'
-        }
-        $(".foto_cost").removeClass("slick-initialized slick-slider slick-dotted");
-            $(".foto_cost").slick(settings);
-    };
+    var settingsSlider = {
+        autoplay: false,
+        //autoplaySpeed: 7000,
+        slidesToShow: 1,
+        centerMode: true,
+        centerPadding: '0px',
+        arrows: false,
+        dots: true,
+        infinite: true,
+        speed: 300,
+        fade: false,
+        cssEase: 'linear'
+    }
 
     function getphoto(v) {
         var request = $.ajax({
             url: `/getthingphtotoss/${v}/`,
             method: "get",
-            // contentType: 'application/json; charset=utf-8',
-            // data: { korzina: stroka },
-            // dataType: 'text',
         });
 
         request.done(function (msg) {
             var m = JSON.parse(msg)
-            $(".foto_cost").html(m.img);
-            $("#btn-id").attr("data-id", m.id);
-            Slider();
+            // $(".photos").slick('unslick');
+            // $(".photos").html(m.img);
+            $(".obmer").html(m.obmer);
+            $(".model").html(m.model);
+            $("#cart_product_form").attr("action", "/cart/add/" + m.id + "/");
+            $("#id_kolvo").html(m.kolvo);
+            GranicaSlick(m.img);
         });
 
         request.fail(function (jqXHR, textStatus) {
-            $(".colors").html(`Извините, произошла ошибка ${jqXHR}\n${textStatus}`);
+            $(".photos").html(`Извините, произошла ошибка ${jqXHR}\n${textStatus}`);
         });
     }
 
     function getcolors(t, s) {
         $('div[id^="size-"]').removeClass('size-select');
-        $("div[id^='size-"+s+"']").addClass('size-select');
+        $("div[id^='size-" + s + "']").addClass('size-select');
         var request = $.ajax({
             url: `/getthingcolors/${t}/${s}/`,
             method: "get",
-            // contentType: 'application/json; charset=utf-8',
-            // data: { korzina: stroka },
-            // dataType: 'text',
         });
 
         request.done(function (msg) {
@@ -102,18 +133,16 @@
             getphoto($(".colors div:first").attr("data-var"));
             $("div[id^='color-']").click(function () {
                 getphoto(this.getAttribute("data-var"));
-            //Slider();
             });
         });
 
         request.fail(function (jqXHR, textStatus) {
-            $(".colors").html(`Извините, произошла ошибка ${jqXHR}\n${textStatus}`);
+            $(".colors").html(`Извините,\n\nпроизошла ошибка ${jqXHR}\n\n${textStatus}`);
         });
     }
 
     $('div[id^="size-"]').click(function () {
         getcolors(this.getAttribute("data-tovar"), this.getAttribute("data-size"));
-            //Slider();
     });
 
     function add(e) {
@@ -125,7 +154,47 @@
         var s = $(".sizes div:first");
         s.addClass('size-select');
         getcolors(s.attr("data-tovar"), s.attr("data-size"));
-        //Slider();
+        // GranicaSlick();
+    });
+
+    var Granica = {
+        type: null,
+        hasSlick: false,
+        val: function (value, h) {
+            if (value != this.type) {
+                this.type = value;
+            }
+            // if (f) {
+            // $(".photos").html(h);
+            // }
+            this.change(h)
+        },
+        change: function (h) {
+            if (this.type == 0) {
+                if (this.hasSlick) {
+                    $(".photos").slick("unslick");
+                }
+                $(".photos").html(h);
+                $(".photos").slick(settingsSlider);
+                this.hasSlick = true;
+            } else {
+                if (this.hasSlick) {
+                    $(".photos").slick("unslick");
+                }
+                $(".photos").html(h);
+                this.hasSlick = false;
+            }
+        }
+    };
+    function GranicaSlick(htm = "") {
+        if (window.innerWidth < 1024) {
+            Granica.val(0, htm);
+        } else {
+            Granica.val(1, htm);
+        }
+    };
+    $(window).resize(function () {
+        GranicaSlick();
     });
 </script>
 {% endblock %}

@@ -1,0 +1,126 @@
+/*    COLOR -- FONTS    */
+/*    COLOR -- BLOCKS   */
+/*
+FONTS SIZE
+    phone: 300px
+    phone-wide: 480px
+    phablet: 560px
+
+    tablet-small: 640px
+    tablet: 768px
+    tablet-wide: 1024px
+
+    desktop: 1248px
+    desktop-wide: 1440px
+
+*/
+/*    COLOR -- FONTS    */
+/*    COLOR -- BLOCKS   */
+/*
+FONTS SIZE
+    phone: 300px
+    phone-wide: 480px
+    phablet: 560px
+
+    tablet-small: 640px
+    tablet: 768px
+    tablet-wide: 1024px
+
+    desktop: 1248px
+    desktop-wide: 1440px
+
+*/
+body {
+  background-color: black;
+}
+
+.content {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[12];
+      grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 15px;
+}
+
+.content .block-one {
+  -ms-grid-column: 1/13;
+  grid-column: 1/13;
+  position: relative;
+  background-color: black;
+}
+
+.content .block-one .overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: -webkit-gradient(linear, left bottom, left top, from(black), color-stop(30%, transparent), color-stop(70%, transparent), to(black));
+  background: linear-gradient(0deg, black 0%, transparent 30%, transparent 70%, black 100%);
+  /*opacity: 0.75;*/
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 2;
+}
+
+.content .block-one .video {
+  height: 100vh;
+  width: 100%;
+}
+
+.content .block-two {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 12;
+  grid-column: 1/13;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.content .block-two > div {
+  height: 100vh;
+}
+
+.content .block-two > div p {
+  color: white;
+}
+
+.content .block-two .catalog {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+footer {
+  background-color: black;
+}
+
+footer .bottom-menu__link {
+  color: white;
+}
+
+.bottom-menu__sub-link:hover {
+  color: white !important;
+}
+/*# sourceMappingURL=index_good.css.map */

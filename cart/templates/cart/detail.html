@@ -1,53 +1,73 @@
 ﻿{% extends "app/layout.html" %}
-
-{% load static %}
-{% block title %}
-    Your shopping cart
+{% load staticfiles %}
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/css/catalog/catalog.css' %}" />
+{% endblock %}
+{% block screen %}
+<div class="main_screen about-screen_korz">
+    <div class="main_title text-title-dark">{{ title }}</div>
+    <div class="main_title_descr text-desc-dark">{{ message }}</div>
+</div>
 {% endblock %}
 {% block content %}
-    <h1>Your shopping cart</h1>
-    <table class="cart">
-        <thead>
-        <tr>
-            <th>Image</th>
-            <th>variaciya</th>
-            <th>Quantity</th>
-            <th>Remove</th>
-            <th>Unit price</th>
-            <th>Price</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for item in cart %}
+<div class="about-content about-content_korz">
+    <div class="korz-table">
+        <div class="cells">
+            {% for item in cart %}
             {% with variaciya=item.variaciya %}
-                <tr>
-                    <td>
-                        <a href="{{ variaciya.get_absolute_url }}">
-                            <img src="
-                                {% if variaciya.image %}
-                                    {{ variaciya.image.url }}
-                                {% else %}
-                                    {% static "img/no_image.png" %}
-                                {% endif %}">
-                        </a>
-                    </td>
-                    <td>{{ variaciya.name }}</td>
-                    <td>{{ item.kolvo }}</td>
-                    <td><a href="{% url "cart:cart_remove" variaciya.id%}">Remove</a></td>
-                    <td class="num">${{ item.cost }}</td>
-                    <td class="num">${{ item.summ }}</td>
-                </tr>
+                <div class="cell">
+                    <div class="image">
+                    {% if variaciya.gallery %}
+                        {{ variaciya.random_image }}
+                    {% else %}
+                        /media/gallery/no_image.png
+                    {% endif %}</div>
+                    <div class="name">{{ variaciya.name }}
+                        <div class="del"><a href="{% url "cart:cart_remove" variaciya.id%}">X</a></div>
+                    </div>
+                    <div class="size"><p>Размер <br />{{variaciya.size}}</p></div>
+                    <div class="clr">Цвет <br />{{variaciya.colortile_korz}}</div>
+                    <div class="cost">Цена <br />{{ item.cost }} р.</div>
+                    <div class="count">Количетво <br />
+                        <form action="{% url "cart:cart_add" variaciya.id %}" method='post' style="min-width: 0;">
+                        {% csrf_token %}
+                        {{ item.update_kolvo_form.kolvo }}
+                        <br>
+                        {{ item.update_kolvo_form.update }}
+                        <input type='submit' value='Обновить'>
+                        </form>
+                    </div>
+                    <div class="summ">Сумма <br />{{ item.summ }}</div>
+                 </div>
             {% endwith %}
-        {% endfor %}
-        <tr class="total">
-            <td>Total</td>
-            <td colspan="4"></td>
-            <td class="num">${{ cart.get_total_price }}</td>
-        </tr>
-        </tbody>
-    </table>
-    <p class="text-right">
-        <a href="\" class="button light">Continue shopping</a>
-        <a href="#" class="button">Checkout</a>
-    </p>
+            {% endfor %}
+            </div>
+                    <br />
+                <div class="itog">Общий итог заказа: {{ cart.get_total_summ }}</div>
+            <form action="{% url 'get_order' %}" method="get">
+                    {% csrf_token %}
+                    <input name="korzina" type="hidden" value="{{kor}}">
+                    <button type="submit" class="btn-base btn-dark" ><p>Оформить заказ</p></button>
+            </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<!-- 
+<script>
+
+        function del(e) {
+            var id = e.getAttribute("data-id");
+            korz.DelTovar(id, 1);
+            korz.KorzinaGet();
+        }
+
+    $(document).ready(function () {
+        if (typeof korz === 'undefined') {
+            korz = new Korzina($('.korz-table'), $(".korz-preload"), [$("#korzcount"), $("#korzcount2")], "korzina");
+        }
+            korz.KorzinaGet();
+    });
+</script> -->
 {% endblock %}

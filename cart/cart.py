@@ -37,12 +37,12 @@ class Cart(object):
         self.session[settings.CART_SESSION_ID] = self.cart # Обновляем свою переменную в сессии пользователя
         self.session.modified = True # Отмечаем сессию как "изменённую", чтобы убедиться в сохранении данных
 
-    def remove(self, variaciya):
+    def remove(self, var_id):
         """
         Удаление товара из корзины
         """
-        var_id = str(variaciya.id)
-        if var_id in self.cart[var_id]:
+        #var_id = str(variaciya.id)
+        if var_id in self.cart:
             del self.cart[var_id]
             self.save()
 
@@ -76,5 +76,5 @@ class Cart(object):
         """
         Удаление корзины из сессии
         """
-        del self.session[CART_SESSION_ID]
+        del self.session[settings.CART_SESSION_ID]
         self.session.modified = True

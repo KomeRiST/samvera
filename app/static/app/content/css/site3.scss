@@ -22,7 +22,7 @@
 }
 
 .centaur {
-    font-family: CENTAUR;
+    // font-family: CENTAUR;
     text-transform: uppercase;
 }
 
@@ -110,7 +110,7 @@ form {
     .field_title {
         @include fontsize("form-field-title");
         margin-top: 1rem;
-        font-family: CENTAUR;
+        // font-family: CENTAUR;
 
         p {
             color: black;
@@ -137,7 +137,7 @@ form {
 .black_form {
     .field_title, .fieldWrapper {
         color: black;
-        font-family: CENTAUR;
+        // font-family: CENTAUR;
 
         input {
             color: black;
@@ -148,7 +148,7 @@ form {
 .white_form {
     .field_title, .fieldWrapper {
         color: white;
-        font-family: CENTAUR;
+        // font-family: CENTAUR;
 
         input {
             color: white;
@@ -389,7 +389,7 @@ form {
                     text-align: center;
 
                     @include fontsize("title-descr") {
-                        font-family: CENTAUR;
+                        // font-family: CENTAUR;
                     }
 
                     ;
@@ -512,13 +512,13 @@ form {
     .info-title {
         @include fontsize("title") {
             color: white;
-            font-family: CENTAUR;
+            // font-family: CENTAUR;
         }
     }
 
     .info-title_descr {
         @include fontsize("title-descr") {
-            font-family: CENTAUR;
+            // font-family: CENTAUR;
         }
 
         ;
@@ -607,7 +607,7 @@ form {
             .title {
                 font-weight: bold;
                 color: white;
-                font-family: CENTAUR;
+                // font-family: CENTAUR;
             }
             /*.desc {
                 text-align: center;
@@ -674,7 +674,7 @@ form {
     }
 
     .accordion a::after {
-        font-family: 'Ionicons';
+        // font-family: 'Ionicons';
         content: '\f218';
         position: absolute;
         float: right;
@@ -692,7 +692,7 @@ form {
     }
 
     .accordion a.active::after {
-        font-family: 'Ionicons';
+        // font-family: 'Ionicons';
         content: '\f209';
         color: #03b5d2;
         border: 1px solid #03b5d2;
@@ -802,7 +802,7 @@ form {
 }
 
 .about-title {
-    font-family: CENTAUR;
+    // font-family: CENTAUR;
 
     @include fontsize("title") {
         color: white;
@@ -811,7 +811,7 @@ form {
 }
 
 .about-title_descr {
-    font-family: CENTAUR;
+    // font-family: CENTAUR;
 
     @include fontsize("title-descr") {
         color: darkgray;
@@ -844,7 +844,7 @@ form {
 }
 
 .ac-container label {
-    font-family: "BebasNeueRegular","Arial Narrow",Arial,sans-serif;
+    // font-family: "BebasNeueRegular","Arial Narrow",Arial,sans-serif;
     padding: 5px 20px;
     position: relative;
     z-index: 20;

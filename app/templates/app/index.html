@@ -2,25 +2,45 @@
 {% load staticfiles %}
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/index.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/css/colors/dark.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/css/colors/light.css' %}" />
 <script src="{% static 'app/scripts/jquery.video.js' %}"></script>
 <style>
 </style>
 {% endblock %}
 {% block content %}
 
-<div class="content">
     <div class="block-one">
-        <div class="overlay">
-            <!--<div class="maintext">
-                <img src="/media/logo.png" height="auto" />
-                <a href="www.samvera.ru" class="centaur">SAMVERA</a>
-            </div>-->
+        <div class="vid">
+            <div class="video" -data-vvvv-bg="/media/video/main.mp4"></div>
         </div>
-        <div class="video" data-vvvv-bg="/media/video/main.mp4">
+        <div class="cover">
+            <div class="cont">
+                <div>
+                    <p class="before-logo">Бренд женской одежды</p>
+                    <p class="logo">samvera</p>
+                    <nav>
+                        <ul>
+                            <li><a href="#">О нас</a></li>
+                            <li><a href="#">Каталог</a></li>
+                            <li><a href="#">Контакты</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="after-logo"><p>Философия душевной свободы</p></div>
+                <div>
+                    <a class="btn-next" href="#new">Далее</a>
+                </div>
+            </div>
         </div>
     </div>
-    
-</div>
+    <div id="new" class="block-two">
+    </div>
+    <div class="block-three">
+        <p class="logo">samvera</p>
+        <p class="after-logo">это единене женщины с внеутренним миром, а так же</p>
+        <p class="after-logo">безупречная гармония тела и лаконичного образа.</p>
+    </div>
 {% endblock %}
 
 {% block scripts %}

@@ -1,31 +1,76 @@
 {% extends "app/layout.html" %}
 {% load staticfiles %}
 {% block css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/catalog/catalog.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/css/catalog/catalog.css' %}" />
 {% endblock %}
 {% block screen %}
-<div class="main_screen">
+<!-- <div class="main_screen">
     <div class="main_screen__conteiner">
         <div class="main_title text-title-dark">{{title}}</div>
     </div>
-</div>
+</div> -->
 {% endblock %}
 {% block content %}
-<div class="main_content catalog-items">
-    {% for item in things %}
-    <div class="container" style="{% if not item.hidden %}opacity: .5;{% endif %}">
-        <div class="container-item" style="background-image: url('/media/{{item.random_image}}')">
-            <div class="cover">
-                <a href="{% url 'thing' item.id %}" class="btn-base btn-light"><p>Подробнее</p></a>
-                {% if request.user.is_staff %}
-                <a href="{% url 'thing_edit' item.id %}" class="btn-base btn-dark"><p>Редактировать</p></a>
-                {% endif %}
+<div class="main_content">
+    <div class="catalog_content">
+        <div class="category">
+            <div class="category_block">
+                <div class="category_item category_item__title">
+                    <p>Категории</p>
+                </div>
+                <div class="category_items_block">
+                    <div class="category_item {% if None == category %}category_item__select{% endif %}">
+                        <a href="{% url 'tovarbycategory' %}">Все</a>
+                    </div>
+                    {% for item in categories %}
+                    <div class="category_item {% if item == category %}category_item__select{% endif %}">
+                        <a href="{{ item.get_absolute_url }}">{{ item }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <br>
+            <div class="collection_block">
+                <div class="category_item category_item__title">
+                    <p>Коллекции</p>
+                </div>
+                <div class="collection_items_block">
+                    <div class="category_item {% if None == collection %}category_item__select{% endif %}">
+                        <a href="{% url 'tovarbycollection' %}">Все</a>
+                    </div>
+                    {% for item in collections %}
+                    <div class="category_item {% if item == collection %}category_item__select{% endif %}">
+                        <a href="{{ item.get_absolute_url }}">{{ item }}</a>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
-        <div class="title">{{ item.title }}</div>
-        <div class="cost">{{ item.cost }}</div>
+        <div class="catalog-items">
+            {% if tovary %}
+            {% for item in tovary %}
+            <div class="container" style="{% if not item.hidden %}opacity: .5;{% endif %}">
+                <a href="{% url 'thing' item.id item.slug %}" class="container-item">
+                    <div class="img_container">
+                        <img src="/media/{{item.random_image}}" alt="" width="100%" srcset="">
+                    </div>
+                    <div class="title">{{ item.title }}</div>
+                    <div class="cost">{{ item.cost }}</div>
+                    {% if request.user.is_staff %}
+                    <a href="{% url 'thing_edit' item.id %}" class="btn-base btn-shadow">
+                        <p>Редактировать</p>
+                    </a>
+                    {% endif %}
+                </a>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="container_not_items">
+                <p>Извините, но товаров данной категории нет.</p>
+            </div>
+            {% endif %}
+        </div>
     </div>
-    {% endfor %}
 </div>
 {% endblock %}
 

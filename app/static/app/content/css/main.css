@@ -32,164 +32,26 @@ FONTS SIZE
 
 */
 @import url("https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700|Gabriela|Philosopher:400,400i,700,700i&display=swap&subset=cyrillic,greek");
-@font-face {
-  font-family: CENTAUR;
-  font-family: 'Comfortaa', cursive;
-  font-family: 'Philosopher', sans-serif;
-  font-family: 'Gabriela', serif;
-  src: url("../../fonts/CENTAUR.TTF") format("truetype");
-}
-
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&display=swap&subset=cyrillic");
 * {
   /*color: $fcDefault;*/
-  font-family: Philosopher;
+  font-family: 'Times New Roman', Times, serif;
   padding: 0;
   margin: 0;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
-
-@media only screen and (min-width: 300px) {
-  * {
-    font-size: 16px;
-  }
-}
-
-@media only screen and (min-width: 480px) {
-  * {
-    font-size: 16px;
-  }
-}
-
-@media only screen and (min-width: 560px) {
-  * {
-    font-size: 16px;
-  }
-}
-
-@media only screen and (min-width: 640px) {
-  * {
-    font-size: 18px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  * {
-    font-size: 18px;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  * {
-    font-size: 18px;
-  }
-}
-
-@media only screen and (min-width: 1248px) {
-  * {
-    font-size: 18px;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  * {
-    font-size: 20px;
-  }
-}
-
-.logo {
-  width: 100%;
-  margin: auto;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0px;
-  background-color: black;
-  z-index: 8;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-align-content: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-direction: row;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-          flex-direction: row;
-}
-
-.logo > a {
-  color: white;
-  display: contents;
-  /*padding: .75rem 0px;*/
+  text-align: center;
+  color: whitesmoke;
+  font-size: 14px;
   text-decoration: none;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-family: CENTAUR;
 }
 
-@media only screen and (min-width: 300px) {
-  .logo > a {
-    font-size: 30px;
-  }
-}
-
-@media only screen and (min-width: 480px) {
-  .logo > a {
-    font-size: 30px;
-  }
-}
-
-@media only screen and (min-width: 560px) {
-  .logo > a {
-    font-size: 32px;
-  }
-}
-
-@media only screen and (min-width: 640px) {
-  .logo > a {
-    font-size: 32px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .logo > a {
-    font-size: 68px;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .logo > a {
-    font-size: 68px;
-  }
-}
-
-@media only screen and (min-width: 1248px) {
-  .logo > a {
-    font-size: 68px;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .logo > a {
-    font-size: 72px;
-  }
-}
-
-.logo > a svg {
-  height: 30px;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-  margin-left: 1rem;
-  fill: white;
+.block_screen {
+  min-height: 100vh;
 }
 
 .developer {
-  position: absolute;
-  bottom: 0px;
+  padding-top: 2rem;
   justify-self: flex-end;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
@@ -203,14 +65,7 @@ FONTS SIZE
 }
 
 .developer a {
-  text-decoration: none;
   color: #212121;
-}
-
-body {
-  margin: 0;
-  background-color: whitesmoke;
-  text-align: center;
 }
 
 .btn-base {
@@ -218,122 +73,23 @@ body {
   background-color: transparent;
   cursor: pointer;
   display: inline-block;
+  margin: auto;
 }
 
 .btn-base p {
   padding: .5rem 1rem;
 }
 
-.btn-light {
-  border: 1px solid black;
-  background-color: white;
+.btn-shadow {
+  -webkit-transition: all .5s;
+  transition: all .5s;
 }
 
-.btn-light p {
-  color: black;
-}
-
-.btn-light:hover {
-  background-color: black;
-  border: 1px solid white;
-}
-
-.btn-light:hover p {
-  color: darkgray;
-}
-
-.btn-dark {
-  border: 1px solid white;
-  background-color: black;
-}
-
-.btn-dark p {
-  color: darkgray;
-}
-
-.btn-dark:hover {
-  background-color: white;
-  border: 1px solid black;
-}
-
-.btn-dark:hover p {
-  color: black;
-}
-
-.maintext {
-  text-align: center;
-  position: relative;
-}
-
-.maintext img {
-  width: 200px;
-}
-
-@media only screen and (max-width: 639px) {
-  .maintext img {
-    width: 100px;
-  }
-}
-
-.maintext p {
-  font-size: 1.5rem;
-  color: white;
-  -webkit-transition: 0.5s font-size linear;
-  transition: 0.5s font-size linear;
-  text-align: center;
-  font-family: CENTAUR;
-}
-
-@media only screen and (min-width: 300px) {
-  .maintext p {
-    font-size: 30px;
-  }
-}
-
-@media only screen and (min-width: 480px) {
-  .maintext p {
-    font-size: 30px;
-  }
-}
-
-@media only screen and (min-width: 560px) {
-  .maintext p {
-    font-size: 32px;
-  }
-}
-
-@media only screen and (min-width: 640px) {
-  .maintext p {
-    font-size: 32px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .maintext p {
-    font-size: 68px;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .maintext p {
-    font-size: 68px;
-  }
-}
-
-@media only screen and (min-width: 1248px) {
-  .maintext p {
-    font-size: 68px;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .maintext p {
-    font-size: 72px;
-  }
-}
-
-.bg_black {
-  background-color: black;
+.btn-shadow:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transition: all .5s;
+  transition: all .5s;
 }
 
 form {
@@ -350,7 +106,6 @@ form {
 
 form .field_title {
   margin-top: 1rem;
-  font-family: CENTAUR;
 }
 
 @media only screen and (min-width: 300px) {
@@ -471,18 +226,14 @@ form .fieldWrapper .field_descr .small {
 
 .korzcount {
   background-color: crimson;
-  position: absolute;
-  top: -14px;
-  right: -14px;
-  height: 25px;
-  width: 25px;
-  font-size: 14px;
   color: white;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  height: 2rem;
+  width: 2rem;
   border-radius: 100%;
-  padding: 4px;
-  text-align: center;
-  /*line-height: 25px;
-            align-self: center;*/
+  line-height: 2rem;
 }
 
 /*
@@ -505,9 +256,10 @@ form .fieldWrapper .field_descr .small {
   /* grid-auto-flow: column; */
 }
 
-@media only screen and (max-width: 559px) {
+@media only screen and (max-width: 767px) {
   .bottom-menu__list {
     font-size: 12px;
+    width: 100%;
   }
 }
 
@@ -562,16 +314,14 @@ form .fieldWrapper .field_descr .small {
 .bottom-menu__list .bottom-menu__item {
   vertical-align: top;
   text-align: left;
-  margin: 3rem;
+  margin: 1rem;
   min-width: 220px;
   list-style: none;
-  text-align: center;
 }
 
 .bottom-menu__list .bottom-menu__item .bottom-menu__link {
   text-transform: uppercase;
-  display: inline-block;
-  vertical-align: top;
+  display: block;
   font-weight: bold;
 }
 
@@ -587,12 +337,10 @@ form .fieldWrapper .field_descr .small {
 }
 
 .bottom-menu__list .bottom-menu__item .bottom-menu__sub .bottom-menu__sub-item .bottom-menu__sub-link {
-  color: gray;
   text-decoration: none;
 }
 
 .bottom-menu__list .bottom-menu__item .bottom-menu__sub .bottom-menu__sub-item .bottom-menu__sub-link:hover {
-  color: black;
   cursor: pointer;
 }
 
@@ -603,7 +351,6 @@ form .fieldWrapper .field_descr .small {
   width: 100vw;
   position: fixed;
   z-index: 1000;
-  color: white;
   -webkit-transition: background-color linear 0.5s;
   transition: background-color linear 0.5s;
   /*.navi:after, .navi:before {
@@ -675,8 +422,8 @@ form .fieldWrapper .field_descr .small {
   /*@include border_shov();*/
   border-bottom: none;
   /*border-radius: 0 0 1em 1em;*/
-  -webkit-box-shadow: inset 0 10px 15px -5px black,0 25px 30px -10px black;
-          box-shadow: inset 0 10px 15px -5px black,0 25px 30px -10px black;
+  -webkit-box-shadow: inset 0 10px 15px -5px black, 0 25px 30px -10px black;
+          box-shadow: inset 0 10px 15px -5px black, 0 25px 30px -10px black;
 }
 
 .nav_ > ul > li:hover ul > .itemnewcollection {
@@ -752,8 +499,8 @@ form .fieldWrapper .field_descr .small {
   border: 0;
   background: transparent;
   outline: 0;
-  right: 15px;
-  top: 15px;
+  right: 0px;
+  top: 0px;
   cursor: pointer;
   border-radius: 50%;
   -webkit-transition: background-color .15s linear;
@@ -783,18 +530,12 @@ form .fieldWrapper .field_descr .small {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  right: 0;
+  height: 100vh;
   background-color: black;
   list-style: none;
   padding: 0 20px;
-  z-index: 9;
   visibility: hidden;
+  overflow-y: auto;
 }
 
 @media only screen and (max-width: 559px) {
@@ -824,11 +565,6 @@ form .fieldWrapper .field_descr .small {
   grid-gap: .5rem;
   padding-top: 2rem;
   border-top: 1px solid gray;
-}
-
-.nav .sociallinks .sociallinks__item {
-  width: 30%;
-  margin: 1rem 1.25%;
 }
 
 @media only screen and (max-width: 559px) {
@@ -872,8 +608,7 @@ form .fieldWrapper .field_descr .small {
   display: block;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 5px;
-  font-size: 1.25rem;
+  letter-spacing: 1px;
   text-decoration: none;
   padding: 1rem;
 }
@@ -991,12 +726,11 @@ form .fieldWrapper .field_descr .small {
 }
 
 .t-sociallinks__svg {
-  background-color: white;
   border-radius: 50%;
 }
 
 .t-sociallinks__svg path {
-  fill: black !important;
+  fill: #a9a9a9 !important;
 }
 
 .t-sociallinks__svg:hover {
@@ -1042,7 +776,6 @@ form .fieldWrapper .field_descr .small {
 
 .main_title {
   color: white;
-  font-family: CENTAUR;
 }
 
 @media only screen and (min-width: 300px) {
@@ -1095,7 +828,6 @@ form .fieldWrapper .field_descr .small {
 
 .main_title_descr {
   color: darkgray;
-  font-family: CENTAUR;
 }
 
 @media only screen and (min-width: 300px) {
@@ -1156,67 +888,120 @@ form .fieldWrapper .field_descr .small {
 
 .main_content {
   margin: auto;
-  /*padding: 2rem;*/
+  padding: 2rem;
 }
 
 @media only screen and (min-width: 1440px) {
   .main_content {
-    width: 1440px;
-    max-width: 85%;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .main_content {
-    width: 1024px;
-    max-width: 85%;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .main_content {
-    width: 768px;
-    max-width: 90%;
-  }
-}
-
-@media only screen and (max-width: 639px) {
-  .main_content {
-    width: 95%;
-    max-width: 95%;
-    /*padding: 1.5rem;*/
+    width: 1600px;
   }
 }
 
 @media only screen and (max-width: 479px) {
   .main_content {
-    width: 95%;
-    max-width: 95%;
-    /*padding: 1rem;*/
+    padding: 0px;
   }
 }
 
 .line {
   width: 80%;
   height: 1px;
-  background-color: gray;
   margin: 3rem auto 0px auto;
-}
-
-a {
-  color: black;
-  text-decoration: none;
-  font-weight: bold;
 }
 
 footer {
   z-index: 0;
-  /*padding: 1.5rem 0;*/
-  background-color: whitesmoke;
+  padding: 1.5rem 0;
+  background-color: #090909;
 }
 
 small {
   font-size: .65rem;
   color: #5d5d5d;
+}
+
+.ac-menu_container input {
+  display: none;
+}
+
+.ac-menu_container label {
+  cursor: pointer;
+  position: relative;
+}
+
+.ac-menu_container > div > label:after {
+  content: "+";
+  float: right;
+  position: absolute;
+  right: 0rem;
+}
+
+.ac-menu_container article {
+  margin-top: 1rem 0;
+  overflow: hidden;
+  max-height: 0px;
+  position: relative;
+  margin: auto;
+  -webkit-transition: max-height 0.3s ease-in-out;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.ac-menu_container article .help {
+  margin-top: 1rem;
+  text-align: center;
+  text-indent: 0px;
+}
+
+.ac-menu_container article p {
+  padding: .225rem 0px;
+}
+
+.ac-menu_container a {
+  text-decoration: none;
+  color: #5d5d5d;
+}
+
+.ac-menu_container a:hover {
+  color: white;
+}
+
+.ac-menu_container article ul {
+  text-align: left;
+  margin: auto;
+  width: 100%;
+}
+
+.ac-menu_container article ul li {
+  margin-left: 1rem;
+  padding: .2rem 0px;
+}
+
+.ac-menu_container input:checked + label,
+.ac-menu_container input:checked + label:hover {
+  -webkit-transition: font-weight 1s linear;
+  transition: font-weight 1s linear;
+}
+
+.ac-menu_container input:checked ~ article {
+  max-height: 3000px;
+  height: auto;
+  -webkit-transition: max-height 0.5s ease-in-out;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.ac-menu_container input:checked ~ label:after {
+  content: "-";
+}
+
+@media screen and (max-width: 560px) {
+  .fullscreenmenu {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 561px) {
+  #menu {
+    display: none;
+  }
 }
 /*# sourceMappingURL=main.css.map */

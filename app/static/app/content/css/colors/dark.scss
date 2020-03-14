@@ -1,0 +1,295 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+
+/*    COLOR -- FONTS    
+
+    яркий = bright
+    тусклый = dim
+    тёмный = dark
+    акцент = accent
+*/
+$fDefault: whitesmoke;
+$fBright: white;
+$fDim: #5d5d5d;
+$fDark: black;
+$fAccent: orange;
+$fTitleBright: white;
+$fTitleDark: black;
+$fDescrBright: darkgray;
+$fDescrDark: black;
+
+$fHref: gray;
+$fHrefDark: black;
+$fHrefHover: white;
+
+/*    COLOR -- BLOCKS   */
+$bDefault: #0f0f0f;
+$bDark: black; // #595959;
+
+$btnBright: whitesmoke;
+$btnDark: #595959;
+
+.dark {
+
+    * {
+        color: $fDefault;
+    }
+
+    body {
+        background-color: $bDefault;
+    }
+
+    a {
+        color: $fHref;
+
+        &:hover {
+            color: $fHrefHover;
+        }
+    }
+
+    .developer {
+
+        p {
+            color: #353535;
+        }
+
+        a {
+            color: #212121;
+        }
+    }
+
+    .btn-base {
+        border-color: $btnDark;
+        background-color: $btnBright;
+
+        p {
+            color: $fDark;
+        }
+
+        &:hover {
+            background-color: $btnDark;
+            border-color: $btnBright;
+
+            p {
+                color: $fBright;
+            }
+        }
+    }
+
+    .btn-shadow {
+        box-shadow: 0px 5px 10px -8px black, 0px -5px 10px -8px black;
+
+        &:hover {
+            border-top-color: #b7b7b7;
+            border-bottom-color: #b7b7b7;
+        }
+    }
+
+    form {
+
+        .field_title {
+            &>p {
+                color: black;
+            }
+        }
+
+        .fieldWrapper {
+
+            input {
+                border-color: gray;
+                background-color: rgba(0, 0, 0, 0);
+            }
+
+            .field_descr {
+
+                .small {
+                    color: gray;
+                }
+            }
+        }
+    }
+
+    // .korzcount {
+    //     background-color: crimson;
+    //     color: white;
+    // }
+
+    /*
+    ���� �����
+*/
+
+    .nav_ {
+        color: white;
+
+        &>ul {
+
+            &>li>a:hover {
+                /*color: #ff6f3a;*/
+                text-shadow: 0 0 10px black, 0 0 30px rgba(255, 255, 255, 0.6);
+            }
+
+            &>li:hover ul {
+                background-color: rgba(0, 0, 0, 0.8);
+                box-shadow: inset 0 10px 15px -5px black, 0 25px 30px -10px black;
+
+                &>.itemnewcollection {
+                    color: #ff6f3a;
+                    text-shadow: none;
+                }
+            }
+
+            li {
+                a {
+                    text-decoration: none;
+                }
+            }
+
+            &>li>ul>li>a {
+                &:hover {
+                    text-shadow: 0 0 10px black, 0 0 30px rgba(255, 255, 255, 0.6);
+                }
+            }
+        }
+    }
+
+    // ---------------------------
+    // Main Navigation Menu
+    // ---------------------------
+
+    .nav {
+        .korz-count {
+            background-color: white;
+            color: black;
+        }
+
+        // Toggle Button
+        &__toggle,
+        &__toggleC {
+            background: transparent;
+            text-decoration: none;
+            background-color: rgba(0, 0, 0, .25);
+
+            &:hover,
+            &:focus {
+                background-color: rgba(0, 0, 0, .85);
+            }
+        }
+
+        .korzcount:before {
+            content: "";
+            background-color: red;
+        }
+
+        &__menu {
+            background-color: black;
+        }
+
+        .sociallinks {
+            border-top: 1px solid gray;
+        }
+
+        &__link {
+            color: white;
+
+            &:hover,
+            &:focus {
+                background-color: rgba(0, 0, 0, 0.2);
+            }
+        }
+    }
+
+    // ---------------------------
+    // SVG Menu Icon
+    // ---------------------------
+
+    .menuicon {
+        color: white;
+    }
+
+    // ---------------------------
+    // Active State
+    // ---------------------------
+
+    .nav:target,
+    .nav--open {
+
+        //animate the menu icon
+        .menuicon {
+            color: white;
+        }
+
+        //show the nav items
+        .nav {
+            &__menu {
+                visibility: visible;
+            }
+
+            &__item {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    }
+
+    // ���� �����
+
+
+    .t-sociallinks__svg path {
+        fill: #a9a9a9 !important;
+    }
+
+    .t-sociallinks__svg:hover {
+        background-color: rgba(255, 255, 255, 0);
+    }
+
+    .t-sociallinks__svg:hover path {
+        fill: white !important;
+    }
+
+    /*
+    ���� �������� ������
+    � ������� ����� ����������� ������� ������ �������
+*/
+
+
+    .main_title {
+        color: $fTitleBright;
+    }
+
+    .main_title_descr {
+        color: $fDescrBright;
+    }
+
+    .text-title-dark {
+        color: $fTitleDark;
+    }
+
+    .text-desc-dark {
+        color: $fDescrDark;
+    }
+
+    // ����� �������� ������
+
+    footer {
+        background-color: #090909;
+    }
+
+    small {
+        color: $fDim;
+    }
+
+
+
+    // Гармошка для меню сайта(Каталог)
+
+    .ac-menu_container a {
+        color: $fDim;
+
+        &:hover {
+            color: $fBright;
+        }
+    }
+
+}
+
+// global

@@ -7,6 +7,7 @@ from datetime import datetime
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpRequest, HttpResponse, Http404, HttpResponseRedirect
 from app import forms, models, base_auth
+from orders.models import Order
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.db.models import Sum
@@ -98,6 +99,7 @@ def home(request):
         'app/index.html',
         {
             'title':'Home Page',
+            # 'categories' : models.Category.objects.all(),
             #'tovarfolder': tovarfolder,
             #'kollections': kollections,
             'year':year(),
@@ -105,9 +107,45 @@ def home(request):
         }
     )
 
-def thing(request, id):
+def tovarlist(request, category_slug=None):
+    template = 'app/catalog/catalog.html'
+    context = {}
+    category = None
+    # categories = models.Category.objects.all()
+    tovary = models.Tovar.objects.filter(hidden=True, variacii__count_sklad__gt = 0, variacii__in_variacii__consignments__closed = True)
+    if category_slug:
+        category = get_object_or_404(models.Category, slug=category_slug)
+        tovary = tovary.filter(category=category)
+    context['category'] = category
+    context['tovary'] = tovary
+    # context['categories'] = categories
+    return render(
+        request,
+        template,
+        context,
+    )
+
+def tovarlist_collection(request, collection_slug=None):
+    template = 'app/catalog/catalog.html'
+    context = {}
+    coll = None
+    # categories = models.Category.objects.all()
+    tovary = models.Tovar.objects.filter(hidden=True, variacii__count_sklad__gt = 0, variacii__in_variacii__consignments__closed = True)
+    if collection_slug:
+        coll = get_object_or_404(models.Collection, slug=collection_slug)
+        tovary = tovary.filter(collection=coll)
+    context['collection'] = coll
+    context['tovary'] = tovary
+    # context['categories'] = categories
+    return render(
+        request,
+        template,
+        context,
+    )
+
+def thing(request, id, slug):
     """Карточка товара"""
-    t = get_object_or_404(models.Tovar, pk=id)
+    t = get_object_or_404(models.Tovar, pk=id, slug=slug, hidden=True, variacii__in_variacii__consignments__closed = True)
     assert isinstance(request, HttpRequest)
     cart_product_form = CartAddProductForm()
     return render(
@@ -127,7 +165,7 @@ def kabinet(request):
     if request.user.is_authenticated:
         title = "Личный кабинет"
         message = "Посмотрите исторю своих покупок, а также статус текущих заказов."
-        orders = models.Orders.objects.filter(client=request.user.id)
+        orders = Order.objects.filter(client=request.user.id)
         page = 'app/account/lk.html'
         assert isinstance(request, HttpRequest)
         return render(
@@ -162,7 +200,7 @@ def getthingcolors(request, tovar, size):
     """Формирование HTML кода с вариантами цветов товара"""
     t = get_object_or_404(models.Tovar, pk=tovar)
     print("tovar = ", t)
-    r = t.variacii.filter(size=size, kolvo__gt=0)
+    r = t.variacii.filter(size=size) #, kolvo__gt=0)
     print("FILTER SIZE = ", r)
     st = ""
     for v in r:
@@ -181,6 +219,13 @@ def getthingphtotoss(request, variaciya):
     res={}
     res['img']=st
     res['id']=v.id
+    res['model']=v.model
+    res['obmer']=v.obmer
+    kol = v.kolvo + 1
+    for i in range(1, kol, 1):
+        st = st + f'<option value="{i}">{i}</option>'
+    res['kolvo']=st
+    # <option value="1">1</option>
     assert isinstance(request, HttpRequest)
     return HttpResponse(json.dumps(res))
 
@@ -199,22 +244,6 @@ def post(request, code):
                 Коммент {p.commet}\n", 'komerist@bk.ru', ['komerist1993-93@mail.ru','komerist@bk.ru', 'viktoleon@bk.ru'], )
             return HttpResponse(f'Всего записей: {l}')
     return httpresponseredirect('/')
-
-def korzina(request):
-    """Рендер страницы Корзина"""
-    if request.POST:
-        pass
-    else:
-        assert isinstance(request, HttpRequest)
-        return render(
-            request,
-            'app/catalog/korzina.html',
-            {
-                'title':'Корзина',
-                'message':'бла бла бла',
-                'year':year(),
-            }
-        )
 
 def new_order(request):
     """ Рендер страницы подтверждения заказа """

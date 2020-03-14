@@ -35,7 +35,7 @@ FONTS SIZE
     ��� �������� ��������
 */
 .about_content__text {
-  color: black;
+  color: whitesmoke;
   padding-bottom: 3rem;
 }
 
@@ -117,7 +117,7 @@ FONTS SIZE
   -ms-align-content: center;
   -ms-flex-line-pack: center;
       align-content: center;
-  background: whitesmoke;
+  background: #0f0f0f;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -324,7 +324,7 @@ FONTS SIZE
 }
 
 .about_slide .slide-left p {
-  background-color: whitesmoke;
+  background-color: #0f0f0f;
 }
 
 .about_slide .slide-right {
@@ -374,7 +374,7 @@ FONTS SIZE
 }
 
 .about_slide .slide-right p {
-  background-color: whitesmoke;
+  background-color: #0f0f0f;
 }
 
 .about_slide .bg-light {
@@ -382,7 +382,7 @@ FONTS SIZE
 }
 
 .about_slide .bg-light p {
-  background: whitesmoke;
+  background: #0f0f0f;
 }
 
 .about_slide .bg-dark {
