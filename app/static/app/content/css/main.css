@@ -35,128 +35,19 @@ FONTS SIZE
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&display=swap&subset=cyrillic");
 * {
   /*color: $fcDefault;*/
-  font: 400 13px/1.2 'Roboto', Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   padding: 0;
   margin: 0;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   text-align: center;
   color: whitesmoke;
-}
-
-html {
-  background-color: #0f0f0f;
-}
-
-a {
+  font-size: 14px;
   text-decoration: none;
-  color: gray;
-}
-
-a:hover {
-  color: white;
 }
 
 .block_screen {
   min-height: 100vh;
-}
-
-.logo {
-  width: 100%;
-  margin: auto;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0px;
-  background-color: #0f0f0f;
-  z-index: 9;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-align-content: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-direction: row;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-          flex-direction: row;
-  min-height: 50px;
-  -webkit-box-shadow: 0px 10px 10px -10px black;
-          box-shadow: 0px 10px 10px -10px black;
-}
-
-@media only screen and (max-width: 559px) {
-  .logo {
-    min-height: auto;
-  }
-}
-
-.logo > a {
-  letter-spacing: 1rem;
-  /*padding: .75rem 0px;*/
-  text-decoration: none;
-  font-weight: 300;
-  text-transform: uppercase;
-  font-family: Times;
-}
-
-@media only screen and (min-width: 300px) {
-  .logo > a {
-    font-size: 2rem;
-  }
-}
-
-@media only screen and (min-width: 480px) {
-  .logo > a {
-    font-size: 2.15rem;
-  }
-}
-
-@media only screen and (min-width: 560px) {
-  .logo > a {
-    font-size: 2.3rem;
-  }
-}
-
-@media only screen and (min-width: 640px) {
-  .logo > a {
-    font-size: 2.5rem;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .logo > a {
-    font-size: 2.65rem;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .logo > a {
-    font-size: 2.7rem;
-  }
-}
-
-@media only screen and (min-width: 1248px) {
-  .logo > a {
-    font-size: 3rem;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .logo > a {
-    font-size: 3rem;
-  }
-}
-
-.logo > a svg {
-  height: 30px;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-  margin-left: 1rem;
-  fill: white;
 }
 
 .developer {
@@ -174,7 +65,6 @@ a:hover {
 }
 
 .developer a {
-  text-decoration: none;
   color: #212121;
 }
 
@@ -190,45 +80,7 @@ a:hover {
   padding: .5rem 1rem;
 }
 
-.btn-light {
-  border: 1px solid #595959;
-  background-color: whitesmoke;
-}
-
-.btn-light p {
-  color: black;
-}
-
-.btn-light:hover {
-  background-color: #595959;
-  border: 1px solid whitesmoke;
-}
-
-.btn-light:hover p {
-  color: white;
-}
-
-.btn-dark {
-  border: 1px solid whitesmoke;
-  background-color: #595959;
-}
-
-.btn-dark p {
-  color: white;
-}
-
-.btn-dark:hover {
-  background-color: whitesmoke;
-  border: 1px solid #595959;
-}
-
-.btn-dark:hover p {
-  color: black;
-}
-
 .btn-shadow {
-  -webkit-box-shadow: 0px 5px 10px -8px black, 0px -5px 10px -8px black;
-          box-shadow: 0px 5px 10px -8px black, 0px -5px 10px -8px black;
   -webkit-transition: all .5s;
   transition: all .5s;
 }
@@ -236,85 +88,8 @@ a:hover {
 .btn-shadow:hover {
   -webkit-box-shadow: none;
           box-shadow: none;
-  border-top: 1px solid #b7b7b7;
-  border-bottom: 1px solid #b7b7b7;
   -webkit-transition: all .5s;
   transition: all .5s;
-}
-
-.maintext {
-  text-align: center;
-  position: relative;
-}
-
-.maintext img {
-  width: 200px;
-}
-
-@media only screen and (max-width: 639px) {
-  .maintext img {
-    width: 100px;
-  }
-}
-
-.maintext p {
-  font-size: 1.5rem;
-  color: white;
-  -webkit-transition: 0.5s font-size linear;
-  transition: 0.5s font-size linear;
-  text-align: center;
-}
-
-@media only screen and (min-width: 300px) {
-  .maintext p {
-    font-size: 30px;
-  }
-}
-
-@media only screen and (min-width: 480px) {
-  .maintext p {
-    font-size: 30px;
-  }
-}
-
-@media only screen and (min-width: 560px) {
-  .maintext p {
-    font-size: 32px;
-  }
-}
-
-@media only screen and (min-width: 640px) {
-  .maintext p {
-    font-size: 32px;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .maintext p {
-    font-size: 68px;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .maintext p {
-    font-size: 68px;
-  }
-}
-
-@media only screen and (min-width: 1248px) {
-  .maintext p {
-    font-size: 68px;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .maintext p {
-    font-size: 72px;
-  }
-}
-
-.bg_black {
-  background-color: black;
 }
 
 form {
@@ -451,12 +226,12 @@ form .fieldWrapper .field_descr .small {
 
 .korzcount {
   background-color: crimson;
+  color: white;
   position: absolute;
   top: 0px;
   right: 0;
   height: 2rem;
   width: 2rem;
-  color: white;
   border-radius: 100%;
   line-height: 2rem;
 }
@@ -576,7 +351,6 @@ form .fieldWrapper .field_descr .small {
   width: 100vw;
   position: fixed;
   z-index: 1000;
-  color: white;
   -webkit-transition: background-color linear 0.5s;
   transition: background-color linear 0.5s;
   /*.navi:after, .navi:before {

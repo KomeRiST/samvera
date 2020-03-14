@@ -2,6 +2,8 @@
 {% load staticfiles %}
 {% block css %}
 <link rel="stylesheet" type="text/css" href="{% static 'app/content/css/index.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/css/colors/dark.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'app/content/css/colors/light.css' %}" />
 <script src="{% static 'app/scripts/jquery.video.js' %}"></script>
 <style>
 </style>
@@ -10,27 +12,34 @@
 
     <div class="block-one">
         <div class="vid">
-            <div class="video" data-vvvv-bg="/media/video/main.mp4"></div>
+            <div class="video" -data-vvvv-bg="/media/video/main.mp4"></div>
         </div>
         <div class="cover">
-            <div>
-                <p class="before-logo">Бренд женской одежды</p>
-                <p class="logo">samvera</p>
-                <nav>
-                    <li>О нас</li>
-                    <li>Каталог</li>
-                    <li>Контакты</li>
-                </nav>
-            </div>
-            <div><p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p></div>
-            <div>
-                <div class="btn-next"><p>Далее</p></div>
+            <div class="cont">
+                <div>
+                    <p class="before-logo">Бренд женской одежды</p>
+                    <p class="logo">samvera</p>
+                    <nav>
+                        <ul>
+                            <li><a href="#">О нас</a></li>
+                            <li><a href="#">Каталог</a></li>
+                            <li><a href="#">Контакты</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="after-logo"><p>Философия душевной свободы</p></div>
+                <div>
+                    <a class="btn-next" href="#new">Далее</a>
+                </div>
             </div>
         </div>
     </div>
-    <div class="block-two">
+    <div id="new" class="block-two">
     </div>
     <div class="block-three">
+        <p class="logo">samvera</p>
+        <p class="after-logo">это единене женщины с внеутренним миром, а так же</p>
+        <p class="after-logo">безупречная гармония тела и лаконичного образа.</p>
     </div>
 {% endblock %}
 

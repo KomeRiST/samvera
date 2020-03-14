@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html class="dark">
 
 <head>
     <meta charset="utf-8" />
@@ -469,7 +469,7 @@
     </nav>
 
     <div class="blur" id="blur">
-        <div class="logo">
+        <!-- <div class="logo">
             <a href="/">samvera</a>
             {% if request.user.is_staff %}
             <a href="{% url 'admin:index' %}">
@@ -485,7 +485,7 @@
             </svg>
             </a>
             {% endif %}
-        </div>
+        </div> -->
 
         <!-- {% if messages %}
             <ul class="messages">
@@ -697,45 +697,9 @@ function openKorzina() {
         $(document).ready(function () {
             var $preloader = $('#p_prldr');
             $preloader.delay(500).fadeOut(1000);
-            // $('.blur').blurjs();
-            // var $preloader = $('.slide .main-text');
-            // var list = document.querySelector('#nav__korz');
-            // $("#korzcount2").toggle(600);
-            // if (korz.GetCountVars() > 0) {
-            //     $("#korzcount").show;
-            //     $("#korzcount2").show;
-            // } else {
-            //     $("#korzcount").hide;
-            //     $("#korzcount2").hide;
-            // }
-            // //var t = document.querySelector("#korzcount");
-            // list.addEventListener('click', function (ev) {
-            //     if (document.documentElement.clientHeight < 550) {
-            //         if ($(".nav__menu").attr("visibility") === "visible") { // Если меню открыто (нужно закрыть)
-            //             $(".nav__menu").css("justify-content", "center");
-            //             $(".nav__menu").css("overflow-y", "hidden");
-            //             $(".developer").css("display", "block");
-            //         } else {
-            //             $(".nav__menu").css("justify-content", "start");
-            //             $(".nav__menu").css("overflow-y", "auto");
-            //             $(".developer").css("display", "contents");
-            //         }
-            //     } else {
-            //         $(".nav__menu").css("justify-content", "center");
-            //         $(".nav__menu").css("overflow-y", "hidden");
-            //         $(".developer").css("display", "block");
-            //     }
-
-            //     if (korz.GetCountVars() > 0) {
-            //         $("#korzcount").toggle(600);
-            //         $("#korzcount2").toggle(600);
-            //     }
-            // }, false);
-
         });
         $(window).load(function () {
             $preloader.delay(500).fadeIn(1000);
-
         });</script>
     <script src="{% static 'app/scripts/jquery-1.10.2.js' %}"></script>
     <script src="{% static 'app/scripts/respond.js' %}"></script>

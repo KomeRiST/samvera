@@ -15,7 +15,8 @@
 * {
     /*color: $fcDefault;*/
     // font-family: Philosopher;
-    font: 400 13px/1.2 'Roboto', Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+    // font: 400 13px/1.2 'Roboto', Arial, 'Helvetica CY', 'Nimbus Sans L', sans-serif;
+    font-family: 'Times New Roman', Times, serif;
     padding: 0;
     margin: 0;
     -moz-box-sizing: border-box;
@@ -23,70 +24,37 @@
     box-sizing: border-box;
     text-align: center;
     color: $fc-Default;
-    // @include fontsize("text");
-}
-
-html {
-    background-color: $bg-Default;
-}
-
-a {
+    font-size: 14px;
     text-decoration: none;
-    color:$fc-href;
-    &:hover {
-        color: $fc-href-hover;
-    }
+    // @include fontsize("text");
 }
 
 .block_screen {
     min-height: 100vh;
 }
 
-.logo {
-    width: 100%;
-    margin: auto;
-    position: sticky;
-    top: 0px;
-    background-color: $bg-Default;
-    z-index: 9;
-    display: flex;
-    -ms-align-content: center;
-    -webkit-align-content: center;
-    align-content: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -ms-flex-direction: row;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    // border-bottom: 1px solid $fc-light;
-    // box-shadow: 0 -2px 6px 3px $fc-gray;
-    min-height: 50px;
-    box-shadow: 0px 10px 10px -10px black;
+// .logo {
 
-    @include mq('phablet', max) {
-        min-height: auto;
-    }
+//     &>a {
+//         @include fontsize("logo");
+//         letter-spacing: 1rem;
+//         // color: $fc-title_dark;
+//         // display: contents;
+//         /*padding: .75rem 0px;*/
+//         text-decoration: none;
+//         font-weight: 300;
+//         text-transform: uppercase;
+//         // font-family: CENTAUR;
+//         font-family: Times;
 
-    &>a {
-        @include fontsize("logo");
-        letter-spacing: 1rem;
-        // color: $fc-title_dark;
-        // display: contents;
-        /*padding: .75rem 0px;*/
-        text-decoration: none;
-        font-weight: 300;
-        text-transform: uppercase;
-        // font-family: CENTAUR;
-        font-family: Times;
-
-        svg {
-            height: 30px;
-            align-self: center;
-            margin-left: 1rem;
-            fill: $fc-title_light
-        }
-    }
-}
+//         svg {
+//             height: 30px;
+//             align-self: center;
+//             margin-left: 1rem;
+//             fill: $fc-title_light
+//         }
+//     }
+// }
 
 .developer {
     // position: absolute;
@@ -102,17 +70,9 @@ a {
     }
 
     a {
-        text-decoration: none;
         color: #212121;
     }
 }
-
-// .blur {
-    // margin: 0;
-    // background-color: $bg-Default;
-    // text-align: center;
-    // transition: filter .5s 0.5s;
-// }
 
 .btn-base {
     border: 1px solid transparent;
@@ -126,82 +86,12 @@ a {
     }
 }
 
-.btn-light {
-    border: 1px solid $btn-dark;
-    background-color: $btn-light;
-
-    p {
-        color: $fc-dark;
-    }
-
-    &:hover {
-        background-color: $btn-dark;
-        border: 1px solid $btn-light;
-
-        p {
-            color: $fc-light;
-        }
-    }
-}
-
-.btn-dark {
-    border: 1px solid $btn-light;
-    background-color: $btn-dark;
-    // box-shadow: 0px 5px 10px -8px black, 0px -5px 10px -8px black;
-
-    p {
-        color: $fc-light;
-    }
-
-    &:hover {
-        background-color: $btn-light;
-        border: 1px solid $btn-dark;
-
-        p {
-            color: $fc-dark;
-        }
-    }
-}
-
 .btn-shadow {
-    box-shadow: 0px 5px 10px -8px black, 0px -5px 10px -8px black;
     transition: all .5s;
     &:hover {
         box-shadow: none;
-        border-top: 1px solid #b7b7b7;
-        border-bottom: 1px solid #b7b7b7;
         transition: all .5s;
     }
-}
-
-.maintext {
-    text-align: center;
-    position: relative;
-
-    img {
-        width: 200px;
-
-        @include mq('tablet-small', max) {
-            width: 100px;
-        }
-    }
-
-    p {
-        font-size: 1.5rem;
-        color: white;
-        -moz-transition: 0.5s font-size linear;
-        -o-transition: 0.5s font-size linear;
-        -webkit-transition: 0.5s font-size linear;
-        transition: 0.5s font-size linear;
-        text-align: center;
-        // font-family: CENTAUR;
-
-        @include fontsize("title");
-    }
-}
-
-.bg_black {
-    background-color: $bg-dark;
 }
 
 form {
@@ -249,12 +139,12 @@ form {
 
 .korzcount {
     background-color: crimson;
+    color: white;
     position: absolute;
     top: 0px;
     right: 0;
     height: 2rem;
     width: 2rem;
-    color: white;
     border-radius: 100%;
     line-height: 2rem;
 }
@@ -329,7 +219,6 @@ form {
     width: 100vw;
     position: fixed;
     z-index: 1000;
-    color: white;
     transition: background-color linear 0.5s;
 
     @include mq("tablet", max) {

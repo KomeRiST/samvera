@@ -1,0 +1,241 @@
+@charset "UTF-8";
+/*
+FONTS SIZE
+    phone: 300px
+    phone-wide: 480px
+    phablet: 560px
+
+    tablet-small: 640px
+    tablet: 768px
+    tablet-wide: 1024px
+
+    desktop: 1248px
+    desktop-wide: 1440px
+
+*/
+/*
+FONTS SIZE
+    phone: 300px
+    phone-wide: 480px
+    phablet: 560px
+
+    tablet-small: 640px
+    tablet: 768px
+    tablet-wide: 1024px
+
+    desktop: 1248px
+    desktop-wide: 1440px
+
+*/
+/*    COLOR -- FONTS    
+
+    яркий = bright
+    тусклый = dim
+    тёмный = dark
+    акцент = accent
+*/
+/*    COLOR -- BLOCKS   */
+.light {
+  /*
+    ���� �����
+*/
+  /*
+    ���� �������� ������
+    � ������� ����� ����������� ������� ������ �������
+*/
+}
+
+.light * {
+  color: whitesmoke;
+}
+
+.light body {
+  background-color: #0f0f0f;
+}
+
+.light a {
+  color: gray;
+}
+
+.light a:hover {
+  color: white;
+}
+
+.light .developer p {
+  color: #353535;
+}
+
+.light .developer a {
+  color: #212121;
+}
+
+.light .btn-base {
+  border-color: whitesmoke;
+  background-color: #595959;
+}
+
+.light .btn-base p {
+  color: white;
+}
+
+.light .btn-base:hover {
+  background-color: whitesmoke;
+  border-color: #595959;
+}
+
+.light .btn-base:hover p {
+  color: black;
+}
+
+.light .btn-shadow {
+  -webkit-box-shadow: 0px 5px 10px -8px #b7b7b7, 0px -5px 10px -8px #b7b7b7;
+          box-shadow: 0px 5px 10px -8px #b7b7b7, 0px -5px 10px -8px #b7b7b7;
+}
+
+.light .btn-shadow:hover {
+  border-top-color: black;
+  border-bottom-color: black;
+}
+
+.light form .field_title > p {
+  color: black;
+}
+
+.light form .fieldWrapper input {
+  border-color: gray;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.light form .fieldWrapper .field_descr .small {
+  color: gray;
+}
+
+.light .nav_ {
+  color: gray;
+}
+
+.light .nav_ > ul > li > a:hover {
+  /*color: #ff6f3a;*/
+  text-shadow: 0 0 10px black, 0 0 30px rgba(255, 255, 255, 0.6);
+}
+
+.light .nav_ > ul > li:hover ul {
+  background-color: rgba(0, 0, 0, 0.8);
+  -webkit-box-shadow: inset 0 10px 15px -5px black, 0 25px 30px -10px black;
+          box-shadow: inset 0 10px 15px -5px black, 0 25px 30px -10px black;
+}
+
+.light .nav_ > ul > li:hover ul > .itemnewcollection {
+  color: #ff6f3a;
+  text-shadow: none;
+}
+
+.light .nav_ > ul li a {
+  text-decoration: none;
+}
+
+.light .nav_ > ul > li > ul > li > a:hover {
+  text-shadow: 0 0 10px black, 0 0 30px rgba(255, 255, 255, 0.6);
+}
+
+.light .nav .korz-count {
+  background-color: white;
+  color: black;
+}
+
+.light .nav__toggle, .light .nav__toggleC {
+  background: transparent;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.light .nav__toggle:hover, .light .nav__toggle:focus, .light .nav__toggleC:hover, .light .nav__toggleC:focus {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.light .nav .korzcount:before {
+  content: "";
+  background-color: red;
+}
+
+.light .nav__menu {
+  background-color: black;
+}
+
+.light .nav .sociallinks {
+  border-top: 1px solid gray;
+}
+
+.light .nav__link {
+  color: white;
+}
+
+.light .nav__link:hover, .light .nav__link:focus {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.light .menuicon {
+  color: white;
+}
+
+.light .nav:target .menuicon,
+.light .nav--open .menuicon {
+  color: white;
+}
+
+.light .nav:target .nav__menu,
+.light .nav--open .nav__menu {
+  visibility: visible;
+}
+
+.light .nav:target .nav__item,
+.light .nav--open .nav__item {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.light .t-sociallinks__svg path {
+  fill: #a9a9a9 !important;
+}
+
+.light .t-sociallinks__svg:hover {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.light .t-sociallinks__svg:hover path {
+  fill: white !important;
+}
+
+.light .main_title {
+  color: white;
+}
+
+.light .main_title_descr {
+  color: darkgray;
+}
+
+.light .text-title-dark {
+  color: black;
+}
+
+.light .text-desc-dark {
+  color: black;
+}
+
+.light footer {
+  background-color: #cfcfcf;
+}
+
+.light small {
+  color: #5d5d5d;
+}
+
+.light .ac-menu_container a {
+  color: #5d5d5d;
+}
+
+.light .ac-menu_container a:hover {
+  color: white;
+}
+/*# sourceMappingURL=light.css.map */
