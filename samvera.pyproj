@@ -110,6 +110,11 @@
     <Folder Include="app\media\" />
     <Folder Include="app\static\app\content\css\account\" />
     <Folder Include="app\static\app\content\css\adm\" />
+    <Folder Include="app\static\app\slider\" />
+    <Folder Include="app\static\app\slider\css\" />
+    <Folder Include="app\static\app\slider\js\" />
+    <Folder Include="app\static\app\slider\partials\" />
+    <Folder Include="app\static\app\slider\scss\" />
     <Folder Include="app\static\фвьшт\" />
     <Folder Include="app\templates\app\adminka\" />
     <Folder Include="app\templates\app\adminka\thing\" />
@@ -153,6 +158,12 @@
   <ItemGroup>
     <Compile Include="app\static\app\content\css\site.scss" />
     <Compile Include="app\static\app\content\css\variables.scss" />
+    <Content Include="app\static\app\slider\css\style.css" />
+    <Content Include="app\static\app\slider\js\main.js" />
+    <Content Include="app\static\app\slider\partials\_layout.scss" />
+    <Content Include="app\static\app\slider\partials\_mixins.scss" />
+    <Content Include="app\static\app\slider\partials\_variables.scss" />
+    <Content Include="app\static\app\slider\scss\style.scss" />
     <Content Include="cart\templates\cart\detail.html" />
     <Content Include="cart\templates\cart\index.html" />
     <Content Include="orders\templates\orders\index.html" />

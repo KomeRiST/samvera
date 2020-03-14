@@ -94,6 +94,7 @@ def home(request):
     #                 'komerist@bk.ru', 
     #                 ['komerist1993-93@mail.ru','komerist@bk.ru'], )
     #    kollections = {}
+    kollections = models.Collection.objects.all().[:3]
     return render(
         request,
         'app/index.html',
@@ -101,7 +102,7 @@ def home(request):
             'title':'Home Page',
             # 'categories' : models.Category.objects.all(),
             #'tovarfolder': tovarfolder,
-            #'kollections': kollections,
+            'kollections': kollections,
             'year':year(),
             #'Form_PotentialClient': forms.Form_PotentialClient,
         }

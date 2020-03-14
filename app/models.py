@@ -81,6 +81,7 @@ class Collection(models.Model):
     slug = models.SlugField(max_length=200, db_index=True, unique=True, help_text="url адресс данной коллекции", blank=True)
     data_create = models.DateField("Дата создания коллекции", auto_now_add=True)
     data_change = models.DateField("Дата изменения коллекции", auto_now=True)
+    image = models.ImageField(upload_to='gallery/kollection')
 
     def __str__(self):
         return self.title
