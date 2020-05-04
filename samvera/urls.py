@@ -16,7 +16,7 @@ from django.conf.urls import include, url
 
 
 urlpatterns = [
-    url(r'^nestуd_admin/', include('nested_admin.urls')),
+    #url(r'^nestуd_admin/', include('nested_admin.urls')),
     url(r'^cart/', include('cart.urls', namespace='cart')),
     #url(r'^shop/', include('shop.urls', namespace='shop')),
     path('', views.home, name='home'),

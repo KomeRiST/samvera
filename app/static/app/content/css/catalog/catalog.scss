@@ -1,5 +1,6 @@
 @import "../variables.scss";
 @import "../mixins.scss";
+@import "../colors/dark.scss";
 
 .catalog_content {
     display: grid;
@@ -445,8 +446,8 @@
             }
             // background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.25) 50%, rgba(255,255,255,0) 100%);;
             .category_item__title {
-                // color: $fc-title_light;
-                // background-color: $bg-dark;
+                // color: $fTitleBright;
+                // background-color: $fDark;
                 transition: all .5s 0s;
                 box-shadow: 0px 10px 10px -10px black;
             }
@@ -464,8 +465,8 @@
             transition: letter-spacing .5s;
 
             &:hover {
-                // color: $fc-gray;
-                border-bottom: 1px solid $fc-Default;
+                // color: $fDim;
+                border-bottom: 1px solid $fDefault;
                 letter-spacing: 1px;
                 transition: letter-spacing .5s;
             }
@@ -474,7 +475,7 @@
 
     .category_item__select {
         a {
-            border-bottom: 1px solid $fc-Default;
+            border-bottom: 1px solid $fDefault;
         }
     }
 
@@ -524,8 +525,8 @@
     }
 
     .tv-tabs {
-        color: $fc-Default;
-        background-color: $bg-Default;
+        color: $fDefault;
+        background-color: $bDefault;
     }
 
     .tv-content {
@@ -671,9 +672,9 @@ article {
 
 
 footer {
-    background-color: $bg-dark;
+    background-color: $fDark;
 
     .bottom-menu__link {
-        color: $fc-title_light;
+        color: $fTitleBright;
     }
 }

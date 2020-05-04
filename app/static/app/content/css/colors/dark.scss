@@ -33,6 +33,10 @@ $btnDark: #595959;
 
     * {
         color: $fDefault;
+        -moz-transition: color cubic-bezier(0.22, 0.61, 0.36, 1) 0.35s;
+        -o-transition: color cubic-bezier(0.22, 0.61, 0.36, 1) 0.35s;
+        -webkit-transition: color cubic-bezier(0.22, 0.61, 0.36, 1) 0.35s;
+        transition: color cubic-bezier(0.22, 0.61, 0.36, 1) 0.35s;
     }
 
     body {
@@ -44,6 +48,10 @@ $btnDark: #595959;
 
         &:hover {
             color: $fHrefHover;
+        }
+
+        &:focus {
+            color: $fAccent;
         }
     }
 
@@ -88,7 +96,7 @@ $btnDark: #595959;
     form {
 
         .field_title {
-            &>p {
+            & > p {
                 color: black;
             }
         }
@@ -108,31 +116,28 @@ $btnDark: #595959;
             }
         }
     }
-
     // .korzcount {
     //     background-color: crimson;
     //     color: white;
     // }
-
     /*
     ���� �����
 */
-
     .nav_ {
         color: white;
 
-        &>ul {
+        & > ul {
 
-            &>li>a:hover {
+            & > li > a:hover {
                 /*color: #ff6f3a;*/
                 text-shadow: 0 0 10px black, 0 0 30px rgba(255, 255, 255, 0.6);
             }
 
-            &>li:hover ul {
+            & > li:hover ul {
                 background-color: rgba(0, 0, 0, 0.8);
                 box-shadow: inset 0 10px 15px -5px black, 0 25px 30px -10px black;
 
-                &>.itemnewcollection {
+                & > .itemnewcollection {
                     color: #ff6f3a;
                     text-shadow: none;
                 }
@@ -144,24 +149,21 @@ $btnDark: #595959;
                 }
             }
 
-            &>li>ul>li>a {
+            & > li > ul > li > a {
                 &:hover {
                     text-shadow: 0 0 10px black, 0 0 30px rgba(255, 255, 255, 0.6);
                 }
             }
         }
     }
-
     // ---------------------------
     // Main Navigation Menu
     // ---------------------------
-
     .nav {
         .korz-count {
             background-color: white;
             color: black;
         }
-
         // Toggle Button
         &__toggle,
         &__toggleC {
@@ -197,27 +199,21 @@ $btnDark: #595959;
             }
         }
     }
-
     // ---------------------------
     // SVG Menu Icon
     // ---------------------------
-
     .menuicon {
         color: white;
     }
-
     // ---------------------------
     // Active State
     // ---------------------------
-
     .nav:target,
     .nav--open {
-
         //animate the menu icon
         .menuicon {
             color: white;
         }
-
         //show the nav items
         .nav {
             &__menu {
@@ -230,10 +226,7 @@ $btnDark: #595959;
             }
         }
     }
-
     // ���� �����
-
-
     .t-sociallinks__svg path {
         fill: #a9a9a9 !important;
     }
@@ -245,13 +238,10 @@ $btnDark: #595959;
     .t-sociallinks__svg:hover path {
         fill: white !important;
     }
-
     /*
     ���� �������� ������
     � ������� ����� ����������� ������� ������ �������
 */
-
-
     .main_title {
         color: $fTitleBright;
     }
@@ -267,9 +257,7 @@ $btnDark: #595959;
     .text-desc-dark {
         color: $fDescrDark;
     }
-
     // ����� �������� ������
-
     footer {
         background-color: #090909;
     }
@@ -277,11 +265,7 @@ $btnDark: #595959;
     small {
         color: $fDim;
     }
-
-
-
     // Гармошка для меню сайта(Каталог)
-
     .ac-menu_container a {
         color: $fDim;
 
@@ -289,7 +273,6 @@ $btnDark: #595959;
             color: $fBright;
         }
     }
-
 }
 
 // global

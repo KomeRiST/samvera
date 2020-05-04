@@ -13,10 +13,10 @@ $fBright: white;
 $fDim: #5d5d5d;
 $fDark: black;
 $fAccent: orange;
-$fc-title_light: white;
-$fc-title_dark: black;
-$fc-title_descr_light: darkgray;
-$fc-title_descr_dark: black;
+$fTitleBright: white;
+$fTitleDark: black;
+$fDescrBright: darkgray;
+$fDescrDark: black;
 
 $fHref: gray;
 $fHrefDark: black;
@@ -254,19 +254,19 @@ $btnDark: #595959;
 
 
     .main_title {
-        color: $fc-title_light;
+        color: $fTitleBright;
     }
 
     .main_title_descr {
-        color: $fc-title_descr_light;
+        color: $fDescrBright;
     }
 
     .text-title-dark {
-        color: $fc-title_dark;
+        color: $fTitleDark;
     }
 
     .text-desc-dark {
-        color: $fc-title_descr_dark;
+        color: $fDescrDark;
     }
 
     // ����� �������� ������

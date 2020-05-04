@@ -1,9 +1,9 @@
 ﻿@import "../variables.scss";
 @import "../mixins.scss";
-
+@import "../colors/dark.scss";
 
 .lk-content {
-    color: $fc-Default;
+    color: $fDefault;
     padding-bottom: $main_title-padding;
 
     p {
@@ -97,11 +97,11 @@
 
 .ac-container a {
     text-decoration: none;
-    color: $fc-gray;
+    color: $fDim;
     // font-weight: bold;
 
     &:hover {
-        color: $fc-Default;
+        color: $fDefault;
     }
 }
 

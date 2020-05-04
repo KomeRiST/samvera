@@ -1,5 +1,6 @@
 @import "variables.scss";
 @import "mixins.scss";
+@import "../css/colors/dark.scss";
 @import url('https://fonts.googleapis.com/css?family=Comfortaa:300,400,500,600,700|Gabriela|Philosopher:400,400i,700,700i&display=swap&subset=cyrillic,greek');
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&display=swap&subset=cyrillic');
 
@@ -23,10 +24,14 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     text-align: center;
-    color: $fc-Default;
+    color: $fDefault;
     font-size: 14px;
     text-decoration: none;
     // @include fontsize("text");
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 .block_screen {
@@ -38,7 +43,7 @@
 //     &>a {
 //         @include fontsize("logo");
 //         letter-spacing: 1rem;
-//         // color: $fc-title_dark;
+//         // color: $fTitleDark;
 //         // display: contents;
 //         /*padding: .75rem 0px;*/
 //         text-decoration: none;
@@ -51,7 +56,7 @@
 //             height: 30px;
 //             align-self: center;
 //             margin-left: 1rem;
-//             fill: $fc-title_light
+//             fill: $fTitleBright
 //         }
 //     }
 // }
@@ -614,23 +619,23 @@ form {
 
 .main_title {
     @include fontsize("title");
-    color: $fc-title_light;
+    color: $fTitleBright;
     // font-family: CENTAUR;
 }
 
 .main_title_descr {
-    color: $fc-title_descr_light;
+    color: $fDescrBright;
     // font-family: CENTAUR;
 
     @include fontsize("title-descr");
 }
 
 .text-title-dark {
-    color: $fc-title_dark;
+    color: $fTitleDark;
 }
 
 .text-desc-dark {
-    color: $fc-title_descr_dark;
+    color: $fDescrDark;
 }
 
 .main_content {
@@ -687,7 +692,7 @@ footer {
 
 small {
     font-size: .65rem;
-    color: $fc-gray;
+    color: $fDim;
 }
 
 
@@ -778,11 +783,11 @@ small {
 
 .ac-menu_container a {
     text-decoration: none;
-    color: $fc-gray;
+    color: $fDim;
     // font-weight: bold;
 
     &:hover {
-        color: $fc-light;
+        color: $fBright;
     }
 }
 

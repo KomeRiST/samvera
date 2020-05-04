@@ -1,6 +1,4 @@
-/*    COLOR -- FONTS    */
-/*    COLOR -- BLOCKS   */
-/*
+﻿/*
 FONTS SIZE
     phone: 300px
     phone-wide: 480px
@@ -14,8 +12,6 @@ FONTS SIZE
     desktop-wide: 1440px
 
 */
-/*    COLOR -- FONTS    */
-/*    COLOR -- BLOCKS   */
 /*
 FONTS SIZE
     phone: 300px
@@ -31,62 +27,44 @@ FONTS SIZE
 
 */
 .step {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  text-align: left;
-}
-
-.step .number {
-  background-color: black;
-  color: white;
-  border-radius: 50%;
-  height: 3rem;
-  width: 3rem;
-}
-
-.step .number p {
-  padding: 1rem;
-  height: 3rem;
-  width: 3rem;
-  text-align: center;
-}
-
-.step .step-content {
-  padding: 1rem 1rem 2rem 2rem;
-  border-left: 1px solid black;
-  margin-left: -1.5rem;
-  z-index: -1;
-}
-
-.step .step-content .step-title {
-  font-weight: bold;
-  padding-bottom: 1rem;
-}
+  flex-direction: row;
+  text-align: left; }
+  .step .number {
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem; }
+    .step .number p {
+      padding: 1rem;
+      height: 3rem;
+      width: 3rem;
+      text-align: center; }
+  .step .step-content {
+    padding: 1rem 1rem 2rem 2rem;
+    border-left: 1px solid black;
+    margin-left: -1.5rem;
+    z-index: -1; }
+    .step .step-content .step-title {
+      font-weight: bold;
+      padding-bottom: 1rem; }
 
 .postinfo {
   margin-left: 1.5rem;
   margin-right: 1rem;
   border-top: 1px solid black;
   padding: 1rem;
-  border-right: 1px solid black;
-}
+  border-right: 1px solid black; }
 
 .info ul p {
   text-align: left;
   margin-top: 2rem;
   margin-bottom: 1rem;
-  font-weight: bold;
-}
+  font-weight: bold; }
 
 .info ul li {
   margin-top: .5rem;
   margin-left: 2.5rem;
   list-style: none;
-  text-align: left;
-}
-/*# sourceMappingURL=info.css.map */
+  text-align: left; }

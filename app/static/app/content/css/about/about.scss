@@ -1,11 +1,11 @@
 @import "../variables.scss";
 @import "../mixins.scss";
-
+@import "../colors/dark.scss";
 /*
     Для страницы контакты
 */
 .about_content__text {
-    color: $fc-Default;
+    color: $fDefault;
     padding-bottom: $main_title-padding;
 
     p {
@@ -14,7 +14,7 @@
 
     .up {
         padding-top: 1.25rem;
-        color: $fc-title_dark;
+        color: $fTitleDark;
         font-weight: bold;
 
         @include fontsize("text");
@@ -38,7 +38,7 @@
     -ms-align-content: center;
     -webkit-align-content: center;
     align-content: center;
-    background: $bg-Default;
+    background: $bDefault;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -120,7 +120,7 @@
         }
 
         p {
-            background-color: $bg-Default;
+            background-color: $bDefault;
         }
     }
 
@@ -157,32 +157,32 @@
         }
 
         p {
-            background-color: $bg-Default;
+            background-color: $bDefault;
         }
     }
 
     .bg-light {
         p {
-            background: $bg-Default;
+            background: $bDefault;
         }
 
-        color: $fc-title_dark;
+        color: $fTitleDark;
     }
 
     .bg-dark {
         p {
-            background: $bg-dark;
+            background: $fDark;
         }
 
-        color: $fc-title_light;
+        color: $fTitleBright;
     }
 }
 
 footer {
-    background-color: $bg-dark;
+    background-color: $fDark;
 
     .bottom-menu__link {
-        color: $fc-title_light;
+        color: $fTitleBright;
     }
 }
 .line {
