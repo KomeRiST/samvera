@@ -6,10 +6,10 @@ from app.models import *
 from orders.models import *
 from fabricator.models import *
 from django.utils.safestring import mark_safe 
-#from nested_inline.admin import NestedModelAdmin, NestedStackedInline, NestedTabularInline
+from nested_inline.admin import NestedModelAdmin, NestedStackedInline, NestedTabularInline
 from django.contrib.admin.widgets import AdminFileWidget
 from django.utils.translation import ugettext as _
-#from nested_admin import nested
+# from nested_admin import nested
 
 admin.site.register(StatusOrder)
 admin.site.register(PotentialClient)
@@ -102,26 +102,26 @@ class GallAdmin(admin.ModelAdmin):
 #    readonly_fields = ['kolvo',]
 #    #list_display = []
 
-#class MtM_VariaciyaInline(nested.NestedTabularInline):
-#    # inlines = [ImageInline,]
-#    model = MtoM_VarsToCons
-#    save_on_top = True
-#    extra = 0
-#    # readonly_fields = ['nds_summ', 'total_not_nds', 'total_nds']
-#    # raw_id_fields = ['variacii',]
+class MtM_VariaciyaInline(NestedTabularInline):
+   # inlines = [ImageInline,]
+   model = MtoM_VarsToCons
+   save_on_top = True
+   extra = 0
+   # readonly_fields = ['nds_summ', 'total_not_nds', 'total_nds']
+   # raw_id_fields = ['variacii',]
 
 
-#    # def nds_summ(self, obj):
-#    #     return (obj.nds * obj.cost / 100) * obj.kolvo
+   # def nds_summ(self, obj):
+   #     return (obj.nds * obj.cost / 100) * obj.kolvo
 
-#    # def total_not_nds(self, obj):
-#    #     return obj.cost * obj.kolvo
+   # def total_not_nds(self, obj):
+   #     return obj.cost * obj.kolvo
 
-#    # def total_nds(self, obj):
-#    #     return (obj.nds * obj.cost / 100 * obj.kolvo) + (obj.cost * obj.kolvo)
+   # def total_nds(self, obj):
+   #     return (obj.nds * obj.cost / 100 * obj.kolvo) + (obj.cost * obj.kolvo)
 
-#    class Media:
-#        js = [ '/static/admin/js/consignment.js', ]
+   class Media:
+       js = [ '/static/admin/js/consignment.js', ]
         
 
 #@admin.register(Tovar)
@@ -136,37 +136,37 @@ class GallAdmin(admin.ModelAdmin):
 #@admin.register(Category)
 #class CategoryAdmin(admin.ModelAdmin):
 
-#class ConsignmentInline(nested.NestedStackedInline):
-#    inlines = [MtM_VariaciyaInline,]
-#    model = consignment
-#    exstra = 0
-#    readonly_fields = ['data_create', 'data_change',]
-#    fields = [('number', 'data_doc'), 'responsible', ('data_create', 'data_change')]
+class ConsignmentInline(NestedStackedInline):
+   inlines = [MtM_VariaciyaInline,]
+   model = consignment
+   exstra = 0
+   readonly_fields = ['data_create', 'data_change',]
+   fields = [('number', 'data_doc'), 'responsible', ('data_create', 'data_change')]
 
-#@admin.register(fabricator)
-#class FabricatorAdmin(nested.NestedModelAdmin):
-#    inlines = [ConsignmentInline,]
-#    fields=['title', 'slug', 'address', 'contacts', 'data_create', 'data_change']
-#    readonly_fields = ['data_create', 'data_change',]
-#    prepopulated_fields={'slug':('title',)}
+@admin.register(fabricator)
+class FabricatorAdmin(NestedModelAdmin):
+   inlines = [ConsignmentInline,]
+   fields=['title', 'slug', 'address', 'contacts', 'data_create', 'data_change']
+   readonly_fields = ['data_create', 'data_change',]
+   prepopulated_fields={'slug':('title',)}
     
-#@admin.register(consignment)
-#class ConsignmentAdmin(nested.NestedModelAdmin):
-#    inlines = [MtM_VariaciyaInline,]
-#    list_display = ['number', 'fabricator', 'closed', 'data_doc', 'count_sku', 'count_variacii', 'summ_itog']
-#    fields=[('fabricator', 'number'), ('data_doc', 'responsible'), ('closed', 'data_create', 'data_change')]
-#    readonly_fields = ['data_create', 'data_change',]
+@admin.register(consignment)
+class ConsignmentAdmin(NestedModelAdmin):
+   inlines = [MtM_VariaciyaInline,]
+   list_display = ['number', 'fabricator', 'closed', 'data_doc', 'count_sku', 'count_variacii', 'summ_itog']
+   fields=[('fabricator', 'number'), ('data_doc', 'responsible'), ('closed', 'data_create', 'data_change')]
+   readonly_fields = ['data_create', 'data_change',]
 
-#    def count_sku(self, obj):
-#        return MtoM_VarsToCons.objects.filter(consignments=obj).count()
-#    count_sku.short_description = 'Кол-во позиций'
+   def count_sku(self, obj):
+       return MtoM_VarsToCons.objects.filter(consignments=obj).count()
+   count_sku.short_description = 'Кол-во позиций'
 
-#    def count_variacii(self, obj):
-#        from django.db.models import Sum
-#        return MtoM_VarsToCons.objects.filter(consignments=obj).aggregate(count_var=Sum('kolvo'))
-#    count_variacii.short_description = 'Всего штук'
+   def count_variacii(self, obj):
+       from django.db.models import Sum
+       return MtoM_VarsToCons.objects.filter(consignments=obj).aggregate(count_var=Sum('kolvo'))
+   count_variacii.short_description = 'Всего штук'
 
-#    def summ_itog(self, obj):
-#        from django.db.models import Sum
-#        return MtoM_VarsToCons.objects.filter(consignments=obj).aggregate(summ_itog=Sum('total_nds'))
-#    summ_itog.short_description = 'Сумма'
+   def summ_itog(self, obj):
+       from django.db.models import Sum
+       return MtoM_VarsToCons.objects.filter(consignments=obj).aggregate(summ_itog=Sum('total_nds'))
+   summ_itog.short_description = 'Сумма'

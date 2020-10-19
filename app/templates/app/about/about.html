@@ -6,13 +6,13 @@
 
 {% block content %}
 <div class="about_slide bg-fon-slide">
-    <div class="bg-dark">
+    <div class="">
         <p>
             <span>Samvera</span> – это единение женщины с внутренним миром, безупречная гармония тела и лаконичного образа.
         </p>
     </div>
     <div class="slide-left" style="background-image: url(/media/about_2.jpg);">
-        <p>
+        <p id="page_1">
             <span>Наши образы</span> – это новое прочтение женственности, где желания, мысли и личность становятся важнее всего.
         </p>
     </div>
@@ -22,15 +22,14 @@
         </p>
     </div>
     <div class="slide-right" style="background-image: url(/media/about_4.jpg);">
-        <p>
+        <p id="page_2">
             В коллекции, мы рассуждаем об истинной женственности, которая берет начало в сокровенных желаниях, гармонии тела и души.
         </p>
     </div>
-    <div class="bg-dark" >
+    <div class="" >
         <p>
             <span>Каждый образ</span> – это философия душевной свободы, уникальность красоты и единение внутреннего мира с внешним образом.
         </p>
-        <div id="bottom_page" style="background-image: url(/media/about_5.jpg);"></div>
     </div>
 </div>
 {% endblock %}
@@ -39,7 +38,8 @@
 <script>
     function parallax(){
 	    var scrolled = $(window).scrollTop();
-	    $('#bottom_page').css('top',-(scrolled*0.1)+'px');
+	    $('#page_1').css('top',-(scrolled*0.2-200)+'px');
+	    $('#page_2').css('top',-(scrolled*0.2-500)+'px');
     }
 
     $(window).scroll(function () {

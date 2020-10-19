@@ -2,53 +2,41 @@
 @import "mixins.scss";
 
 .fullscreenmenu {
+    overflow-y: auto;
     position: fixed;
-    /*padding: 7rem 2rem 2rem;*/
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.65);
     z-index: 10;
-    // display: none;
-    // transition: display .5s;
-    // @include mq('phablet', max) {
-    //     display: none;
-    // }
     .greed {
-        display: grid;
-        grid-template-columns: 1fr 3fr 1fr;
-        grid-template-areas: 
-        'cart collections user'
-        'cart collections categories'
-        '. center categories'
-        '. contacts categories'
-        '. social categories';
-        height: 100%;
+        max-width: 800px;
+        margin: auto;
+        flex: 1;
         align-items: center;
+        justify-content: center;
 
         section {
-            height: 100%;
-
-            header {
-                box-shadow: none;
-                letter-spacing: 0px;
-                transition: box-shadow .5s, letter-spacing .5s;
+            margin-top: 1rem;
+            header p {
+                color: whitesmoke;
+                transition: color .5s;
             }
         }
 
-        section:hover header {
-            box-shadow: 0px 10px 10px -10px black;
-            letter-spacing: 0.25rem;
-            transition: box-shadow .5s, letter-spacing .5s;
+        section:hover header p {
+                color: orange;
+                transition: color .5s;
         }
 
         .user {
-            grid-area: user;
         }
 
         .cart {
-            grid-area: cart;
         }
 
         .cart, .user {
@@ -56,32 +44,24 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            // border: 1px solid black;
-            transition: background-color .5s;
 
             * {
-                color: $fc-light;
-            }
-
-            &:hover {
-                background-color: #0a0a0a;
-                // border: 1px solid #1f1f1f;
-                // box-shadow: 0 0 20px #1f1f1f;
-                transition: background-color .5s;
+                color: lightgray;
             }
         }
 
 
         .collections {
-            grid-area: collections;
         }
 
         .categories {
-            grid-area: categories;
         }
 
         .collections,
         .categories {
+            border-bottom: 1px solid transparent;
+            border-top: 1px solid transparent;
+            transition: all .5s;
             &__items {
                 margin-top: 1rem;
 
@@ -94,12 +74,13 @@
                         padding: 1rem;
 
                         a {
-                            color: $fc-light;
-                            letter-spacing: 2px;
+                            color: gray;
                             font-size: 1.1rem;
+                            border-bottom: 1px solid transparent;
 
                             &:hover {
                                 color: white;
+                                border-bottom: 1px solid orange;
                             }
                         }
                     }
@@ -110,28 +91,40 @@
                 display: block;
 
                 p {
-                    padding: 2rem;
+                    padding: 1rem;
                     font-weight: bold;
                     color: white;
                     font-size: 1.25rem;
                 }
             }
+
+            &:hover {
+                border-bottom: 1px solid rgba(255, 165, 0, 0.5);
+                border-top: 1px solid rgba(255, 165, 0, 0.5);
+                transition: all .5s;
+            }
         }
 
-        .categories__items__item {
-            display: block;
+        .contacts {
         }
 
-        .center {
-            grid-area: center;
+    }
+    .center {
+        padding-top: 1rem;
+        nav ul {
+            padding: .5rem 0rem;
+            width: 100%;
+            list-style-type: none;
             display: flex;
-            flex-direction: column;
             justify-content: center;
-
+            gap: 2em;
             a {
-                text-transform: uppercase;
-                color: $fc-light;
-                @include fontsize("title");
+                padding: 0px .5em;
+                font-size: 1.5em;
+                border-bottom: 2px solid transparent;
+
+                color: grey;
+                @include fontsize("text");
                 display: contents;
                 transition: none;
 
@@ -141,22 +134,17 @@
                 }
             }
         }
-
-        .contacts {
-            grid-area: contacts;
-            // background-color: gray;
-        }
-
-        .social {
-            grid-area: social;
-            display: grid;
-            align-items: center;
-            // background-color: blue;
-            .sociallinks {
-                &__item {
-                    display: inline-block;
-                    margin: 0px 1rem;
-                }
+    }
+    .social {
+        padding-bottom: 1rem;
+        grid-area: social;
+        display: grid;
+        align-items: center;
+        // background-color: blue;
+        .sociallinks {
+            &__item {
+                display: inline-block;
+                margin: 0px 1rem;
             }
         }
     }

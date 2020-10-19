@@ -82,6 +82,7 @@
 {% block scripts %}
 <script src="{% static '/app/slick/slick.min.js' %}"></script>
 <script type="text/javascript">
+    var h='';
     var settingsSlider = {
         autoplay: false,
         //autoplaySpeed: 7000,
@@ -93,7 +94,7 @@
         infinite: true,
         speed: 300,
         fade: false,
-        cssEase: 'linear'
+        cssEase: 'linear',
     }
 
     function getphoto(v) {
@@ -110,7 +111,8 @@
             $(".model").html(m.model);
             $("#cart_product_form").attr("action", "/cart/add/" + m.id + "/");
             $("#id_kolvo").html(m.kolvo);
-            GranicaSlick(m.img);
+            h=m.img;
+            GranicaSlick(h);
         });
 
         request.fail(function (jqXHR, textStatus) {
@@ -194,7 +196,7 @@
         }
     };
     $(window).resize(function () {
-        GranicaSlick();
+        GranicaSlick(h);
     });
 </script>
 {% endblock %}

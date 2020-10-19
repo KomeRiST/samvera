@@ -99,9 +99,9 @@ def home(request):
         'app/index.html',
         {
             'title':'Home Page',
-            # 'categories' : models.Category.objects.all(),
+            'categories' : models.Category.objects.all(),
             #'tovarfolder': tovarfolder,
-            #'kollections': kollections,
+            'collections': models.Collection.objects.all(),
             'year':year(),
             #'Form_PotentialClient': forms.Form_PotentialClient,
         }

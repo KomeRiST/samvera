@@ -341,3 +341,6 @@ ASALocalRun/
 healthchecksdb
 /shop
 samvera/EMAIL_settings.py
+db.sqlite3
+samvera.pyproj
+samvera_env/*

@@ -1,5 +1,3 @@
-/*    COLOR -- FONTS    */
-/*    COLOR -- BLOCKS   */
 /*
 FONTS SIZE
     phone: 300px
@@ -14,8 +12,6 @@ FONTS SIZE
     desktop-wide: 1440px
 
 */
-/*    COLOR -- FONTS    */
-/*    COLOR -- BLOCKS   */
 /*
 FONTS SIZE
     phone: 300px
@@ -31,8 +27,11 @@ FONTS SIZE
 
 */
 .fullscreenmenu {
+  overflow-y: auto;
   position: fixed;
-  /*padding: 7rem 2rem 2rem;*/
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   top: 0;
   left: 0;
   right: 0;
@@ -42,92 +41,43 @@ FONTS SIZE
 }
 
 .fullscreenmenu .greed {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 3fr 1fr;
-      grid-template-columns: 1fr 3fr 1fr;
-      grid-template-areas: 'cart collections user' 'cart collections categories' '. center categories' '. contacts categories' '. social categories';
-  height: 100%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  max-width: 800px;
+  margin: auto;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
 }
 
 .fullscreenmenu .greed section {
-  height: 100%;
+  margin-top: 1rem;
 }
 
-.fullscreenmenu .greed section header {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  letter-spacing: 0px;
-  -webkit-transition: letter-spacing .5s, -webkit-box-shadow .5s;
-  transition: letter-spacing .5s, -webkit-box-shadow .5s;
-  transition: box-shadow .5s, letter-spacing .5s;
-  transition: box-shadow .5s, letter-spacing .5s, -webkit-box-shadow .5s;
+.fullscreenmenu .greed section header p {
+  color: whitesmoke;
+  transition: color .5s;
 }
 
-.fullscreenmenu .greed section:hover header {
-  -webkit-box-shadow: 0px 10px 10px -10px black;
-          box-shadow: 0px 10px 10px -10px black;
-  letter-spacing: 0.25rem;
-  -webkit-transition: letter-spacing .5s, -webkit-box-shadow .5s;
-  transition: letter-spacing .5s, -webkit-box-shadow .5s;
-  transition: box-shadow .5s, letter-spacing .5s;
-  transition: box-shadow .5s, letter-spacing .5s, -webkit-box-shadow .5s;
-}
-
-.fullscreenmenu .greed .user {
-  -ms-grid-row: 1;
-  -ms-grid-column: 3;
-  grid-area: user;
-}
-
-.fullscreenmenu .greed .cart {
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
-  -ms-grid-column: 1;
-  grid-area: cart;
+.fullscreenmenu .greed section:hover header p {
+  color: orange;
+  transition: color .5s;
 }
 
 .fullscreenmenu .greed .cart, .fullscreenmenu .greed .user {
   height: inherit;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-transition: background-color .5s;
-  transition: background-color .5s;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .fullscreenmenu .greed .cart *, .fullscreenmenu .greed .user * {
-  color: white;
+  color: lightgray;
 }
 
-.fullscreenmenu .greed .cart:hover, .fullscreenmenu .greed .user:hover {
-  background-color: #0a0a0a;
-  -webkit-transition: background-color .5s;
-  transition: background-color .5s;
-}
-
-.fullscreenmenu .greed .collections {
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
-  -ms-grid-column: 2;
-  grid-area: collections;
-}
-
+.fullscreenmenu .greed .collections,
 .fullscreenmenu .greed .categories {
-  -ms-grid-row: 2;
-  -ms-grid-row-span: 4;
-  -ms-grid-column: 3;
-  grid-area: categories;
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  transition: all .5s;
 }
 
 .fullscreenmenu .greed .collections__items,
@@ -151,15 +101,16 @@ FONTS SIZE
 .fullscreenmenu .greed .collections__items__item p a, .fullscreenmenu .greed .collections__items__title p a,
 .fullscreenmenu .greed .categories__items__item p a,
 .fullscreenmenu .greed .categories__items__title p a {
-  color: white;
-  letter-spacing: 2px;
+  color: gray;
   font-size: 1.1rem;
+  border-bottom: 1px solid transparent;
 }
 
 .fullscreenmenu .greed .collections__items__item p a:hover, .fullscreenmenu .greed .collections__items__title p a:hover,
 .fullscreenmenu .greed .categories__items__item p a:hover,
 .fullscreenmenu .greed .categories__items__title p a:hover {
   color: white;
+  border-bottom: 1px solid orange;
 }
 
 .fullscreenmenu .greed .collections__title,
@@ -169,113 +120,102 @@ FONTS SIZE
 
 .fullscreenmenu .greed .collections__title p,
 .fullscreenmenu .greed .categories__title p {
-  padding: 2rem;
+  padding: 1rem;
   font-weight: bold;
   color: white;
   font-size: 1.25rem;
 }
 
-.fullscreenmenu .greed .categories__items__item {
-  display: block;
+.fullscreenmenu .greed .collections:hover,
+.fullscreenmenu .greed .categories:hover {
+  border-bottom: 1px solid rgba(255, 165, 0, 0.5);
+  border-top: 1px solid rgba(255, 165, 0, 0.5);
+  transition: all .5s;
 }
 
-.fullscreenmenu .greed .center {
-  -ms-grid-row: 3;
-  -ms-grid-column: 2;
-  grid-area: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
+.fullscreenmenu .center {
+  padding-top: 1rem;
+}
+
+.fullscreenmenu .center nav ul {
+  padding: .5rem 0rem;
+  width: 100%;
+  list-style-type: none;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
+  gap: 2em;
 }
 
-.fullscreenmenu .greed .center a {
-  text-transform: uppercase;
-  color: white;
+.fullscreenmenu .center nav ul a {
+  padding: 0px .5em;
+  font-size: 1.5em;
+  border-bottom: 2px solid transparent;
+  color: grey;
   display: contents;
-  -webkit-transition: none;
   transition: none;
 }
 
 @media only screen and (min-width: 300px) {
-  .fullscreenmenu .greed .center a {
-    font-size: 30px;
+  .fullscreenmenu .center nav ul a {
+    font-size: 16px;
   }
 }
 
 @media only screen and (min-width: 480px) {
-  .fullscreenmenu .greed .center a {
-    font-size: 30px;
+  .fullscreenmenu .center nav ul a {
+    font-size: 16px;
   }
 }
 
 @media only screen and (min-width: 560px) {
-  .fullscreenmenu .greed .center a {
-    font-size: 32px;
+  .fullscreenmenu .center nav ul a {
+    font-size: 16px;
   }
 }
 
 @media only screen and (min-width: 640px) {
-  .fullscreenmenu .greed .center a {
-    font-size: 32px;
+  .fullscreenmenu .center nav ul a {
+    font-size: 18px;
   }
 }
 
 @media only screen and (min-width: 768px) {
-  .fullscreenmenu .greed .center a {
-    font-size: 68px;
+  .fullscreenmenu .center nav ul a {
+    font-size: 18px;
   }
 }
 
 @media only screen and (min-width: 1024px) {
-  .fullscreenmenu .greed .center a {
-    font-size: 68px;
+  .fullscreenmenu .center nav ul a {
+    font-size: 18px;
   }
 }
 
 @media only screen and (min-width: 1248px) {
-  .fullscreenmenu .greed .center a {
-    font-size: 68px;
+  .fullscreenmenu .center nav ul a {
+    font-size: 18px;
   }
 }
 
 @media only screen and (min-width: 1440px) {
-  .fullscreenmenu .greed .center a {
-    font-size: 72px;
+  .fullscreenmenu .center nav ul a {
+    font-size: 20px;
   }
 }
 
-.fullscreenmenu .greed .center a:hover {
+.fullscreenmenu .center nav ul a:hover {
   color: white;
-  -webkit-transition: color .5s;
   transition: color .5s;
 }
 
-.fullscreenmenu .greed .contacts {
-  -ms-grid-row: 4;
-  -ms-grid-column: 2;
-  grid-area: contacts;
-}
-
-.fullscreenmenu .greed .social {
-  -ms-grid-row: 5;
-  -ms-grid-column: 2;
+.fullscreenmenu .social {
+  padding-bottom: 1rem;
   grid-area: social;
-  display: -ms-grid;
   display: grid;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 
-.fullscreenmenu .greed .social .sociallinks__item {
+.fullscreenmenu .social .sociallinks__item {
   display: inline-block;
   margin: 0px 1rem;
 }
-/*# sourceMappingURL=full_screen_menu.css.map */

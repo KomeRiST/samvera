@@ -2,7 +2,7 @@
 @import "../mixins.scss";
 @import "../colors/dark.scss";
 /*
-    Для страницы контакты
+    пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 */
 .about_content__text {
     color: $fDefault;
@@ -22,10 +22,9 @@
 }
 
 /*
-    Слайды-экраны
+    пїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅ
 */
 .about_slide > div {
-    height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -42,7 +41,12 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
+    &:nth-child(2n) {
+        height: 100vh;
+    }
+    &:nth-child(odd) {
+        height: 80vh;
+    }
     @include mq("desktop-wide") {
         grid-template-columns: repeat(4, 1fr);
         grid-template-areas: '. text text .';
@@ -83,8 +87,8 @@
 }
 
 /*
-    Корректировка некоторых слайдов.
-    Направление в названии указывает на расположение картинки.
+    пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
+    пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
 */
 .about_slide {
     .slide-left {
@@ -187,4 +191,8 @@ footer {
 }
 .line {
     display: none;
+}
+
+#page_1, #page_2 {
+    position: relative;
 }

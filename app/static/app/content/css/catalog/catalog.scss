@@ -1,6 +1,6 @@
-@import "../variables.scss";
-@import "../mixins.scss";
-@import "../colors/dark.scss";
+@import '..\\variables.scss';
+@import "..\\mixins.scss";
+@import "..\\colors\\dark.scss";
 
 .catalog_content {
     display: grid;
@@ -24,10 +24,11 @@
     width: 100%;
     -webkit-justify-content: center;
     justify-content: center;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     @include mq("tablet", max) {
         grid-gap: 1rem;
         padding: 1rem;
+        grid-template-columns: 1fr 1fr;
     }
 
     .title {
@@ -36,11 +37,17 @@
         font-weight: 300;
         // margin-bottom: 1rem;
         text-transform: uppercase;
+        @include mq("desktop", max) {
+            font-size: .8rem;
+        }
+        @include mq("tablet-wide", max) {
+            font-size: .7rem;
+        }
         @include mq("tablet", max) {
-            font-size: 1rem;
+            font-size: .8rem;
         }
         @include mq("phablet", max) {
-            font-size: .8rem;
+            font-size: .7rem;
         }
     }
 }

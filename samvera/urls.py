@@ -5,7 +5,7 @@ Definition of urls for samvera.
 app_name = 'app'
 
 from datetime import datetime
-from django.urls import path
+from django.urls import path, re_path
 from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
 from app import forms
@@ -13,6 +13,7 @@ from app.views import views, pages, adminka
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import include, url
+from samvera import fuckyou
 
 
 urlpatterns = [
@@ -38,7 +39,7 @@ urlpatterns = [
     path('getthingphtotoss/<int:variaciya>/', views.getthingphtotoss, name='getthigetthingphtotossngcolors'),
     path('order/', views.new_order, name='new_order'),
     path('orderget/', views.get_order, name='get_order'),
-    path('login/', LoginView.as_view(template_name = 'app/account/login.html'), name='login'),
+    path('login/', LoginView.as_view(template_name = 'app/account/login.html', extra_context={'title': 'Вход на сайт', 'message': 'Введите свои учётные данные для входа на сайт'}), name='login'),
     path('logout/', LogoutView.as_view(next_page='/'), name='log_out'),
     #path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls, name='admin'),
@@ -48,6 +49,8 @@ urlpatterns = [
     # path('adminka/thing/delete/<int:id>/', adminka.thing_delete, name='thing_delete'),
     # path('adminka/variaciya/edit/<int:id>/', adminka.variaciya_edit, name='variaciya_edit'),
     # path('adminka/variaciya/delete/<int:id>/', adminka.variaciya_delete, name='variaciya_delete'),
+    re_path(r'^robots', fuckyou.index),
+    re_path(r'^phpmyadmin', fuckyou.index),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

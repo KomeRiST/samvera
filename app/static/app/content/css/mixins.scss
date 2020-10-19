@@ -1,5 +1,4 @@
-﻿@import "variables.scss";
-
+﻿
 @mixin text-shadow__contur($border-size, $blur, $color) {
     text-shadow: $border-size $border-size $blur $color, (-$border-size) (-$border-size) $blur $color, ($border-size) (-$border-size) $blur $color, -$border-size $border-size $blur $color, $border-size 0px $blur $color, 0px $border-size $blur $color, -$border-size 0px $blur $color, 0px -$border-size $blur $color
 }

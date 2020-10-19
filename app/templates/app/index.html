@@ -10,44 +10,188 @@
 {% endblock %}
 {% block content %}
 
+<div class="vid">
+    <div class="video" data-vvvv-bg="/media/video/video_2.mp4"></div>
+</div>
+<div class="cover">
     <div class="block-one">
-        <div class="vid">
-            <div class="video" data-vvvv-bg="/media/video/video_2.mp4"></div>
+        <div class="cont">
+            <div>
+                <p class="before-logo">Бренд женской одежды</p>
+                <p class="logo">samvera</p>
+                <nav>
+                    <ul>
+                        <li><a href="{% url 'about' 'about' %}">О нас</a></li>
+                        <li><a href="{% url 'tovarbycategory' %}">Каталог</a></li>
+                        <li><a href="{% url 'contact' 'contacts' %}">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="after-logo">
+                <p>Философия душевной свободы</p>
+            </div>
+            <div>
+                <a class="btn-next" href="#new">Далее</a>
+            </div>
         </div>
-        <div class="cover">
-            <div class="cont">
-                <div>
-                    <p class="before-logo">Бренд женской одежды</p>
-                    <p class="logo">samvera</p>
-                    <nav>
-                        <ul>
-                            <li><a href="#">О нас</a></li>
-                            <li><a href="#">Каталог</a></li>
-                            <li><a href="#">Контакты</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="after-logo"><p>Философия душевной свободы</p></div>
-                <div>
-                    <a class="btn-next" href="#new">Далее</a>
-                </div>
+
+            
+    </div>
+    <div id="new" class="block-two">
+        <div class="cont">
+            <div>
+                <p class="logo">samvera</p>
+            </div>
+            <div class="after-logo">
+                <p>это единене женщины с внеутренним миром, а так же<br/>безупречная гармония тела и лаконичного образа.</p>
+            </div>
+            <div>
+                <a class="btn-next" href="#end">Далее</a>
             </div>
         </div>
     </div>
-
-    <div id="new" class="block-two">
-
-        
-
+    <div id="end" class="block-three">
+        <div class="cont">
+            <div>
+            <p class="logo">Коллекции</p>
+                <nav>
+                    <ul>
+                    {% for item in collections %}
+                    <li>
+                        <a class="logo" href="{{item.get_absolute_url}}">
+                        {% comment %} <div style="display: block;">
+                            <img src="{{item.image.url}}.png" height="50%"/>
+                        </div> {% endcomment %}
+                            {{item.title}}
+                        </a>
+                    </li>
+                    {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+            <div>
+            <p class="logo">Категории</p>
+                <nav>
+                    <ul>
+                    {% for item in categories %}
+                        <li><a class="logo" href="{{item.get_absolute_url}}">{{item.title}}</a></li>
+                    {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+            <div>
+                <a class="btn-next" href="{% url 'tovarbycategory'%}">В магазин</a>
+            </div>
+        </div>
     </div>
-    <div class="block-three">
-        <p class="logo">samvera</p>
-        <p class="after-logo">это единене женщины с внеутренним миром, а так же</p>
-        <p class="after-logo">безупречная гармония тела и лаконичного образа.</p>
-    </div>
+    <footer>
+        <ul class="bottom-menu__list">
+            <li class="bottom-menu__item">
+                <span class="bottom-menu__link centaur">SAMVERA</span>
+                <ul class="bottom-menu__sub">
+                    <!--
+                    <li class="bottom-menu__sub-item">
+                        <a href="/about/otzyvy" class="bottom-menu__sub-link">Отзывы</a>
+                    </li>
+                    <li class="bottom-menu__sub-item">
+                        <a href="/about/office" class="bottom-menu__sub-link">Офис</a>
+                    </li>
+                    <li class="bottom-menu__sub-item">
+                        <a href="/about/press" class="bottom-menu__sub-link">Пресса о нас</a>
+                    </li>
+                    <li class="bottom-menu__sub-item">
+                        <a href="/about/shops" class="bottom-menu__sub-link">Магазины</a>
+                    </li>
+                    -->
+                    <li class="bottom-menu__sub-item">
+                        <a href="/about/about" class="bottom-menu__sub-link">О нас</a>
+                    </li>
+                    <li class="bottom-menu__sub-item">
+                        <a href="/about/contacts" class="bottom-menu__sub-link">Контакты</a>
+                    </li>
+                    <!-- <li class="bottom-menu__sub-item">
+                        <a href="/about/rabota-u-nas" class="bottom-menu__sub-link">Работа у нас</a>
+                    </li> -->
+                </ul>
+            </li>
+            <!--
+            <li class="bottom-menu__item">
+                <a href="/user/cabinet" class="bottom-menu__link">Мой кабинет</a>
+                <ul class="bottom-menu__sub">
+                    <li class="bottom-menu__sub-item">
+                        <a href="/user/cabinet" class="bottom-menu__sub-link">Профиль</a>
+                    </li>
+                    <li class="bottom-menu__sub-item">
+                        <a href="/user/orders" class="bottom-menu__sub-link">Мои заказы</a>
+                    </li>
+                    <li class="bottom-menu__sub-item">
+                        <a href="/user/subscribe" class="bottom-menu__sub-link">Мои подписки</a>
+                    </li>
+                    <li class="bottom-menu__sub-item">
+                        <a href="/user/wishlist" class="bottom-menu__sub-link">Wishlist</a>
+                    </li>
+                </ul>
+            </li>
+            -->
+            <li class="bottom-menu__item">
+                <span class="bottom-menu__link">Покупателям</span>
+                <ul class="bottom-menu__sub">
+                    <!-- <li class="bottom-menu__sub-item">
+                        <a href="/info/samovyvoz" class="bottom-menu__sub-link">Самовывоз</a>
+                    </li> -->
+                    <li class="bottom-menu__sub-item">
+                        <a href="/info/vozvrattovar" class="bottom-menu__sub-link">Возврат (только сплошной текст)</a>
+                    </li>
+                    <li class="bottom-menu__sub-item">
+                        <a href="/info/politika-konfidencialnosti" class="bottom-menu__sub-link">
+                            Политика
+                            конфиденциальности (пусто)
+                        </a>
+                    </li>
+                    <li class="bottom-menu__sub-item">
+                        <a href="/info/rukovodstvo-po-pokupke" class="bottom-menu__sub-link">Руководство по покупке</a>
+                    </li>
+                    <li class="bottom-menu__sub-item">
+                        <a href="/info/oplata" class="bottom-menu__sub-link">Оплата</a>
+                    </li>
+                    <!-- <li class="bottom-menu__sub-item">
+                        <a href="/info/preorder" class="bottom-menu__sub-link">Предзаказ</a>
+                    </li> -->
+                    <li class="bottom-menu__sub-item">
+                        <a href="/info/dostavka" class="bottom-menu__sub-link">Доставка (пусто)</a>
+                    </li>
+                    <li class="bottom-menu__sub-item">
+                        <a href="/info/faq" class="bottom-menu__sub-link">Часто задаваемые вопросы (F.A.Q.)</a>
+                    </li>
+                    <li class="bottom-menu__sub-item">
+                        <a href="/info/oferta" class="bottom-menu__sub-link">Оферта</a>
+                    </li>
+                    <!-- <li class="bottom-menu__sub-item">
+                        <a href="/info/idei" class="bottom-menu__sub-link">Идеи и предложения</a>
+                    </li> -->
+                    <!--
+                    <li class="bottom-menu__sub-item">
+                        <a href="/info/bonus" class="bottom-menu__sub-link">Бонусная программа</a>
+                    </li>
+                    <li class="bottom-menu__sub-item">
+                        <a href="/info/kacestvo" class="bottom-menu__sub-link">Качество обслуживания</a>
+                    </li>
+                    -->
+                </ul>
+            </li>
+            <!--
+            <li class="bottom-menu__item bottom-menu__item_subscribe">
+                <div class="bottom-menu__title">узнайте первыми о&nbsp;новинках и&nbsp;скидках</div>
+            </li>
+            -->
+        </ul>
+    </footer>
+</div>
+    
 {% endblock %}
-
+{% block footer %}
+<!---->
+{% endblock %}
 {% block scripts %}
-<script>    
-</script>
+<script></script>
 {% endblock %}

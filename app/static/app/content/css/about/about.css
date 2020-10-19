@@ -239,6 +239,12 @@ FONTS SIZE
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; }
+  .about_slide > div:nth-child(2n) {
+      height: 100vh;
+  }
+  .about_slide > div:nth-child(odd) {
+      height: 80vh;
+  }
   @media only screen and (min-width: 1440px) {
     .about_slide > div {
       grid-template-columns: repeat(4, 1fr);
@@ -394,3 +400,7 @@ footer {
 
 .line {
   display: none; }
+
+  #page_1, #page_2 {
+    position: relative;
+}

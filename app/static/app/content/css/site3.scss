@@ -1,4 +1,5 @@
-﻿
+﻿@import "variables.scss";
+@import "mixins.scss";
 .bg {
     /*position: fixed;
     width: 100vw;
@@ -146,6 +147,7 @@ form {
 }
 
 .white_form {
+    margin: 1rem;
     .field_title, .fieldWrapper {
         color: white;
         // font-family: CENTAUR;

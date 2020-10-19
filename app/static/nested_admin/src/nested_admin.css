@@ -242,20 +242,14 @@ table.djn-table.grp-table th p > input[type="button"] {
   cursor: move;
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAyCAYAAABcfPsmAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAE5JREFUeNrs0zEKACAMBEEDST6X9+Z92lpYHNgI7naBK9KMdfcch6rK9lvdeWYOJXXnESEN1d2HH9J9hhSkEFKQQkhBClKQghSkPNYSYADFZiuygfao+AAAAABJRU5ErkJggg==") no-repeat top left;
   background-size: 10px 25px;
-  cursor: -webkit-grab;
   cursor: grab;
-  cursor: -moz- -webkit-grab;
   cursor: -moz- grab;
-  cursor: -webkit- -webkit-grab;
   cursor: -webkit- grab;
 }
 
 #content.colM td.original.is-sortable .djn-drag-handler:active {
-  cursor: -webkit-grabbing;
   cursor: grabbing;
-  cursor: -moz- -webkit-grabbing;
   cursor: -moz- grabbing;
-  cursor: -webkit- -webkit-grabbing;
   cursor: -webkit- grabbing;
 }
 
@@ -316,8 +310,6 @@ table.djn-table.grp-table th p > input[type="button"] {
 
 .grp-td > .grp-related-widget-wrapper .grp-related-widget-tools {
   overflow: visible;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -400,4 +392,3 @@ table.grp-table.djn-table th.djn-th p input[type="text"] {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
 }
-/*# sourceMappingURL=nested_admin.css.map */

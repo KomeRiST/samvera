@@ -9,8 +9,11 @@
     </NuGetPackageImportStamp>
     <InterpreterArguments>
     </InterpreterArguments>
-    <EnableNativeCodeDebugging>False</EnableNativeCodeDebugging>
-    <CommandLineArguments>runserver 0.0.0.0:80</CommandLineArguments>
+    <EnableNativeCodeDebugging>True</EnableNativeCodeDebugging>
+    <CommandLineArguments>runserver 127.0.0.1:8888</CommandLineArguments>
+    <TestFramework>Pytest</TestFramework>
+    <WebBrowserPort>
+    </WebBrowserPort>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
