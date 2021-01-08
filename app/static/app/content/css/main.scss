@@ -640,8 +640,16 @@ form {
     color: $fTitleDark;
 }
 
+.text-title-light {
+    color: $fTitleBright;
+}
+
 .text-desc-dark {
     color: $fDescrDark;
+}
+
+.text-desc-light {
+    color: $fDescrBright;
 }
 
 .main_content {

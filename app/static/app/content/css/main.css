@@ -13,20 +13,6 @@ FONTS SIZE
     desktop-wide: 1440px
 
 */
-/*
-FONTS SIZE
-    phone: 300px
-    phone-wide: 480px
-    phablet: 560px
-
-    tablet-small: 640px
-    tablet: 768px
-    tablet-wide: 1024px
-
-    desktop: 1248px
-    desktop-wide: 1440px
-
-*/
 /*    COLOR -- FONTS    
 
     яркий = bright
@@ -1044,8 +1030,16 @@ form .fieldWrapper .field_descr .small {
   color: black;
 }
 
+.text-title-light {
+  color: white;
+}
+
 .text-desc-dark {
   color: black;
+}
+
+.text-desc-light {
+  color: darkgray;
 }
 
 .main_content {
