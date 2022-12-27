@@ -4,7 +4,7 @@ django-multifilefield==1.0
 Pillow==6.1.0
 pip==19.2.2
 pytz==2019.1
-setuptools==39.0.1
+setuptools==65.5.1
 sqlparse==0.3.0
 django-modeladmin-reorder==0.3.1
 django-nested-inline==0.3.7
